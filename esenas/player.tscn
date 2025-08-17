@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://pojdaufgxyfr"]
+
+[ext_resource type="Script" uid="uid://dkodjngs43vay" path="res://scripts/player.gd" id="1_82gg7"]
+[ext_resource type="PackedScene" uid="uid://bxg4psj1pbvyx" path="res://esenas/skin.tscn" id="2_oq223"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj6sn"]
+radius = 0.185608
+height = 1.06074
+
+[sub_resource type="Curve" id="Curve_82gg7"]
+_data = [Vector2(0.0289017, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.508671, 0.775281), 0.0, 0.0, 0, 0, Vector2(0.976879, 0.247191), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oq223"]
+width = 32
+curve = SubResource("Curve_82gg7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82gg7"]
+lifetime_randomness = 0.26
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_oq223")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oq223"]
+albedo_color = Color(0.966131, 0.969774, 0.993943, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pj6sn"]
+material = SubResource("StandardMaterial3D_oq223")
+radius = 0.12
+height = 0.24
+radial_segments = 16
+rings = 16
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_82gg7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480067, 0)
+shape = SubResource("CapsuleShape3D_pj6sn")
+
+[node name="skin" parent="." instance=ExtResource("2_oq223")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788499, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, -0.0303327, 0)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_82gg7")
+draw_pass_1 = SubResource("SphereMesh_pj6sn")

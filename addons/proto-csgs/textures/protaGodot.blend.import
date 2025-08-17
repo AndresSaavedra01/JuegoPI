@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dlxygihwk5g1"
-path="res://.godot/imported/robotCorriendo.blend-59f8dec7727489c9f6e0840f3c4dce46.scn"
+uid="uid://tmw4hby00677"
+path="res://.godot/imported/protaGodot.blend-1ef9867ccf3f3c3fee4123a55c32befb.scn"
 
 [deps]
 
-source_file="res://assets/robotCorriendo.blend"
-dest_files=["res://.godot/imported/robotCorriendo.blend-59f8dec7727489c9f6e0840f3c4dce46.scn"]
+source_file="res://addons/proto-csgs/textures/protaGodot.blend"
+dest_files=["res://.godot/imported/protaGodot.blend-1ef9867ccf3f3c3fee4123a55c32befb.scn"]
 
 [params]
 
