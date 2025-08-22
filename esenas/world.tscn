@@ -61,7 +61,6 @@ size = Vector3(1.05243, 4.09656, 0.95166)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="objetcs"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 10, -1.66251, 3.07611, -7.67886)
-constant_linear_velocity = Vector3(0, -10, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objetcs/AnimatableBody3D"]
 shape = SubResource("BoxShape3D_0r82g")

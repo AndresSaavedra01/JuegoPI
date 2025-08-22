@@ -28,6 +28,7 @@ func _input(event: InputEvent):
 
 func _physics_process(delta):
 	movimiento(delta)
+	ataque()
 	move_and_slide()
 
 
@@ -87,3 +88,7 @@ func camara(event: InputEvent):
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func ataque():
+	if Input.is_action_just_pressed("atacar"):
+		body.attack()
