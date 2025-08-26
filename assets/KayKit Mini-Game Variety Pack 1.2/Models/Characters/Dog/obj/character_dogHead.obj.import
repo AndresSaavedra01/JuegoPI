@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://22kd2d0d7crn"
+path="res://.godot/imported/character_dogHead.obj-488c05fb5211870b061cb3fddd5a85aa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_dogHead.obj-488c05fb5211870b061cb3fddd5a85aa.mesh"]
+
+source_file="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/Characters/Dog/obj/character_dogHead.obj"
+dest_files=["res://.godot/imported/character_dogHead.obj-488c05fb5211870b061cb3fddd5a85aa.mesh", "res://.godot/imported/character_dogHead.obj-488c05fb5211870b061cb3fddd5a85aa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

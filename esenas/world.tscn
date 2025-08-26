@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8t8urx8mt7vo"]
+[gd_scene load_steps=16 format=3 uid="uid://c8t8urx8mt7vo"]
 
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="1_qb3mn"]
 [ext_resource type="Texture2D" uid="uid://cqk4iys3i4lam" path="res://addons/proto-csgs/textures/red/texture_01.png" id="3_0r82g"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="4_0r82g"]
 [ext_resource type="Texture2D" uid="uid://b6clhlnfkv7sw" path="res://addons/proto-csgs/textures/purple/texture_03.png" id="5_2xold"]
+[ext_resource type="PackedScene" uid="uid://dat5glcnt7eqn" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/fbx/tileLow_forest.fbx" id="5_ke1l2"]
+[ext_resource type="PackedScene" uid="uid://c81mr4ou73bny" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileLarge_forest.gltf.glb" id="6_d4ost"]
+[ext_resource type="PackedScene" uid="uid://bka6yfuooujij" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileSmall_forest.gltf.glb" id="7_ke1l2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xold"]
 albedo_texture = ExtResource("1_qb3mn")
@@ -25,12 +28,12 @@ uv1_triplanar = true
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_5ksp1"]
+[sub_resource type="Sky" id="Sky_d4ost"]
 sky_material = SubResource("ProceduralSkyMaterial_a821y")
 
 [sub_resource type="Environment" id="Environment_2a1yx"]
 background_mode = 2
-sky = SubResource("Sky_5ksp1")
+sky = SubResource("Sky_d4ost")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -69,11 +72,49 @@ size = Vector3(1.05243, 4.09656, 0.95166)
 [node name="ambiente" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambiente"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0.417106, -4.76837e-07, 5.75158)
 shadow_enabled = true
+shadow_caster_mask = 4294967294
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente"]
 environment = SubResource("Environment_2a1yx")
 
 [node name="Player" parent="." instance=ExtResource("4_0r82g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="tileLarge_forest_gltf" parent="." instance=ExtResource("6_d4ost")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13803, -1.00995, -0.825506)
+visible = false
+
+[node name="tileLow_forest" parent="tileLarge_forest_gltf" instance=ExtResource("5_ke1l2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.22716, 4.76837e-07, -0.383775)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLarge_forest_gltf/tileLow_forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178847, -0.0181818, 0.00901508)
+layers = 0
+use_collision = true
+size = Vector3(2.04292, 2.05896, 2.02044)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLarge_forest_gltf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0386314, -0.0181818, -0.0641131)
+layers = 0
+use_collision = true
+size = Vector3(5.8618, 2.05896, 5.91234)
+
+[node name="tileSmall_forest_gltf" parent="." instance=ExtResource("7_ke1l2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2706, 0.888338, -0.886676)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileSmall_forest_gltf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223262, 0.544467, -0.025417)
+layers = 0
+use_collision = true
+size = Vector3(0.765247, 0.914467, 0.916487)
+
+[node name="tileLarge_forest_gltf2" parent="." instance=ExtResource("6_d4ost")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3214, 1.29009, -0.133292)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLarge_forest_gltf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0386314, 0.417945, -0.0641131)
+layers = 0
+use_collision = true
+size = Vector3(5.8618, 1.18671, 5.91234)

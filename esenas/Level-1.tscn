@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://fv3jfe3br3bv"]
+
+[ext_resource type="PackedScene" uid="uid://c81mr4ou73bny" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileLarge_forest.gltf.glb" id="1_45ie8"]
+[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
+[ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="2_ojjy3"]
+[ext_resource type="PackedScene" uid="uid://dat5glcnt7eqn" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/fbx/tileLow_forest.fbx" id="4_11qt0"]
+[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
+[ext_resource type="PackedScene" uid="uid://bka6yfuooujij" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileSmall_forest.gltf.glb" id="5_rgd8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pft2v"]
+albedo_texture = ExtResource("2_ojjy3")
+uv1_triplanar = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
+panorama = ExtResource("4_45ie8")
+
+[sub_resource type="Sky" id="Sky_rgd8y"]
+sky_material = SubResource("PanoramaSkyMaterial_11qt0")
+
+[sub_resource type="Environment" id="Environment_6gyh5"]
+background_mode = 2
+sky = SubResource("Sky_rgd8y")
+
+[node name="Level-1" type="Node3D"]
+
+[node name="tileLarge_forest_gltf" parent="." instance=ExtResource("1_45ie8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24926, -0.926033, -2.42749)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLarge_forest_gltf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328126, -0.0181818, -0.0641131)
+layers = 0
+use_collision = true
+size = Vector3(5.12829, 2.05896, 5.91234)
+
+[node name="Player" parent="." instance=ExtResource("1_k4u5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="objetcs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
+
+[node name="floor" type="CSGBox3D" parent="objetcs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67251, 0)
+material_override = SubResource("StandardMaterial3D_pft2v")
+use_collision = true
+size = Vector3(154.778, 0.37207, 341.052)
+
+[node name="ambiente" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambiente"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0.417106, -4.76837e-07, 5.75158)
+shadow_enabled = true
+shadow_caster_mask = 4294967294
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente"]
+environment = SubResource("Environment_6gyh5")
+
+[node name="tileLow_forest" parent="." instance=ExtResource("4_11qt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91088, -1.00994, -1.20928)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLow_forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178847, -0.0181818, 0.00901508)
+layers = 0
+use_collision = true
+size = Vector3(2.04292, 2.05896, 2.02044)
+
+[node name="tileSmall_forest_gltf" parent="." instance=ExtResource("5_rgd8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2706, 0.888338, -0.886676)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileSmall_forest_gltf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223262, 0.544467, -0.025417)
+layers = 0
+use_collision = true
+size = Vector3(0.765247, 0.914467, 0.916487)
+
+[node name="tileLarge_forest_gltf2" parent="." instance=ExtResource("1_45ie8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3214, 1.29009, -0.133292)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tileLarge_forest_gltf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0386314, 0.417945, -0.0641131)
+layers = 0
+use_collision = true
+size = Vector3(5.8618, 1.18671, 5.91234)
