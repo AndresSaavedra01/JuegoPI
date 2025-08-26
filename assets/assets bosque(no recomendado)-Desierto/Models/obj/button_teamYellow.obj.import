@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://blb3o4nu81gia"
+path="res://.godot/imported/button_teamYellow.obj-a5b8a6c7409dbe71abcd5cfabe0905a7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/button_teamYellow.obj-a5b8a6c7409dbe71abcd5cfabe0905a7.mesh"]
+
+source_file="res://assets/assets bosque(no recomendado)-Desierto/Models/obj/button_teamYellow.obj"
+dest_files=["res://.godot/imported/button_teamYellow.obj-a5b8a6c7409dbe71abcd5cfabe0905a7.mesh", "res://.godot/imported/button_teamYellow.obj-a5b8a6c7409dbe71abcd5cfabe0905a7.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

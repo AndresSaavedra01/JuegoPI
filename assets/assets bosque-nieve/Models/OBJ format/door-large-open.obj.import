@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://syx5uqhhp5a0"
+path="res://.godot/imported/door-large-open.obj-b85eabc1895635d95c1219be5ee8824f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door-large-open.obj-b85eabc1895635d95c1219be5ee8824f.mesh"]
+
+source_file="res://assets/assets bosque-nieve/Models/OBJ format/door-large-open.obj"
+dest_files=["res://.godot/imported/door-large-open.obj-b85eabc1895635d95c1219be5ee8824f.mesh", "res://.godot/imported/door-large-open.obj-b85eabc1895635d95c1219be5ee8824f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

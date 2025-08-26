@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1p1ut7d82tr4"
+path="res://.godot/imported/hedge-corner.obj-c033ac8e9357732f44869a6dc5a9f116.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hedge-corner.obj-c033ac8e9357732f44869a6dc5a9f116.mesh"]
+
+source_file="res://assets/assets bosque-nieve/Models/OBJ format/hedge-corner.obj"
+dest_files=["res://.godot/imported/hedge-corner.obj-c033ac8e9357732f44869a6dc5a9f116.mesh", "res://.godot/imported/hedge-corner.obj-c033ac8e9357732f44869a6dc5a9f116.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

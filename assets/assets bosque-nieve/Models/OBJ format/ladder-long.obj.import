@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://y1icek8edsb8"
+path="res://.godot/imported/ladder-long.obj-e8feb01533add15fe0864e21f80e8f7f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ladder-long.obj-e8feb01533add15fe0864e21f80e8f7f.mesh"]
+
+source_file="res://assets/assets bosque-nieve/Models/OBJ format/ladder-long.obj"
+dest_files=["res://.godot/imported/ladder-long.obj-e8feb01533add15fe0864e21f80e8f7f.mesh", "res://.godot/imported/ladder-long.obj-e8feb01533add15fe0864e21f80e8f7f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

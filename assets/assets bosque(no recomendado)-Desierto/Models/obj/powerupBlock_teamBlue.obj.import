@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b22x26d4uiiwt"
+path="res://.godot/imported/powerupBlock_teamBlue.obj-2eb65d8da5dc7d405f74a755d17aab05.mesh"
+
+[deps]
+
+files=["res://.godot/imported/powerupBlock_teamBlue.obj-2eb65d8da5dc7d405f74a755d17aab05.mesh"]
+
+source_file="res://assets/assets bosque(no recomendado)-Desierto/Models/obj/powerupBlock_teamBlue.obj"
+dest_files=["res://.godot/imported/powerupBlock_teamBlue.obj-2eb65d8da5dc7d405f74a755d17aab05.mesh", "res://.godot/imported/powerupBlock_teamBlue.obj-2eb65d8da5dc7d405f74a755d17aab05.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

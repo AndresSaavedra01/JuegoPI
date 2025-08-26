@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var speed := 8.0
 @export var rotacion_velo := 20.0
 @export var jump := 10.0
-@export var gravity := 15.0
+@export var gravity := 25.0
 @export var sens_h := 0.5
 @export var sens_v := 0.5
 @export var pitch_min := -60.0

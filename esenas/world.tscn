@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cqk4iys3i4lam" path="res://addons/proto-csgs/textures/red/texture_01.png" id="3_0r82g"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="4_0r82g"]
 [ext_resource type="Texture2D" uid="uid://b6clhlnfkv7sw" path="res://addons/proto-csgs/textures/purple/texture_03.png" id="5_2xold"]
-[ext_resource type="PackedScene" uid="uid://dat5glcnt7eqn" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/fbx/tileLow_forest.fbx" id="5_ke1l2"]
-[ext_resource type="PackedScene" uid="uid://c81mr4ou73bny" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileLarge_forest.gltf.glb" id="6_d4ost"]
-[ext_resource type="PackedScene" uid="uid://bka6yfuooujij" path="res://assets/KayKit Mini-Game Variety Pack 1.2/Models/gltf/tileSmall_forest.gltf.glb" id="7_ke1l2"]
+[ext_resource type="PackedScene" uid="uid://dat5glcnt7eqn" path="res://assets/assets bosque(no recomendado)-Desierto/Models/fbx/tileLow_forest.fbx" id="5_ke1l2"]
+[ext_resource type="PackedScene" uid="uid://c81mr4ou73bny" path="res://assets/assets bosque(no recomendado)-Desierto/Models/gltf/tileLarge_forest.gltf.glb" id="6_d4ost"]
+[ext_resource type="PackedScene" uid="uid://bka6yfuooujij" path="res://assets/assets bosque(no recomendado)-Desierto/Models/gltf/tileSmall_forest.gltf.glb" id="7_ke1l2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xold"]
 albedo_texture = ExtResource("1_qb3mn")

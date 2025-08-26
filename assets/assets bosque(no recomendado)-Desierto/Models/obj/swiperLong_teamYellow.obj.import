@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b7alohnui7htw"
+path="res://.godot/imported/swiperLong_teamYellow.obj-80ab2f6c099eb31b95a663ee60eb981d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/swiperLong_teamYellow.obj-80ab2f6c099eb31b95a663ee60eb981d.mesh"]
+
+source_file="res://assets/assets bosque(no recomendado)-Desierto/Models/obj/swiperLong_teamYellow.obj"
+dest_files=["res://.godot/imported/swiperLong_teamYellow.obj-80ab2f6c099eb31b95a663ee60eb981d.mesh", "res://.godot/imported/swiperLong_teamYellow.obj-80ab2f6c099eb31b95a663ee60eb981d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

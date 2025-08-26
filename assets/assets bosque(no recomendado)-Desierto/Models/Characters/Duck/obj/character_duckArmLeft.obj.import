@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcca71vsmruuo"
+path="res://.godot/imported/character_duckArmLeft.obj-25bde31e48bc3ced36907af5f0f9bdb9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_duckArmLeft.obj-25bde31e48bc3ced36907af5f0f9bdb9.mesh"]
+
+source_file="res://assets/assets bosque(no recomendado)-Desierto/Models/Characters/Duck/obj/character_duckArmLeft.obj"
+dest_files=["res://.godot/imported/character_duckArmLeft.obj-25bde31e48bc3ced36907af5f0f9bdb9.mesh", "res://.godot/imported/character_duckArmLeft.obj-25bde31e48bc3ced36907af5f0f9bdb9.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
