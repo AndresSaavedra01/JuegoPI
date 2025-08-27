@@ -9,12 +9,15 @@ extends CharacterBody3D
 @export var sens_v := 0.5
 @export var pitch_min := -60.0
 @export var pitch_max := 40.0
+@export var cooldown := 0.5
 var pitch := 0.0
+var puede_disparar: bool = true 
 
 #nodos
 @onready var camera_pivot = $SpringArm3D
-@onready var body = $skin
+@onready var body = $robotV3
 @onready var particles = $GPUParticles3D
+
 
 
 
@@ -28,7 +31,6 @@ func _input(event: InputEvent):
 
 func _physics_process(delta):
 	movimiento(delta)
-	ataque()
 	move_and_slide()
 
 
@@ -94,6 +96,12 @@ func camara(event: InputEvent):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-func ataque():
-	if Input.is_action_just_pressed("atacar"):
-		body.attack()
+# --- ATAQUE ---
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("atacar") and puede_disparar:
+		body.attack()       # animación
+		#ataque_proyectil()   # proyectil
+		puede_disparar = false
+		# Cooldown con await para no alterar el proyectil
+		await get_tree().create_timer(cooldown).timeout
+		puede_disparar = true
