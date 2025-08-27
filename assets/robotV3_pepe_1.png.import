@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5qefuoykhpfx"
-path.s3tc="res://.godot/imported/robotV3_pepe.png-37881a17790abda4ba07675cd53db52e.s3tc.ctex"
+uid="uid://d2j481d3y1740"
+path.s3tc="res://.godot/imported/robotV3_pepe_1.png-2d79b52be820d0926f87d55e036bf1f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/robotV3_pepe.png"
-dest_files=["res://.godot/imported/robotV3_pepe.png-37881a17790abda4ba07675cd53db52e.s3tc.ctex"]
+source_file="res://assets/robotV3_pepe_1.png"
+dest_files=["res://.godot/imported/robotV3_pepe_1.png-2d79b52be820d0926f87d55e036bf1f9.s3tc.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var speed := 8.0
 @export var rotacion_velo := 20.0
 @export var jump := 10.0
-@export var gravity := 15.0
+@export var gravity := 20.0
 @export var sens_h := 0.5
 @export var sens_v := 0.5
 @export var pitch_min := -60.0
@@ -75,7 +75,12 @@ func movimiento(delta: float):
 	# Gravedad y estado en aire
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		body.fall()
+	# Si todavía va hacia arriba, mostrar animación de salto
+		if velocity.y > 0:
+			body.jump()
+		else:
+			# Si ya va hacia abajo, animación de caída
+			body.fall()
 		particles.emitting = false
 
 func camara(event: InputEvent):
