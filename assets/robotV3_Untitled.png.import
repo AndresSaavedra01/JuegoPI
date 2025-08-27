@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7f3imcclnwe7"
-path.s3tc="res://.godot/imported/pepe.001.png-bb17875cb82d8d71e35563a4311d465f.s3tc.ctex"
+uid="uid://c3fglyobemeei"
+path.s3tc="res://.godot/imported/robotV3_Untitled.png-56d0cb39a7ad0b6a07a936b516af27cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "b7e6d1ab18cda9f57e0603607eaa8727"
+}
 
 [deps]
 
-source_file="res://addons/proto-csgs/textures/textures/pepe.001.png"
-dest_files=["res://.godot/imported/pepe.001.png-bb17875cb82d8d71e35563a4311d465f.s3tc.ctex"]
+source_file="res://assets/robotV3_Untitled.png"
+dest_files=["res://.godot/imported/robotV3_Untitled.png-56d0cb39a7ad0b6a07a936b516af27cf.s3tc.ctex"]
 
 [params]
 
