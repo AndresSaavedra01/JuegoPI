@@ -47,9 +47,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480067, 0)
 shape = SubResource("CapsuleShape3D_pj6sn")
 
 [node name="skin" parent="." instance=ExtResource("2_oq223")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.029598)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788499, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611474, -0.0481036)
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]

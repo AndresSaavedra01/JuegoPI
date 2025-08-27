@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8t8urx8mt7vo"]
+[gd_scene load_steps=14 format=3 uid="uid://c8t8urx8mt7vo"]
 
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="1_qb3mn"]
 [ext_resource type="Texture2D" uid="uid://cqk4iys3i4lam" path="res://addons/proto-csgs/textures/red/texture_01.png" id="3_0r82g"]
@@ -9,10 +9,6 @@
 albedo_texture = ExtResource("1_qb3mn")
 uv1_triplanar = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_a821y"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_5ksp1"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4ost"]
 albedo_texture = ExtResource("3_0r82g")
 uv1_triplanar = true
@@ -20,6 +16,12 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e32u"]
 albedo_texture = ExtResource("5_2xold")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0r82g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a821y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5ksp1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a821y"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -45,15 +47,6 @@ material_override = SubResource("StandardMaterial3D_2xold")
 use_collision = true
 size = Vector3(154.778, 0.37207, 341.052)
 
-[node name="CharacterBody3D" type="RigidBody3D" parent="objetcs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14015, 6.72425, -2.65133)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="objetcs/CharacterBody3D"]
-shape = SubResource("SphereShape3D_a821y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="objetcs/CharacterBody3D"]
-mesh = SubResource("SphereMesh_5ksp1")
-
 [node name="CSGBox3D" type="CSGBox3D" parent="objetcs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83068, 3.61678, -8.81543)
 material_override = SubResource("StandardMaterial3D_d4ost")
@@ -66,6 +59,21 @@ material_override = SubResource("StandardMaterial3D_8e32u")
 use_collision = true
 size = Vector3(1.05243, 4.09656, 0.95166)
 
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="objetcs"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 10, -1.66251, 3.07611, -7.67886)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objetcs/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_0r82g")
+
+[node name="CharacterBody3D" type="RigidBody3D" parent="objetcs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14015, 6.72425, -2.65133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objetcs/CharacterBody3D"]
+shape = SubResource("SphereShape3D_a821y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="objetcs/CharacterBody3D"]
+mesh = SubResource("SphereMesh_5ksp1")
+
 [node name="ambiente" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambiente"]
@@ -76,4 +84,4 @@ shadow_enabled = true
 environment = SubResource("Environment_2a1yx")
 
 [node name="Player" parent="." instance=ExtResource("4_0r82g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1.24956)
