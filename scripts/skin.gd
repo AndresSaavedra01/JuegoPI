@@ -17,6 +17,9 @@ func fall():
 func jump():
 	state_machine.travel("Jump")
 
+func jump2():
+	state_machine.travel("Jump2")
+
 func attack():
 	#state_machine.travel("attack")
 	animation_tree.set("parameters/attackpochito/request",true )

@@ -10,8 +10,10 @@ extends CharacterBody3D
 @export var pitch_min := -60.0
 @export var pitch_max := 40.0
 @export var cooldown := 0.5
+@export var max_jumps := 2
 var pitch := 0.0
 var puede_disparar: bool = true 
+var jump_count := 0
 
 #nodos
 @onready var camera_pivot = $SpringArm3D
@@ -69,10 +71,16 @@ func movimiento(delta: float):
 		
 
 	# Salto
-	if Input.is_action_just_pressed("saltar") and is_on_floor():
+	
+	if is_on_floor():
+		jump_count = 0
+	
+	if Input.is_action_just_pressed("saltar") and jump_count < max_jumps:
 		velocity.y = jump
 		body.jump()
 		particles.emitting = false
+		jump_count +=1
+		
 
 	# Gravedad y estado en aire
 	if not is_on_floor():
