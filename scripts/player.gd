@@ -33,6 +33,7 @@ func _input(event: InputEvent):
 
 func _physics_process(delta):
 	movimiento(delta)
+	$Control/Label.text = str(Engine.get_frames_per_second())
 	move_and_slide()
 
 
@@ -77,6 +78,8 @@ func movimiento(delta: float):
 	
 	if Input.is_action_just_pressed("saltar") and jump_count < max_jumps:
 		velocity.y = jump
+		if jump_count == 1:
+			body.jump2()
 		body.jump()
 		particles.emitting = false
 		jump_count +=1
@@ -105,9 +108,14 @@ func camara(event: InputEvent):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 # --- ATAQUE ---
+var currentAttack := false
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("change-attack"):
+		currentAttack = not currentAttack
+		body.cañonMelee.visible = not currentAttack
 	if Input.is_action_just_pressed("atacar") and puede_disparar:
-		body.attack()       # animación
+		if currentAttack : body.attack()
+		else : body.attackMelee()      
 		#ataque_proyectil()   # proyectil
 		puede_disparar = false
 		# Cooldown con await para no alterar el proyectil

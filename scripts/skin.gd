@@ -4,6 +4,9 @@ extends Node3D
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @export var proyectil: PackedScene
 @onready var spawn_cañon = $rig/Skeleton3D/Marker3D
+@onready var cañonMelee := $"robotV3/rig/Skeleton3D/cañon-melee"
+@onready var cañon := $"robotV3/rig/Skeleton3D/cañon"
+
 
 func idle():
 	state_machine.travel("idle")
@@ -16,14 +19,25 @@ func fall():
 
 func jump():
 	state_machine.travel("Jump")
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector3(0.9, 1.1, 0.9), 0.1)
+	tween.tween_property(self, "scale", Vector3(1,1,1), 0.1)
+
 
 func jump2():
-	state_machine.travel("Jump2")
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation", Vector3(0, rotation.y + deg_to_rad(720) ,0),0.5)
+	
+
+
 
 func attack():
 	#state_machine.travel("attack")
 	animation_tree.set("parameters/attackpochito/request",true )
-	
+
+func attackMelee():
+	#state_machine.travel("attack")
+	animation_tree.set("parameters/attack-melee/request",true )
 
 
 func ataquar():

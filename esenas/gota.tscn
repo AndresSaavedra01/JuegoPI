@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://4if4bp650nmc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltvxr"]
+albedo_color = Color(0.615774, 0.416087, 0.983964, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_weomm"]
+material = SubResource("StandardMaterial3D_ltvxr")
+radial_segments = 8
+rings = 4
+
+[node name="gota" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_weomm")

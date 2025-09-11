@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8t8urx8mt7vo"]
+[gd_scene load_steps=15 format=3 uid="uid://c8t8urx8mt7vo"]
 
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="1_qb3mn"]
 [ext_resource type="Texture2D" uid="uid://cqk4iys3i4lam" path="res://addons/proto-csgs/textures/red/texture_01.png" id="3_0r82g"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="4_0r82g"]
+[ext_resource type="PackedScene" uid="uid://b4j81526qkur3" path="res://esenas/water_gun.tscn" id="4_2xold"]
 [ext_resource type="Texture2D" uid="uid://b6clhlnfkv7sw" path="res://addons/proto-csgs/textures/purple/texture_03.png" id="5_2xold"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xold"]
@@ -73,6 +74,9 @@ shape = SubResource("SphereShape3D_a821y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="objetcs/CharacterBody3D"]
 mesh = SubResource("SphereMesh_5ksp1")
+
+[node name="WaterGun" parent="objetcs" instance=ExtResource("4_2xold")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.63609, 5.56556, 0)
 
 [node name="ambiente" type="Node3D" parent="."]
 
