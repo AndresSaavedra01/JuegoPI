@@ -16,10 +16,11 @@ var puede_disparar: bool = true
 var jump_count := 0
 
 #nodos
-@onready var camera_pivot = $SpringArm3D
-@onready var body = $robotV3
-@onready var particles = $GPUParticles3D
-
+@onready var camera_pivot := $SpringArm3D
+@onready var body := $robotV3
+@onready var particles := $GPUParticles3D
+@onready var areaHit := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
+@onready var waterGun := $robotV3/robotV3/rig/Skeleton3D/WaterGun
 
 
 
@@ -108,16 +109,33 @@ func camara(event: InputEvent):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 # --- ATAQUE ---
-var currentAttack := false
+var currentAttack := 0
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change-attack"):
-		currentAttack = not currentAttack
-		body.cañonMelee.visible = not currentAttack
-	if Input.is_action_just_pressed("atacar") and puede_disparar:
-		if currentAttack : body.attack()
-		else : body.attackMelee()      
+		if currentAttack >= 2:
+			currentAttack =0
+		else: currentAttack +=1
+	if Input.is_action_just_pressed("atacar") :
+		if currentAttack == 0 and puede_disparar : 
+			body.attack() 
+			puede_disparar = false
+		if currentAttack == 1 and puede_disparar: 
+			body.attackMelee()
+			body.cañonMelee.visible = true
+			puede_disparar = false
+		else :
+			body.cañonMelee.visible = false
 		#ataque_proyectil()   # proyectil
-		puede_disparar = false
+		
 		# Cooldown con await para no alterar el proyectil
 		await get_tree().create_timer(cooldown).timeout
 		puede_disparar = true
+	
+	if Input.is_action_pressed("atacar"):
+		if currentAttack == 2: waterGun.shoot()
+
+
+func _on_hitbox_body_entered(body: Node3D) -> void:
+	if body is RigidBody3D and !puede_disparar :
+		var direction: Vector3 = (body.global_transform.origin - global_transform.origin).normalized()
+		body.apply_impulse(direction * 5)

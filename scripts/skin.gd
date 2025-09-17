@@ -3,7 +3,7 @@ extends Node3D
 @onready var animation_tree = $AnimationTree2
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @export var proyectil: PackedScene
-@onready var spawn_cañon = $rig/Skeleton3D/Marker3D
+@onready var spawn_cañon = $robotV3/rig/Skeleton3D/Marker3D
 @onready var cañonMelee := $"robotV3/rig/Skeleton3D/cañon-melee"
 @onready var cañon := $"robotV3/rig/Skeleton3D/cañon"
 
@@ -34,6 +34,13 @@ func jump2():
 func attack():
 	#state_machine.travel("attack")
 	animation_tree.set("parameters/attackpochito/request",true )
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("atacar"):
+		animation_tree.set("parameters/Blend2/blend_amount",1.0 )
+	elif event.is_action_released("atacar") :
+		animation_tree.set("parameters/Blend2/blend_amount",0.0 )
 
 func attackMelee():
 	#state_machine.travel("attack")

@@ -5,6 +5,7 @@
 
 [node name="WaterGun" type="Node3D"]
 script = ExtResource("1_p2ax1")
+shoot_speed = 10.0
 bullet_scene = ExtResource("2_u4eot")
 
-[node name="Muzzle" type="Marker3D" parent="."]
+[node name="Marker" type="Marker3D" parent="."]

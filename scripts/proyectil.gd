@@ -2,13 +2,10 @@ extends RigidBody3D
 
 @export var vida: float = 3.0
 @export var velocidad: float = 20.0
-@export var escala: Vector3 = Vector3(0.2, 0.2, 0.2)  # tamaño visual
 @export var radio_collider: float = 0.1              # radio de la esfera
 
 func _ready():
-	# Escalar visual
-	if $MeshInstance3D:
-		$MeshInstance3D.scale = escala
+
 
 	# Ajustar collider
 	if $CollisionShape3D and $CollisionShape3D.shape is SphereShape3D:

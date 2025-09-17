@@ -1,12 +1,14 @@
 extends Node3D
 
 @export var shoot_speed: float = 15.0
-@export var spread: float = 0.2
+@export var spread: float = 0.05
 @export var lifetime: float = 2.0
 @export var gravity: float = -9.8
 @export var bullet_scene: PackedScene   # aquí arrastras tu "Gota.tscn"
+var player
 
 var particles = []  # cada partícula = {node, vel, time}
+
 
 
 
@@ -23,11 +25,10 @@ func _process(delta: float) -> void:
 			p.node.queue_free()
 			particles.erase(p)
 	
-	shoot()
 
 func shoot():
-	var origin = $Muzzle.global_transform.origin
-	var dir = -transform.basis.z
+	var origin = $Marker.global_transform
+	var dir = -$Marker.global_transform.basis.z
 	
 	# Monte Carlo: agregamos dispersión aleatoria
 	dir.x += randf_range(-spread, spread)
@@ -38,8 +39,9 @@ func shoot():
 	
 	# instanciar la gota
 	var bullet = bullet_scene.instantiate()
-	get_parent().add_child(bullet)   # la ponemos en la escena principal
-	bullet.global_transform.origin = origin
+	get_tree().get_first_node_in_group("Player").add_child(bullet)  # la ponemos en la escena principal
+	
+	bullet.global_transform = origin
 	
 	particles.append({
 		"node": bullet,
