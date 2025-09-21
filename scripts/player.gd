@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var speed := 8.0
 @export var rotacion_velo := 10.0
 @export var jump := 10.0
+@export var jump2 := 12.0
 @export var gravity := 20.0
 @export var sens_h := 0.5
 @export var sens_v := 0.5
@@ -17,7 +18,7 @@ extends CharacterBody3D
 @export var melee_impulse := 5.0
 
 var pitch := 0.0
-var jump_count := 0
+var is_jump2 := false
 var cant_attack := true
 var shooting := false
 var current_mode := "bubble"
@@ -50,11 +51,11 @@ func _physics_process(delta):
 
 func movimiento(delta: float):
 	if is_attacking:
-		# Mientras dura el ataque no procesamos movimiento normal
+		
 		velocity.x = move_toward(velocity.x, 0, speed * delta)
 		velocity.z = move_toward(velocity.z, 0, speed * delta)
 		
-		# La gravedad sí sigue funcionando
+		
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		return
@@ -83,18 +84,18 @@ func movimiento(delta: float):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 		
-	# Saltos
+	#salto
 	if is_on_floor():
-		jump_count = 0
-	
-	if Input.is_action_just_pressed("saltar") and jump_count < max_jumps:
-		velocity.y = jump
-		if jump_count == 1:
-			body.jump2()
-		else:
+		is_jump2 = false
+	if Input.is_action_just_pressed("saltar") and !is_jump2:
+		if is_on_floor():
 			body.jump()
+			velocity.y = jump
+		else:
+			body.jump2()
+			velocity.y = jump2
+			is_jump2 = true
 		particles.emitting = false
-		jump_count +=1
 		
 	# Gravedad
 	if not is_on_floor():
@@ -138,9 +139,7 @@ func change_clean_tool():
 		else: count +=1
 		current_mode = modes[count]
 
-
 # ATAQUES
-
 func bubble_attack():
 	if Input.is_action_just_pressed("atacar") and cant_attack:
 		cant_attack = false
@@ -169,16 +168,12 @@ func melee_attack():
 		await get_tree().create_timer(melee_fire_rate).timeout
 		is_attacking = false
 
-
 func water_attack():
 	body.water_attack(Input.is_action_pressed("atacar"))
-	
-
 
 
 func _on_timer_timeout():
 	cant_attack = true
-
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D and is_attacking:
