@@ -181,6 +181,6 @@ func _on_timer_timeout():
 
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
-	if body is RigidBody3D:
+	if body is RigidBody3D and is_attacking:
 		var direction: Vector3 = (body.global_transform.origin - global_transform.origin).normalized()
 		body.apply_impulse(direction * 5)
