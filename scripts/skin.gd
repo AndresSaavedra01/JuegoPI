@@ -3,9 +3,10 @@ extends Node3D
 @onready var animation_tree = $AnimationTree2
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @export var proyectil: PackedScene
-@onready var spawn_cañon = $robotV3/rig/Skeleton3D/Marker3D
 @onready var cañonMelee := $"robotV3/rig/Skeleton3D/cañon-melee"
+@onready var spawn_cañon := $robotV3/rig/Skeleton3D/Marker3D
 @onready var cañon := $"robotV3/rig/Skeleton3D/cañon"
+@onready var waterGun := $WaterGun
 
 
 func idle():
@@ -31,30 +32,32 @@ func jump2():
 
 
 
-func attack():
+func bubble_attack():
 	#state_machine.travel("attack")
 	animation_tree.set("parameters/attackpochito/request",true )
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("atacar"):
-		animation_tree.set("parameters/Blend2/blend_amount",1.0 )
-	elif event.is_action_released("atacar") :
-		animation_tree.set("parameters/Blend2/blend_amount",0.0 )
+func water_attack(active: bool = false) -> void:
+		animation_tree.set("parameters/Blend2/blend_amount", int (active))
+		if active : waterGun.shoot()
+
 
 func attackMelee():
 	#state_machine.travel("attack")
 	animation_tree.set("parameters/attack-melee/request",true )
+	
 
 
 func ataquar():
 	var p = proyectil.instantiate()
 	get_parent().add_child(p)
 	p.global_transform = spawn_cañon.global_transform
-	p.apply_central_impulse(-spawn_cañon.global_transform.basis.z * -20)	
+	p.apply_central_impulse(-spawn_cañon.global_transform.basis.z * -20)
+	
 
 
 func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
+	print(anim_name)
 	if anim_name == "attack":
 		await get_tree().create_timer(0.3).timeout
 		ataquar()
