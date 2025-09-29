@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=14 format=3 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="2_ojjy3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhfs17uwigtkl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-tall.glb" id="6_rgd8y"]
 [ext_resource type="PackedScene" uid="uid://da583mq8mtoyg" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large.glb" id="7_6gyh5"]
 [ext_resource type="PackedScene" uid="uid://b5iihuckyubt8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers-tall.glb" id="8_rgd8y"]
+[ext_resource type="PackedScene" uid="uid://bw7spg84k3y3h" path="res://esenas/water.tscn" id="9_6gyh5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pft2v"]
 albedo_texture = ExtResource("2_ojjy3")
@@ -48,7 +49,7 @@ shadow_caster_mask = 4294967294
 environment = SubResource("Environment_6gyh5")
 
 [node name="block-grass-low2" parent="." instance=ExtResource("4_i8txa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21581, -1.00994, -3.4699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21581, -0.6039493, -3.4699)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="block-grass-low2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125985, 0.118913, -0.00716877)
@@ -66,7 +67,7 @@ use_collision = true
 size = Vector3(1.05749, 1.35773, 0.909608)
 
 [node name="block-grass-overhang-large-tall2" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19362, -1.00995, 0.24371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.155701, -1.00995, 0.24371)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0412183, 0.974157, -0.152753)
@@ -94,3 +95,5 @@ size = Vector3(2.02804, 2.44038, 1.82024)
 
 [node name="flowers-tall2" parent="." instance=ExtResource("8_rgd8y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -0.519932, -3.43492)
+
+[node name="water" parent="." instance=ExtResource("9_6gyh5")]

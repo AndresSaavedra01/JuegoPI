@@ -12,11 +12,15 @@ config_version=5
 
 config/name="JuegoPI"
 run/main_scene="res://esenas/world.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [dotnet]
 
 project/assembly_name="JuegoPI"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

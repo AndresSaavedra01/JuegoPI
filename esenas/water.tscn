@@ -9,20 +9,21 @@ size = Vector2(100, 100)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_su10h"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wu67k"]
-seamless = true
 noise = SubResource("FastNoiseLite_su10h")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yubf5"]
 render_priority = 0
 shader = ExtResource("1_su10h")
 shader_parameter/main_noise_sampler = SubResource("NoiseTexture2D_wu67k")
 shader_parameter/caustic_sampler = ExtResource("2_wu67k")
-shader_parameter/water_color = Color(0.991534, 0.378198, 1, 1)
+shader_parameter/water_color = Color(0.3963407, 0.7122099, 0.94626445, 1)
 shader_parameter/water_depth_color = Color(1, 1, 1, 1)
 shader_parameter/water_edge_distance = 0.1
 shader_parameter/water_depth_distance = 0.3
 shader_parameter/water_texture_scale = 50.0
 
 [node name="water" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97885036, 0)
 mesh = SubResource("PlaneMesh_kkgo4")
 surface_material_override/0 = SubResource("ShaderMaterial_yubf5")
