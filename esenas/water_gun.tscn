@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4j81526qkur3"]
+
+[ext_resource type="Script" uid="uid://dumvbkou2a5i6" path="res://scripts/gun_water.gd" id="1_p2ax1"]
+[ext_resource type="PackedScene" uid="uid://4if4bp650nmc" path="res://esenas/gota.tscn" id="2_u4eot"]
+
+[node name="WaterGun" type="Node3D"]
+script = ExtResource("1_p2ax1")
+shoot_speed = 10.0
+bullet_scene = ExtResource("2_u4eot")
+
+[node name="Marker" type="Marker3D" parent="."]
