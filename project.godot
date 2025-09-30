@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="JuegoPI"
-run/main_scene="res://esenas/world.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://fv3jfe3br3bv"
+config/features=PackedStringArray("4.4", "Forward Plus")
 
 [dotnet]
 

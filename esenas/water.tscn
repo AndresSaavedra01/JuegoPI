@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="2_wu67k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kkgo4"]
-size = Vector2(100, 100)
+size = Vector2(500, 500)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_su10h"]
 

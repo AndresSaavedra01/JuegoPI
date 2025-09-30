@@ -4,12 +4,8 @@ extends CharacterBody3D
 @export var speed := 8.0
 @export var rotacion_velo := 10.0
 @export var jump := 10.0
-<<<<<<< HEAD
 @export var gravity := 25.0
-=======
 @export var jump2 := 12.0
-@export var gravity := 20.0
->>>>>>> origin/develop
 @export var sens_h := 0.5
 @export var sens_v := 0.5
 @export var pitch_min := -60.0
@@ -49,10 +45,7 @@ func _input(event: InputEvent):
 
 func _physics_process(delta):
 	movimiento(delta)
-<<<<<<< HEAD
-=======
 	$Control/Label.text = str(Engine.get_frames_per_second())
->>>>>>> origin/develop
 	move_and_slide()
 
 
@@ -107,14 +100,11 @@ func movimiento(delta: float):
 	# Gravedad
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-<<<<<<< HEAD
 		body.fall()
-=======
 		if velocity.y > 0:
 			body.jump()
 		else:
 			body.fall()
->>>>>>> origin/develop
 		particles.emitting = false
 
 
@@ -126,8 +116,7 @@ func camara(event: InputEvent):
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-<<<<<<< HEAD
-=======
+
 	
 
 func _process(_delta: float) -> void:
@@ -136,6 +125,7 @@ func _process(_delta: float) -> void:
 		"bubble":
 			bubble_attack()
 			body.cañonMelee.visible = false
+		
 		"water":
 			water_attack()
 			
@@ -192,4 +182,3 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D and is_attacking:
 		var direction: Vector3 = (body.global_transform.origin - global_transform.origin).normalized()
 		body.apply_impulse(direction * 5)
->>>>>>> origin/develop
