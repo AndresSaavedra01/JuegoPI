@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ttdhg5p64qb7"]
+
+[ext_resource type="PackedScene" uid="uid://nx0mp17t2mnu" path="res://assets/trash_enemy.glb" id="1_k4w6y"]
+
+[node name="trash_enemy" instance=ExtResource("1_k4w6y")]
+
+[node name="knot" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.23877, 2.71025e-13, -1.06581e-13, 3.12592e-13, 0.23877, -9.96226e-08, -5.68434e-14, -6.04849e-08, 0.23877, -0.00945394, 2.01049, -0.0232359)
