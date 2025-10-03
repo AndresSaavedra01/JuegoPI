@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7k1pe6jd4g56"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unjsr"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 3.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+radial_velocity_min = 0.999978
+radial_velocity_max = 1.99998
+gravity = Vector3(0, -2, 0)
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kgcc"]
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.580392, 0.827451, 0.745098, 1)
+emission_enabled = true
+emission = Color(0.91664, 0.91664, 0.91664, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_yue24"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_1kgcc")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 200
+lifetime = 0.87
+explosiveness = 1.0
+randomness = 0.04
+process_material = SubResource("ParticleProcessMaterial_unjsr")
+draw_pass_1 = SubResource("SphereMesh_yue24")

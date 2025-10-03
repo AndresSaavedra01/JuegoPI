@@ -38,8 +38,9 @@ func bubble_attack():
 
 
 func water_attack(active: bool = false) -> void:
-		animation_tree.set("parameters/Blend2/blend_amount", int (active))
-		if active : waterGun.shoot()
+	var tween = get_tree().create_tween()
+	tween.tween_property(animation_tree,"parameters/Blend2/blend_amount",int (active), 0.2)
+	if active : waterGun.shoot()
 
 
 func attackMelee():
@@ -50,7 +51,7 @@ func attackMelee():
 
 func ataquar():
 	var p = proyectil.instantiate()
-	get_parent().add_child(p)
+	get_parent().get_parent().add_child(p)
 	p.global_transform = spawn_cañon.global_transform
 	p.apply_central_impulse(-spawn_cañon.global_transform.basis.z * -20)
 	
