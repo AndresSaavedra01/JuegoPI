@@ -21,7 +21,7 @@ func move(delta : float) -> void:
 	velocity = direction * speed
 	if not is_on_floor():
 		velocity += get_gravity()
-	animRun(true)
+	#animRun(true)
 	move_and_slide()
 	
 func die() -> void:
@@ -39,7 +39,7 @@ func animWalk(active : bool) -> void:
 func animRun(active : bool) -> void:
 	stateMachine["parameters/conditions/isRunning"] = active
 	stateMachine["parameters/conditions/isIdle"] = not active
-	
+
 func animJump(active : bool) -> void:
 	pass
 	
