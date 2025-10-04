@@ -22,7 +22,8 @@ func _ready():
 		queue_free()
 
 func _physics_process(delta):
-	linear_velocity = transform.basis.z * velocidad
+	pass
+	#linear_velocity = transform.basis.z * velocidad
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	pass

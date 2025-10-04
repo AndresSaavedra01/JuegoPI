@@ -48,6 +48,15 @@ func attackMelee():
 	animation_tree.set("parameters/attack-melee/request",true )
 	
 
+func attackMelee_2():
+	#state_machine.travel("attack")
+	animation_tree.set("parameters/attack-melee-2/request",true )
+	
+
+func attackMelee_3():
+	animation_tree.set("parameters/attack-melee-3/request",true )
+
+
 
 func ataquar():
 	var p = proyectil.instantiate()

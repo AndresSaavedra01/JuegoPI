@@ -42,13 +42,14 @@ rings = 16
 [sub_resource type="BoxShape3D" id="BoxShape3D_so5gj"]
 size = Vector3(0.446228, 0.128845, 0.457581)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3mh4l"]
-size = Vector3(0.516357, 0.15004, 0.463196)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8407"]
+size = Vector3(0.507385, 0.150772, 0.503235)
 
 [node name="Soap" type="RigidBody3D"]
 collision_layer = 2
 mass = 5.0
 script = ExtResource("1_3mh4l")
+explosion = ExtResource("3_o8407")
 velocidad = 10.0
 gravedad = 5
 
@@ -77,18 +78,10 @@ transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.0210381, 0, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0108337, 0.00448829, 0.0883403)
 shape = SubResource("BoxShape3D_so5gj")
 
-[node name="RayCast3D" type="Area3D" parent="."]
-visible = false
-collision_layer = 0
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167236, 0.000648499, 0.0909729)
-shape = SubResource("BoxShape3D_3mh4l")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0260315, 0.00524139, 0.0737)
+shape = SubResource("BoxShape3D_o8407")
 
-[node name="Node3D" parent="." instance=ExtResource("3_o8407")]
-visible = false
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
-[connection signal="body_entered" from="RayCast3D" to="." method="_on_ray_cast_3d_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

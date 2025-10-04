@@ -1,38 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7k1pe6jd4g56"]
+[gd_scene load_steps=7 format=3 uid="uid://c7k1pe6jd4g56"]
+
+[ext_resource type="Script" uid="uid://cmg8ustnuw6sx" path="res://scripts/espuma.gd" id="1_1kgcc"]
+
+[sub_resource type="Curve" id="Curve_1kgcc"]
+_data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yue24"]
+curve = SubResource("Curve_1kgcc")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unjsr"]
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 0.5
-initial_velocity_max = 3.0
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 radial_velocity_min = 0.999978
-radial_velocity_max = 1.99998
-gravity = Vector3(0, -2, 0)
-scale_max = 2.0
+radial_velocity_max = 2.99998
+gravity = Vector3(0, -5, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_yue24")
+turbulence_enabled = true
+turbulence_noise_strength = 1.67
+turbulence_noise_scale = 4.393
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kgcc"]
 shading_mode = 2
-diffuse_mode = 3
-specular_mode = 1
 disable_ambient_light = true
 disable_fog = true
-albedo_color = Color(0.580392, 0.827451, 0.745098, 1)
+albedo_color = Color(0.620878, 0.896725, 0.991273, 1)
 emission_enabled = true
-emission = Color(0.91664, 0.91664, 0.91664, 1)
-emission_energy_multiplier = 0.1
+emission = Color(0.589584, 0.803124, 0.972797, 1)
+emission_energy_multiplier = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_yue24"]
 lightmap_size_hint = Vector2i(17, 9)
 material = SubResource("StandardMaterial3D_1kgcc")
+radial_segments = 16
+rings = 8
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_1kgcc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 200
-lifetime = 0.87
+amount_ratio = 0.5
+lifetime = 2.0
+one_shot = true
 explosiveness = 1.0
-randomness = 0.04
+randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_unjsr")
 draw_pass_1 = SubResource("SphereMesh_yue24")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

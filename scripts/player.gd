@@ -20,9 +20,10 @@ extends CharacterBody3D
 var pitch := 0.0
 var is_jump2 := false
 var cant_attack := true
+var is_attacking := false
 var shooting := false
 var current_mode := "bubble"
-var modes := ["bubble", "water", "melee"]
+var modes := ["bubble","soap", "water", "melee"]
 
 #nodos
 @onready var camera_pivot := $SpringArm3D
@@ -59,7 +60,6 @@ func movimiento(delta: float):
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		return
-	
 	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 
 	var frente = -camera_pivot.global_transform.basis.z
@@ -84,6 +84,9 @@ func movimiento(delta: float):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 		
+	salto(delta)
+
+func salto(delta):
 	#salto
 	if is_on_floor():
 		is_jump2 = false
@@ -123,9 +126,10 @@ func _process(_delta: float) -> void:
 		"bubble":
 			bubble_attack()
 			body.cañonMelee.visible = false
+		"soap":
+			soap_attack()
 		"water":
 			water_attack()
-			
 		"melee":
 			melee_attack()
 			body.cañonMelee.visible = true
@@ -144,9 +148,14 @@ func bubble_attack():
 	if Input.is_action_just_pressed("atacar") and cant_attack:
 		cant_attack = false
 		timer.start(bubble_fire_rate)
-		body.bubble_attack() # animación/disparo
+		body.bubble_attack()
 
-var is_attacking := false
+func soap_attack():
+	if Input.is_action_just_pressed("atacar") and cant_attack:
+		cant_attack = false
+		timer.start(bubble_fire_rate)
+		body.bubble_attack()
+
 
 func melee_attack():
 	if Input.is_action_just_pressed("atacar") and cant_attack:
@@ -158,8 +167,8 @@ func melee_attack():
 		
 		# Dar un impulso hacia delante (se aplica 1 vez)
 		var forward = body.transform.basis.z.normalized()
-		velocity.x = forward.x * melee_impulse
-		velocity.z = forward.z * melee_impulse
+		velocity.x += forward.x * melee_impulse
+		velocity.z += forward.z * melee_impulse
 		
 		# Animación de melee
 		body.attackMelee()
@@ -167,6 +176,7 @@ func melee_attack():
 		# Hacer que se desactive después del cooldown
 		await get_tree().create_timer(melee_fire_rate).timeout
 		is_attacking = false
+
 
 func water_attack():
 	body.water_attack(Input.is_action_pressed("atacar"))

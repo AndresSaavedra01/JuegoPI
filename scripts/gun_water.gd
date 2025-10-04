@@ -40,7 +40,6 @@ func shoot():
 	# instanciar la gota
 	var bullet = bullet_scene.instantiate()
 	get_tree().get_first_node_in_group("Player").add_child(bullet)  # la ponemos en la escena principal
-	
 	bullet.global_transform = origin
 	
 	particles.append({
