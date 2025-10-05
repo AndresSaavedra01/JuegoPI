@@ -26,67 +26,84 @@ animation = &"Walk"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hp4yu"]
-xfade_time = 0.2
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxfwd"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6bjn7"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k50qa"]
-xfade_time = 0.2
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68bwi"]
-xfade_time = 0.3
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvcmt"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3mf36"]
+switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n2q4o"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7qdbr"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ktvni"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x23c3"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_455e0"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_722xm"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nlgci"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_18opo"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0vprp"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_33u1e"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oicse"]
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gg50s"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h4q8g"]
-xfade_time = 0.3
 switch_mode = 1
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fu1pj"]
 states/Attack/node = SubResource("AnimationNodeAnimation_cmuh4")
@@ -102,24 +119,18 @@ states/Start/position = Vector2(90, -49)
 states/Walk/node = SubResource("AnimationNodeAnimation_6airs")
 states/Walk/position = Vector2(407, -170)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6d2tf"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_hp4yu"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_vxfwd"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_6bjn7"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_k50qa"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_68bwi"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_cvcmt"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_3mf36"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_n2q4o"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_7qdbr"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_ktvni"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_x23c3"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_455e0"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_722xm"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_nlgci"), "Jump", "Attack", SubResource("AnimationNodeStateMachineTransition_18opo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_0vprp"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_33u1e"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_oicse"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_gg50s"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4q8g")]
-graph_offset = Vector2(-180, -200)
+graph_offset = Vector2(-203, -132)
 
 [node name="TrashEnemy" type="CharacterBody3D" groups=["Enemies"]]
 script = ExtResource("1_cmuh4")
+health_points = null
+damage = null
+speed = null
+rotacion_velo = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0714397, 0)
 shape = SubResource("CapsuleShape3D_cmuh4")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../trash_enemy_skin")
-tree_root = SubResource("AnimationNodeStateMachine_fu1pj")
-anim_player = NodePath("../trash_enemy_skin/AnimationPlayer")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.5
-simplify_path = true
-debug_enabled = true
 
 [node name="trash_enemy_skin" parent="." instance=ExtResource("2_cmuh4")]
 
@@ -132,30 +143,23 @@ bones/4/rotation = Quaternion(-0.0980772, -0.0841934, -0.702076, 0.700272)
 bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
 bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37589e-10)
 bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
-bones/7/rotation = Quaternion(2.59979e-07, 0.799821, 0.600238, -3.46424e-07)
-bones/8/rotation = Quaternion(0.00755306, 0.006975, -0.922454, 0.385971)
+bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
+bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
 bones/9/rotation = Quaternion(-0.00591938, -0.000977152, -0.16228, 0.986727)
-bones/13/rotation = Quaternion(0.0270617, 6.13381e-13, 3.76965e-14, 0.999634)
 bones/14/rotation = Quaternion(3.11708e-19, 1.19209e-07, 5.4316e-20, 1)
-bones/15/rotation = Quaternion(-0.302963, -6.87616e-09, -1.08137e-07, 0.953002)
-bones/17/rotation = Quaternion(0.00994998, -0.0131319, 0.928562, 0.370811)
+bones/15/rotation = Quaternion(-0.188101, 1.21643e-14, -4.48467e-08, 0.98215)
+bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
 bones/18/rotation = Quaternion(-0.00626944, 0.000938379, 0.147461, 0.989048)
 
 [node name="knot" parent="trash_enemy_skin/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.23877, 5.517e-14, 3.19744e-14, -4.39648e-14, 0.238029, -0.0188022, -3.90799e-14, 0.0188022, 0.238029, -0.00945394, 2.00876, 0.0816795)
+transform = Transform3D(0.23877, 1.3148e-14, 2.41585e-13, 1.39969e-14, 0.23877, 1.17412e-07, -2.27374e-13, -1.06738e-07, 0.23877, -0.00945394, 2.01049, -0.0232371)
 
-[node name="arms" parent="trash_enemy_skin/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = null
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../trash_enemy_skin")
+tree_root = SubResource("AnimationNodeStateMachine_fu1pj")
+anim_player = NodePath("../trash_enemy_skin/AnimationPlayer")
 
-[node name="FloorCast" type="RayCast3D" parent="trash_enemy_skin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59448)
-target_position = Vector3(0, -2, 0)
-debug_shape_thickness = 5
-
-[node name="FrontCast" type="RayCast3D" parent="trash_enemy_skin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.928695)
-target_position = Vector3(0, 0, 2)
-hit_from_inside = true
-debug_shape_thickness = 5
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
 
 [editable path="trash_enemy_skin"]
