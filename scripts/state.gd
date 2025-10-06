@@ -32,7 +32,8 @@ func getStateName() -> String:
 
 func callFunc() -> void:
 	function.call()
-	active = not oneShot
+	if oneShot:
+		active = false
 
 func set_enter_method(function : Callable) -> void:
 	self.function = function

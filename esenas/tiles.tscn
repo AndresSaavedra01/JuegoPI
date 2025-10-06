@@ -150,3 +150,14 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="terrain_tall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4rleq")
+
+[node name="terrain_low_hide" type="MeshInstance3D" parent="." groups=["Pathable"]]
+visible = false
+layers = 8
+mesh = SubResource("ArrayMesh_kmng1")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="terrain_low_hide"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="terrain_low_hide/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wg0wk")

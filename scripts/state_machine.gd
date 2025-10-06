@@ -3,7 +3,7 @@ class_name StateMachine
 
 var graph : Dictionary[State,Array]
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if graph.is_empty():
 		return
 	for state : State in graph.keys():
@@ -12,11 +12,25 @@ func _process(delta: float) -> void:
 
 func addState(state : State) -> void:
 	graph[state] = []
-	
-func addRelation(stateFrom : State, stateTo : State) -> void:
+
+func addRelation(stateFromName : String, stateToName : String) -> bool:
+	var stateFrom : State = null
+	for state : State in graph.keys():
+		if state.getStateName() == stateFromName:
+			stateFrom = state
+	if stateFrom == null:
+		return false
+	var stateTo : State = null
+	for state : State in graph.keys():
+		if state.getStateName() == stateToName:
+			stateTo = state
+	if stateTo == null:
+		return false
 	graph[stateFrom].append(stateTo)
+	return true
 
 func travel(stateName : String) -> bool:
+	var comp = func(state : State) -> bool: return state.getStateName() == stateName
 	if graph.is_empty():
 		return false
 	var currentState : State = null
@@ -25,21 +39,34 @@ func travel(stateName : String) -> bool:
 			currentState = state
 	if currentState == null:
 		return false
-	var index = graph[currentState].find_custom(func(state : State): state.getStateName() == stateName)
+	var index = graph[currentState].find_custom(comp)
 	if not index == -1:
 		currentState.setActive(false)
 		currentState.callExit()
 		var nextState : State = graph[currentState][index]
 		nextState.setActive(true)
 		return true
+		
 	return false
 
 func setActiveState(stateName : String) -> bool:
+	var comp = func(state : State) -> bool: return state.getStateName() == stateName
 	if graph.is_empty():
 		return false
-	var index = graph.keys().find_custom(func(state : State): state.getStateName() == stateName)
-	if not index == -1:
+	var index = graph.keys().find_custom(comp)
+	if index == -1:
 		return false
 	var currentState : State = graph.keys().get(index)
 	currentState.setActive(true)
 	return true
+
+func setInactiveState(stateName : String) -> bool:
+	var comp = func(state : State) -> bool: return state.getStateName() == stateName
+	if graph.is_empty():
+		return false
+	var index = graph.keys().find_custom(comp)
+	if index == -1:
+		return false
+	graph.keys().get(index).setActive(false)
+	return true
+	
