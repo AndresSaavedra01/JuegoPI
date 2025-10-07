@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var speed := 4.0
 @export var walkSpeed := 3.0
 @export var jumpSpeed := 9.0
-@export var fallSpeed := 7.0
+@export var fallSpeed := 20.0
 @export var rotacion_velo := 15.0
 
 @onready var navAgent := $NavigationAgent3D
@@ -28,13 +28,10 @@ func _ready() -> void:
 	stateMachine.addState(State.new("Run", Callable(self, "run")))
 	stateMachine.addState(State.new("Patrol", Callable(self, "patrol")))
 	stateMachine.addState(State.new("Jump", Callable(self, "jump")))
-	stateMachine.addRelation("Idle", "Run")
-	stateMachine.addRelation("Run", "Idle")
-	stateMachine.addRelation("Patrol", "Run")
-	stateMachine.addRelation("Run", "Patrol")
-	stateMachine.addRelation("Jump", "Run")
-	stateMachine.addRelation("Run", "Jump")
-	stateMachine.setActiveState("Run")
+	stateMachine.addRelations("Idle", ["Run", "Patrol", "Jump"])
+	stateMachine.addRelations("Run", ["Idle", "Patrol", "Jump"])
+	stateMachine.addRelations("Patrol", ["Run", "Idle", "Idle"])
+	stateMachine.setActiveState("Idle")
 	
 func run() -> void:
 	var delta = get_process_delta_time()
@@ -49,10 +46,9 @@ func run() -> void:
 		if is_on_floor() and (dir.y > 0 or dir.y < 0 and not floorCast.is_colliding()):
 			velocity.y = jumpSpeed
 			stateMachine.travel("Jump")
-		else:
-			animationPlayback.travel("Run")
+		animationPlayback.travel("Run")
 	if not is_on_floor():
-			velocity += get_gravity() * delta * fallSpeed
+			velocity.y -= delta * fallSpeed
 	move_and_slide()
 
 func die() -> void:
@@ -82,7 +78,7 @@ func jump() -> void:
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 	animationPlayback.travel("Jump")
-	velocity += get_gravity() * delta * fallSpeed
+	velocity.y -= delta * fallSpeed
 	if is_on_floor():
 		stateMachine.travel("Run")
 	move_and_slide()

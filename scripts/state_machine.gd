@@ -29,6 +29,21 @@ func addRelation(stateFromName : String, stateToName : String) -> bool:
 	graph[stateFrom].append(stateTo)
 	return true
 
+func addRelations(stateFromName : String, stateToArr : Array) -> bool:
+	var stateFrom : State = null
+	for state : State in graph.keys():
+		if state.getStateName() == stateFromName:
+			stateFrom = state
+	if stateFrom == null:
+		return false
+	for stateToName in stateToArr:
+		var stateTo : State = null
+		for state : State in graph.keys():
+			if state.getStateName() == stateToName:
+				stateTo = state
+		graph[stateFrom].append(stateTo)
+	return true
+
 func travel(stateName : String) -> bool:
 	var comp = func(state : State) -> bool: return state.getStateName() == stateName
 	if graph.is_empty():
