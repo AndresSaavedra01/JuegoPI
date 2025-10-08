@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jwlrhjypkvcb"
-path="res://.godot/imported/barravida.png-501a0b10f5d78f52761fbb5ad595bda1.ctex"
+uid="uid://l380ljh4mbnp"
+path="res://.godot/imported/Life_UI_001.png-1338a4aebb5093311bb8d0b3a07aa687.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/barravida.png"
-dest_files=["res://.godot/imported/barravida.png-501a0b10f5d78f52761fbb5ad595bda1.ctex"]
+source_file="res://assets/Life_UI_001.png"
+dest_files=["res://.godot/imported/Life_UI_001.png-1338a4aebb5093311bb8d0b3a07aa687.ctex"]
 
 [params]
 

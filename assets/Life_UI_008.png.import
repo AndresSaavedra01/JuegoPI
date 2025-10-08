@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fqqst60ql4qq"
-path="res://.godot/imported/16x64 Color Changing Healthbar Pastel Set.png-7ae92a8951c267f97ab5e5a76e0ccd31.ctex"
+uid="uid://d12eoc8vcsjek"
+path="res://.godot/imported/Life_UI_008.png-1d0bace0933096116292e20702c6902a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/16x64 Color Changing Healthbar Pastel Set.png"
-dest_files=["res://.godot/imported/16x64 Color Changing Healthbar Pastel Set.png-7ae92a8951c267f97ab5e5a76e0ccd31.ctex"]
+source_file="res://assets/Life_UI_008.png"
+dest_files=["res://.godot/imported/Life_UI_008.png-1d0bace0933096116292e20702c6902a.ctex"]
 
 [params]
 

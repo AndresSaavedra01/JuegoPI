@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btufq2hfpnoj5"
-path="res://.godot/imported/marco metal.png-0fa66407f0e2f0a8584366b40c3f7a19.ctex"
+uid="uid://covrg7qrlooeh"
+path="res://.godot/imported/Life_UI_003.png-b41766ebf55e3088f7f9241057b7d4b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/marco metal.png"
-dest_files=["res://.godot/imported/marco metal.png-0fa66407f0e2f0a8584366b40c3f7a19.ctex"]
+source_file="res://assets/Life_UI_003.png"
+dest_files=["res://.godot/imported/Life_UI_003.png-b41766ebf55e3088f7f9241057b7d4b5.ctex"]
 
 [params]
 
