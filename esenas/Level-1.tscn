@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=19 format=3 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
@@ -11,11 +11,13 @@
 [ext_resource type="ArrayMesh" uid="uid://wy2sxb32lgv1" path="res://assets/assets bosque-nieve/Models/OBJ format/rocks.obj" id="10_cd8j8"]
 [ext_resource type="ArrayMesh" uid="uid://d3mm764chuvv0" path="res://assets/assets bosque-nieve/Models/OBJ format/flag.obj" id="12_isbpu"]
 [ext_resource type="Script" uid="uid://daj0th37vaqju" path="res://esenas/checkpoint.gd" id="13_0bmip"]
+[ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 [ext_resource type="ArrayMesh" uid="uid://bbahle3o8jhag" path="res://assets/assets bosque-nieve/Models/OBJ format/tree-pine.obj" id="14_otlbq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_isbpu"]
-vertices = PackedVector3Array(-0.793391, -0.132122, -10.9966, 1.70661, -0.382122, -10.4966, 1.70661, -0.382122, -12.4966, -0.793391, -0.382122, -12.4966, -1.04339, 1.36788, -7.99665, 1.70661, 1.11788, -7.99665, 1.70661, 1.11788, -8.99665, -1.04339, 1.36788, -9.24665, -0.793391, 1.11788, -3.99665, -0.793391, 1.36788, 0.753351, 0.706609, 1.36788, 0.753351, 0.706609, 1.11788, -3.99665, -1.04339, 1.11788, 7.25335, -1.04339, 1.11788, 10.0034, 1.70661, 1.11788, 10.0034, 1.70661, 1.11788, 7.25335, -1.04339, 2.36788, 11.0034, -1.04339, 2.36788, 12.0034, 1.70661, 2.36788, 12.0034, 1.70661, 2.36788, 11.0034)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+vertices = PackedVector3Array(-0.793391, -0.532119, -10.9967, 1.70661, -0.732119, -10.4967, 1.70661, -0.732119, -12.4967, -0.793391, -0.732119, -12.4967, -0.793391, -0.732119, -11.7467, 0.456609, -0.732119, -10.7467, -1.04339, 1.11788, -7.99668, 1.70661, 0.867881, -7.99668, 1.70661, 0.867881, -8.99668, -1.04339, 1.11788, -9.24668, 0.331609, 1.11788, -7.99668, 0.331609, 1.11788, -9.12168, -0.793391, 0.717881, -3.99668, -0.793391, 0.717881, -1.74668, 0.706609, 0.717881, -1.74668, 0.706609, 0.717881, -3.99668, -0.793391, 1.11788, -0.746681, -0.793391, 1.11788, 0.753319, 0.706609, 1.11788, 0.753319, 0.706609, 1.11788, -0.746681, -1.04339, 0.867881, 7.25332, -1.04339, 0.867881, 10.0033, 1.70661, 0.867881, 10.0033, 1.70661, 0.867881, 7.25332, -1.04339, 1.96788, 11.0033, -1.04339, 1.96788, 12.0033, 1.70661, 1.96788, 12.0033, 1.70661, 1.96788, 11.0033)
+polygons = [PackedInt32Array(0, 4, 5), PackedInt32Array(5, 4, 3), PackedInt32Array(5, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(7, 10, 8), PackedInt32Array(8, 10, 11), PackedInt32Array(11, 10, 6), PackedInt32Array(11, 6, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25)]
+cell_height = 0.05
 agent_height = 1.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
@@ -324,6 +326,9 @@ mesh = ExtResource("10_cd8j8")
 [node name="TreePine" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 10.5031, 0.272452, -0.297755)
 mesh = ExtResource("14_otlbq")
+
+[node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.75075)
 
 [connection signal="body_entered" from="checkpoint" to="checkpoint" method="_on_body_entered"]
 [connection signal="body_entered" from="checkpoint2" to="checkpoint2" method="_on_body_entered"]
