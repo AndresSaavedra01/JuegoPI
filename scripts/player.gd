@@ -23,6 +23,7 @@ var cant_attack := true
 var shooting := false
 var current_mode := "bubble"
 var modes := ["bubble", "water", "melee"]
+var respawn = Vector3(0,0,0)
 
 #nodos
 @onready var camera_pivot := $SpringArm3D
@@ -47,6 +48,9 @@ func _physics_process(delta):
 	movimiento(delta)
 	$Control/Label.text = str(Engine.get_frames_per_second())
 	move_and_slide()
+	
+	if position.y < -3.12:
+		respawn_player()
 
 
 func movimiento(delta: float):
@@ -182,3 +186,8 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D and is_attacking:
 		var direction: Vector3 = (body.global_transform.origin - global_transform.origin).normalized()
 		body.apply_impulse(direction * 5)
+		
+func respawn_player():
+	position=respawn
+	
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=18 format=3 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
@@ -8,9 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://da583mq8mtoyg" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large.glb" id="7_6gyh5"]
 [ext_resource type="PackedScene" uid="uid://b5iihuckyubt8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers-tall.glb" id="8_rgd8y"]
 [ext_resource type="PackedScene" uid="uid://bw7spg84k3y3h" path="res://esenas/water.tscn" id="9_6gyh5"]
-[ext_resource type="ArrayMesh" uid="uid://hpi4twg8ofig" path="res://assets/assets bosque-nieve/Models/OBJ format/block-grass-overhang-low-large.obj" id="9_pf2iw"]
 [ext_resource type="ArrayMesh" uid="uid://wy2sxb32lgv1" path="res://assets/assets bosque-nieve/Models/OBJ format/rocks.obj" id="10_cd8j8"]
+[ext_resource type="ArrayMesh" uid="uid://d3mm764chuvv0" path="res://assets/assets bosque-nieve/Models/OBJ format/flag.obj" id="12_isbpu"]
+[ext_resource type="Script" uid="uid://daj0th37vaqju" path="res://esenas/checkpoint.gd" id="13_0bmip"]
 [ext_resource type="ArrayMesh" uid="uid://bbahle3o8jhag" path="res://assets/assets bosque-nieve/Models/OBJ format/tree-pine.obj" id="14_otlbq"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_isbpu"]
+vertices = PackedVector3Array(-0.793391, -0.132122, -10.9966, 1.70661, -0.382122, -10.4966, 1.70661, -0.382122, -12.4966, -0.793391, -0.382122, -12.4966, -1.04339, 1.36788, -7.99665, 1.70661, 1.11788, -7.99665, 1.70661, 1.11788, -8.99665, -1.04339, 1.36788, -9.24665, -0.793391, 1.11788, -3.99665, -0.793391, 1.36788, 0.753351, 0.706609, 1.36788, 0.753351, 0.706609, 1.11788, -3.99665, -1.04339, 1.11788, 7.25335, -1.04339, 1.11788, 10.0034, 1.70661, 1.11788, 10.0034, 1.70661, 1.11788, 7.25335, -1.04339, 2.36788, 11.0034, -1.04339, 2.36788, 12.0034, 1.70661, 2.36788, 12.0034, 1.70661, 2.36788, 11.0034)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+agent_height = 1.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
 panorama = ExtResource("4_45ie8")
@@ -22,19 +28,242 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_rgd8y")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bmip"]
+size = Vector3(1, 3.67721, 3.00464)
+
 [node name="Level-1" type="Node3D"]
 
-[node name="block-grass-overhang-large-tall4" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 14.9584, -16.2398, 6.44982)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(8.3521, 0, 0, 0, 8.3521, 0, 0, 0, 8.3521, 4.60061, 6.98499, 106.626)
+navigation_mesh = SubResource("NavigationMesh_isbpu")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall4"]
+[node name="block-grass-overhang-large-tall4" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.24014, -2.78071, -11.9942)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, 0.0137596)
 layers = 0
 use_collision = true
 size = Vector3(2.12912, 2.14281, 1.82993)
 
+[node name="block-grass-low2" parent="NavigationRegion3D" instance=ExtResource("4_i8txa")]
+transform = Transform3D(0.11973, 0, 0, 0, 0.11973, 0, 0, 0, 0.11973, -0.816133, -0.908627, -13.1819)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-low2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125985, 0.118913, -0.00716877)
+layers = 0
+use_collision = true
+size = Vector3(1.00756, 0.95668, 1.00281)
+
+[node name="block-grass-overhang-corner2" parent="NavigationRegion3D" instance=ExtResource("5_11qt0")]
+transform = Transform3D(0.215515, 0, 0, 0, 0.215515, 0, 0, 0, 0.215515, -0.516937, -0.83349, -10.8884)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-corner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012368, 0.31944, -0.000946045)
+layers = 0
+use_collision = true
+size = Vector3(1.05749, 1.35773, 1.06174)
+
+[node name="block-grass-overhang-large2" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.203542, 0, 0, 0, 0.203542, 0, 0, 0, 0.203542, 0.344477, -0.333939, -9.67686)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large-tall3" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.299326, 0, 0, 0, 0.299326, 0, 0, 0, 0.299326, -0.528197, -0.823658, -10.0221)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068073, 0.860761, -0.0352678)
+layers = 0
+use_collision = true
+size = Vector3(2.06431, 2.44038, 1.99801)
+
+[node name="block-grass-overhang-large-tall5" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.24193, -2.78071, -10.4489)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, 0.0625637)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 1.92754)
+
+[node name="block-grass-overhang-large-tall6" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.181297, -2.78071, -10.4009)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, 0.0387599)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 1.87993)
+
+[node name="block-grass-overhang-large-tall7" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.181297, -2.78071, -11.9712)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0561017)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 1.96965)
+
+[node name="block-grass-overhang-large-tall8" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.276003, -0.920632, -8.50989)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall9" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.25556, -1.13948, -8.5055)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall10" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.25556, -1.13948, 7.96802)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall11" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.474918, -1.13948, 7.96802)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall12" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.474918, -1.13948, 9.73507)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall13" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.27582, -1.13948, 9.73507)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall14" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, 1.27582, -0.0661179, 11.5821)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large-tall15" parent="NavigationRegion3D" instance=ExtResource("6_rgd8y")]
+transform = Transform3D(0.957843, 0, 0, 0, 0.957843, 0, 0, 0, 0.957843, -0.487924, -0.0661179, 11.5821)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large-tall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
+layers = 0
+use_collision = true
+size = Vector3(2.12912, 2.14281, 2.00979)
+
+[node name="block-grass-overhang-large3" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.203542, 0, 0, 0, 0.203542, 0, 0, 0, 0.203542, 0.751247, -0.333939, -9.67686)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large5" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.346021, 0, 0, 0, 0.346021, 0, 0, 0, 0.346021, -0.204524, 0.640068, -5.51995)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large5" parent="NavigationRegion3D/block-grass-overhang-large5" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(2.89, 0, 0, 0, 2.89, 0, 0, 0, 2.89, 0.591074, -3.06541, 6.79355)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large5/block-grass-overhang-large5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.513501, -0.0179873)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large6" parent="NavigationRegion3D/block-grass-overhang-large5" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(2.89, 0, 0, 0, 2.89, 0, 0, 0, 2.89, 0.591074, -3.06541, 11.4019)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large5/block-grass-overhang-large6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.513501, -0.0179873)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large7" parent="NavigationRegion3D/block-grass-overhang-large5" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(2.89, 0, 0, 0, 2.89, 0, 0, 0, 2.89, 0.591074, -1.8498, 15.9526)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large5/block-grass-overhang-large7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.513501, -0.0179873)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large6" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.346021, 0, 0, 0, 0.346021, 0, 0, 0, 0.346021, -0.204524, 0.640068, 2.72254)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large7" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.346021, 0, 0, 0, 0.346021, 0, 0, 0, 0.346021, -0.204524, 0.640068, 4.93592)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large8" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.346021, 0, 0, 0, 0.346021, 0, 0, 0, 0.346021, 1.57885, 0.640068, 5.9007)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
+[node name="block-grass-overhang-large4" parent="NavigationRegion3D" instance=ExtResource("7_6gyh5")]
+transform = Transform3D(0.203542, 0, 0, 0, 0.203542, 0, 0, 0, 0.203542, 1.48379, 0.0496327, -9.67686)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/block-grass-overhang-large4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
+layers = 0
+use_collision = true
+size = Vector3(2.08488, 1.072, 2.1315)
+
 [node name="Player" parent="." instance=ExtResource("1_k4u5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00589, -0.0310254, -0.0728283)
+collision_layer = 3
 
 [node name="objetcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
@@ -49,57 +278,40 @@ shadow_caster_mask = 4294967294
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente"]
 environment = SubResource("Environment_6gyh5")
 
-[node name="block-grass-low2" parent="." instance=ExtResource("4_i8txa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21581, -0.603949, -3.4699)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-low2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125985, 0.118913, -0.00716877)
-layers = 0
-use_collision = true
-size = Vector3(1.00756, 0.95668, 1.00281)
-
-[node name="block-grass-overhang-corner2" parent="." instance=ExtResource("5_11qt0")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.283105, 0.023605, 15.6855)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-corner2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012368, 0.31944, -0.0770092)
-layers = 0
-use_collision = true
-size = Vector3(1.05749, 1.35773, 0.909608)
-
-[node name="block-grass-overhang-large2" parent="." instance=ExtResource("7_6gyh5")]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 7.47772, 4.1959, 25.8043)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799346, 0.502387, -0.0179868)
-layers = 0
-use_collision = true
-size = Vector3(2.08488, 1.072, 2.1315)
-
-[node name="block-grass-overhang-large-tall3" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.189057, 0.105718, 22.9212)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068073, 0.860761, -0.0352678)
-layers = 0
-use_collision = true
-size = Vector3(2.06431, 2.44038, 1.99801)
-
-[node name="flowers-tall2" parent="." instance=ExtResource("8_rgd8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52478, -0.210724, -0.576063)
-
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("../flowers-tall2")
 
-[node name="BlockGrassOverhangLowLarge2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60866, 1.28053, -11.9409)
-mesh = ExtResource("9_pf2iw")
-skeleton = NodePath("../BlockGrassOverhangLowLarge")
+[node name="checkpoint" type="Area3D" parent="."]
+transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -4.21359, 15.917, 36.2568)
+collision_mask = 3
+script = ExtResource("13_0bmip")
 
-[node name="BlockGrassOverhangLowLarge" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65295, 1.28343, -10.0453)
-mesh = ExtResource("9_pf2iw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="checkpoint"]
+transform = Transform3D(6, 0, 1.49012e-08, 0, 6, 0, -1.49012e-08, 0, 6, -0.771797, 15.5945, 27.3046)
+shape = SubResource("BoxShape3D_0bmip")
+
+[node name="Flag" type="MeshInstance3D" parent="checkpoint/CollisionShape3D"]
+transform = Transform3D(-0.0996926, 0, 4.16547, 0, 4.16667, 0, -4.16547, 0, -0.0996926, 0.224247, -3.3953, -0.00257874)
+mesh = ExtResource("12_isbpu")
+skeleton = NodePath("../../..")
+
+[node name="checkpoint2" type="Area3D" parent="."]
+transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -0.39166, 15.917, 110.432)
+collision_mask = 3
+script = ExtResource("13_0bmip")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="checkpoint2"]
+transform = Transform3D(6, 0, 1.49012e-08, 0, 6, 0, -1.49012e-08, 0, 6, -0.771797, 15.5945, 27.3046)
+shape = SubResource("BoxShape3D_0bmip")
+
+[node name="Flag" type="MeshInstance3D" parent="checkpoint2/CollisionShape3D"]
+transform = Transform3D(-0.0996926, 0, 4.16547, 0, 4.16667, 0, -4.16547, 0, -0.0996926, 0.224247, -3.3953, -0.00257874)
+mesh = ExtResource("12_isbpu")
+skeleton = NodePath("../../..")
+
+[node name="flowers-tall2" parent="." instance=ExtResource("8_rgd8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52478, -0.210724, -0.576063)
 
 [node name="Rocks" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00212, 0.167408, -0.368711)
@@ -113,47 +325,5 @@ mesh = ExtResource("10_cd8j8")
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 10.5031, 0.272452, -0.297755)
 mesh = ExtResource("14_otlbq")
 
-[node name="block-grass-overhang-large-tall5" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 14.9733, -16.2398, 19.3557)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, 0.0625637)
-layers = 0
-use_collision = true
-size = Vector3(2.12912, 2.14281, 1.92754)
-
-[node name="block-grass-overhang-large-tall6" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 3.0864, -16.2398, 19.757)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, 0.0387599)
-layers = 0
-use_collision = true
-size = Vector3(2.12912, 2.14281, 1.87993)
-
-[node name="block-grass-overhang-large-tall7" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 3.0864, -16.2398, 6.6418)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0561017)
-layers = 0
-use_collision = true
-size = Vector3(2.12912, 2.14281, 1.96965)
-
-[node name="block-grass-overhang-large-tall8" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.61426, -2.57617, 35.5876)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
-layers = 0
-use_collision = true
-size = Vector3(2.12912, 2.14281, 2.00979)
-
-[node name="block-grass-overhang-large-tall9" parent="." instance=ExtResource("6_rgd8y")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 15.5569, -2.53203, 35.5876)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="block-grass-overhang-large-tall9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373609, 0.965533, -0.0261693)
-layers = 0
-use_collision = true
-size = Vector3(2.12912, 2.14281, 2.00979)
+[connection signal="body_entered" from="checkpoint" to="checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="checkpoint2" to="checkpoint2" method="_on_body_entered"]
