@@ -23,20 +23,6 @@ extends CharacterBody3D
 
 var dest
 
-<<<<<<< HEAD
-func move(delta : float) -> void:
-	var directionPlayer = player.global_position - global_position
-	var direction = Vector3(directionPlayer.x, 0, directionPlayer.z).normalized()
-	var rotacion = atan2(direction.x, direction.z)
-	body.rotation.y = lerp_angle(body.rotation.y, rotacion, rotacion_velo * delta)
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-	velocity = direction * speed
-	if not is_on_floor():
-		velocity += get_gravity()
-	#animRun(true)
-	move_and_slide()
-=======
 func _ready() -> void:
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
 	stateMachine.addState(State.new("Run", Callable(self, "run")))
@@ -46,7 +32,6 @@ func _ready() -> void:
 	stateMachine.addRelations("Run", ["Idle", "Patrol", "Jump"])
 	stateMachine.addRelations("Patrol", ["Run", "Idle", "Idle"])
 	stateMachine.setActiveState("Idle")
->>>>>>> enemies
 	
 func run() -> void:
 	var delta = get_process_delta_time()
@@ -98,17 +83,6 @@ func jump() -> void:
 		stateMachine.travel("Run")
 	move_and_slide()
 	
-<<<<<<< HEAD
-func animRun(active : bool) -> void:
-	stateMachine["parameters/conditions/isRunning"] = active
-	stateMachine["parameters/conditions/isIdle"] = not active
-
-func animJump(active : bool) -> void:
-	pass
-	
-func animIdle(active : bool) -> void:
-	pass
-=======
 
 func _on_timer_timeout() -> void:
 	var overlaps = detectArea.get_overlapping_bodies()
@@ -131,4 +105,3 @@ func _on_detect_area_body_exited(body: Node3D) -> void:
 		#stateMachine.travel("Patrol")
 		detectArea.get_node("CollisionShape3D").get_shape().radius = 10
 		visionCast.target_position.z = -10
->>>>>>> enemies
