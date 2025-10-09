@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://tmw4hby00677"
-path="res://.godot/imported/protaGodot.blend-1ef9867ccf3f3c3fee4123a55c32befb.scn"
+uid="uid://c437qdio7sqjo"
+path="res://.godot/imported/trash_enemy.blend-12577c0c72699c4657a897f2aca3a833.scn"
 
 [deps]
 
-source_file="res://addons/proto-csgs/textures/protaGodot.blend"
-dest_files=["res://.godot/imported/protaGodot.blend-1ef9867ccf3f3c3fee4123a55c32befb.scn"]
+source_file="res://blender/trash_enemy.blend"
+dest_files=["res://.godot/imported/trash_enemy.blend-12577c0c72699c4657a897f2aca3a833.scn"]
 
 [params]
 
@@ -56,4 +56,4 @@ blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
-gltf/naming_version=0
+gltf/naming_version=2
