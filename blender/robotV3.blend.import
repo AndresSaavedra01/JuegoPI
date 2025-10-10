@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxlvpkpsbjqfv"
-path="res://.godot/imported/trash_enemy.blend-12577c0c72699c4657a897f2aca3a833.scn"
+uid="uid://c2wbf5yqqotb5"
+path="res://.godot/imported/robotV3.blend-1288bee5c6e956609e7a2aaa21865027.scn"
 
 [deps]
 
-source_file="res://blender/trash_enemy.blend"
-dest_files=["res://.godot/imported/trash_enemy.blend-12577c0c72699c4657a897f2aca3a833.scn"]
+source_file="res://blender/robotV3.blend"
+dest_files=["res://.godot/imported/robotV3.blend-1288bee5c6e956609e7a2aaa21865027.scn"]
 
 [params]
 

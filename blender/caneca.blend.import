@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvxeaurq4tknb"
-path="res://.godot/imported/infected_dron.blend-b07d917eff64d851e3299cf183184189.scn"
+uid="uid://c6uvvpg5tjhep"
+path="res://.godot/imported/caneca.blend-b06eaa58e1fe29cc066a5ecd0981279d.scn"
 
 [deps]
 
-source_file="res://blender/infected_dron.blend"
-dest_files=["res://.godot/imported/infected_dron.blend-b07d917eff64d851e3299cf183184189.scn"]
+source_file="res://blender/caneca.blend"
+dest_files=["res://.godot/imported/caneca.blend-b06eaa58e1fe29cc066a5ecd0981279d.scn"]
 
 [params]
 
