@@ -27,7 +27,7 @@ func jump():
 
 func jump2():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "rotation", Vector3(0, rotation.y + deg_to_rad(720) ,0),0.5)
+	tween.tween_property(self, "rotation", Vector3(0, rotation.y + deg_to_rad(720) ,0),0.4)
 	
 
 func bubble_attack():

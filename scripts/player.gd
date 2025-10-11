@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var jump_force := 10.0
 @export var double_jump_force := 12.0
 @export var gravity_force := 20.0
+@export var COYOTE_TIME := 0.2
 
 # Sensibilidad de cámara
 @export var mouse_sens_x := 0.5
@@ -37,7 +38,7 @@ var combo_step := 0
 var combo_window := 1
 var combo_timer := 0.0
 var in_combo := false
-
+var coyote_timer := 0.0
 # ==========================================================
 # REFERENCIAS A NODOS
 # ==========================================================
@@ -126,28 +127,39 @@ func handle_movement(delta: float):
 
 
 func handle_jump(delta: float):
+	# -----------------------------
+	# ACTUALIZAR COYOTE TIMER
+	# -----------------------------
 	if is_on_floor():
+		coyote_timer = COYOTE_TIME
 		has_double_jumped = false
+	else:
+		coyote_timer = max(coyote_timer - delta, 0.0)
 
-	if Input.is_action_just_pressed("saltar") and not has_double_jumped:
-		if is_on_floor():
-			robot.jump()
+	# -----------------------------
+	# DETECTAR SALTO
+	# -----------------------------
+	if Input.is_action_just_pressed("saltar"):
+		
+		if is_on_floor() or coyote_timer > 0.0:
 			velocity.y = jump_force
-		else:
+			particles.emitting = false
+			coyote_timer = 0.0  
+
+		elif not has_double_jumped:
 			robot.jump2()
 			velocity.y = double_jump_force
 			has_double_jumped = true
-		particles.emitting = false
+			particles.emitting = false
 
 	if not is_on_floor():
 		velocity.y -= gravity_force * delta
 		if velocity.y > 0:
-			robot.jump()
+			robot.jump() 
 		else:
-			robot.fall()
+			robot.fall()  
+
 		particles.emitting = false
-
-
 # ==========================================================
 # CÁMARA
 # ==========================================================
