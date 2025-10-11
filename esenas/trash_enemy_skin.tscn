@@ -652,6 +652,7 @@ tracks/18/keys = PackedFloat32Array(0, 1, -0.00626944, 0.00093838, 0.147461, 0.9
 [sub_resource type="Animation" id="Animation_fd0r8"]
 resource_name = "Jump"
 length = 1.375
+step = 0.0333
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1137,7 +1138,7 @@ bones/8/parent = 7
 bones/8/rest = Transform3D(0.00017345, 0.999928, -0.0119986, -1, 0.000173364, -8.17156e-06, -6.09085e-06, 0.0119986, 0.999928, 1.12298, 0.589667, 0.147362)
 bones/8/enabled = true
 bones/8/position = Vector3(1.12298, 0.589667, 0.147362)
-bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
+bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922464, 0.386038)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.022.L"
 bones/9/parent = 8
