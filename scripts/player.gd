@@ -45,7 +45,7 @@ var coyote_timer := 0.0
 @onready var camera_pivot := $SpringArm3D
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
-@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
+@onready var hitbox := $robotV3/hitbox
 @onready var cooldown_timer := $Timer
 
 
@@ -127,39 +127,30 @@ func handle_movement(delta: float):
 
 
 func handle_jump(delta: float):
-	# -----------------------------
-	# ACTUALIZAR COYOTE TIMER
-	# -----------------------------
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME
 		has_double_jumped = false
 	else:
 		coyote_timer = max(coyote_timer - delta, 0.0)
-
-	# -----------------------------
-	# DETECTAR SALTO
-	# -----------------------------
 	if Input.is_action_just_pressed("saltar"):
-		
 		if is_on_floor() or coyote_timer > 0.0:
 			velocity.y = jump_force
 			particles.emitting = false
 			coyote_timer = 0.0  
-
 		elif not has_double_jumped:
 			robot.jump2()
 			velocity.y = double_jump_force
 			has_double_jumped = true
 			particles.emitting = false
-
 	if not is_on_floor():
 		velocity.y -= gravity_force * delta
 		if velocity.y > 0:
 			robot.jump() 
 		else:
 			robot.fall()  
-
 		particles.emitting = false
+
+
 # ==========================================================
 # CÁMARA
 # ==========================================================
@@ -280,3 +271,7 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 	if target is RigidBody3D and is_attacking:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		target.apply_impulse(push_dir * 5)
+	if target is CharacterBody3D and is_attacking:
+		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
+		if target.has_method("hit"):
+			target.hit(push_dir)
