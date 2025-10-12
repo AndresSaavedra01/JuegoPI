@@ -1,0 +1,430 @@
+[gd_scene load_steps=143 format=3 uid="uid://cx5nbgfd7x7q7"]
+
+[ext_resource type="PackedScene" uid="uid://bddku7jirs6hw" path="res://assets/assets bosque-nieve/Models/GLB format/arrow.glb" id="1_0bofr"]
+[ext_resource type="PackedScene" uid="uid://5pig01gvlbnl" path="res://assets/assets bosque-nieve/Models/GLB format/arrows.glb" id="2_3qlnt"]
+[ext_resource type="PackedScene" uid="uid://bojd7hcsyfvis" path="res://assets/assets bosque-nieve/Models/GLB format/barrel.glb" id="3_dt47b"]
+[ext_resource type="PackedScene" uid="uid://dds7kdmbxkjuc" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-low.glb" id="4_2fp5n"]
+[ext_resource type="PackedScene" uid="uid://7mkqkcmyo81q" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-overhang-low.glb" id="5_0jo7s"]
+[ext_resource type="PackedScene" uid="uid://dr5g8qshytwpl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-overhang.glb" id="6_qcaus"]
+[ext_resource type="PackedScene" uid="uid://cc4of1ni45h4t" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner.glb" id="7_sto8w"]
+[ext_resource type="PackedScene" uid="uid://dlx3s6gfhrvmq" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve-half.glb" id="8_xfy4s"]
+[ext_resource type="PackedScene" uid="uid://bvmev5s13jlhu" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve-low.glb" id="9_st7hu"]
+[ext_resource type="PackedScene" uid="uid://cfk4l6vhbybpu" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve.glb" id="10_man3w"]
+[ext_resource type="PackedScene" uid="uid://c8whyktyucgen" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-edge.glb" id="11_62j2q"]
+[ext_resource type="PackedScene" uid="uid://drr3co37ygtwv" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-hexagon.glb" id="12_7coxj"]
+[ext_resource type="PackedScene" uid="uid://c4elidme817sk" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-narrow.glb" id="13_gwjru"]
+[ext_resource type="PackedScene" uid="uid://bbgmmvpktyvot" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-steep-narrow.glb" id="14_rtxlc"]
+[ext_resource type="PackedScene" uid="uid://dijrnjqrgshur" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-steep.glb" id="15_pkvrj"]
+[ext_resource type="PackedScene" uid="uid://cbw6oosx2bta5" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope.glb" id="16_wcl4k"]
+[ext_resource type="PackedScene" uid="uid://cgu0njt65xf8k" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-tall.glb" id="17_ucvxl"]
+[ext_resource type="PackedScene" uid="uid://ue2vqt077d8a" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large.glb" id="18_vgyut"]
+[ext_resource type="PackedScene" uid="uid://bp0nyj703fv7o" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-long.glb" id="19_rjop1"]
+[ext_resource type="PackedScene" uid="uid://ln420hu65p6x" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-hexagon.glb" id="20_owo31"]
+[ext_resource type="PackedScene" uid="uid://vf70m2fq7wj1" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-large.glb" id="21_5ojw2"]
+[ext_resource type="PackedScene" uid="uid://bj7of355pqluq" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-long.glb" id="22_ote13"]
+[ext_resource type="PackedScene" uid="uid://beg03jpmr48ql" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-narrow.glb" id="23_a4wdx"]
+[ext_resource type="PackedScene" uid="uid://bvv3x1n3d1wb7" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low.glb" id="24_nw3ka"]
+[ext_resource type="PackedScene" uid="uid://cvkay1k2fjl4n" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-narrow.glb" id="25_ru8p3"]
+[ext_resource type="PackedScene" uid="uid://c1n56dyp6gtg4" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-corner.glb" id="26_68yv2"]
+[ext_resource type="PackedScene" uid="uid://dt7d2ob0f4wac" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-edge.glb" id="27_goqj5"]
+[ext_resource type="PackedScene" uid="uid://cqbm406xocuwr" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-hexagon.glb" id="28_xcwmk"]
+[ext_resource type="PackedScene" uid="uid://bslh2kfmsj5yv" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-narrow.glb" id="29_mwdsh"]
+[ext_resource type="PackedScene" uid="uid://b7n8xf4ilv5ew" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-steep-narrow.glb" id="30_k0x2r"]
+[ext_resource type="PackedScene" uid="uid://cya6tat2avper" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-steep.glb" id="31_oxflu"]
+[ext_resource type="PackedScene" uid="uid://pfbao5b1m6j3" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope.glb" id="32_b1rdm"]
+[ext_resource type="PackedScene" uid="uid://dhfs17uwigtkl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-tall.glb" id="33_14xbj"]
+[ext_resource type="PackedScene" uid="uid://da583mq8mtoyg" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large.glb" id="34_3bltp"]
+[ext_resource type="PackedScene" uid="uid://jm1wv2cy1q4" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-long.glb" id="35_237ry"]
+[ext_resource type="PackedScene" uid="uid://o133sbdhihf6" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-hexagon.glb" id="36_20h27"]
+[ext_resource type="PackedScene" uid="uid://dejn78cgk4gei" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-large.glb" id="37_861cd"]
+[ext_resource type="PackedScene" uid="uid://57cllk27p15v" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-long.glb" id="38_iqmqn"]
+[ext_resource type="PackedScene" uid="uid://bi7n8dud3vjtj" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-narrow.glb" id="39_n2o3s"]
+[ext_resource type="PackedScene" uid="uid://buea7xnctv1kl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low.glb" id="40_mhs1n"]
+[ext_resource type="PackedScene" uid="uid://611o7smbtwai" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-narrow.glb" id="41_7841x"]
+[ext_resource type="PackedScene" uid="uid://cjqrojh0ufxc0" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass.glb" id="42_ffip2"]
+[ext_resource type="PackedScene" uid="uid://bwut5x56kyvw" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving-blue.glb" id="43_vwefj"]
+[ext_resource type="PackedScene" uid="uid://bd5uwjekfw0ku" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving-large.glb" id="44_3cxen"]
+[ext_resource type="PackedScene" uid="uid://dqn45p473cwrl" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving.glb" id="45_t7e4x"]
+[ext_resource type="PackedScene" uid="uid://x21blnmfksw1" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-corner-low.glb" id="46_vx7ia"]
+[ext_resource type="PackedScene" uid="uid://03cqvsxti2jf" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-corner-overhang-low.glb" id="47_fpkkp"]
+[ext_resource type="PackedScene" uid="uid://blt10jfoopx7r" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-corner-overhang.glb" id="48_ga32p"]
+[ext_resource type="PackedScene" uid="uid://colhqra3ocsxt" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-corner.glb" id="49_fgfkk"]
+[ext_resource type="PackedScene" uid="uid://cm1yqpdb1byws" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-curve-half.glb" id="50_u1q78"]
+[ext_resource type="PackedScene" uid="uid://cqood2bv0rhhi" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-curve-low.glb" id="51_cx4dc"]
+[ext_resource type="PackedScene" uid="uid://bw3hdewgqdf7l" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-curve.glb" id="52_vhroi"]
+[ext_resource type="PackedScene" uid="uid://bp8qldphlrddy" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-edge.glb" id="53_ldvb3"]
+[ext_resource type="PackedScene" uid="uid://x5wljjcx80yh" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-hexagon.glb" id="54_5gwhg"]
+[ext_resource type="PackedScene" uid="uid://ipocql6kbj7" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large-slope-narrow.glb" id="55_5fv45"]
+[ext_resource type="PackedScene" uid="uid://c888df5y45vo" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large-slope-steep-narrow.glb" id="56_odwv1"]
+[ext_resource type="PackedScene" uid="uid://jcqjgj2mlex4" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large-slope-steep.glb" id="57_25vg7"]
+[ext_resource type="PackedScene" uid="uid://wux8e1xaum41" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large-slope.glb" id="58_y1aas"]
+[ext_resource type="PackedScene" uid="uid://cgx88nk53vvhp" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large-tall.glb" id="59_ce1rk"]
+[ext_resource type="PackedScene" uid="uid://dqkwdqfif73p7" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-large.glb" id="60_y7218"]
+[ext_resource type="PackedScene" uid="uid://dfgqkgg8i1n0" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-long.glb" id="61_a2rip"]
+[ext_resource type="PackedScene" uid="uid://bdxa7gg2yq5x0" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-low-hexagon.glb" id="62_eca2f"]
+[ext_resource type="PackedScene" uid="uid://btg5q453f51gu" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-low-large.glb" id="63_b2qiq"]
+[ext_resource type="PackedScene" uid="uid://dkgyew2nro4r7" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-low-long.glb" id="64_q6o1k"]
+[ext_resource type="PackedScene" uid="uid://l1yy5rsxppbf" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-low-narrow.glb" id="65_2liqd"]
+[ext_resource type="PackedScene" uid="uid://b7neqm8sq5mwc" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-low.glb" id="66_pwwxa"]
+[ext_resource type="PackedScene" uid="uid://c6hfqs3fri5n1" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-narrow.glb" id="67_i8rra"]
+[ext_resource type="PackedScene" uid="uid://31bmixw14iyt" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-corner.glb" id="68_34853"]
+[ext_resource type="PackedScene" uid="uid://db08un83gfw0y" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-edge.glb" id="69_eg5fn"]
+[ext_resource type="PackedScene" uid="uid://byxjdory4gj57" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-hexagon.glb" id="70_pbq6v"]
+[ext_resource type="PackedScene" uid="uid://cc1ou5oawbuq5" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large-slope-narrow.glb" id="71_j64id"]
+[ext_resource type="PackedScene" uid="uid://c652tjn0ywm43" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large-slope-steep-narrow.glb" id="72_kn7wo"]
+[ext_resource type="PackedScene" uid="uid://cwfd783rci1mv" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large-slope-steep.glb" id="73_hws2d"]
+[ext_resource type="PackedScene" uid="uid://cgjfks6sf7jmo" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large-slope.glb" id="74_6l3jk"]
+[ext_resource type="PackedScene" uid="uid://chnq7rthqrkh4" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large-tall.glb" id="75_67tgv"]
+[ext_resource type="PackedScene" uid="uid://xmusww1c786s" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-large.glb" id="76_e8gg3"]
+[ext_resource type="PackedScene" uid="uid://byfqbms0adgir" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-long.glb" id="77_d4lv3"]
+[ext_resource type="PackedScene" uid="uid://cvpntjyhkkaa5" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-low-hexagon.glb" id="78_1hxqt"]
+[ext_resource type="PackedScene" uid="uid://bna3ygosp0iw1" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-low-large.glb" id="79_mqavi"]
+[ext_resource type="PackedScene" uid="uid://laxaxbol6phs" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-low-long.glb" id="80_5koxq"]
+[ext_resource type="PackedScene" uid="uid://n1h3l4ve7cff" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-low-narrow.glb" id="81_dt3bc"]
+[ext_resource type="PackedScene" uid="uid://du8knir1dhpnk" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-low.glb" id="82_xwnl8"]
+[ext_resource type="PackedScene" uid="uid://cujcfvkfc6ty" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow-overhang-narrow.glb" id="83_vfvja"]
+[ext_resource type="PackedScene" uid="uid://kvkxrcxgntyq" path="res://assets/assets bosque-nieve/Models/GLB format/block-snow.glb" id="84_4dn3m"]
+[ext_resource type="PackedScene" uid="uid://vhoi5rglsicp" path="res://assets/assets bosque-nieve/Models/GLB format/bomb.glb" id="85_xsl8n"]
+[ext_resource type="PackedScene" uid="uid://dicwsii8msqiq" path="res://assets/assets bosque-nieve/Models/GLB format/button-round.glb" id="86_fyire"]
+[ext_resource type="PackedScene" uid="uid://dkytpxqpilt0w" path="res://assets/assets bosque-nieve/Models/GLB format/button-square.glb" id="87_pp717"]
+[ext_resource type="PackedScene" uid="uid://bchnhle3odlnb" path="res://assets/assets bosque-nieve/Models/GLB format/chest.glb" id="88_ew8px"]
+[ext_resource type="PackedScene" uid="uid://c2a4bxlyexn28" path="res://assets/assets bosque-nieve/Models/GLB format/coin-bronze.glb" id="89_6gb5a"]
+[ext_resource type="PackedScene" uid="uid://pi5buch0jebg" path="res://assets/assets bosque-nieve/Models/GLB format/coin-gold.glb" id="90_d2ojx"]
+[ext_resource type="PackedScene" uid="uid://cgegeodac3gvm" path="res://assets/assets bosque-nieve/Models/GLB format/coin-silver.glb" id="91_qie2p"]
+[ext_resource type="PackedScene" uid="uid://b6xyws3fk6or3" path="res://assets/assets bosque-nieve/Models/GLB format/crate-item-strong.glb" id="92_f6kwq"]
+[ext_resource type="PackedScene" uid="uid://ctmflkmd6l024" path="res://assets/assets bosque-nieve/Models/GLB format/crate-item.glb" id="93_77ub1"]
+[ext_resource type="PackedScene" uid="uid://jdqm8toapoa4" path="res://assets/assets bosque-nieve/Models/GLB format/crate-strong.glb" id="94_nkbe6"]
+[ext_resource type="PackedScene" uid="uid://yljbsdi1ex0w" path="res://assets/assets bosque-nieve/Models/GLB format/crate.glb" id="95_ejcna"]
+[ext_resource type="PackedScene" uid="uid://bp7gmcqa3h2r5" path="res://assets/assets bosque-nieve/Models/GLB format/door-large-open.glb" id="96_2ycnh"]
+[ext_resource type="PackedScene" uid="uid://126k6lloba52" path="res://assets/assets bosque-nieve/Models/GLB format/door-open.glb" id="97_kjxik"]
+[ext_resource type="PackedScene" uid="uid://d2ua7c1ftwvg8" path="res://assets/assets bosque-nieve/Models/GLB format/door-rotate-large.glb" id="98_gv873"]
+[ext_resource type="PackedScene" uid="uid://b8mitg1tbffr" path="res://assets/assets bosque-nieve/Models/GLB format/door-rotate.glb" id="99_855h6"]
+[ext_resource type="PackedScene" uid="uid://cyll2wexdcadc" path="res://assets/assets bosque-nieve/Models/GLB format/fence-broken.glb" id="100_wfsj1"]
+[ext_resource type="PackedScene" uid="uid://gpli40bt4mfp" path="res://assets/assets bosque-nieve/Models/GLB format/fence-corner-curved.glb" id="101_j8ix2"]
+[ext_resource type="PackedScene" uid="uid://dbaxtbr6syc17" path="res://assets/assets bosque-nieve/Models/GLB format/fence-corner.glb" id="102_2ifol"]
+[ext_resource type="PackedScene" uid="uid://q4kq7l0da8ej" path="res://assets/assets bosque-nieve/Models/GLB format/fence-low-broken.glb" id="103_8mgdn"]
+[ext_resource type="PackedScene" uid="uid://ooprhu5nk81e" path="res://assets/assets bosque-nieve/Models/GLB format/fence-low-corner-curved.glb" id="104_tpf7j"]
+[ext_resource type="PackedScene" uid="uid://eiij1pccpy7i" path="res://assets/assets bosque-nieve/Models/GLB format/fence-low-corner.glb" id="105_3sgdm"]
+[ext_resource type="PackedScene" uid="uid://b85s7seupmph5" path="res://assets/assets bosque-nieve/Models/GLB format/fence-low-straight.glb" id="106_e4f6n"]
+[ext_resource type="PackedScene" uid="uid://blxxqk7bq8xxs" path="res://assets/assets bosque-nieve/Models/GLB format/fence-straight.glb" id="107_4moi6"]
+[ext_resource type="PackedScene" uid="uid://d2r6fonfdpj7l" path="res://assets/assets bosque-nieve/Models/GLB format/flag.glb" id="108_xlaw3"]
+[ext_resource type="PackedScene" uid="uid://b5iihuckyubt8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers-tall.glb" id="109_r4w12"]
+[ext_resource type="PackedScene" uid="uid://clavfbhyemki8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers.glb" id="110_a5041"]
+[ext_resource type="PackedScene" uid="uid://bdj3cghu342lr" path="res://assets/assets bosque-nieve/Models/GLB format/grass.glb" id="111_a6via"]
+[ext_resource type="PackedScene" uid="uid://dphhoea2xy3o" path="res://assets/assets bosque-nieve/Models/GLB format/heart.glb" id="112_g5pmu"]
+[ext_resource type="PackedScene" uid="uid://bxxwwy8onmuas" path="res://assets/assets bosque-nieve/Models/GLB format/hedge-corner.glb" id="113_mrhn1"]
+[ext_resource type="PackedScene" uid="uid://n2j0ikig5b3" path="res://assets/assets bosque-nieve/Models/GLB format/hedge.glb" id="114_ti4fu"]
+[ext_resource type="PackedScene" uid="uid://bxev77r8wnjlj" path="res://assets/assets bosque-nieve/Models/GLB format/jewel.glb" id="115_ldine"]
+[ext_resource type="PackedScene" uid="uid://b1pvt60nv010l" path="res://assets/assets bosque-nieve/Models/GLB format/key.glb" id="116_fe27p"]
+[ext_resource type="PackedScene" uid="uid://jqaxsb7fyhf7" path="res://assets/assets bosque-nieve/Models/GLB format/ladder-broken.glb" id="117_pef05"]
+[ext_resource type="PackedScene" uid="uid://b26munk62i6do" path="res://assets/assets bosque-nieve/Models/GLB format/ladder-long.glb" id="118_fe1rs"]
+[ext_resource type="PackedScene" uid="uid://cty3g4mubda2f" path="res://assets/assets bosque-nieve/Models/GLB format/ladder.glb" id="119_6d7rg"]
+[ext_resource type="PackedScene" uid="uid://uqha8ag0xntg" path="res://assets/assets bosque-nieve/Models/GLB format/lever.glb" id="120_qp5gf"]
+[ext_resource type="PackedScene" uid="uid://cdap64tmklghw" path="res://assets/assets bosque-nieve/Models/GLB format/lock.glb" id="121_8c5x4"]
+[ext_resource type="PackedScene" uid="uid://bc2mpyj5mywb" path="res://assets/assets bosque-nieve/Models/GLB format/mushrooms.glb" id="122_edhjb"]
+[ext_resource type="PackedScene" uid="uid://k4c1b7nxt0yw" path="res://assets/assets bosque-nieve/Models/GLB format/plant.glb" id="123_5qjml"]
+[ext_resource type="PackedScene" uid="uid://b7sko43mkuw4s" path="res://assets/assets bosque-nieve/Models/GLB format/platform-fortified.glb" id="124_l7hnw"]
+[ext_resource type="PackedScene" uid="uid://b3jwqgpoeq800" path="res://assets/assets bosque-nieve/Models/GLB format/platform-overhang.glb" id="125_wenqj"]
+[ext_resource type="PackedScene" uid="uid://dt4pteruly5x6" path="res://assets/assets bosque-nieve/Models/GLB format/platform-ramp.glb" id="126_rbae0"]
+[ext_resource type="PackedScene" uid="uid://dhr4teh2skm8e" path="res://assets/assets bosque-nieve/Models/GLB format/platform.glb" id="127_st8gm"]
+[ext_resource type="PackedScene" uid="uid://e8734nkxss5f" path="res://assets/assets bosque-nieve/Models/GLB format/poles.glb" id="128_7inp6"]
+[ext_resource type="PackedScene" uid="uid://ds0qsprs6f3rp" path="res://assets/assets bosque-nieve/Models/GLB format/rocks.glb" id="129_52psx"]
+[ext_resource type="PackedScene" uid="uid://deltymvob162s" path="res://assets/assets bosque-nieve/Models/GLB format/saw.glb" id="130_lhxn8"]
+[ext_resource type="PackedScene" uid="uid://brvpl50p7bph1" path="res://assets/assets bosque-nieve/Models/GLB format/sign.glb" id="131_b17od"]
+[ext_resource type="PackedScene" uid="uid://cq3jwmh2tm4s8" path="res://assets/assets bosque-nieve/Models/GLB format/spike-block-wide.glb" id="132_0r6dr"]
+[ext_resource type="PackedScene" uid="uid://yjwhlt72i238" path="res://assets/assets bosque-nieve/Models/GLB format/spike-block.glb" id="133_2feme"]
+[ext_resource type="PackedScene" uid="uid://dd4igkbqdita1" path="res://assets/assets bosque-nieve/Models/GLB format/stones.glb" id="134_rbp8e"]
+[ext_resource type="PackedScene" uid="uid://ckws5rx7mu8iu" path="res://assets/assets bosque-nieve/Models/GLB format/trap-spikes-large.glb" id="135_a4vtm"]
+[ext_resource type="PackedScene" uid="uid://c0tfhufvopc8y" path="res://assets/assets bosque-nieve/Models/GLB format/trap-spikes.glb" id="136_mssdn"]
+[ext_resource type="PackedScene" uid="uid://bms8p6f08oboo" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine-small.glb" id="137_k3jsp"]
+[ext_resource type="PackedScene" uid="uid://c5jvedembfa48" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine-snow-small.glb" id="138_02a4k"]
+[ext_resource type="PackedScene" uid="uid://b8nw0wl05fvcv" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine-snow.glb" id="139_lllkc"]
+[ext_resource type="PackedScene" uid="uid://bxyq0jowxa11f" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine.glb" id="140_vb2q8"]
+[ext_resource type="PackedScene" uid="uid://b56k8y1bevg3n" path="res://assets/assets bosque-nieve/Models/GLB format/tree-snow.glb" id="141_36pkx"]
+[ext_resource type="PackedScene" uid="uid://dpobaihsaoxcm" path="res://assets/assets bosque-nieve/Models/GLB format/tree.glb" id="142_3uyrh"]
+
+[node name="GeneralLevelTileSet" type="Node3D"]
+
+[node name="arrow2" parent="." instance=ExtResource("1_0bofr")]
+
+[node name="arrows" parent="." instance=ExtResource("2_3qlnt")]
+
+[node name="barrel" parent="." instance=ExtResource("3_dt47b")]
+
+[node name="block-grass-corner-low" parent="." instance=ExtResource("4_2fp5n")]
+
+[node name="block-grass-corner-overhang-low" parent="." instance=ExtResource("5_0jo7s")]
+
+[node name="block-grass-corner-overhang" parent="." instance=ExtResource("6_qcaus")]
+
+[node name="block-grass-corner" parent="." instance=ExtResource("7_sto8w")]
+
+[node name="block-grass-curve-half" parent="." instance=ExtResource("8_xfy4s")]
+
+[node name="block-grass-curve-low" parent="." instance=ExtResource("9_st7hu")]
+
+[node name="block-grass-curve" parent="." instance=ExtResource("10_man3w")]
+
+[node name="block-grass-edge" parent="." instance=ExtResource("11_62j2q")]
+
+[node name="block-grass-hexagon" parent="." instance=ExtResource("12_7coxj")]
+
+[node name="block-grass-large-slope-narrow" parent="." instance=ExtResource("13_gwjru")]
+
+[node name="block-grass-large-slope-steep-narrow" parent="." instance=ExtResource("14_rtxlc")]
+
+[node name="block-grass-large-slope-steep" parent="." instance=ExtResource("15_pkvrj")]
+
+[node name="block-grass-large-slope" parent="." instance=ExtResource("16_wcl4k")]
+
+[node name="block-grass-large-tall" parent="." instance=ExtResource("17_ucvxl")]
+
+[node name="block-grass-large" parent="." instance=ExtResource("18_vgyut")]
+
+[node name="block-grass-long" parent="." instance=ExtResource("19_rjop1")]
+
+[node name="block-grass-low-hexagon" parent="." instance=ExtResource("20_owo31")]
+
+[node name="block-grass-low-large" parent="." instance=ExtResource("21_5ojw2")]
+
+[node name="block-grass-low-long" parent="." instance=ExtResource("22_ote13")]
+
+[node name="block-grass-low-narrow" parent="." instance=ExtResource("23_a4wdx")]
+
+[node name="block-grass-low" parent="." instance=ExtResource("24_nw3ka")]
+
+[node name="block-grass-narrow" parent="." instance=ExtResource("25_ru8p3")]
+
+[node name="block-grass-overhang-corner" parent="." instance=ExtResource("26_68yv2")]
+
+[node name="block-grass-overhang-edge" parent="." instance=ExtResource("27_goqj5")]
+
+[node name="block-grass-overhang-hexagon" parent="." instance=ExtResource("28_xcwmk")]
+
+[node name="block-grass-overhang-large-slope-narrow" parent="." instance=ExtResource("29_mwdsh")]
+
+[node name="block-grass-overhang-large-slope-steep-narrow" parent="." instance=ExtResource("30_k0x2r")]
+
+[node name="block-grass-overhang-large-slope-steep" parent="." instance=ExtResource("31_oxflu")]
+
+[node name="block-grass-overhang-large-slope" parent="." instance=ExtResource("32_b1rdm")]
+
+[node name="block-grass-overhang-large-tall" parent="." instance=ExtResource("33_14xbj")]
+
+[node name="block-grass-overhang-large" parent="." instance=ExtResource("34_3bltp")]
+
+[node name="block-grass-overhang-long" parent="." instance=ExtResource("35_237ry")]
+
+[node name="block-grass-overhang-low-hexagon" parent="." instance=ExtResource("36_20h27")]
+
+[node name="block-grass-overhang-low-large" parent="." instance=ExtResource("37_861cd")]
+
+[node name="block-grass-overhang-low-long" parent="." instance=ExtResource("38_iqmqn")]
+
+[node name="block-grass-overhang-low-narrow" parent="." instance=ExtResource("39_n2o3s")]
+
+[node name="block-grass-overhang-low" parent="." instance=ExtResource("40_mhs1n")]
+
+[node name="block-grass-overhang-narrow" parent="." instance=ExtResource("41_7841x")]
+
+[node name="block-grass" parent="." instance=ExtResource("42_ffip2")]
+
+[node name="block-moving-blue" parent="." instance=ExtResource("43_vwefj")]
+
+[node name="block-moving-large" parent="." instance=ExtResource("44_3cxen")]
+
+[node name="block-moving" parent="." instance=ExtResource("45_t7e4x")]
+
+[node name="block-snow-corner-low" parent="." instance=ExtResource("46_vx7ia")]
+
+[node name="block-snow-corner-overhang-low" parent="." instance=ExtResource("47_fpkkp")]
+
+[node name="block-snow-corner-overhang" parent="." instance=ExtResource("48_ga32p")]
+
+[node name="block-snow-corner" parent="." instance=ExtResource("49_fgfkk")]
+
+[node name="block-snow-curve-half" parent="." instance=ExtResource("50_u1q78")]
+
+[node name="block-snow-curve-low" parent="." instance=ExtResource("51_cx4dc")]
+
+[node name="block-snow-curve" parent="." instance=ExtResource("52_vhroi")]
+
+[node name="block-snow-edge" parent="." instance=ExtResource("53_ldvb3")]
+
+[node name="block-snow-hexagon" parent="." instance=ExtResource("54_5gwhg")]
+
+[node name="block-snow-large-slope-narrow" parent="." instance=ExtResource("55_5fv45")]
+
+[node name="block-snow-large-slope-steep-narrow" parent="." instance=ExtResource("56_odwv1")]
+
+[node name="block-snow-large-slope-steep" parent="." instance=ExtResource("57_25vg7")]
+
+[node name="block-snow-large-slope" parent="." instance=ExtResource("58_y1aas")]
+
+[node name="block-snow-large-tall" parent="." instance=ExtResource("59_ce1rk")]
+
+[node name="block-snow-large" parent="." instance=ExtResource("60_y7218")]
+
+[node name="block-snow-long" parent="." instance=ExtResource("61_a2rip")]
+
+[node name="block-snow-low-hexagon" parent="." instance=ExtResource("62_eca2f")]
+
+[node name="block-snow-low-large" parent="." instance=ExtResource("63_b2qiq")]
+
+[node name="block-snow-low-long" parent="." instance=ExtResource("64_q6o1k")]
+
+[node name="block-snow-low-narrow" parent="." instance=ExtResource("65_2liqd")]
+
+[node name="block-snow-low" parent="." instance=ExtResource("66_pwwxa")]
+
+[node name="block-snow-narrow" parent="." instance=ExtResource("67_i8rra")]
+
+[node name="block-snow-overhang-corner" parent="." instance=ExtResource("68_34853")]
+
+[node name="block-snow-overhang-edge" parent="." instance=ExtResource("69_eg5fn")]
+
+[node name="block-snow-overhang-hexagon" parent="." instance=ExtResource("70_pbq6v")]
+
+[node name="block-snow-overhang-large-slope-narrow" parent="." instance=ExtResource("71_j64id")]
+
+[node name="block-snow-overhang-large-slope-steep-narrow" parent="." instance=ExtResource("72_kn7wo")]
+
+[node name="block-snow-overhang-large-slope-steep" parent="." instance=ExtResource("73_hws2d")]
+
+[node name="block-snow-overhang-large-slope" parent="." instance=ExtResource("74_6l3jk")]
+
+[node name="block-snow-overhang-large-tall" parent="." instance=ExtResource("75_67tgv")]
+
+[node name="block-snow-overhang-large" parent="." instance=ExtResource("76_e8gg3")]
+
+[node name="block-snow-overhang-long" parent="." instance=ExtResource("77_d4lv3")]
+
+[node name="block-snow-overhang-low-hexagon" parent="." instance=ExtResource("78_1hxqt")]
+
+[node name="block-snow-overhang-low-large" parent="." instance=ExtResource("79_mqavi")]
+
+[node name="block-snow-overhang-low-long" parent="." instance=ExtResource("80_5koxq")]
+
+[node name="block-snow-overhang-low-narrow" parent="." instance=ExtResource("81_dt3bc")]
+
+[node name="block-snow-overhang-low" parent="." instance=ExtResource("82_xwnl8")]
+
+[node name="block-snow-overhang-narrow" parent="." instance=ExtResource("83_vfvja")]
+
+[node name="block-snow" parent="." instance=ExtResource("84_4dn3m")]
+
+[node name="bomb" parent="." instance=ExtResource("85_xsl8n")]
+
+[node name="button-round" parent="." instance=ExtResource("86_fyire")]
+
+[node name="button-square" parent="." instance=ExtResource("87_pp717")]
+
+[node name="chest" parent="." instance=ExtResource("88_ew8px")]
+
+[node name="coin-bronze" parent="." instance=ExtResource("89_6gb5a")]
+
+[node name="coin-gold" parent="." instance=ExtResource("90_d2ojx")]
+
+[node name="coin-silver" parent="." instance=ExtResource("91_qie2p")]
+
+[node name="crate-item-strong" parent="." instance=ExtResource("92_f6kwq")]
+
+[node name="crate-item" parent="." instance=ExtResource("93_77ub1")]
+
+[node name="crate-strong" parent="." instance=ExtResource("94_nkbe6")]
+
+[node name="crate" parent="." instance=ExtResource("95_ejcna")]
+
+[node name="door-large-open" parent="." instance=ExtResource("96_2ycnh")]
+
+[node name="door-open" parent="." instance=ExtResource("97_kjxik")]
+
+[node name="door-rotate-large" parent="." instance=ExtResource("98_gv873")]
+
+[node name="door-rotate" parent="." instance=ExtResource("99_855h6")]
+
+[node name="fence-broken" parent="." instance=ExtResource("100_wfsj1")]
+
+[node name="fence-corner-curved" parent="." instance=ExtResource("101_j8ix2")]
+
+[node name="fence-corner" parent="." instance=ExtResource("102_2ifol")]
+
+[node name="fence-low-broken" parent="." instance=ExtResource("103_8mgdn")]
+
+[node name="fence-low-corner-curved" parent="." instance=ExtResource("104_tpf7j")]
+
+[node name="fence-low-corner" parent="." instance=ExtResource("105_3sgdm")]
+
+[node name="fence-low-straight" parent="." instance=ExtResource("106_e4f6n")]
+
+[node name="fence-straight" parent="." instance=ExtResource("107_4moi6")]
+
+[node name="flag" parent="." instance=ExtResource("108_xlaw3")]
+
+[node name="flowers-tall" parent="." instance=ExtResource("109_r4w12")]
+
+[node name="flowers" parent="." instance=ExtResource("110_a5041")]
+
+[node name="grass" parent="." instance=ExtResource("111_a6via")]
+
+[node name="heart" parent="." instance=ExtResource("112_g5pmu")]
+
+[node name="hedge-corner" parent="." instance=ExtResource("113_mrhn1")]
+
+[node name="hedge" parent="." instance=ExtResource("114_ti4fu")]
+
+[node name="jewel" parent="." instance=ExtResource("115_ldine")]
+
+[node name="key" parent="." instance=ExtResource("116_fe27p")]
+
+[node name="ladder-broken" parent="." instance=ExtResource("117_pef05")]
+
+[node name="ladder-long" parent="." instance=ExtResource("118_fe1rs")]
+
+[node name="ladder" parent="." instance=ExtResource("119_6d7rg")]
+
+[node name="lever" parent="." instance=ExtResource("120_qp5gf")]
+
+[node name="lock" parent="." instance=ExtResource("121_8c5x4")]
+
+[node name="mushrooms" parent="." instance=ExtResource("122_edhjb")]
+
+[node name="plant" parent="." instance=ExtResource("123_5qjml")]
+
+[node name="platform-fortified" parent="." instance=ExtResource("124_l7hnw")]
+
+[node name="platform-overhang" parent="." instance=ExtResource("125_wenqj")]
+
+[node name="platform-ramp" parent="." instance=ExtResource("126_rbae0")]
+
+[node name="platform" parent="." instance=ExtResource("127_st8gm")]
+
+[node name="poles" parent="." instance=ExtResource("128_7inp6")]
+
+[node name="rocks" parent="." instance=ExtResource("129_52psx")]
+
+[node name="saw" parent="." instance=ExtResource("130_lhxn8")]
+
+[node name="sign" parent="." instance=ExtResource("131_b17od")]
+
+[node name="spike-block-wide" parent="." instance=ExtResource("132_0r6dr")]
+
+[node name="spike-block" parent="." instance=ExtResource("133_2feme")]
+
+[node name="stones" parent="." instance=ExtResource("134_rbp8e")]
+
+[node name="trap-spikes-large" parent="." instance=ExtResource("135_a4vtm")]
+
+[node name="trap-spikes" parent="." instance=ExtResource("136_mssdn")]
+
+[node name="tree-pine-small" parent="." instance=ExtResource("137_k3jsp")]
+
+[node name="tree-pine-snow-small" parent="." instance=ExtResource("138_02a4k")]
+
+[node name="tree-pine-snow" parent="." instance=ExtResource("139_lllkc")]
+
+[node name="tree-pine" parent="." instance=ExtResource("140_vb2q8")]
+
+[node name="tree-snow" parent="." instance=ExtResource("141_36pkx")]
+
+[node name="tree" parent="." instance=ExtResource("142_3uyrh")]
