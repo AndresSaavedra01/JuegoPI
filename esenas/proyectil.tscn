@@ -71,7 +71,6 @@ radius = 0.308699
 
 [node name="Proyectil" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 4
 mass = 0.022
 gravity_scale = -1.889
 script = ExtResource("1_vveip")
