@@ -41,7 +41,7 @@ func addRelations(stateFromName : String, stateToArr : Array) -> bool:
 		for state : State in graph.keys():
 			if state.getStateName() == stateToName:
 				stateTo = state
-		graph[stateFrom].append(stateTo)
+				graph[stateFrom].append(stateTo)
 	return true
 
 func travel(stateName : String) -> bool:

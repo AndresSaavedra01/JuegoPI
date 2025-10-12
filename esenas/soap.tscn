@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0n2fqfbryjh7"]
+
+[ext_resource type="Script" uid="uid://ctvokln5edjb5" path="res://scripts/soap.gd" id="1_3mh4l"]
+[ext_resource type="PackedScene" uid="uid://cq86dreh8yqly" path="res://assets/soat.glb" id="1_so5gj"]
+[ext_resource type="PackedScene" uid="uid://c7k1pe6jd4g56" path="res://espuma.tscn" id="3_o8407"]
+
+[sub_resource type="Curve" id="Curve_3mh4l"]
+_data = [Vector2(0.0289017, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.508671, 0.775281), 0.0, 0.0, 0, 0, Vector2(0.976879, 0.247191), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oq223"]
+width = 32
+curve = SubResource("Curve_3mh4l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o8407"]
+lifetime_randomness = 0.26
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_oq223")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuxr1"]
+albedo_color = Color(0.580392, 0.827451, 0.745098, 1)
+emission_enabled = true
+emission = Color(0.4324, 0.691355, 0.608339, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uswj2"]
+material = SubResource("StandardMaterial3D_iuxr1")
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_so5gj"]
+size = Vector3(0.446228, 0.128845, 0.457581)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8407"]
+size = Vector3(0.507385, 0.150772, 0.503235)
+
+[node name="Soap" type="RigidBody3D"]
+collision_layer = 2
+mass = 5.0
+script = ExtResource("1_3mh4l")
+explosion = ExtResource("3_o8407")
+velocidad = 10.0
+gravedad = 5
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, -0.00619289, -0.10433)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_o8407")
+draw_pass_1 = SubResource("SphereMesh_uswj2")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0.191906, -0.00619289, -0.10433)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_o8407")
+draw_pass_1 = SubResource("SphereMesh_uswj2")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, -0.187543, -0.00619289, -0.10433)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_o8407")
+draw_pass_1 = SubResource("SphereMesh_uswj2")
+
+[node name="soat" parent="." instance=ExtResource("1_so5gj")]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.0210381, 0, 0.0879294)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0108337, 0.00448829, 0.0883403)
+shape = SubResource("BoxShape3D_so5gj")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0260315, 0.00524139, 0.0737)
+shape = SubResource("BoxShape3D_o8407")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

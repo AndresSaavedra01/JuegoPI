@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpwgtmyoghncy"]
+
+[ext_resource type="Shader" uid="uid://com4blgjqy4vs" path="res://tornado.tres" id="1_b05kn"]
+[ext_resource type="Texture2D" uid="uid://ciec1bunnrnk8" path="res://assets/T_VFX_WindNoise1.png" id="2_ohrl4"]
+[ext_resource type="ArrayMesh" uid="uid://e46qe4a5x8ai" path="res://assets/tornado.obj" id="3_xk6o3"]
+
+[sub_resource type="Gradient" id="Gradient_5nx0n"]
+offsets = PackedFloat32Array(0, 0.230769, 0.662722, 1)
+colors = PackedColorArray(0.334467, 0.480492, 0.129823, 0.0156863, 0.738917, 0.714594, 0.114028, 1, 0.827451, 0.654902, 0.929412, 1, 1, 0.407843, 0.0784314, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trfi8"]
+gradient = SubResource("Gradient_5nx0n")
+use_hdr = true
+
+[sub_resource type="Gradient" id="Gradient_mouwx"]
+offsets = PackedFloat32Array(0.0236686, 0.118343, 0.911243, 1)
+colors = PackedColorArray(0.991164, 0.991164, 0.991164, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gh7w6"]
+gradient = SubResource("Gradient_mouwx")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.991416, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2rtw"]
+render_priority = 0
+shader = ExtResource("1_b05kn")
+shader_parameter/Vector2Parameter = Vector2(-1, 1)
+shader_parameter/textura_base = ExtResource("2_ohrl4")
+shader_parameter/textura_2 = SubResource("GradientTexture2D_gh7w6")
+shader_parameter/color = SubResource("GradientTexture1D_trfi8")
+shader_parameter/Opacity = 1.0
+
+[node name="Tornado" type="Node3D"]
+
+[node name="Tornado" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_n2rtw")
+cast_shadow = 0
+mesh = ExtResource("3_xk6o3")

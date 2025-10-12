@@ -2,11 +2,11 @@ extends Node3D
 
 @onready var animation_tree = $AnimationTree2
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
-@export var proyectil: PackedScene
+@onready var cañon = $"Cañon"
 @onready var cañonMelee := $"robotV3/rig/Skeleton3D/cañon-melee"
-@onready var spawn_cañon := $robotV3/rig/Skeleton3D/Marker3D
-@onready var cañon := $"robotV3/rig/Skeleton3D/cañon"
 @onready var waterGun := $WaterGun
+@onready var bubble := preload("res://esenas/proyectil.tscn")
+@onready var soap := preload("res://esenas/soap.tscn")
 
 
 func idle():
@@ -27,20 +27,23 @@ func jump():
 
 func jump2():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "rotation", Vector3(0, rotation.y + deg_to_rad(720) ,0),0.5)
+	tween.tween_property(self, "rotation", Vector3(0, rotation.y + deg_to_rad(720) ,0),0.4)
 	
 
-
-
 func bubble_attack():
-	#state_machine.travel("attack")
-	animation_tree.set("parameters/attackpochito/request", 1)
+	cañon.proyectil = bubble
+	animation_tree.set("parameters/attackpochito/request",true )
 
+
+func soap_attack():
+	cañon.proyectil = soap
+	animation_tree.set("parameters/attackpochito/request",true )
 
 
 func water_attack(active: bool = false) -> void:
-		animation_tree.set("parameters/Blend2/blend_amount", int (active))
-		if active : waterGun.shoot()
+	var tween = get_tree().create_tween()
+	tween.tween_property(animation_tree,"parameters/Blend2/blend_amount",int (active), 0.2)
+	if active : waterGun.shoot()
 
 
 func attackMelee():
@@ -48,17 +51,21 @@ func attackMelee():
 	animation_tree.set("parameters/attack-melee/request", 1 )
 	
 
-
-func ataquar():
-	var p = proyectil.instantiate()
-	get_parent().add_child(p)
-	p.global_transform = spawn_cañon.global_transform
-	p.apply_central_impulse(-spawn_cañon.global_transform.basis.z * -20)
+func attackMelee_2():
+	#state_machine.travel("attack")
+	animation_tree.set("parameters/attack-melee-2/request",true )
 	
+
+func attackMelee_3():
+	animation_tree.set("parameters/attack-melee-3/request",true )
+
+
+
+
 
 
 func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
 	print(anim_name)
 	if anim_name == "attack":
 		await get_tree().create_timer(0.3).timeout
-		ataquar()
+		cañon.ataquar()
