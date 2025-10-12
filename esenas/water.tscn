@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc1q7dr5m4et1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kkgo4"]
+size = Vector2(100, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yubf5"]
+
+[node name="water" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_kkgo4")
+surface_material_override/0 = SubResource("ShaderMaterial_yubf5")

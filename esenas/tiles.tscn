@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://dyak0qicwtisk"]
 
-[ext_resource type="Texture2D" uid="uid://c7n0x1xcjnat7" path="res://TestTiles/gltf/spacebits_texture.png" id="42_he7j3"]
+[ext_resource type="Texture2D" path="res://TestTiles/gltf/spacebits_texture.png" id="42_he7j3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvulv"]
 resource_name = "spacebits_texture"
@@ -125,6 +125,7 @@ data = PackedVector3Array(1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -
 [node name="Tiles" type="Node3D"]
 
 [node name="terrain_low" type="MeshInstance3D" parent="." groups=["Pathable"]]
+visible = false
 mesh = SubResource("ArrayMesh_kmng1")
 skeleton = NodePath("")
 
@@ -134,6 +135,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_wg0wk")
 
 [node name="terrain_low_curved" type="MeshInstance3D" parent="." groups=["Pathable"]]
+visible = false
 mesh = SubResource("ArrayMesh_roik8")
 skeleton = NodePath("")
 
@@ -147,8 +149,10 @@ mesh = SubResource("ArrayMesh_ymp05")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="terrain_tall"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="terrain_tall/StaticBody3D"]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_4rleq")
 
 [node name="terrain_low_hide" type="MeshInstance3D" parent="." groups=["Pathable"]]
@@ -160,4 +164,5 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="terrain_low_hide"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="terrain_low_hide/StaticBody3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_wg0wk")

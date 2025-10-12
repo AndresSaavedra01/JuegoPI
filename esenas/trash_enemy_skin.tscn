@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bumnqkcap4uuo"]
+[gd_scene load_steps=25 format=4 uid="uid://bumnqkcap4uuo"]
 
 [ext_resource type="Texture2D" uid="uid://bfkowfoh6qhos" path="res://assets/trash_enemy_Texture.png" id="1_k4w6y"]
 [ext_resource type="Shader" uid="uid://cnsp1r2xqa5xe" path="res://shaders/trash_enemy_skin.tres" id="2_im5ls"]
@@ -652,6 +652,7 @@ tracks/18/keys = PackedFloat32Array(0, 1, -0.00626944, 0.00093838, 0.147461, 0.9
 [sub_resource type="Animation" id="Animation_fd0r8"]
 resource_name = "Jump"
 length = 1.375
+step = 0.0333
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1061,16 +1062,21 @@ tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = PackedFloat32Array(0, 1, -0.00626944, 0.00093838, 0.147461, 0.989048, 1.1, 1, -0.00626885, 0.000942293, 0.148078, 0.988955, 1.13333, 1, -0.00626726, 0.000952826, 0.14974, 0.988705, 1.16667, 1, -0.00626439, 0.000971478, 0.152683, 0.988255, 1.2, 1, -0.0062609, 0.000993732, 0.156193, 0.987706, 1.23333, 1, -0.00625777, 0.00101327, 0.159275, 0.987214, 1.26667, 1, -0.00625562, 0.00102649, 0.161361, 0.986875, 1.93333, 1, -0.0062553, 0.00102844, 0.161669, 0.986825, 1.96667, 1, -0.00625702, 0.00101792, 0.16001, 0.987095, 2, 1, -0.00626002, 0.000999293, 0.157071, 0.987567, 2.03333, 1, -0.00626353, 0.000977045, 0.153561, 0.988119, 2.06667, 1, -0.00626655, 0.000957491, 0.150476, 0.988593, 2.1, 1, -0.00626856, 0.000944249, 0.148387, 0.988909, 2.125, 1, -0.00626944, 0.00093838, 0.147461, 0.989048)
 
+[sub_resource type="Animation" id="Animation_im5ls"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rwsud"]
 _data = {
 &"Attack": SubResource("Animation_6uqav"),
 &"Idle": SubResource("Animation_ykmej"),
 &"Jump": SubResource("Animation_fd0r8"),
+&"RESET": SubResource("Animation_im5ls"),
 &"Run": SubResource("Animation_6it2w"),
 &"Walk": SubResource("Animation_1mqi2")
 }
 
 [node name="trash_enemy_skin" type="Node3D"]
+metadata/attack = true
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(0.783374, 0, 0, 0, 0.783374, 0, 0, 0, 0.783374, 0.00740597, -0.585912, -0.000120144)
@@ -1137,7 +1143,7 @@ bones/8/parent = 7
 bones/8/rest = Transform3D(0.00017345, 0.999928, -0.0119986, -1, 0.000173364, -8.17156e-06, -6.09085e-06, 0.0119986, 0.999928, 1.12298, 0.589667, 0.147362)
 bones/8/enabled = true
 bones/8/position = Vector3(1.12298, 0.589667, 0.147362)
-bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
+bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922464, 0.386038)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.022.L"
 bones/9/parent = 8
@@ -1232,7 +1238,7 @@ bones/21/rotation = Quaternion(-0.00965966, -0.000664877, -0.033301, 0.999398)
 bones/21/scale = Vector3(1, 1, 1)
 
 [node name="knot" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.23877, 1.31481e-14, 2.23821e-13, 4.24333e-16, 0.23877, 1.2097e-07, -2.27374e-13, -1.2097e-07, 0.23877, -0.00945394, 2.01049, -0.0232372)
+transform = Transform3D(0.23877, 1.3148e-14, 2.41585e-13, 1.39969e-14, 0.23877, 1.17412e-07, -2.27374e-13, -1.06738e-07, 0.23877, -0.00945394, 2.01049, -0.0232371)
 bone_name = "knot"
 bone_idx = 16
 
@@ -1272,6 +1278,16 @@ skin = SubResource("Skin_1n6ip")
 [node name="bottle" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_hx8he")
 skin = SubResource("Skin_1n6ip")
+
+[node name="leftArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
+transform = Transform3D(-0.89307, 0.449917, 6.00703e-07, -0.449917, -0.89307, 8.81031e-07, 9.1223e-07, 4.76837e-07, 1, 1.48294, 0.220992, 0.152422)
+bone_name = "Bone.022.L"
+bone_idx = 9
+
+[node name="rightArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
+transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 9.02452e-07, -9.34117e-07, 4.91738e-07, 1, -1.47954, 0.229224, 0.152422)
+bone_name = "Bone.022.R"
+bone_idx = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
