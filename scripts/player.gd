@@ -45,7 +45,7 @@ var coyote_timer := 0.0
 @onready var camera_pivot := $SpringArm3D
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
-@onready var hitbox := $robotV3/hitbox
+@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
 @onready var cooldown_timer := $Timer
 
 
@@ -188,6 +188,7 @@ func handle_soap_attack():
 
 
 func handle_melee_attack(delta):
+	hitbox.disable_mode = is_attacking
 	if not can_attack and Input.is_action_just_pressed("atacar"):
 		return  # evita que se inicie otro ataque si está en cooldown
 

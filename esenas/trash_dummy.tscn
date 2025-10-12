@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dacs5kx8md6gb"]
+[gd_scene load_steps=10 format=3 uid="uid://dacs5kx8md6gb"]
 
 [ext_resource type="Script" uid="uid://b00pvelib5yum" path="res://scripts/trash_dummy.gd" id="1_cfpri"]
 [ext_resource type="PackedScene" uid="uid://bhvvay10uw14o" path="res://blender/Trash_dummy.glb" id="2_ga5dm"]
+[ext_resource type="Texture2D" uid="uid://bgl4cwbc83dlu" path="res://boton_amarillo.png" id="3_5kb6d"]
+[ext_resource type="Texture2D" uid="uid://d2dxodx4xwd10" path="res://boton_verde.png" id="4_irba5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5kb6d"]
 radius = 0.416615
@@ -56,6 +58,9 @@ _data = {
 &"hit": SubResource("Animation_irba5")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qd37w"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Trash_dummy" type="CharacterBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 4
@@ -72,3 +77,21 @@ transform = Transform3D(0.555, 0, 0, 0, 0.395, 0, 0, 0, 0.545, 0, 0.0958643, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_bly23")
 }
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(120, 35)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 23.0
+value = 90.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_5kb6d")
+texture_progress = ExtResource("4_irba5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050121, 1.02973, 0)
+texture = SubResource("ViewportTexture_qd37w")
