@@ -1,13 +1,15 @@
-[gd_scene load_steps=53 format=4 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=56 format=4 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
+[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_isbpu"]
+[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
 [ext_resource type="PackedScene" uid="uid://b5iihuckyubt8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers-tall.glb" id="8_rgd8y"]
 [ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="9_6gyh5"]
 [ext_resource type="ArrayMesh" uid="uid://wy2sxb32lgv1" path="res://assets/assets bosque-nieve/Models/OBJ format/rocks.obj" id="10_cd8j8"]
 [ext_resource type="ArrayMesh" uid="uid://d3mm764chuvv0" path="res://assets/assets bosque-nieve/Models/OBJ format/flag.obj" id="12_isbpu"]
-[ext_resource type="Script" path="res://esenas/checkpoint.gd" id="13_0bmip"]
+[ext_resource type="Script" uid="uid://daj0th37vaqju" path="res://esenas/checkpoint.gd" id="13_0bmip"]
 [ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 [ext_resource type="ArrayMesh" uid="uid://bbahle3o8jhag" path="res://assets/assets bosque-nieve/Models/OBJ format/tree-pine.obj" id="14_otlbq"]
 
@@ -264,6 +266,17 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 [sub_resource type="Environment" id="Environment_6gyh5"]
 background_mode = 2
 sky = SubResource("Sky_rgd8y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isbpu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_isbpu")
+shader_parameter/caustic_sampler = ExtResource("6_0bmip")
+shader_parameter/water_color = Color(0.0196078, 0.764706, 0.866667, 1)
+shader_parameter/water_depth_color = Color(1, 1, 1, 1)
+shader_parameter/water_edge_distance = 0.1
+shader_parameter/water_depth_distance = 0.3
+shader_parameter/water_texture_scale = 25.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bmip"]
 size = Vector3(1, 3.67721, 3.00464)
@@ -548,6 +561,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("../flowers-tall2")
+surface_material_override/0 = SubResource("ShaderMaterial_isbpu")
 
 [node name="checkpoint" type="Area3D" parent="."]
 transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -4.21359, 15.917, 36.2568)
