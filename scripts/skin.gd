@@ -48,7 +48,7 @@ func water_attack(active: bool = false) -> void:
 
 func attackMelee():
 	#state_machine.travel("attack")
-	animation_tree.set("parameters/attack-melee/request",true )
+	animation_tree.set("parameters/attack-melee/request", 1 )
 	
 
 func attackMelee_2():

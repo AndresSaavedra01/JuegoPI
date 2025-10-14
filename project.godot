@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JuegoPI"
-run/main_scene="res://esenas/world.tscn"
+run/main_scene="uid://fv3jfe3br3bv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [dotnet]
@@ -21,10 +21,6 @@ project/assembly_name="JuegoPI"
 [filesystem]
 
 import/blender/enabled=false
-
-[global_group]
-
-Pathable=""
 
 [input]
 

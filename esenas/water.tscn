@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc1q7dr5m4et1"]
+[gd_scene load_steps=6 format=3 uid="uid://cc1q7dr5m4et1"]
+
+[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="1_su10h"]
+[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="2_wu67k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kkgo4"]
-size = Vector2(100, 100)
+size = Vector2(300, 300)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yubf5"]
+in_3d_space = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yubf5"]
+render_priority = 0
+shader = ExtResource("1_su10h")
+shader_parameter/main_noise_sampler = SubResource("NoiseTexture2D_yubf5")
+shader_parameter/caustic_sampler = ExtResource("2_wu67k")
+shader_parameter/water_color = Color(0.0196078, 0.764706, 0.866667, 1)
+shader_parameter/water_depth_color = Color(1, 1, 1, 1)
+shader_parameter/water_edge_distance = 0.1
+shader_parameter/water_depth_distance = 0.3
+shader_parameter/water_texture_scale = 10.0
 
 [node name="water" type="MeshInstance3D"]
+gi_mode = 0
 mesh = SubResource("PlaneMesh_kkgo4")
 surface_material_override/0 = SubResource("ShaderMaterial_yubf5")

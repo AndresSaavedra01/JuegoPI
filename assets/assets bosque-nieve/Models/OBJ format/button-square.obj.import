@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkutrsplnb1px"
+path="res://.godot/imported/button-square.obj-7961f0159315c38d778cfe3a2544052e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/button-square.obj-7961f0159315c38d778cfe3a2544052e.mesh"]
+
+source_file="res://assets/assets bosque-nieve/Models/OBJ format/button-square.obj"
+dest_files=["res://.godot/imported/button-square.obj-7961f0159315c38d778cfe3a2544052e.mesh", "res://.godot/imported/button-square.obj-7961f0159315c38d778cfe3a2544052e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

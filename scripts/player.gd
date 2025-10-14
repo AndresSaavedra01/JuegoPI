@@ -15,6 +15,7 @@ extends CharacterBody3D
 @export var mouse_sens_y := 0.5
 @export var camera_pitch_min := -60.0
 @export var camera_pitch_max := 40.0
+var respawn = Vector3(0,0,0)
 
 # Ataques
 @export var bubble_rate := 0.3
@@ -66,6 +67,8 @@ func _input(event: InputEvent):
 func _physics_process(delta: float):
 	handle_movement(delta)
 	move_and_slide()
+	if position.y < -3.12:
+		respawn_player()
 	$Control/Label.text = str(Engine.get_frames_per_second())
 
 
@@ -163,7 +166,6 @@ func handle_camera_input(event: InputEvent):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-
 # ==========================================================
 # ATAQUES
 # ==========================================================
@@ -217,7 +219,9 @@ func continue_combo():
 	combo_timer = 0.0
 	combo_step += 1
 	execute_melee_attack(combo_step)
-
+		
+func respawn_player():
+	position=respawn
 
 func execute_melee_attack(step):
 	can_attack = false
