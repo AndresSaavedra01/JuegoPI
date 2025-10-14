@@ -146,285 +146,427 @@
 [node name="GeneralLevelTileSet" type="Node3D"]
 
 [node name="arrow2" parent="." instance=ExtResource("1_0bofr")]
+visible = false
 
 [node name="arrows" parent="." instance=ExtResource("2_3qlnt")]
+visible = false
 
 [node name="barrel" parent="." instance=ExtResource("3_dt47b")]
+visible = false
 
 [node name="block-grass-corner-low" parent="." instance=ExtResource("4_2fp5n")]
+visible = false
 
 [node name="block-grass-corner-overhang-low" parent="." instance=ExtResource("5_0jo7s")]
+visible = false
 
 [node name="block-grass-corner-overhang" parent="." instance=ExtResource("6_qcaus")]
+visible = false
 
 [node name="block-grass-corner" parent="." instance=ExtResource("7_sto8w")]
+visible = false
 
 [node name="block-grass-curve-half" parent="." instance=ExtResource("8_xfy4s")]
+visible = false
 
 [node name="block-grass-curve-low" parent="." instance=ExtResource("9_st7hu")]
+visible = false
 
 [node name="block-grass-curve" parent="." instance=ExtResource("10_man3w")]
+visible = false
 
 [node name="block-grass-edge" parent="." instance=ExtResource("11_62j2q")]
+visible = false
 
 [node name="block-grass-hexagon" parent="." instance=ExtResource("12_7coxj")]
+visible = false
 
 [node name="block-grass-large-slope-narrow" parent="." instance=ExtResource("13_gwjru")]
+visible = false
 
 [node name="block-grass-large-slope-steep-narrow" parent="." instance=ExtResource("14_rtxlc")]
+visible = false
 
 [node name="block-grass-large-slope-steep" parent="." instance=ExtResource("15_pkvrj")]
+visible = false
 
 [node name="block-grass-large-slope" parent="." instance=ExtResource("16_wcl4k")]
+visible = false
 
 [node name="block-grass-large-tall" parent="." instance=ExtResource("17_ucvxl")]
+visible = false
 
 [node name="block-grass-large" parent="." instance=ExtResource("18_vgyut")]
+visible = false
 
 [node name="block-grass-long" parent="." instance=ExtResource("19_rjop1")]
+visible = false
 
 [node name="block-grass-low-hexagon" parent="." instance=ExtResource("20_owo31")]
+visible = false
 
 [node name="block-grass-low-large" parent="." instance=ExtResource("21_5ojw2")]
+visible = false
 
 [node name="block-grass-low-long" parent="." instance=ExtResource("22_ote13")]
+visible = false
 
 [node name="block-grass-low-narrow" parent="." instance=ExtResource("23_a4wdx")]
+visible = false
 
 [node name="block-grass-low" parent="." instance=ExtResource("24_nw3ka")]
+visible = false
 
 [node name="block-grass-narrow" parent="." instance=ExtResource("25_ru8p3")]
+visible = false
 
 [node name="block-grass-overhang-corner" parent="." instance=ExtResource("26_68yv2")]
+visible = false
 
 [node name="block-grass-overhang-edge" parent="." instance=ExtResource("27_goqj5")]
+visible = false
 
 [node name="block-grass-overhang-hexagon" parent="." instance=ExtResource("28_xcwmk")]
+visible = false
 
 [node name="block-grass-overhang-large-slope-narrow" parent="." instance=ExtResource("29_mwdsh")]
+visible = false
 
 [node name="block-grass-overhang-large-slope-steep-narrow" parent="." instance=ExtResource("30_k0x2r")]
+visible = false
 
 [node name="block-grass-overhang-large-slope-steep" parent="." instance=ExtResource("31_oxflu")]
+visible = false
 
 [node name="block-grass-overhang-large-slope" parent="." instance=ExtResource("32_b1rdm")]
+visible = false
 
 [node name="block-grass-overhang-large-tall" parent="." instance=ExtResource("33_14xbj")]
+visible = false
 
 [node name="block-grass-overhang-large" parent="." instance=ExtResource("34_3bltp")]
+visible = false
 
 [node name="block-grass-overhang-long" parent="." instance=ExtResource("35_237ry")]
+visible = false
 
 [node name="block-grass-overhang-low-hexagon" parent="." instance=ExtResource("36_20h27")]
+visible = false
 
 [node name="block-grass-overhang-low-large" parent="." instance=ExtResource("37_861cd")]
+visible = false
 
 [node name="block-grass-overhang-low-long" parent="." instance=ExtResource("38_iqmqn")]
+visible = false
 
 [node name="block-grass-overhang-low-narrow" parent="." instance=ExtResource("39_n2o3s")]
+visible = false
 
 [node name="block-grass-overhang-low" parent="." instance=ExtResource("40_mhs1n")]
+visible = false
 
 [node name="block-grass-overhang-narrow" parent="." instance=ExtResource("41_7841x")]
+visible = false
 
 [node name="block-grass" parent="." instance=ExtResource("42_ffip2")]
+visible = false
 
 [node name="block-moving-blue" parent="." instance=ExtResource("43_vwefj")]
+visible = false
 
 [node name="block-moving-large" parent="." instance=ExtResource("44_3cxen")]
+visible = false
 
 [node name="block-moving" parent="." instance=ExtResource("45_t7e4x")]
+visible = false
 
 [node name="block-snow-corner-low" parent="." instance=ExtResource("46_vx7ia")]
+visible = false
 
 [node name="block-snow-corner-overhang-low" parent="." instance=ExtResource("47_fpkkp")]
+visible = false
 
 [node name="block-snow-corner-overhang" parent="." instance=ExtResource("48_ga32p")]
+visible = false
 
 [node name="block-snow-corner" parent="." instance=ExtResource("49_fgfkk")]
+visible = false
 
 [node name="block-snow-curve-half" parent="." instance=ExtResource("50_u1q78")]
+visible = false
 
 [node name="block-snow-curve-low" parent="." instance=ExtResource("51_cx4dc")]
+visible = false
 
 [node name="block-snow-curve" parent="." instance=ExtResource("52_vhroi")]
+visible = false
 
 [node name="block-snow-edge" parent="." instance=ExtResource("53_ldvb3")]
+visible = false
 
 [node name="block-snow-hexagon" parent="." instance=ExtResource("54_5gwhg")]
+visible = false
 
 [node name="block-snow-large-slope-narrow" parent="." instance=ExtResource("55_5fv45")]
+visible = false
 
 [node name="block-snow-large-slope-steep-narrow" parent="." instance=ExtResource("56_odwv1")]
+visible = false
 
 [node name="block-snow-large-slope-steep" parent="." instance=ExtResource("57_25vg7")]
+visible = false
 
 [node name="block-snow-large-slope" parent="." instance=ExtResource("58_y1aas")]
+visible = false
 
 [node name="block-snow-large-tall" parent="." instance=ExtResource("59_ce1rk")]
+visible = false
 
 [node name="block-snow-large" parent="." instance=ExtResource("60_y7218")]
+visible = false
 
 [node name="block-snow-long" parent="." instance=ExtResource("61_a2rip")]
+visible = false
 
 [node name="block-snow-low-hexagon" parent="." instance=ExtResource("62_eca2f")]
+visible = false
 
 [node name="block-snow-low-large" parent="." instance=ExtResource("63_b2qiq")]
+visible = false
 
 [node name="block-snow-low-long" parent="." instance=ExtResource("64_q6o1k")]
+visible = false
 
 [node name="block-snow-low-narrow" parent="." instance=ExtResource("65_2liqd")]
+visible = false
 
 [node name="block-snow-low" parent="." instance=ExtResource("66_pwwxa")]
+visible = false
 
 [node name="block-snow-narrow" parent="." instance=ExtResource("67_i8rra")]
+visible = false
 
 [node name="block-snow-overhang-corner" parent="." instance=ExtResource("68_34853")]
+visible = false
 
 [node name="block-snow-overhang-edge" parent="." instance=ExtResource("69_eg5fn")]
+visible = false
 
 [node name="block-snow-overhang-hexagon" parent="." instance=ExtResource("70_pbq6v")]
+visible = false
 
 [node name="block-snow-overhang-large-slope-narrow" parent="." instance=ExtResource("71_j64id")]
+visible = false
 
 [node name="block-snow-overhang-large-slope-steep-narrow" parent="." instance=ExtResource("72_kn7wo")]
+visible = false
 
 [node name="block-snow-overhang-large-slope-steep" parent="." instance=ExtResource("73_hws2d")]
+visible = false
 
 [node name="block-snow-overhang-large-slope" parent="." instance=ExtResource("74_6l3jk")]
+visible = false
 
 [node name="block-snow-overhang-large-tall" parent="." instance=ExtResource("75_67tgv")]
+visible = false
 
 [node name="block-snow-overhang-large" parent="." instance=ExtResource("76_e8gg3")]
+visible = false
 
 [node name="block-snow-overhang-long" parent="." instance=ExtResource("77_d4lv3")]
+visible = false
 
 [node name="block-snow-overhang-low-hexagon" parent="." instance=ExtResource("78_1hxqt")]
+visible = false
 
 [node name="block-snow-overhang-low-large" parent="." instance=ExtResource("79_mqavi")]
+visible = false
 
 [node name="block-snow-overhang-low-long" parent="." instance=ExtResource("80_5koxq")]
+visible = false
 
 [node name="block-snow-overhang-low-narrow" parent="." instance=ExtResource("81_dt3bc")]
+visible = false
 
 [node name="block-snow-overhang-low" parent="." instance=ExtResource("82_xwnl8")]
+visible = false
 
 [node name="block-snow-overhang-narrow" parent="." instance=ExtResource("83_vfvja")]
+visible = false
 
 [node name="block-snow" parent="." instance=ExtResource("84_4dn3m")]
+visible = false
 
 [node name="bomb" parent="." instance=ExtResource("85_xsl8n")]
+visible = false
 
 [node name="button-round" parent="." instance=ExtResource("86_fyire")]
+visible = false
 
 [node name="button-square" parent="." instance=ExtResource("87_pp717")]
+visible = false
 
 [node name="chest" parent="." instance=ExtResource("88_ew8px")]
+visible = false
 
 [node name="coin-bronze" parent="." instance=ExtResource("89_6gb5a")]
+visible = false
 
 [node name="coin-gold" parent="." instance=ExtResource("90_d2ojx")]
+visible = false
 
 [node name="coin-silver" parent="." instance=ExtResource("91_qie2p")]
+visible = false
 
 [node name="crate-item-strong" parent="." instance=ExtResource("92_f6kwq")]
+visible = false
 
 [node name="crate-item" parent="." instance=ExtResource("93_77ub1")]
+visible = false
 
 [node name="crate-strong" parent="." instance=ExtResource("94_nkbe6")]
+visible = false
 
 [node name="crate" parent="." instance=ExtResource("95_ejcna")]
+visible = false
 
 [node name="door-large-open" parent="." instance=ExtResource("96_2ycnh")]
+visible = false
 
 [node name="door-open" parent="." instance=ExtResource("97_kjxik")]
+visible = false
 
 [node name="door-rotate-large" parent="." instance=ExtResource("98_gv873")]
+visible = false
 
 [node name="door-rotate" parent="." instance=ExtResource("99_855h6")]
+visible = false
 
 [node name="fence-broken" parent="." instance=ExtResource("100_wfsj1")]
+visible = false
 
 [node name="fence-corner-curved" parent="." instance=ExtResource("101_j8ix2")]
+visible = false
 
 [node name="fence-corner" parent="." instance=ExtResource("102_2ifol")]
+visible = false
 
 [node name="fence-low-broken" parent="." instance=ExtResource("103_8mgdn")]
+visible = false
 
 [node name="fence-low-corner-curved" parent="." instance=ExtResource("104_tpf7j")]
+visible = false
 
 [node name="fence-low-corner" parent="." instance=ExtResource("105_3sgdm")]
+visible = false
 
 [node name="fence-low-straight" parent="." instance=ExtResource("106_e4f6n")]
+visible = false
 
 [node name="fence-straight" parent="." instance=ExtResource("107_4moi6")]
+visible = false
 
 [node name="flag" parent="." instance=ExtResource("108_xlaw3")]
+visible = false
 
 [node name="flowers-tall" parent="." instance=ExtResource("109_r4w12")]
+visible = false
 
 [node name="flowers" parent="." instance=ExtResource("110_a5041")]
+visible = false
 
 [node name="grass" parent="." instance=ExtResource("111_a6via")]
+visible = false
 
 [node name="heart" parent="." instance=ExtResource("112_g5pmu")]
+visible = false
 
 [node name="hedge-corner" parent="." instance=ExtResource("113_mrhn1")]
+visible = false
 
 [node name="hedge" parent="." instance=ExtResource("114_ti4fu")]
+visible = false
 
 [node name="jewel" parent="." instance=ExtResource("115_ldine")]
+visible = false
 
 [node name="key" parent="." instance=ExtResource("116_fe27p")]
+visible = false
 
 [node name="ladder-broken" parent="." instance=ExtResource("117_pef05")]
+visible = false
 
 [node name="ladder-long" parent="." instance=ExtResource("118_fe1rs")]
+visible = false
 
 [node name="ladder" parent="." instance=ExtResource("119_6d7rg")]
+visible = false
 
 [node name="lever" parent="." instance=ExtResource("120_qp5gf")]
+visible = false
 
 [node name="lock" parent="." instance=ExtResource("121_8c5x4")]
+visible = false
 
 [node name="mushrooms" parent="." instance=ExtResource("122_edhjb")]
+visible = false
 
 [node name="plant" parent="." instance=ExtResource("123_5qjml")]
+visible = false
 
 [node name="platform-fortified" parent="." instance=ExtResource("124_l7hnw")]
+visible = false
 
 [node name="platform-overhang" parent="." instance=ExtResource("125_wenqj")]
+visible = false
 
 [node name="platform-ramp" parent="." instance=ExtResource("126_rbae0")]
+visible = false
 
 [node name="platform" parent="." instance=ExtResource("127_st8gm")]
+visible = false
 
 [node name="poles" parent="." instance=ExtResource("128_7inp6")]
+visible = false
 
 [node name="rocks" parent="." instance=ExtResource("129_52psx")]
+visible = false
 
 [node name="saw" parent="." instance=ExtResource("130_lhxn8")]
+visible = false
 
 [node name="sign" parent="." instance=ExtResource("131_b17od")]
+visible = false
 
 [node name="spike-block-wide" parent="." instance=ExtResource("132_0r6dr")]
+visible = false
 
 [node name="spike-block" parent="." instance=ExtResource("133_2feme")]
+visible = false
 
 [node name="stones" parent="." instance=ExtResource("134_rbp8e")]
+visible = false
 
 [node name="trap-spikes-large" parent="." instance=ExtResource("135_a4vtm")]
+visible = false
 
 [node name="trap-spikes" parent="." instance=ExtResource("136_mssdn")]
+visible = false
 
 [node name="tree-pine-small" parent="." instance=ExtResource("137_k3jsp")]
+visible = false
 
 [node name="tree-pine-snow-small" parent="." instance=ExtResource("138_02a4k")]
+visible = false
 
 [node name="tree-pine-snow" parent="." instance=ExtResource("139_lllkc")]
+visible = false
 
 [node name="tree-pine" parent="." instance=ExtResource("140_vb2q8")]
+visible = false
 
 [node name="tree-snow" parent="." instance=ExtResource("141_36pkx")]
+visible = false
 
 [node name="tree" parent="." instance=ExtResource("142_3uyrh")]
+visible = false
