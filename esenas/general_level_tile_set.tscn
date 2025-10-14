@@ -563,7 +563,7 @@ visible = false
 visible = false
 
 [node name="tree-pine" parent="." instance=ExtResource("140_vb2q8")]
-visible = false
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="tree-snow" parent="." instance=ExtResource("141_36pkx")]
 visible = false
