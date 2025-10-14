@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw8f0ctcjfkg1"]
+
+[ext_resource type="Script" uid="uid://d1h3eggti583c" path="res://scripts/cañon.gd" id="1_8whfi"]
+
+[node name="Cañon" type="Node3D"]
+script = ExtResource("1_8whfi")
+
+[node name="Marker3D" type="Marker3D" parent="."]

@@ -1,58 +1,204 @@
-[gd_scene load_steps=6 format=3 uid="uid://du1bhsj5vdl71"]
+[gd_scene load_steps=34 format=3 uid="uid://du1bhsj5vdl71"]
 
-[ext_resource type="PackedScene" uid="uid://nx0mp17t2mnu" path="res://assets/trash_enemy.glb" id="1_c7nko"]
 [ext_resource type="Script" uid="uid://oawud7huax1w" path="res://scripts/trash_enemy.gd" id="1_cmuh4"]
+[ext_resource type="PackedScene" uid="uid://bumnqkcap4uuo" path="res://esenas/trash_enemy_skin.tscn" id="2_cmuh4"]
+[ext_resource type="Script" uid="uid://c5dmryvwrs1qs" path="res://scripts/state_machine.gd" id="3_hyi7t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cmuh4"]
-radius = 0.895549
-height = 2.17143
+radius = 0.78
+height = 2.05
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cmuh4"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hyi7t"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bben6"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcyod"]
 animation = &"Run"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hyi7t"]
-graph_offset = Vector2(-75.0685, 6.16945)
-nodes/Run/node = SubResource("AnimationNodeAnimation_cmuh4")
-nodes/Run/position = Vector2(260, 60)
-nodes/output/position = Vector2(540, 100)
-node_connections = [&"output", 0, &"Run"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6airs"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6d2tf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hp4yu"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxfwd"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6bjn7"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k50qa"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68bwi"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvcmt"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3mf36"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7qdbr"]
+xfade_time = 0.2
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ktvni"]
+xfade_time = 0.2
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_455e0"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_722xm"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_18opo"]
+xfade_time = 0.2
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0vprp"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_33u1e"]
+xfade_time = 0.2
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oicse"]
+xfade_time = 0.2
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h4q8g"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hyi7t"]
+xfade_time = 0.5
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bben6"]
+xfade_time = 0.5
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcyod"]
+xfade_time = 0.5
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6airs"]
+xfade_time = 0.5
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fu1pj"]
+states/Attack/node = SubResource("AnimationNodeAnimation_cmuh4")
+states/Attack/position = Vector2(200, 132)
+states/End/position = Vector2(745, 132)
+states/Idle/node = SubResource("AnimationNodeAnimation_hyi7t")
+states/Idle/position = Vector2(200, -49)
+states/Jump/node = SubResource("AnimationNodeAnimation_bben6")
+states/Jump/position = Vector2(599, 132)
+states/Run/node = SubResource("AnimationNodeAnimation_pcyod")
+states/Run/position = Vector2(599, -49)
+states/Start/position = Vector2(90, -49)
+states/Walk/node = SubResource("AnimationNodeAnimation_6airs")
+states/Walk/position = Vector2(407, -170)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6d2tf"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_hp4yu"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_vxfwd"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_6bjn7"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_k50qa"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_68bwi"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_cvcmt"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_3mf36"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_7qdbr"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_ktvni"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_455e0"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_722xm"), "Jump", "Attack", SubResource("AnimationNodeStateMachineTransition_18opo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_0vprp"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_33u1e"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_oicse"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4q8g"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_hyi7t"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_bben6"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_pcyod"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_6airs")]
+graph_offset = Vector2(-307.758, -183.673)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hyi7t"]
+radius = 10.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyi7t"]
+radius = 0.266147
+height = 1.16622
 
 [node name="TrashEnemy" type="CharacterBody3D" groups=["Enemies"]]
+collision_layer = 9
 script = ExtResource("1_cmuh4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0714397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.204807, 0)
 shape = SubResource("CapsuleShape3D_cmuh4")
 
-[node name="trash_enemy" parent="." instance=ExtResource("1_c7nko")]
-
-[node name="Skeleton3D" parent="trash_enemy/Armature" index="0"]
-bones/0/position = Vector3(-0.00664424, -0.0800596, -0.276029)
-bones/1/rotation = Quaternion(-0.0980766, 0.084194, 0.702077, 0.700272)
-bones/2/rotation = Quaternion(-0.654774, 0.247734, 0.252688, 0.667868)
-bones/3/position = Vector3(-7.73007e-08, 0.565416, 1.63472e-08)
-bones/3/rotation = Quaternion(6.49209e-08, 1.28947e-07, 0.911577, -0.41113)
-bones/4/rotation = Quaternion(-0.0980772, -0.0841934, -0.702076, 0.700272)
-bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
-bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37588e-10)
-bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
-bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
-bones/8/position = Vector3(1.12298, 0.589667, 0.147362)
-bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922464, 0.386038)
-bones/9/rotation = Quaternion(-0.00591938, -0.000977152, -0.16228, 0.986726)
-bones/13/rotation = Quaternion(-7.45055e-09, 6.96332e-13, 2.84216e-14, 1)
-bones/14/rotation = Quaternion(3.11708e-19, 1.19209e-07, 5.4316e-20, 1)
-bones/15/rotation = Quaternion(-0.188101, 1.19602e-14, -4.48467e-08, 0.98215)
-bones/17/position = Vector3(-1.13728, 0.589667, 0.147362)
-bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
-bones/18/rotation = Quaternion(-0.00626944, 0.00093838, 0.147461, 0.989048)
-
-[node name="knot" parent="trash_enemy/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.23877, 2.71025e-13, -8.17124e-14, 3.12592e-13, 0.23877, -4.26954e-08, -6.03961e-14, -9.25064e-08, 0.23877, -0.00945394, 2.01049, -0.0232362)
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../trash_enemy")
-tree_root = SubResource("AnimationNodeBlendTree_hyi7t")
-anim_player = NodePath("../trash_enemy/AnimationPlayer")
+root_node = NodePath("../trash_enemy_skin")
+tree_root = SubResource("AnimationNodeStateMachine_fu1pj")
+anim_player = NodePath("../trash_enemy_skin/AnimationPlayer")
 
-[editable path="trash_enemy"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.3
+path_height_offset = 0.1
+radius = 0.78
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_hyi7t")
+metadata/_custom_type_script = "uid://c5dmryvwrs1qs"
+
+[node name="DetectArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+angular_damp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
+shape = SubResource("SphereShape3D_hyi7t")
+
+[node name="DetectTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="VisionCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -10)
+collision_mask = 3
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="trash_enemy_skin" parent="." instance=ExtResource("2_cmuh4")]
+
+[node name="arms" parent="trash_enemy_skin/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = null
+
+[node name="leftArea3D" type="Area3D" parent="trash_enemy_skin/Armature/Skeleton3D/leftArm" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trash_enemy_skin/Armature/Skeleton3D/leftArm/leftArea3D"]
+transform = Transform3D(1.39997, -5.183e-05, -0.00852641, -5.11964e-05, 1.3999, -0.0169246, 0.00852643, 0.0169246, 1.39987, -0.0253428, 0.421183, 0.0133775)
+shape = SubResource("CapsuleShape3D_hyi7t")
+
+[node name="rightArea3D" type="Area3D" parent="trash_enemy_skin/Armature/Skeleton3D/rightArm" index="0"]
+transform = Transform3D(0.999383, 0.00123378, 0.0351204, 0.00123461, 0.997535, -0.0701709, -0.0351204, 0.0701711, 0.996917, 0.0460794, 0.00732195, 0.00555131)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trash_enemy_skin/Armature/Skeleton3D/rightArm/rightArea3D"]
+transform = Transform3D(1.39997, -5.183e-05, -0.00852641, -5.11964e-05, 1.3999, -0.0169246, 0.00852643, 0.0169246, 1.39987, -0.0253428, 0.421183, 0.0133775)
+shape = SubResource("CapsuleShape3D_hyi7t")
+
+[node name="FloorCast" type="RayCast3D" parent="trash_enemy_skin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59448)
+target_position = Vector3(0, -2, 0)
+debug_shape_thickness = 5
+
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="DetectTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="trash_enemy_skin/Armature/Skeleton3D/leftArm/leftArea3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="trash_enemy_skin/Armature/Skeleton3D/rightArm/rightArea3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="trash_enemy_skin"]
