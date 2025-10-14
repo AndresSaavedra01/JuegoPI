@@ -1,5 +1,5 @@
-res://esenas/world.tscn
 res://esenas/player.tscn
+res://tornado.tres
 res://esenas/modelo_robot.tscn
 res://esenas/trash_dummy.tscn
-res://tornado.tres
+res://scripts/state_machine.gd
