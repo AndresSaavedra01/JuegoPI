@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=51 format=4 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_isbpu"]
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
 [ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="9_6gyh5"]
+[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://esenas/grid_map.gd" id="11_2q37d"]
 [ext_resource type="ArrayMesh" uid="uid://d3mm764chuvv0" path="res://assets/assets bosque-nieve/Models/OBJ format/flag.obj" id="12_isbpu"]
 [ext_resource type="Script" uid="uid://daj0th37vaqju" path="res://esenas/checkpoint.gd" id="13_0bmip"]
 [ext_resource type="MeshLibrary" uid="uid://pq6g8n1ju2kq" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
@@ -222,7 +223,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_rgd8y")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0us6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isbpu"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -506,7 +507,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_f0us6")
+surface_material_override/0 = SubResource("ShaderMaterial_isbpu")
 
 [node name="checkpoint" type="Area3D" parent="."]
 transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -4.21359, 15.917, 36.2568)
@@ -542,8 +543,9 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.750
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("13_cd8j8")
 data = {
-"cells": PackedInt32Array(-1, 1, 131213, -1, 2, 131213)
+"cells": PackedInt32Array(-1, 1, 131213)
 }
+script = ExtResource("11_2q37d")
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [connection signal="body_entered" from="checkpoint" to="checkpoint" method="_on_body_entered"]
