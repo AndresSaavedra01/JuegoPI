@@ -5,6 +5,9 @@ class_name Proyectil
 @export var velocidad: float = 20.0
 @export var radio_collider: float = 0.1              # radio de la esfera
 @export var gravedad = 0
+var knockbackForce : float
+var knockbackUpForce : float
+var damage : float
 
 func _ready():
 
@@ -27,3 +30,13 @@ func _physics_process(delta):
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	pass
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Enemies"):
+		if body.has_method("takeDamage"):
+			var push_dir: Vector3 = (body.global_transform.origin - global_transform.origin).normalized()
+			body.takeDamage(push_dir, damage, knockbackForce, knockbackUpForce)
+			if is_instance_valid(self):
+				queue_free()
+	

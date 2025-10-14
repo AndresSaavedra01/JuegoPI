@@ -34,10 +34,14 @@ func _ready() -> void:
 	stateMachine.addState(State.new("Run", Callable(self, "run")))
 	stateMachine.addState(State.new("Walk", Callable(self, "walk")))
 	stateMachine.addState(State.new("Attack", Callable(self, "attack")))
-	stateMachine.addRelations("Idle", ["Run", "Walk", "Attack"])
-	stateMachine.addRelations("Run", ["Idle", "Walk", "Attack"])
-	stateMachine.addRelations("Walk", ["Run", "Idle", "Attack"])
-	stateMachine.addRelations("Attack", ["Run", "Idle", "Walk"])
+	var dieState : State = State.new("Die", Callable(self, "die"))
+	dieState.setOneShot(true)
+	stateMachine.addState(dieState)
+	stateMachine.addRelations("Idle", ["Run", "Walk", "Attack", "Die"])
+	stateMachine.addRelations("Run", ["Idle", "Walk", "Attack", "Die"])
+	stateMachine.addRelations("Walk", ["Run", "Idle", "Attack", "Die"])
+	stateMachine.addRelations("Attack", ["Run", "Idle", "Walk", "Die"])
+	stateMachine.addRelations("Die", ["Run", "Idle", "Walk", "Attack"])
 	stateMachine.setActiveState("Idle")
 	
 func run() -> void:
@@ -51,6 +55,10 @@ func run() -> void:
 			animationPlayback.start("Attack")
 		else:
 			animationPlayback.travel("Attack")
+		var delta : float = get_physics_process_delta_time()
+		if not is_on_floor():
+			velocity.y -= delta * fallSpeed
+		move_and_slide()
 
 func walk() -> void:
 	if not navAgent.is_target_reached():
@@ -100,10 +108,14 @@ func attack() -> void:
 	knockback.y = knockbackUpForce
 	player.velocity = knockback
 	player.move_and_slide()
+	player.takeDamage(damage)
 	attackStart = Time.get_ticks_msec()
 
 func die() -> void:
-	print("die")
+	animationPlayback.travel("Die")
+	await get_tree().create_timer(0.5).timeout
+	if is_instance_valid(self):
+		queue_free()
 
 func move(stateFrom : String, target : Vector3, speed : float):
 	var delta : float = get_physics_process_delta_time()
@@ -123,6 +135,19 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 	move_and_slide()
+	
+func takeDamage(push_dir : Vector3, damage : float, knockbackForce : float, knockbackUpForce : float):
+	if health_points > 0:
+		health_points -= damage
+		var delta : float = get_physics_process_delta_time()
+		var knockback :Vector3 = push_dir * knockbackForce
+		knockback.y = knockbackUpForce
+		velocity = knockback
+		print(health_points)
+		animationPlayback.travel("takeDamage")
+		move_and_slide()
+	if health_points <= 0:
+		stateMachine.travel("Die")
 
 func _on_timer_timeout() -> void:
 	var overlaps = detectArea.get_overlapping_bodies()
@@ -139,15 +164,15 @@ func _on_timer_timeout() -> void:
 						detectArea.get_node("CollisionShape3D").get_shape().radius = 30
 						visionCast.target_position.z = -30
 
-func _on_detect_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+func _on_detect_area_body_exited(bodyExited: Node3D) -> void:
+	if bodyExited.is_in_group("Player"):
 		lastPatrolCheck = Time.get_ticks_usec()
 		stateMachine.travel("Idle")
 		detectArea.get_node("CollisionShape3D").get_shape().radius = 10
 		visionCast.target_position.z = -10
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body)
-	if body.is_in_group("Player"):
+func _on_area_3d_body_entered(bodyEntered: Node3D) -> void:
+	print(bodyEntered)
+	if bodyEntered.is_in_group("Player"):
 		attack()

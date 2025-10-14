@@ -14,19 +14,20 @@ var particles = []  # cada partícula = {node, vel, time}
 
 func _process(delta: float) -> void:
 	for p in particles:
-		# actualizar física
-		p.vel.y += gravity * delta
-		p.node.global_transform.origin += p.vel * delta
-		p.time -= delta
+		if is_instance_valid(p["node"]):
+			# actualizar física
+			p.vel.y += gravity * delta
+			p.node.global_transform.origin += p.vel * delta
+			p.time -= delta
 
 	# limpiar las que ya murieron
 	for p in particles.duplicate():
-		if p.time <= 0:
+		if is_instance_valid(p["node"]) and p.time <= 0:
 			p.node.queue_free()
 			particles.erase(p)
 	
 
-func shoot():
+func shoot(damage : float, knockbackForce : float, knockbackUpForce : float):
 	var origin = $Marker.global_transform
 	var dir = -$Marker.global_transform.basis.z
 	
@@ -39,6 +40,9 @@ func shoot():
 	
 	# instanciar la gota
 	var bullet = bullet_scene.instantiate()
+	bullet.damage = damage
+	bullet.knockbackForce = knockbackForce
+	bullet.knockbackUpForce = knockbackUpForce
 	get_tree().get_first_node_in_group("Player").add_child(bullet)  # la ponemos en la escena principal
 	bullet.global_transform = origin
 	

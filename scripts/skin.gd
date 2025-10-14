@@ -40,10 +40,10 @@ func soap_attack():
 	animation_tree.set("parameters/attackpochito/request",true )
 
 
-func water_attack(active: bool = false) -> void:
+func water_attack(damage : float, knockbackForce : float, knockbackUpForce : float, active: bool = false) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(animation_tree,"parameters/Blend2/blend_amount",int (active), 0.2)
-	if active : waterGun.shoot()
+	if active : waterGun.shoot(damage, knockbackForce, knockbackUpForce)
 
 
 func attackMelee():
@@ -58,14 +58,3 @@ func attackMelee_2():
 
 func attackMelee_3():
 	animation_tree.set("parameters/attack-melee-3/request",true )
-
-
-
-
-
-
-func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
-	print(anim_name)
-	if anim_name == "attack":
-		await get_tree().create_timer(0.3).timeout
-		cañon.ataquar()
