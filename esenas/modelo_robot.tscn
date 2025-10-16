@@ -108,7 +108,7 @@ fadein_time = 0.2
 fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4b0pt"]
-graph_offset = Vector2(-231.131, 131.897)
+graph_offset = Vector2(-845.151, 34.2906)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vfsic")
 nodes/Animation/position = Vector2(-380, 320)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_g6nsg")
@@ -170,6 +170,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="Skeleton3D" parent="robotV3/rig" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/position = Vector3(-7.99663e-15, 0.14165, 0.832098)
+
 bones/1/rotation = Quaternion(0.886487, 5.51645e-08, 1.05677e-07, 0.462754)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-0.240291, 5.66878e-14, -5.72897e-08, 0.970701)
@@ -180,6 +181,7 @@ bones/4/rotation = Quaternion(-0.0321238, -2.60365e-07, -1.31018e-05, 0.999484)
 bones/4/scale = Vector3(1.02604, 0.949898, 1.02604)
 bones/5/rotation = Quaternion(0.472413, 5.27615e-06, 1.01371e-05, 0.881378)
 bones/5/scale = Vector3(0.974627, 0.999072, 1.02958)
+
 bones/6/rotation = Quaternion(-0.193807, -0.00276661, -0.0112741, 0.980971)
 bones/6/scale = Vector3(1, 0.999999, 1)
 bones/7/rotation = Quaternion(-0.182022, -0.0015282, 0.0118377, 0.983222)
@@ -198,6 +200,7 @@ bones/11/rotation = Quaternion(0.83435, -0.268826, 0.479406, 0.0419834)
 bones/11/scale = Vector3(1, 0.939019, 1)
 bones/12/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/13/position = Vector3(1.07122e-17, 0.0172298, 0.015004)
+
 bones/16/position = Vector3(1.69458e-19, -0.0556762, 0.170105)
 bones/18/position = Vector3(2.64383e-15, -0.110551, -1.44695e-09)
 bones/18/rotation = Quaternion(-0.749318, -7.89416e-08, -8.93256e-08, 0.662211)
@@ -434,7 +437,5 @@ visible = false
 transform = Transform3D(-0.832396, -0.365167, -0.417749, 0.0511139, -0.800445, 0.597845, -0.552493, 0.476114, 0.684698, -0.540882, 0.859937, -0.0432407)
 bone_name = "ORG-hand.R"
 bone_idx = 148
-
-[connection signal="animation_started" from="AnimationTree2" to="." method="_on_animation_tree_2_animation_started"]
 
 [editable path="robotV3"]

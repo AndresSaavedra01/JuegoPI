@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkodjngs43vay" path="res://scripts/player.gd" id="1_82gg7"]
 [ext_resource type="PackedScene" uid="uid://1ro2j8sknmgj" path="res://esenas/modelo_robot.tscn" id="2_82gg7"]
-[ext_resource type="Texture2D" uid="uid://bonuc4nl2uv" path="res://assets/Life_UI_007.png" id="3_oq223"]
+[ext_resource type="PackedScene" uid="uid://hlpss4b5nw3r" path="res://esenas/heart.tscn" id="2_oq223"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj6sn"]
 radius = 0.185608
@@ -48,6 +48,7 @@ height = 1.23617
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_82gg7")
+heartScene = ExtResource("2_oq223")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519425, 0)
@@ -362,15 +363,18 @@ offset_top = 5.0
 offset_right = 1148.0
 offset_bottom = 39.0
 
-[node name="LifeUi007" type="Sprite2D" parent="Control"]
-position = Vector2(75.125, 26.9375)
-scale = Vector2(0.0837217, 0.0966714)
-texture = ExtResource("3_oq223")
+[node name="hearts" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 204.0
+offset_bottom = 58.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="body_entered" from="robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="animation_started" from="robotV3/AnimationTree2" to="." method="_on_animation_tree_2_animation_started"]
+[connection signal="body_entered" from="robotV3/hitbox" to="." method="_on_hitbox_body_entered"]
 
 [editable path="robotV3"]
 [editable path="robotV3/robotV3"]
