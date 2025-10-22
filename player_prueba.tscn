@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr1r16ijxl0j5"]
+
+[ext_resource type="Script" uid="uid://c5ahl0lq67gdr" path="res://player_prueba.gd" id="1_xc25p"]
+[ext_resource type="Script" uid="uid://cd3qk1b1je3iu" path="res://camarita.gd" id="2_mpb52"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dsape"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xc25p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mpb52"]
+size = Vector3(0.6, 0.355, 0.74)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssu06"]
+albedo_color = Color(1, 0.290196, 1, 1)
+
+[node name="PlayerPrueba" type="CharacterBody3D"]
+script = ExtResource("1_xc25p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dsape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_xc25p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543166, 0.248316)
+mesh = SubResource("BoxMesh_mpb52")
+surface_material_override/0 = SubResource("StandardMaterial3D_ssu06")
+
+[node name="camarita" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588316, 0)
+script = ExtResource("2_mpb52")
+player = NodePath("..")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="camarita"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36373, 0, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="camarita/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74222)
+current = true

@@ -1,8 +1,12 @@
+SpringArm3D
+Camera3D
+Node3D
+Node
+MeshInstance3D
+CollisionShape3D
+CharacterBody3D
 Sprite3D
 SubViewport
 TextureProgressBar
 ProgressBar
 Control
-MeshInstance3D
-Node3D
-CollisionShape3D

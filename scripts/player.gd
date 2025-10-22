@@ -161,8 +161,10 @@ func handle_camera_input(event: InputEvent):
 		camera_pivot.rotation_degrees.x = camera_pitch
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # ==========================================================
 # ATAQUES

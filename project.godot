@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 project/assembly_name="JuegoPI"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 adelante={
