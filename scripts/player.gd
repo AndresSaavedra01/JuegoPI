@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name player
 # ==========================================================
 # CONFIGURACIÓN GENERAL
 # ==========================================================
@@ -42,11 +42,12 @@ var coyote_timer := 0.0
 # ==========================================================
 # REFERENCIAS A NODOS
 # ==========================================================
-@onready var camera_pivot := $SpringArm3D
+@onready var camera_pivot := $camaraPivot
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
 @onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
 @onready var cooldown_timer := $Timer
+@onready var mira_sprite := $camaraPivot/EdgeSpringArm3D/RearSpringArm3D/Camera3D/Sprite3D
 
 
 # ==========================================================
@@ -58,9 +59,6 @@ func _ready():
 	cooldown_timer.one_shot = true
 	cooldown_timer.connect("timeout", Callable(self, "_on_cooldown_end"))
 
-
-func _input(event: InputEvent):
-	handle_camera_input(event)
 
 
 func _physics_process(delta: float):
@@ -96,9 +94,44 @@ func handle_movement(delta: float):
 		if not is_on_floor():
 			velocity.y -= gravity_force * delta
 		return
+	if camera_pivot.apuntando:
+		handle_movenment_aim(delta)
+		mira_sprite.visible = true
+	else :
+		mira_sprite.visible = false
+		handle_movenment_free(delta)
+	
+	handle_jump(delta)
+
+func handle_movenment_aim(delta:float):
 	
 	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 
+	var forward = -camera_pivot.global_transform.basis.z
+	forward.y = 0
+	forward = forward.normalized()
+
+	var right = camera_pivot.global_transform.basis.x
+	right.y = 0
+	right = right.normalized()
+
+	var move_dir = (forward * input_dir.y) + (right * input_dir.x)
+	move_dir = move_dir.normalized()
+
+	if move_dir.length() > 0 and !is_attacking:
+		velocity.x = move_dir.x * move_speed
+		velocity.z = move_dir.z * move_speed
+		robot.run()
+		particles.emitting = true
+	else:
+		robot.idle()
+		particles.emitting = false
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
+
+
+func handle_movenment_free(delta:float):
+	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 	var forward = -camera_pivot.global_transform.basis.z
 	forward.y = 0
 	forward = forward.normalized()
@@ -122,8 +155,6 @@ func handle_movement(delta: float):
 		particles.emitting = false
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 		velocity.z = move_toward(velocity.z, 0, move_speed)
-
-	handle_jump(delta)
 
 
 func handle_jump(delta: float):
@@ -151,20 +182,6 @@ func handle_jump(delta: float):
 		particles.emitting = false
 
 
-# ==========================================================
-# CÁMARA
-# ==========================================================
-func handle_camera_input(event: InputEvent):
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		camera_pivot.rotate_y(deg_to_rad(-event.relative.x * mouse_sens_x))
-		camera_pitch = clamp(camera_pitch - event.relative.y * mouse_sens_y, camera_pitch_min, camera_pitch_max)
-		camera_pivot.rotation_degrees.x = camera_pitch
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # ==========================================================
 # ATAQUES

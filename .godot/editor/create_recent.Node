@@ -1,5 +1,9 @@
 MeshInstance3D
+CollisionShape3D
+CharacterBody3D
+Area3D
 Marker3D
+Sprite3D
 CSGBox3D
 CSGMesh3D
 ShapeCast3D
@@ -7,8 +11,4 @@ SpringArm3D
 Camera3D
 Node3D
 Node
-CollisionShape3D
-CharacterBody3D
-Sprite3D
 SubViewport
-TextureProgressBar
