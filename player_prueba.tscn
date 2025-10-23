@@ -1,20 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr1r16ijxl0j5"]
+[gd_scene load_steps=10 format=3 uid="uid://cr1r16ijxl0j5"]
 
 [ext_resource type="Script" uid="uid://c5ahl0lq67gdr" path="res://player_prueba.gd" id="1_xc25p"]
 [ext_resource type="Script" uid="uid://cd3qk1b1je3iu" path="res://camarita.gd" id="2_mpb52"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dsape"]
+radius = 0.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xc25p"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpb52"]
+albedo_color = Color(1, 0.27451, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_mpb52"]
+material = SubResource("StandardMaterial3D_mpb52")
 size = Vector3(0.6, 0.355, 0.74)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssu06"]
-albedo_color = Color(1, 0.290196, 1, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_mpb52"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mpb52"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ssu06"]
+radius = 0.1
 
 [node name="PlayerPrueba" type="CharacterBody3D"]
 script = ExtResource("1_xc25p")
+mouse_sens_y = 0.01
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_dsape")
@@ -24,19 +37,30 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = SubResource("CapsuleMesh_xc25p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543166, 0.248316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14045e-09, 0.543166, 0.2728)
 mesh = SubResource("BoxMesh_mpb52")
-surface_material_override/0 = SubResource("StandardMaterial3D_ssu06")
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35688, 0, -1.18622e-07)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Marker3D"]
+mesh = SubResource("SphereMesh_mpb52")
 
 [node name="camarita" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588316, 0)
 script = ExtResource("2_mpb52")
 player = NodePath("..")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="camarita"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36373, 0, 0)
-spring_length = 2.0
+[node name="EdgeSpringArm3D" type="SpringArm3D" parent="camarita"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_mpb52")
+spring_length = 0.0
 
-[node name="Camera3D" type="Camera3D" parent="camarita/SpringArm3D"]
+[node name="RearSpringArm3D" type="SpringArm3D" parent="camarita/EdgeSpringArm3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_ssu06")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="camarita/EdgeSpringArm3D/RearSpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74222)
 current = true
