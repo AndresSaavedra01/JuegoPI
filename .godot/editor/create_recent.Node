@@ -1,7 +1,10 @@
-MeshInstance3D
+RayCast3D
 CollisionShape3D
-CharacterBody3D
 Area3D
+MeshInstance3D
+PathFollow3D
+Path3D
+CharacterBody3D
 Marker3D
 Sprite3D
 CSGBox3D
@@ -9,6 +12,3 @@ CSGMesh3D
 ShapeCast3D
 SpringArm3D
 Camera3D
-Node3D
-Node
-SubViewport

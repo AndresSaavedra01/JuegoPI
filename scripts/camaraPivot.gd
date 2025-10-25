@@ -9,12 +9,13 @@ var camera_rotation := Vector2.ZERO
 @onready var edge_spring_arm := $EdgeSpringArm3D
 @onready var rear_spring_arm := $EdgeSpringArm3D/RearSpringArm3D
 var apuntando := false
-
+signal  apuntado
 
 # ===============================================================
 # PROCESO PRINCIPAL
 # ===============================================================
 func _process(delta: float) -> void:
+	apuntado.emit(apuntando)
 	if apuntando:
 		camera_look(delta)
 		align_player_to_camera(delta)

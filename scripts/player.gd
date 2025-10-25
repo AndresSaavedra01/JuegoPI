@@ -45,9 +45,10 @@ var coyote_timer := 0.0
 @onready var camera_pivot := $camaraPivot
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
-@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
+@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/Hitbox
 @onready var cooldown_timer := $Timer
 @onready var mira_sprite := $camaraPivot/EdgeSpringArm3D/RearSpringArm3D/Camera3D/Sprite3D
+
 
 
 # ==========================================================
