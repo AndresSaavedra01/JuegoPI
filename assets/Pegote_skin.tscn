@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ucywev6u3e"]
+
+[ext_resource type="PackedScene" uid="uid://cmflfnq53sa5d" path="res://assets/pegote_enemy.glb" id="1_0ivhm"]
+[ext_resource type="ArrayMesh" uid="uid://bqi2u01nigh23" path="res://blender/pegote_enemy.obj" id="2_3q1ox"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmwom"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.811765, 1, 0.266667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fsxa"]
+albedo_color = Color(0.099986, 0.099986, 0.099986, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrw0h"]
+albedo_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ivhm"]
+size = Vector3(3.04926, 6.28761, 2.77318)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ivhm"]
+radius = 0.862736
+height = 4.92586
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3q1ox"]
+radius = 0.893335
+height = 4.73153
+
+[node name="Pegote_skin" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="pegote_enemy" parent="." instance=ExtResource("1_0ivhm")]
+
+[node name="Armature" parent="pegote_enemy" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="pegote_enemy/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/3/position = Vector3(0, -0.157318, 0)
+bones/4/rotation = Quaternion(0.0410916, -1.37055e-15, 1.04002e-08, 0.999155)
+bones/5/position = Vector3(1.24438, 2.69988, -0.0286613)
+bones/5/rotation = Quaternion(0.0509438, -0.071978, -0.813062, 0.57546)
+bones/6/rotation = Quaternion(0.0601471, -0.0408897, -0.168765, 0.982969)
+bones/7/position = Vector3(-1.24438, 2.69988, -0.0286619)
+bones/7/rotation = Quaternion(0.0509436, 0.0719779, 0.813062, 0.57546)
+bones/8/rotation = Quaternion(0.0601471, 0.0408897, 0.168765, 0.982969)
+
+[node name="cuerpo_001" parent="pegote_enemy/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dmwom")
+surface_material_override/1 = SubResource("StandardMaterial3D_7fsxa")
+
+[node name="ojos" parent="pegote_enemy/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nrw0h")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.157318, 0)
+bone_name = "Bone"
+bone_idx = 3
+
+[node name="PegoteEnemy" type="MeshInstance3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.43039, 0)
+mesh = ExtResource("2_3q1ox")
+skeleton = NodePath("../../../../..")
+
+[node name="Area3D" type="Area3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3D/PegoteEnemy"]
+
+[node name="CollisionShape3Dback" type="CollisionShape3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3D/PegoteEnemy/Area3D"]
+transform = Transform3D(1, 9.06734e-08, 1.79152e-08, -9.06734e-08, 0.924858, 0.380312, 1.79152e-08, -0.380312, 0.924858, 0.259431, 0.442758, -3.67244)
+shape = SubResource("BoxShape3D_0ivhm")
+
+[node name="BoneAttachment3DLarm" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.635009, 0.738271, -0.227419, -0.772505, -0.606868, 0.186942, 2.34693e-07, 0.294392, 0.955685, 2.67745, 2.03732, 0.242502)
+bone_name = "Bone.004.L"
+bone_idx = 6
+
+[node name="Area3D" type="Area3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DLarm"]
+
+[node name="CollisionShape3DLarm" type="CollisionShape3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DLarm/Area3D"]
+transform = Transform3D(0.995327, -0.0682549, 0.0682983, 0.0675021, 0.997631, 0.0132706, -0.0690423, -0.0085983, 0.997577, 0.174458, 0.5392, -0.104057)
+shape = SubResource("CapsuleShape3D_0ivhm")
+
+[node name="BoneAttachment3DRarm" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.635009, -0.738271, 0.227419, 0.772505, -0.606868, 0.186942, -2.64496e-07, 0.294392, 0.955685, -2.67745, 2.03732, 0.242502)
+bone_name = "Bone.004.R"
+bone_idx = 8
+
+[node name="Area3D" type="Area3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm"]
+
+[node name="CollisionShape3DRarm" type="CollisionShape3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm/Area3D"]
+transform = Transform3D(0.997932, 0.0442232, -0.0466826, -0.0439843, 0.999014, 0.00613153, 0.0469078, -0.00406548, 0.998892, -0.159003, 0.65115, -0.133659)
+shape = SubResource("CapsuleShape3D_3q1ox")
+
+[editable path="pegote_enemy"]
