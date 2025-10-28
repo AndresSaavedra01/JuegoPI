@@ -1,7 +1,7 @@
 [gd_scene load_steps=51 format=4 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
-[ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
+[ext_resource type="Texture2D" uid="uid://6res45w4g5sq" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
 [ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_isbpu"]
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
@@ -223,7 +223,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_rgd8y")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_isbpu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q37d"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -507,7 +507,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_isbpu")
+surface_material_override/0 = SubResource("ShaderMaterial_2q37d")
 
 [node name="checkpoint" type="Area3D" parent="."]
 transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -4.21359, 15.917, 36.2568)
