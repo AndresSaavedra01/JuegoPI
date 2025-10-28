@@ -26,12 +26,14 @@ func _process(delta: float) -> void:
 # ENTRADA DE RATÓN Y CAMBIOS DE MODO
 # ===============================================================
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("apuntar") and not player.current_attack_mode == "melee":
-		apuntar()
-	elif event.is_action_released("apuntar"):
-		apuntando = false
-	elif not apuntando:
+	if Input.is_action_just_pressed("apuntar") and not player.current_attack_mode == "melee":
+		apuntando = not apuntando
+	
+	
+	if !apuntando:
 		camera_free(event)
+	else:
+		apuntar()
 	if event.is_action_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

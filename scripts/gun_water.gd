@@ -11,7 +11,6 @@ var particles = []  # cada partícula = {node, vel, time}
 
 
 
-
 func _process(delta: float) -> void:
 	for p in particles:
 		# actualizar física

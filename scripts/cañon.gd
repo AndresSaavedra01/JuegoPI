@@ -2,6 +2,7 @@ extends Node3D
 
 @export var proyectil: PackedScene
 @export var ray: RayCast3D
+@export var speed := 10.0
 var apuntando := false
 
 func ataquar():
@@ -24,7 +25,7 @@ func ataquar():
 	else:
 		direction = global_transform.basis.z
 	p.look_at(p.global_transform.origin + direction, Vector3.UP)
-	p.apply_central_impulse(direction * 20)
+	p.apply_central_impulse(direction * speed)
 
 
 func _on_camara_pivot_apuntado(apun) -> void:

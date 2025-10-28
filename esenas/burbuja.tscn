@@ -63,14 +63,13 @@ shader_parameter/wobble_amp = 0.07
 
 [sub_resource type="SphereMesh" id="SphereMesh_cqfky"]
 material = SubResource("ShaderMaterial_vveip")
-radius = 0.25
-height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rfikj"]
-radius = 0.308699
+radius = 0.535494
 
-[node name="Proyectil" type="RigidBody3D"]
+[node name="Burbuja" type="RigidBody3D"]
 collision_layer = 4
+collision_mask = 13
 mass = 0.022
 gravity_scale = -1.889
 script = ExtResource("1_vveip")
@@ -83,3 +82,5 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_rfikj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
