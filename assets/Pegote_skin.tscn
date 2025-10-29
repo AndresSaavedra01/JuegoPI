@@ -36,13 +36,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="pegote_enemy/Armature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/position = Vector3(0, -0.157318, 0)
-bones/4/rotation = Quaternion(0.0410916, -1.37055e-15, 1.04002e-08, 0.999155)
+bones/3/position = Vector3(0, -0.168721, 0)
 bones/5/position = Vector3(1.24438, 2.69988, -0.0286613)
-bones/5/rotation = Quaternion(0.0509438, -0.071978, -0.813062, 0.57546)
+bones/5/rotation = Quaternion(0.0505792, -0.0722346, -0.815961, 0.571342)
 bones/6/rotation = Quaternion(0.0601471, -0.0408897, -0.168765, 0.982969)
 bones/7/position = Vector3(-1.24438, 2.69988, -0.0286619)
-bones/7/rotation = Quaternion(0.0509436, 0.0719779, 0.813062, 0.57546)
+bones/7/rotation = Quaternion(0.050579, 0.0722345, 0.815961, 0.571342)
 bones/8/rotation = Quaternion(0.0601471, 0.0408897, 0.168765, 0.982969)
 
 [node name="cuerpo_001" parent="pegote_enemy/Armature/Skeleton3D" index="0"]
@@ -53,7 +52,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_7fsxa")
 surface_material_override/0 = SubResource("StandardMaterial3D_nrw0h")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.157318, 0)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.168721, 0)
 bone_name = "Bone"
 bone_idx = 3
 
@@ -69,7 +68,7 @@ transform = Transform3D(1, 9.06734e-08, 1.79152e-08, -9.06734e-08, 0.924858, 0.3
 shape = SubResource("BoxShape3D_0ivhm")
 
 [node name="BoneAttachment3DLarm" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.635009, 0.738271, -0.227419, -0.772505, -0.606868, 0.186942, 2.34693e-07, 0.294392, 0.955685, 2.67745, 2.03732, 0.242502)
+transform = Transform3D(-0.642787, 0.732097, -0.225517, -0.766045, -0.614302, 0.189232, 2.94298e-07, 0.294392, 0.955685, 2.67227, 2.01145, 0.242502)
 bone_name = "Bone.004.L"
 bone_idx = 6
 
@@ -80,7 +79,7 @@ transform = Transform3D(0.995327, -0.0682549, 0.0682983, 0.0675021, 0.997631, 0.
 shape = SubResource("CapsuleShape3D_0ivhm")
 
 [node name="BoneAttachment3DRarm" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.635009, -0.738271, 0.227419, 0.772505, -0.606868, 0.186942, -2.64496e-07, 0.294392, 0.955685, -2.67745, 2.03732, 0.242502)
+transform = Transform3D(-0.642787, -0.732097, 0.225517, 0.766045, -0.614302, 0.189232, -3.20375e-07, 0.294392, 0.955685, -2.67227, 2.01145, 0.242502)
 bone_name = "Bone.004.R"
 bone_idx = 8
 

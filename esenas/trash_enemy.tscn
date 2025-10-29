@@ -180,23 +180,22 @@ bones/4/rotation = Quaternion(-0.0980772, -0.0841934, -0.702076, 0.700272)
 bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
 bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37589e-10)
 bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
-bones/7/rotation = Quaternion(2.55258e-07, 0.807887, 0.589338, -3.49917e-07)
-bones/8/rotation = Quaternion(0.0132991, 0.0207092, -0.922248, 0.385815)
+bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
+bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
 bones/9/rotation = Quaternion(-0.00591938, -0.000977152, -0.16228, 0.986727)
-bones/13/rotation = Quaternion(0.0567586, 6.13385e-13, 1.69731e-14, 0.998388)
 bones/14/rotation = Quaternion(3.11708e-19, 1.19209e-07, 5.4316e-20, 1)
-bones/15/rotation = Quaternion(-0.424488, -1.0465e-09, -1.06672e-07, 0.905433)
-bones/17/rotation = Quaternion(0.0182864, -0.0340103, 0.928032, 0.370493)
+bones/15/rotation = Quaternion(-0.188101, 1.21643e-14, -4.48467e-08, 0.98215)
+bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
 bones/18/rotation = Quaternion(-0.00626944, 0.000938379, 0.147461, 0.989048)
 
 [node name="knot" parent="trash_enemy_skin/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.23877, 2.73634e-14, -1.24345e-13, -2.04281e-14, 0.235512, -0.0393119, 1.06581e-13, 0.0393119, 0.235512, -0.00945394, 1.9989, 0.196444)
+transform = Transform3D(0.23877, 1.3148e-14, 2.41585e-13, 1.39969e-14, 0.23877, 1.17412e-07, -2.27374e-13, -1.06738e-07, 0.23877, -0.00945394, 2.01049, -0.0232371)
 
 [node name="arms" parent="trash_enemy_skin/Armature/Skeleton3D" index="1"]
 surface_material_override/0 = null
 
 [node name="leftArm" parent="trash_enemy_skin/Armature/Skeleton3D" index="9"]
-transform = Transform3D(-0.893071, 0.449916, 6.29574e-07, -0.44726, -0.887798, -0.108503, -0.0488166, -0.096901, 0.994096, 1.48294, 0.21403, 0.143526)
+transform = Transform3D(-0.89307, 0.449918, 5.96046e-07, -0.449918, -0.89307, 8.9407e-07, 9.14792e-07, 4.90807e-07, 1, 1.48294, 0.220992, 0.152422)
 
 [node name="leftArea3D" type="Area3D" parent="trash_enemy_skin/Armature/Skeleton3D/leftArm" index="0"]
 collision_layer = 2
@@ -207,7 +206,7 @@ transform = Transform3D(1.39997, -5.183e-05, -0.00852641, -5.11964e-05, 1.3999, 
 shape = SubResource("CapsuleShape3D_hyi7t")
 
 [node name="rightArm" parent="trash_enemy_skin/Armature/Skeleton3D" index="10"]
-transform = Transform3D(-0.89425, -0.447568, -4.98258e-07, 0.443328, -0.885778, -0.137322, 0.0614603, -0.1228, 0.990526, -1.47954, 0.223296, 0.134222)
+transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 9.02452e-07, -9.34117e-07, 4.91738e-07, 1, -1.47954, 0.229224, 0.152422)
 
 [node name="rightArea3D" type="Area3D" parent="trash_enemy_skin/Armature/Skeleton3D/rightArm" index="0"]
 transform = Transform3D(0.999383, 0.00123378, 0.0351204, 0.00123461, 0.997535, -0.0701709, -0.0351204, 0.0701711, 0.996917, 0.0460794, 0.00732195, 0.00555131)

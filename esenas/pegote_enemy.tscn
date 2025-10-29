@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccgceriawl06v"]
+[gd_scene load_steps=17 format=3 uid="uid://ccgceriawl06v"]
 
 [ext_resource type="PackedScene" uid="uid://b3ucywev6u3e" path="res://assets/Pegote_skin.tscn" id="1_2dgii"]
+[ext_resource type="Script" uid="uid://jpekv6c5fmne" path="res://esenas/pegote_enemy.gd" id="1_4th44"]
+[ext_resource type="Script" uid="uid://c5dmryvwrs1qs" path="res://scripts/state_machine.gd" id="3_g0m3o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4th44"]
 radius = 0.394529
@@ -9,13 +11,76 @@ height = 1.74241
 [sub_resource type="SphereShape3D" id="SphereShape3D_g0m3o"]
 radius = 10.0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g0m3o"]
+animation = &"Acttack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mslp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q4sxg"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bar6s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5t5pb"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lgevb"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mewsa"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8y4u7"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icrde"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dymk4"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g0m3o"]
+states/Acttack/node = SubResource("AnimationNodeAnimation_g0m3o")
+states/Acttack/position = Vector2(453, -1)
+states/idle/node = SubResource("AnimationNodeAnimation_6mslp")
+states/idle/position = Vector2(432, 188)
+states/walk/node = SubResource("AnimationNodeAnimation_q4sxg")
+states/walk/position = Vector2(619, 78)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bar6s"), "Acttack", "idle", SubResource("AnimationNodeStateMachineTransition_5t5pb"), "Acttack", "walk", SubResource("AnimationNodeStateMachineTransition_lgevb"), "idle", "Acttack", SubResource("AnimationNodeStateMachineTransition_mewsa"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_8y4u7"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_icrde"), "walk", "Acttack", SubResource("AnimationNodeStateMachineTransition_dymk4")]
+graph_offset = Vector2(-109, -206)
+
 [node name="pegote_enemy" type="CharacterBody3D"]
+script = ExtResource("1_4th44")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476574, 0)
 shape = SubResource("CapsuleShape3D_4th44")
 
 [node name="Pegote_skin" parent="." instance=ExtResource("1_2dgii")]
+
+[node name="Skeleton3D" parent="Pegote_skin/pegote_enemy/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/3/position = Vector3(0, -0.0713484, 0)
+bones/4/rotation = Quaternion(0.0220211, -2.84292e-15, 1.04021e-08, 0.999758)
+bones/5/position = Vector3(1.24438, 2.69988, -0.0286613)
+bones/5/rotation = Quaternion(0.0536531, -0.0699818, -0.790513, 0.606064)
+bones/6/rotation = Quaternion(0.0601471, -0.0408897, -0.168765, 0.982969)
+bones/7/position = Vector3(-1.24438, 2.69988, -0.0286619)
+bones/7/rotation = Quaternion(0.0536529, 0.0699817, 0.790513, 0.606064)
+bones/8/rotation = Quaternion(0.0601471, 0.0408897, 0.168765, 0.982969)
+
+[node name="BoneAttachment3D" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.0713484, 0)
+
+[node name="BoneAttachment3DLarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.574252, 0.782399, -0.241013, -0.818678, -0.548804, 0.169056, 9.68575e-08, 0.294392, 0.955685, 2.71181, 2.23404, 0.242502)
+
+[node name="BoneAttachment3DRarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.574252, -0.782398, 0.241013, 0.818678, -0.548804, 0.169056, -1.04308e-07, 0.294392, 0.955685, -2.71181, 2.23404, 0.242502)
+
+[node name="FloorCast" type="RayCast3D" parent="Pegote_skin/pegote_enemy" index="2"]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.3
@@ -24,7 +89,6 @@ radius = 0.78
 debug_enabled = true
 
 [node name="DetectArea" type="Area3D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 angular_damp = 0.0
@@ -41,3 +105,18 @@ target_position = Vector3(0, 0, -10)
 collision_mask = 3
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_g0m3o")
+metadata/_custom_type_script = "uid://c5dmryvwrs1qs"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Pegote_skin/pegote_enemy")
+tree_root = SubResource("AnimationNodeStateMachine_g0m3o")
+anim_player = NodePath("../Pegote_skin/pegote_enemy/AnimationPlayer")
+
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="DetectTimer" to="." method="_on_timer_timeout"]
+
+[editable path="Pegote_skin"]
+[editable path="Pegote_skin/pegote_enemy"]
