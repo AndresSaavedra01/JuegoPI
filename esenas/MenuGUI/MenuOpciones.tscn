@@ -1,9 +1,152 @@
-[gd_scene format=3 uid="uid://csgl5lgvpe50f"]
+[gd_scene load_steps=7 format=3 uid="uid://csgl5lgvpe50f"]
 
-[node name="MenuOpciones" type="Control"]
+[ext_resource type="Script" uid="uid://dai3a3vnaf7vq" path="res://esenas/MenuGUI/menu_Opciones.gd" id="1_ck5xp"]
+[ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/bg/bg.png" id="2_02ooh"]
+[ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/fonts/Renogare-Regular.otf" id="3_tkjqu"]
+[ext_resource type="Texture2D" uid="uid://8ade6an6pgol" path="res://assets/buttons/arrow_basic_s.png" id="4_yp6sb"]
+[ext_resource type="Texture2D" uid="uid://dr0cl3jwdpxqp" path="res://assets/buttons/check_square_color_checkmark.png" id="5_01quo"]
+[ext_resource type="Texture2D" uid="uid://dtheqxlljy8j5" path="res://assets/buttons/check_square_color.png" id="6_3trw1"]
+
+[node name="MenuOpciones" type="Control" node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync", "back_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ck5xp")
+option_resolution = NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/OptionButton")
+option_fullscreen = NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer2/CheckBox")
+option_borderless = NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer3/CheckBox")
+option_vsync = NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer4/CheckBox")
+back_button = NodePath("Control/Volver")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_02ooh")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.239216)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -197.0
+offset_right = 150.5
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkjqu")
+theme_override_font_sizes/font_size = 25
+text = "Resolución"
+
+[node name="OptionButton" type="OptionButton" parent="Control/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 0
+theme_override_icons/arrow = ExtResource("4_yp6sb")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkjqu")
+theme_override_font_sizes/font_size = 25
+text = "Pantalla Completa"
+
+[node name="CheckBox" type="CheckBox" parent="Control/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = ExtResource("5_01quo")
+theme_override_icons/unchecked = ExtResource("6_3trw1")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkjqu")
+theme_override_font_sizes/font_size = 25
+text = "Sin Bordes"
+
+[node name="CheckBox" type="CheckBox" parent="Control/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 30
+theme_override_font_sizes/font_size = 1
+theme_override_icons/checked = ExtResource("5_01quo")
+theme_override_icons/unchecked = ExtResource("6_3trw1")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkjqu")
+theme_override_font_sizes/font_size = 25
+text = "Vsync"
+
+[node name="CheckBox" type="CheckBox" parent="Control/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = ExtResource("5_01quo")
+theme_override_icons/unchecked = ExtResource("6_3trw1")
+
+[node name="Volver" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -69.0
+offset_right = 239.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_tkjqu")
+theme_override_font_sizes/font_size = 25
+text = "Volver"
