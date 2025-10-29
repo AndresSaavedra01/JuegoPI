@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://n7n5cwbpbamw"]
+
+[ext_resource type="Script" uid="uid://cg3t2ne8gb4bp" path="res://spawner.gd" id="1_2m83p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yaqy6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0otef"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2m83p"]
+
+[node name="Spawner" type="StaticBody3D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_2m83p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yaqy6")
+
+[node name="DetectArea" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
+shape = SubResource("SphereShape3D_0otef")
+
+[node name="SpawnTimeout" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2m83p")
+
+[connection signal="timeout" from="SpawnTimeout" to="." method="_on_spawn_timeout_timeout"]
