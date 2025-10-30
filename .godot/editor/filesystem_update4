@@ -1,10 +1,8 @@
-res://esenas/Level-1.tscn
+res://scripts/cañon.gd
+res://esenas/player.tscn
 res://assets/GeneralLevelTiles.tres
 res://shaders/trash_enemy_skin.tres
 res://tornado.tres
-res://Level-2.tscn
+res://esenas/Level-1.tscn
 res://esenas/Level-2.tscn
 res://esenas/checkpoint.tscn
-res://scripts/checkpoint.gd
-res://esenas/player.tscn
-res://scripts/player.gd
