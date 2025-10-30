@@ -216,14 +216,14 @@ points = PackedVector3Array(-0.829483, 0.00111364, -0.957234, 0.92753, -5.55112e
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
 panorama = ExtResource("4_45ie8")
 
-[sub_resource type="Sky" id="Sky_rgd8y"]
+[sub_resource type="Sky" id="Sky_2q37d"]
 sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 
 [sub_resource type="Environment" id="Environment_6gyh5"]
 background_mode = 2
-sky = SubResource("Sky_rgd8y")
+sky = SubResource("Sky_2q37d")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_isbpu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q37d"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -507,7 +507,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_isbpu")
+surface_material_override/0 = SubResource("ShaderMaterial_2q37d")
 
 [node name="checkpoint" type="Area3D" parent="."]
 transform = Transform3D(0.0999732, 0, 0.00231585, 0, 0.1, 0, -0.00231585, 0, 0.0999732, -4.21359, 15.917, 36.2568)

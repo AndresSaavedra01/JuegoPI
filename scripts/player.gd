@@ -184,9 +184,7 @@ func handle_jump(delta: float):
 
 
 
-# ==========================================================
-# ATAQUES
-# ==========================================================
+
 func handle_attack_mode_change():
 	if Input.is_action_just_pressed("change-attack"):
 		attack_mode_index = (attack_mode_index + 1) % attack_modes.size()

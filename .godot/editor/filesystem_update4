@@ -1,5 +1,5 @@
-res://esenas/Level-1.tscn
+res://Level-2.tscn
 res://assets/GeneralLevelTiles.tres
 res://shaders/trash_enemy_skin.tres
 res://tornado.tres
-res://esenas/grid_map.gd
+res://esenas/Level-1.tscn
