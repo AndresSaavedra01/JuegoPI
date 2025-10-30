@@ -1,12 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://n7n5cwbpbamw"]
+[gd_scene load_steps=9 format=3 uid="uid://n7n5cwbpbamw"]
 
 [ext_resource type="Script" uid="uid://cg3t2ne8gb4bp" path="res://spawner.gd" id="1_2m83p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yaqy6"]
+size = Vector3(1, 1.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0otef"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m83p"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m83p"]
+albedo_color = Color(1, 0.109804, 0, 0.427451)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yaqy6"]
+material = SubResource("StandardMaterial3D_2m83p")
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0otef"]
+albedo_color = Color(0.105882, 1, 0, 0.419608)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fouu3"]
+material = SubResource("StandardMaterial3D_0otef")
+height = 0.01
 
 [node name="Spawner" type="StaticBody3D"]
 collision_layer = 15
@@ -31,5 +47,12 @@ one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_2m83p")
+
+[node name="minRadioDebug" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029323, 0)
+mesh = SubResource("CylinderMesh_yaqy6")
+
+[node name="maxRadioDebug" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_fouu3")
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_spawn_timeout_timeout"]

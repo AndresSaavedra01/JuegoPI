@@ -545,29 +545,6 @@ tracks/19/keys = {
 "update": 1,
 "values": [true, false, true, false]
 }
-tracks/20/type = "method"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath(".")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0.433333, 0.6, 1.03333, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"start_attacking_emiter"
-}, {
-"args": [],
-"method": &"end_attacking_emiter"
-}, {
-"args": [],
-"method": &"start_attacking_emiter"
-}, {
-"args": [],
-"method": &"end_attacking_emiter"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_5jj87"]
 resource_name = "Die"
@@ -2001,7 +1978,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(-2.38419e-07, -0.999804, -0.0197972, 0.966774, -0.00506104, 0.255582, -0.255632, -0.0191394, 0.966585, 1.06522e-10, 0.28436, -1.11391e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.06522e-10, 0.28436, -1.11391e-07)
-bones/1/rotation = Quaternion(-0.0980767, 0.084194, 0.702077, 0.700272)
+bones/1/rotation = Quaternion(-0.0980766, 0.084194, 0.702077, 0.700272)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.016.L"
 bones/2/parent = 1
@@ -2022,7 +1999,7 @@ bones/4/parent = 0
 bones/4/rest = Transform3D(1.78814e-07, 0.999804, 0.0197989, -0.966774, -0.00506106, 0.255582, 0.255632, -0.0191411, 0.966585, 1.06522e-10, 0.28436, -1.11391e-07)
 bones/4/enabled = true
 bones/4/position = Vector3(1.06522e-10, 0.28436, -1.11391e-07)
-bones/4/rotation = Quaternion(-0.0980773, -0.0841934, -0.702077, 0.700272)
+bones/4/rotation = Quaternion(-0.0980772, -0.0841934, -0.702076, 0.700272)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone.016.R"
 bones/5/parent = 4
@@ -2145,7 +2122,7 @@ bones/21/rotation = Quaternion(-0.00965966, -0.000664878, -0.0333011, 0.999398)
 bones/21/scale = Vector3(1, 1, 1)
 
 [node name="knot" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.23877, 1.3147e-14, 7.03437e-13, 4.25112e-16, 0.23877, 1.2097e-07, -7.0699e-13, -1.2097e-07, 0.23877, -0.00945394, 2.01049, -0.0232372)
+transform = Transform3D(0.23877, 4.02923e-14, 3.97904e-13, -4.02925e-14, 0.23877, 3.09541e-07, -3.97904e-13, -3.13099e-07, 0.23877, -0.00945394, 2.01049, -0.0232389)
 bone_name = "knot"
 bone_idx = 16
 
@@ -2186,12 +2163,12 @@ mesh = SubResource("ArrayMesh_hx8he")
 skin = SubResource("Skin_1n6ip")
 
 [node name="leftArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.89307, 0.449918, 5.88596e-07, -0.449918, -0.89307, 9.18284e-07, 9.38773e-07, 5.56e-07, 1, 1.48294, 0.220992, 0.152422)
+transform = Transform3D(-0.89307, 0.449918, 5.96046e-07, -0.449918, -0.89307, 1.69873e-06, 1.30362e-06, 1.26194e-06, 1, 1.48294, 0.220992, 0.152421)
 bone_name = "Bone.022.L"
 bone_idx = 9
 
 [node name="rightArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 9.14559e-07, -9.59262e-07, 5.41098e-07, 1, -1.47954, 0.229224, 0.152422)
+transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 1.70711e-06, -1.32108e-06, 1.26474e-06, 1, -1.47954, 0.229224, 0.152421)
 bone_name = "Bone.022.R"
 bone_idx = 18
 
