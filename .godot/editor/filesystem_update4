@@ -3,4 +3,8 @@ res://tornado.tres
 res://esenas/player.tscn
 res://esenas/modelo_robot.tscn
 res://esenas/water_gun.tscn
-res://scripts/player.gd
+res://esenas/caja.tscn
+res://scripts/objeto.gd
+res://esenas/trash_dummy.tscn
+res://esenas/burbuja.tscn
+res://esenas/cañon.tscn
