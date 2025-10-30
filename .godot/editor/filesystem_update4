@@ -1,7 +1,6 @@
 res://esenas/world.tscn
 res://tornado.tres
 res://esenas/player.tscn
-res://esenas/espuma.tscn
-res://scripts/gun_water.gd
 res://esenas/modelo_robot.tscn
-res://scripts/skin.gd
+res://esenas/water_gun.tscn
+res://scripts/player.gd
