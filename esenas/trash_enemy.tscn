@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://du1bhsj5vdl71"]
+[gd_scene load_steps=39 format=3 uid="uid://du1bhsj5vdl71"]
 
 [ext_resource type="Script" uid="uid://oawud7huax1w" path="res://scripts/trash_enemy.gd" id="1_cmuh4"]
 [ext_resource type="PackedScene" uid="uid://bumnqkcap4uuo" path="res://esenas/trash_enemy_skin.tscn" id="2_cmuh4"]
@@ -130,11 +130,9 @@ nodes/StateMachine/position = Vector2(-460, 180)
 nodes/output/position = Vector2(640, 160)
 node_connections = [&"output", 0, &"StateMachine"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hyi7t"]
-radius = 10.0
-
 [node name="TrashEnemy" type="CharacterBody3D" groups=["Enemies"]]
-collision_layer = 13
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_cmuh4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -149,24 +147,13 @@ anim_player = NodePath("../trash_enemy_skin/AnimationPlayer")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.3
 path_height_offset = 0.1
-radius = 0.78
+avoidance_enabled = true
+time_horizon_agents = 1.5
 debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_hyi7t")
 metadata/_custom_type_script = "uid://c5dmryvwrs1qs"
-
-[node name="DetectArea" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-angular_damp = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
-shape = SubResource("SphereShape3D_hyi7t")
-
-[node name="DetectTimer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
 
 [node name="VisionCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -10)
@@ -178,16 +165,24 @@ debug_shape_thickness = 5
 transform = Transform3D(0.934266, 0.0118201, -0.0190756, -0.00945548, 0.963297, 0.0993682, 0.019496, -0.0992358, 0.96231, -2.38419e-07, 0, 0)
 
 [node name="Skeleton3D" parent="trash_enemy_skin/Armature" index="0"]
+bones/0/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, 3.43186e-07)
 bones/1/rotation = Quaternion(-0.0980767, 0.084194, 0.702077, 0.700272)
 bones/3/rotation = Quaternion(6.49211e-08, 1.28947e-07, 0.911577, -0.41113)
 bones/4/rotation = Quaternion(-0.0980773, -0.0841934, -0.702077, 0.700272)
 bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
 bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
 bones/9/rotation = Quaternion(-0.00599941, -4.10214e-06, -8.66887e-05, 0.999982)
+bones/10/rotation = Quaternion(0.497439, -0.0221607, 0.0124891, 0.867126)
+bones/11/rotation = Quaternion(0.26014, 0.0266117, -0.0974881, 0.960268)
+bones/12/rotation = Quaternion(-0.0100849, 0.000664795, 0.0347669, 0.999344)
 bones/13/rotation = Quaternion(-7.4506e-09, 6.9633e-13, 2.84216e-14, 1)
 bones/14/rotation = Quaternion(1.55854e-19, 1.1921e-07, 2.72109e-20, 1)
 bones/15/rotation = Quaternion(-0.188101, 2.07994e-14, -4.48467e-08, 0.98215)
+bones/16/rotation = Quaternion(-2.45868e-07, -1.19209e-07, -6.53697e-13, 1)
 bones/18/rotation = Quaternion(-0.00633918, 4.18313e-06, 9.15989e-05, 0.99998)
+bones/19/rotation = Quaternion(0.504286, 0.0220593, -0.0126611, 0.863162)
+bones/20/rotation = Quaternion(0.252533, -0.0258402, 0.0976923, 0.962297)
+bones/21/rotation = Quaternion(-0.00965966, -0.000664878, -0.0333011, 0.999398)
 
 [node name="knot" parent="trash_enemy_skin/Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.23877, -2.75702e-14, 2.91323e-13, -1.31474e-14, 0.23877, 1.06738e-07, -3.01981e-13, -1.35202e-07, 0.23877, -0.00945394, 2.01049, -0.0232374)
@@ -206,8 +201,7 @@ debug_shape_thickness = 5
 [node name="knockback" type="Timer" parent="."]
 wait_time = 0.4
 
-[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
-[connection signal="timeout" from="DetectTimer" to="." method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="trash_enemy_skin/AreaAttack" to="." method="_on_area_attack_body_entered"]
 [connection signal="timeout" from="knockback" to="." method="_on_knockback_timeout"]
 
