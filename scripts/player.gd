@@ -33,7 +33,7 @@ var is_attacking := false
 var current_attack_mode := "bubble"
 var attack_modes := ["bubble", "soap", "water", "melee"]
 var attack_mode_index := 0
-
+var dead:= false
 var combo_step := 0
 var combo_window := 1
 var combo_timer := 0.0

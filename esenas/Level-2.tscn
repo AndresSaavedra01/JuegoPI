@@ -1,18 +1,18 @@
 [gd_scene load_steps=12 format=3 uid="uid://bqrpb0codbeve"]
 
-[ext_resource type="MeshLibrary" uid="uid://pq6g8n1ju2kq" path="res://assets/GeneralLevelTiles.tres" id="1_tx72s"]
-[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://esenas/grid_map.gd" id="2_3crfi"]
-[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="3_46qi1"]
-[ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="4_h4v3d"]
-[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_7c7y4"]
-[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_24yly"]
-[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="7_62uf5"]
+[ext_resource type="MeshLibrary" uid="uid://pq6g8n1ju2kq" path="res://assets/GeneralLevelTiles.tres" id="1_0b1jq"]
+[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="2_qlyi1"]
+[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="3_jcyjs"]
+[ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="4_fi5rc"]
+[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_gflw6"]
+[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_jnew6"]
+[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="7_g7rif"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx72s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b1jq"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("5_7c7y4")
-shader_parameter/caustic_sampler = ExtResource("6_24yly")
+shader = ExtResource("5_gflw6")
+shader_parameter/caustic_sampler = ExtResource("6_jnew6")
 shader_parameter/water_color = Color(0.0196078, 0.764706, 0.866667, 1)
 shader_parameter/water_depth_color = Color(1, 1, 1, 1)
 shader_parameter/water_edge_distance = 0.1
@@ -20,7 +20,7 @@ shader_parameter/water_depth_distance = 0.3
 shader_parameter/water_texture_scale = 25.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3crfi"]
-panorama = ExtResource("7_62uf5")
+panorama = ExtResource("7_g7rif")
 
 [sub_resource type="Sky" id="Sky_46qi1"]
 sky_material = SubResource("PanoramaSkyMaterial_3crfi")
@@ -32,24 +32,24 @@ sky = SubResource("Sky_46qi1")
 [node name="Node3D" type="Node3D" groups=["World"]]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_tx72s")
+mesh_library = ExtResource("1_0b1jq")
 cell_size = Vector3(0.1, 0.1, 0.1)
 data = {
 "cells": PackedInt32Array(-131076, 65532, 524305, -196596, 65532, 524305)
 }
-script = ExtResource("2_3crfi")
+script = ExtResource("2_qlyi1")
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="Player" parent="." instance=ExtResource("3_46qi1")]
+[node name="Player" parent="." instance=ExtResource("3_jcyjs")]
 collision_layer = 3
 
 [node name="objetcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
 
-[node name="water" parent="." instance=ExtResource("4_h4v3d")]
+[node name="water" parent="." instance=ExtResource("4_fi5rc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_tx72s")
+surface_material_override/0 = SubResource("ShaderMaterial_0b1jq")
 
 [node name="ambiente" type="Node3D" parent="."]
 

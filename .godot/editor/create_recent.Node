@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 GridMap
 Sprite3D
 SubViewport
@@ -6,4 +8,3 @@ ProgressBar
 Control
 MeshInstance3D
 Node3D
-CollisionShape3D
