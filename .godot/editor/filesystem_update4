@@ -1,13 +1,6 @@
-res://esenas/player.tscn
-res://assets/GeneralLevelTiles.tres
-res://assets/tiles.tres
-res://tornado.tres
-res://scripts/player.gd
-res://esenas/Level-1.tscn
 res://esenas/Level-2.tscn
-res://esenas/checkpoint.tscn
-res://esenas/water.tscn
+res://assets/GeneralLevelTiles.tres
+res://tornado.tres
+res://esenas/Level-1.tscn
+res://assets/tiles.tres
 res://esenas/world.tscn
-res://esenas/trash_dummy.tscn
-res://esenas/modelo_robot.tscn
-res://esenas/caja.tscn
