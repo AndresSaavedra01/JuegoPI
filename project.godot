@@ -14,9 +14,17 @@ config/name="JuegoPI"
 run/main_scene="uid://fv3jfe3br3bv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+Shaker="*res://addons/shaker/src/Shaker.gd"
+
 [dotnet]
 
 project/assembly_name="JuegoPI"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
 
 [filesystem]
 

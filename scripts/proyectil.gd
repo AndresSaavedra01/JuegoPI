@@ -5,6 +5,9 @@ class_name Proyectil
 @export var velocidad: float = 20.0
 @export var radio_collider: float = 0.1             
 @export var gravedad = 0
+var knockbackForce : float
+var knockbackUpForce : float
+var damage : float
 
 func _ready():
 	# Activar colisiones

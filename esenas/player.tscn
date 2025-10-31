@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dkodjngs43vay" path="res://scripts/player.gd" id="1_82gg7"]
 [ext_resource type="PackedScene" uid="uid://1ro2j8sknmgj" path="res://esenas/modelo_robot.tscn" id="2_82gg7"]
-[ext_resource type="Texture2D" uid="uid://bonuc4nl2uv" path="res://assets/Life_UI_007.png" id="3_oq223"]
 [ext_resource type="PackedScene" uid="uid://bkkn511fbty72" path="res://esenas/camaraPivot.tscn" id="4_pj6sn"]
 [ext_resource type="Texture2D" uid="uid://cy35nf1f3w8sh" path="res://crosshairs_white.png" id="5_8t63t"]
+[ext_resource type="PackedScene" uid="uid://hlpss4b5nw3r" path="res://esenas/heart.tscn" id="2_oq223"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj6sn"]
 radius = 0.235978
@@ -46,6 +46,7 @@ rings = 16
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_82gg7")
+heartScene = ExtResource("2_oq223")
 mouse_sens_x = 0.1
 mouse_sens_y = 0.1
 
@@ -344,14 +345,17 @@ offset_top = 5.0
 offset_right = 1148.0
 offset_bottom = 39.0
 
-[node name="LifeUi007" type="Sprite2D" parent="Control"]
-position = Vector2(75.125, 26.9375)
-scale = Vector2(0.0837217, 0.0966714)
-texture = ExtResource("3_oq223")
+[node name="hearts" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 204.0
+offset_bottom = 58.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_started" from="robotV3/AnimationTree2" to="." method="_on_animation_tree_2_animation_started"]
 [node name="camaraPivot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_pj6sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803187, 0)
 player = NodePath("..")
