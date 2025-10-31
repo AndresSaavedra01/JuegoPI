@@ -215,12 +215,12 @@ points = PackedVector3Array(-0.829483, 0.00111364, -0.957234, 0.92753, -5.55112e
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
 panorama = ExtResource("4_45ie8")
 
-[sub_resource type="Sky" id="Sky_2q37d"]
+[sub_resource type="Sky" id="Sky_f0us6"]
 sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 
 [sub_resource type="Environment" id="Environment_6gyh5"]
 background_mode = 2
-sky = SubResource("Sky_2q37d")
+sky = SubResource("Sky_f0us6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0us6"]
 resource_local_to_scene = true

@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d364ho5uw7qv6"
-valid=false
+path="res://.godot/imported/huevo_roto.glb-c895d1c89a66258705f68183ad116661.scn"
 
 [deps]
 
 source_file="res://assets/huevo_roto.glb"
+dest_files=["res://.godot/imported/huevo_roto.glb-c895d1c89a66258705f68183ad116661.scn"]
 
 [params]
 

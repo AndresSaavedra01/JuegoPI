@@ -306,7 +306,7 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 	if target is CharacterBody3D and is_attacking:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		if target.has_method("hit"):
-			pass
+			target.hit(push_dir)
 
 func takeDamage(damage : int):
 	if currentHeartIndex >= 0:

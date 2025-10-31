@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://csydgog13ym2w"
-valid=false
+path="res://.godot/imported/caja.glb-48c51f384e7b28abed0c948b3b1a0737.scn"
 
 [deps]
 
 source_file="res://assets/caja.glb"
+dest_files=["res://.godot/imported/caja.glb-48c51f384e7b28abed0c948b3b1a0737.scn"]
 
 [params]
 
