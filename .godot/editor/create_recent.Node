@@ -1,6 +1,6 @@
+GridMap
 CollisionShape3D
 Area3D
-GridMap
 Sprite3D
 SubViewport
 TextureProgressBar
