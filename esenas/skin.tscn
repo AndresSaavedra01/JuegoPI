@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://bxg4psj1pbvyx"]
 
 [ext_resource type="Script" uid="uid://cw2vblnwxl1rn" path="res://scripts/skin.gd" id="1_fxfhb"]
-[ext_resource type="PackedScene" uid="uid://4voq8ao4cqwy" path="res://esenas/proyectil.tscn" id="2_vhah8"]
-[ext_resource type="PackedScene" uid="uid://hr6m2cxd0dey" path="res://esenas/modelo_robot.tscn" id="3_onwmr"]
+[ext_resource type="PackedScene" uid="uid://4voq8ao4cqwy" path="res://esenas/burbuja.tscn" id="2_vhah8"]
+[ext_resource type="PackedScene" uid="uid://1ro2j8sknmgj" path="res://esenas/modelo_robot.tscn" id="3_onwmr"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vfsic"]
 animation = &"attack"

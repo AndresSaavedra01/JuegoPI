@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name player
 # ==========================================================
 # CONFIGURACIÓN GENERAL
 # ==========================================================
@@ -23,7 +23,6 @@ extends CharacterBody3D
 @export var mouse_sens_y := 0.5
 @export var camera_pitch_min := -60.0
 @export var camera_pitch_max := 40.0
-var respawn = Vector3(0,0,0)
 
 # Ataques
 @export var bubble_rate := 0.3
@@ -42,7 +41,7 @@ var is_attacking := false
 var current_attack_mode := "bubble"
 var attack_modes := ["bubble", "soap", "water", "melee"]
 var attack_mode_index := 0
-
+var dead:= false
 var combo_step := 0
 var combo_window := 1
 var combo_timer := 0.0
@@ -53,12 +52,13 @@ var health : int
 # ==========================================================
 # REFERENCIAS A NODOS
 # ==========================================================
-@onready var camera_pivot := $SpringArm3D
+@onready var camera_pivot := $camaraPivot
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
-@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/hitbox
+@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/Hitbox
 @onready var cooldown_timer := $Timer
 @onready var heartsContiner : HBoxContainer = $Control/hearts
+@onready var mira_sprite := $camaraPivot/EdgeSpringArm3D/RearSpringArm3D/Camera3D/Sprite3D
 
 # ==========================================================
 # CICLOS DE VIDA
@@ -74,15 +74,10 @@ func _ready():
 	cooldown_timer.connect("timeout", Callable(self, "_on_cooldown_end"))
 
 
-func _input(event: InputEvent):
-	handle_camera_input(event)
-
 
 func _physics_process(delta: float):
 	handle_movement(delta)
 	move_and_slide()
-	if position.y < -3.12:
-		respawn_player()
 	$Control/Label.text = str(Engine.get_frames_per_second())
 
 
@@ -113,9 +108,44 @@ func handle_movement(delta: float):
 		if not is_on_floor():
 			velocity.y -= gravity_force * delta
 		return
+	if camera_pivot.apuntando:
+		handle_movenment_aim(delta)
+		mira_sprite.visible = true
+	else :
+		mira_sprite.visible = false
+		handle_movenment_free(delta)
+	
+	handle_jump(delta)
+
+func handle_movenment_aim(delta:float):
 	
 	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 
+	var forward = -camera_pivot.global_transform.basis.z
+	forward.y = 0
+	forward = forward.normalized()
+
+	var right = camera_pivot.global_transform.basis.x
+	right.y = 0
+	right = right.normalized()
+
+	var move_dir = (forward * input_dir.y) + (right * input_dir.x)
+	move_dir = move_dir.normalized()
+
+	if move_dir.length() > 0 and !is_attacking:
+		velocity.x = move_dir.x * move_speed
+		velocity.z = move_dir.z * move_speed
+		robot.run()
+		particles.emitting = true
+	else:
+		robot.idle()
+		particles.emitting = false
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
+
+
+func handle_movenment_free(delta:float):
+	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 	var forward = -camera_pivot.global_transform.basis.z
 	forward.y = 0
 	forward = forward.normalized()
@@ -139,8 +169,6 @@ func handle_movement(delta: float):
 		particles.emitting = false
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 		velocity.z = move_toward(velocity.z, 0, move_speed)
-
-	handle_jump(delta)
 
 
 func handle_jump(delta: float):
@@ -168,21 +196,8 @@ func handle_jump(delta: float):
 		particles.emitting = false
 
 
-# ==========================================================
-# CÁMARA
-# ==========================================================
-func handle_camera_input(event: InputEvent):
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		camera_pivot.rotate_y(deg_to_rad(-event.relative.x * mouse_sens_x))
-		camera_pitch = clamp(camera_pitch - event.relative.y * mouse_sens_y, camera_pitch_min, camera_pitch_max)
-		camera_pivot.rotation_degrees.x = camera_pitch
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-# ==========================================================
-# ATAQUES
-# ==========================================================
+
 func handle_attack_mode_change():
 	if Input.is_action_just_pressed("change-attack"):
 		attack_mode_index = (attack_mode_index + 1) % attack_modes.size()
@@ -233,9 +248,7 @@ func continue_combo():
 	combo_timer = 0.0
 	combo_step += 1
 	execute_melee_attack(combo_step)
-		
-func respawn_player():
-	position=respawn
+
 
 func execute_melee_attack(step):
 	can_attack = false
@@ -293,7 +306,7 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 	if target is CharacterBody3D and is_attacking:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		if target.has_method("hit"):
-			pass
+			target.hit(push_dir)
 
 func takeDamage(damage : int):
 	if currentHeartIndex >= 0:
