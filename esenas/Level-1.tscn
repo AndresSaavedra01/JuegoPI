@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=50 format=4 uid="uid://fv3jfe3br3bv"]
 
 [ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="1_2q37d"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
 [ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="9_6gyh5"]
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="11_2q37d"]
+[ext_resource type="PackedScene" uid="uid://chugsgo0usnr2" path="res://esenas/MrSteven.tscn" id="11_isbpu"]
 [ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
 [ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 
@@ -222,7 +223,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_f0us6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0us6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q37d"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -512,7 +513,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135, -2.384, -3.435)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_f0us6")
+surface_material_override/0 = SubResource("ShaderMaterial_2q37d")
 
 [node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.75075)
@@ -524,6 +525,9 @@ data = {
 }
 script = ExtResource("11_2q37d")
 metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="MrSteven" parent="." instance=ExtResource("11_isbpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102757, 0.294218, 7.7791)
 
 [editable path="Checkpoint"]
 [editable path="Checkpoint2"]

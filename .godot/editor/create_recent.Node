@@ -1,3 +1,5 @@
+MeshInstance3D
+BoneAttachment3D
 GridMap
 CollisionShape3D
 Area3D
@@ -6,5 +8,4 @@ SubViewport
 TextureProgressBar
 ProgressBar
 Control
-MeshInstance3D
 Node3D
