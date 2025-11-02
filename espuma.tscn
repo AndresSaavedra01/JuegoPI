@@ -6,7 +6,7 @@
 _data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_yue24"]
+[sub_resource type="CurveTexture" id="CurveTexture_1kgcc"]
 curve = SubResource("Curve_1kgcc")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unjsr"]
@@ -21,12 +21,12 @@ radial_velocity_max = 2.99998
 gravity = Vector3(0, -5, 0)
 scale_min = 0.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_yue24")
+scale_curve = SubResource("CurveTexture_1kgcc")
 turbulence_enabled = true
 turbulence_noise_strength = 1.67
 turbulence_noise_scale = 4.393
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kgcc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yue24"]
 shading_mode = 2
 disable_ambient_light = true
 disable_fog = true
@@ -37,7 +37,7 @@ emission_energy_multiplier = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_yue24"]
 lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_1kgcc")
+material = SubResource("StandardMaterial3D_yue24")
 radial_segments = 16
 rings = 8
 

@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://cqfriogfkd720"]
+[gd_scene load_steps=9 format=3 uid="uid://cqfriogfkd720"]
 
-[node name="Item" type="Node3D"]
+[ext_resource type="Script" uid="uid://h8n32ybmbjn6" path="res://scripts/item.gd" id="1_wmji2"]
+[ext_resource type="PackedScene" uid="uid://g47yianlngf7" path="res://esenas/Items/botella_vidrio.tscn" id="2_oq3rd"]
+[ext_resource type="PackedScene" uid="uid://bfueqlmnkfr5l" path="res://esenas/Items/botella_rota_top.tscn" id="3_olfrm"]
+[ext_resource type="PackedScene" uid="uid://bhxjlrjpahdgu" path="res://esenas/Items/botella_rota_botton.tscn" id="4_nmwyy"]
+[ext_resource type="PackedScene" uid="uid://cd6wwnbat7e4q" path="res://esenas/Items/caja.tscn" id="5_f1nii"]
+[ext_resource type="PackedScene" uid="uid://cgq64cp7gqxel" path="res://esenas/Items/huevo_roto.tscn" id="6_73inv"]
+[ext_resource type="PackedScene" uid="uid://d0q5cg7rx2ady" path="res://esenas/Items/lata.tscn" id="7_6fl6g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq3rd"]
+
+[node name="Item" type="CharacterBody3D"]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_wmji2")
+type = 4
+models = Array[Array]([[], [ExtResource("7_6fl6g")], [ExtResource("6_73inv")], [ExtResource("5_f1nii")], [ExtResource("2_oq3rd"), ExtResource("3_olfrm"), ExtResource("4_nmwyy")], []])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oq3rd")
+debug_color = Color(2.91191e-06, 0.649066, 0.158565, 0.42)

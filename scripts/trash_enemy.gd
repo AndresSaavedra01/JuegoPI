@@ -13,6 +13,9 @@ class_name TrashEnemy
 @export var knockbackForce : float = 2.0
 @export var knockbackUpForce : float = 0.3
 @export var hunt_distance : float = 20
+@export var cant_items_drop : int = 6
+@export var radio_items_drop : float = 3
+@export var itemScene : PackedScene
 
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 @onready var player : CharacterBody3D = get_tree().get_nodes_in_group("Player")[0]
@@ -28,8 +31,9 @@ class_name TrashEnemy
 @onready var jumping : bool = false
 @onready var lastPatrolCheck : int = Time.get_ticks_usec()
 @onready var applyingKnockback : bool = false
-
+@onready var gpuParticles : GPUParticles3D = $trash_enemy_skin/Armature/GPUParticles3D
 var patrolTarget : Vector3
+var isDeath : bool = false
 
 func _ready() -> void:
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
@@ -47,6 +51,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if applyingKnockback:
 		applyKnockBack(delta)
+	if isDeath:
+		pass
 	detect_player()
 	
 func run() -> void:
@@ -118,9 +124,6 @@ func attack() -> void:
 
 func die() -> void:
 	animationPlayback.travel("Die")
-	await get_tree().create_timer(0.5).timeout
-	if is_instance_valid(self):
-		queue_free()
 
 func move(stateFrom : String, target : Vector3, speed : float):
 	var delta : float = get_physics_process_delta_time()
@@ -155,7 +158,8 @@ func takeDamage(push_dir : Vector3, damage : float, knockbackForce : float, knoc
 		knockback.y = knockbackUpForce
 		velocity = knockback
 		print(health_points)
-		animationPlayback.travel("takeDamage")
+		if not animationTree.get("parameters/OneShot/active"):
+			animationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		move_and_slide()
 	if health_points <= 0:
 		stateMachine.travel("Die")
@@ -193,3 +197,23 @@ func _on_knockback_timeout() -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity.x = safe_velocity.x
 	velocity.z = safe_velocity.z
+
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Die":
+		body.get_node("Armature/Skeleton3D").visible = false
+		gpuParticles.emitting = true
+		for i in range(cant_items_drop):
+			var x : float = rng.randf()
+			var z : float = rng.randf()
+			var item_velocity : Vector3 = Vector3(x, 3, z).normalized() * radio_items_drop
+			var item : Item = itemScene.instantiate()
+			item.type = rng.randi_range(1,4)
+			item.velocity = item_velocity
+			item.global_position = body.get_node("Armature").global_position
+			get_tree().get_first_node_in_group("World").add_child(item)
+
+func _on_gpu_particles_3d_finished() -> void:
+	if is_instance_valid(self):
+		queue_free()
