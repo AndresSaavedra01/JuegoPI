@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://csgl5lgvpe50f"]
 
-[ext_resource type="Script" uid="uid://dai3a3vnaf7vq" path="res://esenas/MenuGUI/menu_Opciones.gd" id="1_ck5xp"]
-[ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/bg/bg.png" id="2_02ooh"]
-[ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/fonts/Renogare-Regular.otf" id="3_tkjqu"]
-[ext_resource type="Texture2D" uid="uid://8ade6an6pgol" path="res://assets/buttons/arrow_basic_s.png" id="4_yp6sb"]
-[ext_resource type="Texture2D" uid="uid://dr0cl3jwdpxqp" path="res://assets/buttons/check_square_color_checkmark.png" id="5_01quo"]
-[ext_resource type="Texture2D" uid="uid://dtheqxlljy8j5" path="res://assets/buttons/check_square_color.png" id="6_3trw1"]
+[ext_resource type="Script" uid="uid://dai3a3vnaf7vq" path="res://esenas/MenuGUI/Core/menu_Opciones.gd" id="1_ck5xp"]
+[ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_02ooh"]
+[ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="3_tkjqu"]
+[ext_resource type="Texture2D" uid="uid://8ade6an6pgol" path="res://assets/Menu/buttons/arrow_basic_s.png" id="4_yp6sb"]
+[ext_resource type="Texture2D" uid="uid://dr0cl3jwdpxqp" path="res://assets/Menu/buttons/check_square_color_checkmark.png" id="5_01quo"]
+[ext_resource type="Texture2D" uid="uid://dtheqxlljy8j5" path="res://assets/Menu/buttons/check_square_color.png" id="6_3trw1"]
 
 [node name="MenuOpciones" type="Control" node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync", "back_button")]
 layout_mode = 3
