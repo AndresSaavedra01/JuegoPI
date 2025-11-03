@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="1_2q37d"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
-[ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
+[ext_resource type="Texture2D" uid="uid://bl1y6j6rqc2sd" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
 [ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_isbpu"]
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
@@ -496,6 +496,7 @@ end_position = Vector3(-2.6195, -2.90003, -54.0195)
 
 [node name="Player" parent="." instance=ExtResource("1_k4u5q")]
 collision_layer = 3
+waterDamage = 1.0
 
 [node name="objetcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)

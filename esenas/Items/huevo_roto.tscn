@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://cgq64cp7gqxel"]
 
-[ext_resource type="Texture2D" uid="uid://boiht8a3qix4q" path="res://assets/huevo_roto_huevo.png" id="1_rangb"]
+[ext_resource type="Texture2D" uid="uid://bci2ymh1lv1ah" path="res://assets/huevo_roto_huevo.png" id="1_rangb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqa0w"]
 resource_name = "Material"
@@ -81,6 +81,8 @@ mesh = SubResource("ArrayMesh_nfvg2")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_rangb")

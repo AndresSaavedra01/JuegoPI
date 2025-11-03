@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://cd6wwnbat7e4q"]
 
-[ext_resource type="Texture2D" uid="uid://uwwhq111rxd2" path="res://assets/caja_carton.jpg" id="1_cxttd"]
+[ext_resource type="Texture2D" uid="uid://bf0a5832reyum" path="res://assets/caja_carton.jpg" id="1_cxttd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17qm2"]
 resource_name = "Material"
@@ -81,10 +81,12 @@ mesh = SubResource("ArrayMesh_krqww")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_61ty8")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, 0)
-target_position = Vector3(0, -0.08, 0)
+target_position = Vector3(0, -0.1, 0)

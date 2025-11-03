@@ -12,7 +12,6 @@
 
 [node name="Item" type="CharacterBody3D"]
 collision_layer = 512
-collision_mask = 0
 script = ExtResource("1_wmji2")
 type = 4
 models = Array[Array]([[], [ExtResource("7_6fl6g")], [ExtResource("6_73inv")], [ExtResource("5_f1nii")], [ExtResource("2_oq3rd"), ExtResource("3_olfrm"), ExtResource("4_nmwyy")], []])

@@ -22,11 +22,8 @@ func _ready():
 		queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	if body is CharacterBody3D:
-		var dir = body.global_position - global_position
-		dir.y = 0
-		dir = dir.normalized()
-		print(dir)
-		if body.has_method("hit"):
-			body.hit(dir)
+	if body.has_method("takeDamage"):
+		var push_dir: Vector3 = linear_velocity.normalized()
+		body.takeDamage(push_dir, damage, knockbackForce, knockbackUpForce)
+		if is_instance_valid(self):
 			queue_free()

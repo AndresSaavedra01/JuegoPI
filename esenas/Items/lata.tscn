@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://d0q5cg7rx2ady"]
 
-[ext_resource type="Texture2D" uid="uid://cc4wp7ra4h8ub" path="res://assets/lata_lata.jpg" id="1_4u0wm"]
+[ext_resource type="Texture2D" uid="uid://kkom4akiw4m0" path="res://assets/lata_lata.jpg" id="1_4u0wm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2gp8"]
 resource_name = "Material"
@@ -81,6 +81,8 @@ mesh = SubResource("ArrayMesh_2weaf")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_4u0wm")

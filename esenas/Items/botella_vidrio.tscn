@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://g47yianlngf7"]
 
-[ext_resource type="Texture2D" uid="uid://bd4ni876s0buo" path="res://assets/botella_vidrio_lata.jpg" id="1_nqjve"]
+[ext_resource type="Texture2D" uid="uid://b2lqm3v6ch7vu" path="res://assets/botella_vidrio_lata.jpg" id="1_nqjve"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4se8"]
 resource_name = "Material"
@@ -81,6 +81,8 @@ mesh = SubResource("ArrayMesh_wrr8t")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_xdu0t")

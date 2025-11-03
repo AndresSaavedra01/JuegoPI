@@ -31,6 +31,6 @@ func _physics_process(delta: float) -> void:
 		gravity *= 0.3
 	if(not is_on_floor()):
 		velocity += gravity * delta
-	if(ray.is_colliding()):
+	if(ray.is_colliding() or is_on_floor()):
 		velocity = Vector3(0, 1.5, 0)
 	move_and_slide()

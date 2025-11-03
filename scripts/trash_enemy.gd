@@ -10,8 +10,8 @@ class_name TrashEnemy
 @export var fallSpeed : float = 20.0
 @export var rotacion_velo : float = 20.0
 @export var patrolPoints : Array[Marker3D]
-@export var knockbackForce : float = 2.0
-@export var knockbackUpForce : float = 0.3
+@export var knockbackForce : float = 3.0
+@export var knockbackUpForce : float = 2.0
 @export var hunt_distance : float = 20
 @export var cant_items_drop : int = 6
 @export var radio_items_drop : float = 3
@@ -24,16 +24,18 @@ class_name TrashEnemy
 @onready var animationPlayer : AnimationPlayer = $trash_enemy_skin/AnimationPlayer
 @onready var animationPlayback : AnimationNodeStateMachinePlayback = animationTree.get("parameters/StateMachine/playback")
 @onready var stateMachine : StateMachine = $StateMachine
-@onready var knockbackTimer : Timer = $knockback
 @onready var visionCast : RayCast3D = $VisionCast
 @onready var floorCast : RayCast3D = $trash_enemy_skin/FloorCast
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var jumping : bool = false
 @onready var lastPatrolCheck : int = Time.get_ticks_usec()
 @onready var applyingKnockback : bool = false
+@onready var receivingKnockback : bool = false
 @onready var gpuParticles : GPUParticles3D = $trash_enemy_skin/Armature/GPUParticles3D
 var patrolTarget : Vector3
 var isDeath : bool = false
+var receivingKnockbackForce : float
+var receivingKnockbackDir : Vector3
 
 func _ready() -> void:
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
@@ -50,9 +52,10 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if applyingKnockback:
-		applyKnockBack(delta)
-	if isDeath:
-		pass
+		var dir : Vector3 = (player.global_position - global_position).normalized()
+		applyKnockBack(delta, player, dir, knockbackForce)
+	if(receivingKnockback):
+		applyKnockBack(delta, self, receivingKnockbackDir, receivingKnockbackForce)
 	detect_player()
 	
 func run() -> void:
@@ -84,6 +87,7 @@ func walk() -> void:
 		stateMachine.travel("Idle")
 
 func idle():
+	var delta : float = get_physics_process_delta_time()
 	velocity.x = 0
 	velocity.z = 0
 	var currentPatrolCheck : int = Time.get_ticks_usec()
@@ -112,14 +116,13 @@ func idle():
 			animationPlayback.travel("Walk")
 			stateMachine.travel("Walk")
 	animationPlayback.travel("Idle")
-	var delta : float = get_physics_process_delta_time()
 	if not is_on_floor():
 		velocity.y -= delta * fallSpeed
 	move_and_slide()
 
 func attack() -> void:
 	applyingKnockback = true
-	knockbackTimer.start()
+	player.velocity.y = knockbackUpForce
 	player.takeDamage(damage)
 
 func die() -> void:
@@ -150,17 +153,15 @@ func move(stateFrom : String, target : Vector3, speed : float):
 		velocity = new_velocity
 	move_and_slide()
 	
-func takeDamage(push_dir : Vector3, damage : float, knockbackForce : float, knockbackUpForce : float):
+func takeDamage(push_dir : Vector3, _damage : float, _knockbackForce : float, _knockbackUpForce : float):
 	if health_points > 0:
-		health_points -= damage
-		var delta : float = get_physics_process_delta_time()
-		var knockback :Vector3 = push_dir * knockbackForce
-		knockback.y = knockbackUpForce
-		velocity = knockback
-		print(health_points)
+		health_points -= _damage
+		receivingKnockbackForce = _knockbackForce
+		receivingKnockbackDir = push_dir
+		receivingKnockback = true
+		velocity.y = _knockbackUpForce
 		if not animationTree.get("parameters/OneShot/active"):
 			animationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		move_and_slide()
 	if health_points <= 0:
 		stateMachine.travel("Die")
 
@@ -179,40 +180,44 @@ func detect_player() -> void:
 func _on_area_attack_body_entered(bodyEntered: Node3D) -> void:
 	attack()
 
-func applyKnockBack(delta : float):
-	var knockback :Vector3 = (player.global_position - global_position).normalized()
-	knockback *= knockbackForce
-	knockback.y = knockbackUpForce
-	player.velocity = knockback
-	player.move_and_slide()
+func applyKnockBack(delta : float, body : CharacterBody3D, dir : Vector3, _knockbackForce : float) -> void:
+	var knockback :Vector3 = dir
+	knockback *= _knockbackForce
+	body.velocity.x = knockback.x
+	body.velocity.z = knockback.z
+	if not is_on_floor():
+		velocity.y -= delta * fallSpeed
+	body.move_and_slide()
+	if body.is_on_floor():
+		if body.is_in_group("Player"):
+			applyingKnockback = false
+		else:
+			receivingKnockback = false
 
 func lookTo(delta : float, dir : Vector3) -> void:
 	var rotacion : float = atan2(dir.x, dir.z)
 	body.rotation.y = lerp_angle(body.rotation.y, rotacion, rotacion_velo * delta)
 
-func _on_knockback_timeout() -> void:
-	applyingKnockback = false
-
-
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity.x = safe_velocity.x
 	velocity.z = safe_velocity.z
 
-
-
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Die":
 		body.get_node("Armature/Skeleton3D").visible = false
-		gpuParticles.emitting = true
 		for i in range(cant_items_drop):
+			rng.randomize()
 			var x : float = rng.randf()
 			var z : float = rng.randf()
-			var item_velocity : Vector3 = Vector3(x, 3, z).normalized() * radio_items_drop
+			var item_velocity : Vector3 = Vector3(x, 0, z).normalized()
+			item_velocity.y = 2
 			var item : Item = itemScene.instantiate()
 			item.type = rng.randi_range(1,4)
-			item.velocity = item_velocity
-			item.global_position = body.get_node("Armature").global_position
 			get_tree().get_first_node_in_group("World").add_child(item)
+			item.velocity = item_velocity
+			item.global_position = body.get_node("Armature").global_position + Vector3.UP
+			item.move_and_slide()
+		gpuParticles.emitting = true
 
 func _on_gpu_particles_3d_finished() -> void:
 	if is_instance_valid(self):
