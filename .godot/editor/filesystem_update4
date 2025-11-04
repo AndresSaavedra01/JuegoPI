@@ -1,4 +1,4 @@
-res://esenas/Level-2.tscn
+res://esenas/tiles_nave_tierra.tscn
 res://assets/GeneralLevelTiles.tres
 res://shaders/trash_enemy_skin.tres
 res://tornado.tres
