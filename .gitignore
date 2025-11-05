@@ -1,14 +1,3 @@
 # Godot 4+ specific ignores
+.godot/
 /android/
-.godot/*
-!.godot/project.godot
-.import/
-.export/
-.cache/
-godot_editor_settings.tres
-
-.DS_Store
-Thumbs.db
-
-*.tmp/
-*.vscode/

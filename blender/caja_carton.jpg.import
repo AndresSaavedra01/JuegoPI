@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:blender/caja_carton.jpg.import
 uid="uid://bce7a7uh6uwx3"
 path="res://.godot/imported/caja_carton.jpg-d4ba4d382835df0febff8169b400a58b.ctex"
-========
-uid="uid://6cvo65kolbv8"
-path="res://.godot/imported/exit.png-162d4ccf65d9de39ef2e1ddf55ffa88a.ctex"
->>>>>>>> Interfaces:assets/Menu/buttons/exit.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:blender/caja_carton.jpg.import
 source_file="res://blender/caja_carton.jpg"
 dest_files=["res://.godot/imported/caja_carton.jpg-d4ba4d382835df0febff8169b400a58b.ctex"]
-========
-source_file="res://assets/Menu/buttons/exit.png"
-dest_files=["res://.godot/imported/exit.png-162d4ccf65d9de39ef2e1ddf55ffa88a.ctex"]
->>>>>>>> Interfaces:assets/Menu/buttons/exit.png.import
 
 [params]
 
