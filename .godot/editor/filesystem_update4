@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 res://esenas/MrSteven.tscn
 res://assets/GeneralLevelTiles.tres
 res://assets/tiles.tres
 res://tornado.tres
+=======
+res://esenas/MenuGUI/WorldMap.tscn
+res://tornado.tres
+res://esenas/MenuGUI/Core/MenuPrincipal.gdshader
+res://esenas/MenuGUI/MenuOpciones.tscn
+res://esenas/MenuGUI/Core/WorldMap.gd
+res://esenas/MenuGUI/Core/LevelData.gd
+res://scripts/Core/MenuPrincipal.gdshader
+res://scripts/Core/LevelData.gd
+res://scripts/Core/WorldMap.gd
+res://esenas/MenuGUI/WorldMapLevel.gd
+res://esenas/MenuGUI/camera_2d.gd
+res://esenas/MenuGUI/MenuPrincipal.tscn
+>>>>>>> Interfaces

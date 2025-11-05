@@ -2,8 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:assets/botella_vidrio_rota_lata.jpg.import
 uid="uid://m3ornasp2tb7"
 path.s3tc="res://.godot/imported/botella_vidrio_rota_lata.jpg-5bd5d7b306d222c90f0996f2ae01bdf5.s3tc.ctex"
+=======
+uid="uid://djgcw567xfncp"
+path.s3tc="res://.godot/imported/colormap.png-bc5d1d256090d03abe812d4a3aca8378.s3tc.ctex"
+>>>>>>> Interfaces:assets/assets bosque-nieve/Models/FBX format/Textures/colormap.png.import
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true

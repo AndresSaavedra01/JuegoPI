@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 Shaker="*res://addons/shaker/src/Shaker.gd"
+LevelData="*res://scripts/Core/LevelData.gd"
 
 [dotnet]
 
@@ -29,6 +30,10 @@ enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+common/snap_controls_to_pixels=false
 
 [input]
 
