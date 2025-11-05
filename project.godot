@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-LevelData="*res://esenas/MenuGUI/Core/LevelData.gd"
+LevelData="*res://scripts/Core/LevelData.gd"
 
 [dotnet]
 

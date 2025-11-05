@@ -10,6 +10,11 @@ var level_dic = {
 		"unlocked" : true,
 		"unlocks" : "Level3",
 		"beaten" : false
+	},
+	"Level3" : {
+		"unlocked" : true,
+		"unlocks" : "Level4",
+		"beaten" : false
 	}
 }
 

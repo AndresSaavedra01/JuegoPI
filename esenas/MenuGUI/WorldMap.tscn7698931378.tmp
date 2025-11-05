@@ -1,4 +1,4 @@
-[gd_scene load_steps=270 format=4 uid="uid://bwq5gugcd0go7"]
+[gd_scene load_steps=271 format=4 uid="uid://bwq5gugcd0go7"]
 
 [ext_resource type="Script" uid="uid://bajqur8oofkr3" path="res://scripts/Core/WorldMap.gd" id="1_f3wg3"]
 [ext_resource type="Texture2D" uid="uid://dm87e7qoq8u2v" path="res://assets/Selector/Tiles/tile_0000.png" id="1_qpviu"]
@@ -136,6 +136,7 @@
 [ext_resource type="Texture2D" uid="uid://d2odgf7crci2q" path="res://assets/Menu/unlocked.png" id="134_ahr2p"]
 [ext_resource type="Script" uid="uid://dfbvc1n7ndk6l" path="res://esenas/MenuGUI/WorldMapLevel.gd" id="134_f3wg3"]
 [ext_resource type="PackedScene" uid="uid://dpmm76b47k5wl" path="res://assets/robotV3.glb" id="136_f3wg3"]
+[ext_resource type="Script" uid="uid://27cmfg7koym0" path="res://esenas/MenuGUI/camera_2d.gd" id="137_1v68s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j06cp"]
 texture = ExtResource("1_qpviu")
@@ -801,6 +802,7 @@ sources/131 = SubResource("TileSetAtlasSource_dga0r")
 
 [node name="WorldMap" type="Node2D"]
 script = ExtResource("1_f3wg3")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1359.0
@@ -819,7 +821,7 @@ metadata/_edit_lock_ = true
 
 [node name="LevelHolder" type="Node2D" parent="."]
 
-[node name="Level1" type="Node2D" parent="LevelHolder" node_paths=PackedStringArray("down")]
+[node name="Level1" type="Camera2D" parent="LevelHolder" node_paths=PackedStringArray("down")]
 position = Vector2(454, 507)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("134_f3wg3")
@@ -828,7 +830,7 @@ down = NodePath("../Level2")
 [node name="Sprite2D" type="Sprite2D" parent="LevelHolder/Level1"]
 texture = ExtResource("134_ahr2p")
 
-[node name="Level2" type="Node2D" parent="LevelHolder" node_paths=PackedStringArray("up", "right")]
+[node name="Level2" type="Camera2D" parent="LevelHolder" node_paths=PackedStringArray("up", "right")]
 position = Vector2(454, 887)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("134_f3wg3")
@@ -838,7 +840,7 @@ right = NodePath("../Level3")
 [node name="Sprite2D" type="Sprite2D" parent="LevelHolder/Level2"]
 texture = ExtResource("134_ahr2p")
 
-[node name="Level3" type="Node2D" parent="LevelHolder" node_paths=PackedStringArray("left")]
+[node name="Level3" type="Camera2D" parent="LevelHolder" node_paths=PackedStringArray("left")]
 position = Vector2(885, 887)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("134_f3wg3")
@@ -847,7 +849,9 @@ left = NodePath("../Level2")
 [node name="Sprite2D" type="Sprite2D" parent="LevelHolder/Level3"]
 texture = ExtResource("134_ahr2p")
 
-[node name="PlayerViewportContainer" type="SubViewportContainer" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PlayerViewportContainer" type="SubViewportContainer" parent="Node2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -862,21 +866,23 @@ grow_vertical = 2
 pivot_offset = Vector2(125, 125)
 stretch = true
 
-[node name="PlayerViewport" type="SubViewport" parent="PlayerViewportContainer"]
+[node name="PlayerViewport" type="SubViewport" parent="Node2D/PlayerViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(250, 250)
 render_target_update_mode = 4
 
-[node name="robotV3" parent="PlayerViewportContainer/PlayerViewport" instance=ExtResource("136_f3wg3")]
+[node name="robotV3" parent="Node2D/PlayerViewportContainer/PlayerViewport" instance=ExtResource("136_f3wg3")]
 transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="PlayerViewportContainer/PlayerViewport/robotV3"]
-transform = Transform3D(2.5974, 0, 0, 0, -1.13536e-07, 2.5974, 0, -2.5974, -1.13536e-07, -0.012987, 12.987, 0)
+[node name="Camera3D" type="Camera3D" parent="Node2D/PlayerViewportContainer/PlayerViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.005, 5, 0)
 projection = 1
 size = 1.618
 
-[node name="Camera2D" type="Camera2D" parent="PlayerViewportContainer"]
-process_mode = 3
-position = Vector2(122, 124)
-position_smoothing_speed = 0.005
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(331, 382)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("137_1v68s")
+target = NodePath("../Node2D")

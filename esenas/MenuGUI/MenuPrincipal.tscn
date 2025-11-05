@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbpsi0l8nwv73"]
 
-[ext_resource type="Script" uid="uid://cdvpxp4bdhp55" path="res://esenas/MenuGUI/Core/menu_principal.gd" id="1_fjsuk"]
+[ext_resource type="Script" uid="uid://cdvpxp4bdhp55" path="res://scripts/Core/menu_principal.gd" id="1_fjsuk"]
 [ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_7tcki"]
 [ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="3_2p0t7"]
 [ext_resource type="Texture2D" uid="uid://clq4tkjbcsrsq" path="res://assets/Menu/buttons/joystick.png" id="4_tivla"]
