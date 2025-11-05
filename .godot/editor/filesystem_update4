@@ -1,12 +1,5 @@
 res://esenas/MenuGUI/WorldMap.tscn
 res://tornado.tres
 res://esenas/MenuGUI/Core/MenuPrincipal.gdshader
-res://esenas/MenuGUI/Core/WorldMap.gd
-res://esenas/Level1.tscn
-res://assets/GeneralLevelTiles.tres
-res://shaders/trash_enemy_skin.tres
-res://scripts/cañon.gd
-res://esenas/MenuGUI/Core/LevelData.gd
-res://esenas/MenuGUI/MenuPrincipal.tscn
-res://esenas/MenuGUI/Core/menu_principal.gd
 res://esenas/MenuGUI/MenuOpciones.tscn
+res://esenas/MenuGUI/Core/WorldMap.gd

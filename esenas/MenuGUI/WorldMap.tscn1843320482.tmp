@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=4 uid="uid://bwq5gugcd0go7"]
+[gd_scene load_steps=270 format=4 uid="uid://bwq5gugcd0go7"]
 
 [ext_resource type="Script" uid="uid://bajqur8oofkr3" path="res://esenas/MenuGUI/Core/WorldMap.gd" id="1_f3wg3"]
 [ext_resource type="Texture2D" uid="uid://dm87e7qoq8u2v" path="res://assets/Selector/Tiles/tile_0000.png" id="1_qpviu"]
@@ -135,6 +135,7 @@
 [ext_resource type="Texture2D" uid="uid://ciqi4aj2ink64" path="res://assets/Selector/Tiles/tile_0099.png" id="132_nffea"]
 [ext_resource type="Texture2D" uid="uid://cp6im4otkrjh" path="res://assets/Menu/locked.png" id="134_ahr2p"]
 [ext_resource type="Script" uid="uid://7ihm2vckws10" path="res://esenas/MenuGUI/Core/WorldMapLevel.gd" id="134_sn7yw"]
+[ext_resource type="PackedScene" uid="uid://dpmm76b47k5wl" path="res://assets/robotV3.glb" id="136_f3wg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j06cp"]
 texture = ExtResource("1_qpviu")
@@ -802,13 +803,11 @@ sources/131 = SubResource("TileSetAtlasSource_dga0r")
 script = ExtResource("1_f3wg3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1359.0
-offset_top = -875.0
-offset_right = -1268.0
-offset_bottom = -784.0
+offset_right = 50.0
+offset_bottom = 50.0
 scale = Vector2(55.27, 37.085)
-size_flags_horizontal = 4
 color = Color(0.427451, 0.662745, 0.807843, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
@@ -851,10 +850,32 @@ modulate = Color(0.999994, 0.126208, 0.243838, 1)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("134_ahr2p")
 
-[node name="Player" type="Sprite2D" parent="."]
-position = Vector2(455, 507)
-texture = ExtResource("134_ahr2p")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 343.0
+offset_top = 358.0
+offset_right = 855.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.459, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="robotV3" parent="SubViewportContainer/SubViewport" instance=ExtResource("136_f3wg3")]
+rotation_order = 0
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/robotV3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+projection = 1
+current = true
+size = 5.0

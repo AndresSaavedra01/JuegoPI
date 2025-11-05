@@ -1,12 +1,12 @@
 extends Node2D
 
 @onready var level_holder = $LevelHolder
-@onready var player = $SubViewportContainer/SubViewport/Player
+@onready var player = $Player
 
 var levels = []
 @onready var curr_level = $LevelHolder/Level1
 
-var lerp_speed = 2.0
+var lerp_speed = 0.5
 var lerp_progress = 0.0
 var completed_movement = true
 var lerp_threshold = 0.1
@@ -28,14 +28,18 @@ func update_levels():
 func _process(delta):
 	var target_level : Node2D
 	
-	if Input.is_action_just_pressed("adelante") and curr_level.up:
-		target_level = curr_level.up
-	elif Input.is_action_just_pressed("atras") and curr_level.down:
-		target_level = curr_level.down
-	elif Input.is_action_just_pressed("izquierda") and curr_level.left:
-		target_level = curr_level.left
-	elif Input.is_action_just_pressed("derecha") and curr_level.right:
-		target_level = curr_level.right
+	if Input.is_action_pressed("adelante"):
+		if  curr_level.up:
+			target_level = curr_level.up
+	if Input.is_action_pressed("atras"):
+		if  curr_level.down:
+			target_level = curr_level.down
+	if Input.is_action_pressed("izquierda"):
+		if  curr_level.left:
+			target_level = curr_level.left
+	if Input.is_action_pressed("derecha"):
+		if  curr_level.right:
+			target_level = curr_level.right
 
 	if Input.is_action_just_pressed("saltar"):
 		await get_tree().create_timer(0.4).timeout
@@ -46,15 +50,20 @@ func _process(delta):
 		lerp_progress = 0.0
 
 		while lerp_progress < 1.0:
-			lerp_progress += lerp_speed * delta
+			lerp_progress += lerp_speed + delta
 			lerp_progress = clamp(lerp_progress, 0.0, 1.0)
-			player.position = player.position.lerp(target_level.global_position, lerp_progress)
-			
-			if player.position.distance_to(target_level.global_position) < lerp_threshold:
+			player.position = player.position.lerp(
+				target_level.global_position, lerp_progress )
+			printt("Robot Pos  Bucle:", player.position)
+		
+			if player.position.distance_to(
+				target_level.global_position) < lerp_threshold:	
 				break
 
-			await get_tree().process_frame
+			await get_tree().create_timer(delta).timeout
 
 		player.position = target_level.global_position
+		printt("Robot Pos Final:", player.position)
+
 		curr_level = target_level
 		completed_movement = true
