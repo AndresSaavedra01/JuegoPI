@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctvokln5edjb5" path="res://scripts/soap.gd" id="1_3mh4l"]
 [ext_resource type="PackedScene" uid="uid://cq86dreh8yqly" path="res://assets/soat.glb" id="1_so5gj"]
-[ext_resource type="PackedScene" uid="uid://c7k1pe6jd4g56" path="res://espuma.tscn" id="3_o8407"]
+[ext_resource type="PackedScene" uid="uid://c7k1pe6jd4g56" path="res://esenas/espuma.tscn" id="3_o8407"]
 
 [sub_resource type="Curve" id="Curve_3mh4l"]
 _data = [Vector2(0.0289017, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.508671, 0.775281), 0.0, 0.0, 0, 0, Vector2(0.976879, 0.247191), 0.0, 0.0, 0, 0]
@@ -46,7 +46,8 @@ size = Vector3(0.446228, 0.128845, 0.457581)
 size = Vector3(0.507385, 0.150772, 0.503235)
 
 [node name="Soap" type="RigidBody3D"]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 13
 mass = 5.0
 script = ExtResource("1_3mh4l")
 explosion = ExtResource("3_o8407")

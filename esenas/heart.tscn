@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://hlpss4b5nw3r"]
 
-[ext_resource type="Script" uid="uid://mxtoqgu1aa3a" path="res://esenas/heart.gd" id="1_bqd15"]
+[ext_resource type="Script" uid="uid://mxtoqgu1aa3a" path="res://scripts/heart.gd" id="1_bqd15"]
 [ext_resource type="Texture2D" uid="uid://bonuc4nl2uv" path="res://assets/Life_UI_007.png" id="1_romhh"]
+
 
 [node name="Heart" type="TextureRect"]
 custom_minimum_size = Vector2(35.4, 0)

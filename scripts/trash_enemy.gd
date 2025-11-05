@@ -1,64 +1,74 @@
 extends CharacterBody3D
+class_name TrashEnemy
 
 @export var health_points : float = 100.0
-@export var damage : float = 5.0
-@export var runSpeed : float = 4.0
+@export var damage : float = 1.0
+@export var runSpeed : float = 4.5
 @export var walkSpeed : float = 1.5
 @export var jumpImpulse : float = 9.0
 @export var jumpSpeed : float = 5.0
 @export var fallSpeed : float = 20.0
-@export var rotacion_velo : float = 15.0
+@export var rotacion_velo : float = 20.0
 @export var patrolPoints : Array[Marker3D]
-@export var knockbackForce : float = 40.0
-@export var knockbackUpForce : float = 5.0
+@export var knockbackForce : float = 2.0
+@export var knockbackUpForce : float = 0.3
+@export var hunt_distance : float = 20
 
 @onready var navAgent : NavigationAgent3D = $NavigationAgent3D
 @onready var player : CharacterBody3D = get_tree().get_nodes_in_group("Player")[0]
 @onready var body : Node3D = $trash_enemy_skin
 @onready var animationTree : AnimationTree= $AnimationTree
 @onready var animationPlayer : AnimationPlayer = $trash_enemy_skin/AnimationPlayer
-@onready var animationPlayback : AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
+@onready var animationPlayback : AnimationNodeStateMachinePlayback = animationTree.get("parameters/StateMachine/playback")
 @onready var stateMachine : StateMachine = $StateMachine
-@onready var detectArea : Area3D = $DetectArea
-@onready var detectTimer : Timer = $DetectTimer
+@onready var knockbackTimer : Timer = $knockback
 @onready var visionCast : RayCast3D = $VisionCast
 @onready var floorCast : RayCast3D = $trash_enemy_skin/FloorCast
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var jumping : bool = false
 @onready var lastPatrolCheck : int = Time.get_ticks_usec()
+@onready var applyingKnockback : bool = false
+
 var patrolTarget : Vector3
-var attackStart : int
 
 func _ready() -> void:
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
 	stateMachine.addState(State.new("Run", Callable(self, "run")))
 	stateMachine.addState(State.new("Walk", Callable(self, "walk")))
-	stateMachine.addState(State.new("Attack", Callable(self, "attack")))
 	var dieState : State = State.new("Die", Callable(self, "die"))
 	dieState.setOneShot(true)
 	stateMachine.addState(dieState)
-	stateMachine.addRelations("Idle", ["Run", "Walk", "Attack", "Die"])
-	stateMachine.addRelations("Run", ["Idle", "Walk", "Attack", "Die"])
-	stateMachine.addRelations("Walk", ["Run", "Idle", "Attack", "Die"])
-	stateMachine.addRelations("Attack", ["Run", "Idle", "Walk", "Die"])
-	stateMachine.addRelations("Die", ["Run", "Idle", "Walk", "Attack"])
+	stateMachine.addRelations("Idle", ["Run", "Walk", "Die"])
+	stateMachine.addRelations("Run", ["Idle", "Walk", "Die"])
+	stateMachine.addRelations("Walk", ["Run", "Idle", "Die"])
+	stateMachine.addRelations("Die", ["Run", "Idle", "Walk"])
 	stateMachine.setActiveState("Idle")
 	
+func _physics_process(delta: float) -> void:
+	if applyingKnockback:
+		applyKnockBack(delta)
+	detect_player()
+	
 func run() -> void:
+	var delta : float = get_physics_process_delta_time()
 	var toPlayeVector = player.global_position - global_position
-	if toPlayeVector.length() > 0.7:
-		move("Run", player.global_position, runSpeed)
-		if is_on_floor():
-			navAgent.set_target_position(player.global_position)
-	else:
-		if not animationPlayback.is_playing():
+	lookTo(delta, toPlayeVector.normalized())
+	if toPlayeVector.length() <= 0.9 and abs(toPlayeVector.y) < 0.5:
+		velocity = Vector3.ZERO
+		if not animationPlayer.is_playing():
 			animationPlayback.start("Attack")
 		else:
 			animationPlayback.travel("Attack")
-		var delta : float = get_physics_process_delta_time()
 		if not is_on_floor():
 			velocity.y -= delta * fallSpeed
 		move_and_slide()
+	elif not animationPlayback.get_current_node() == "Attack":
+		move("Run", player.global_position, runSpeed)
+		if is_on_floor():
+			navAgent.set_target_position(player.global_position)
+		else:
+			velocity.x = Vector3.ZERO.x
+			velocity.z = Vector3.ZERO.z
 
 func walk() -> void:
 	if not navAgent.is_target_reached():
@@ -102,14 +112,9 @@ func idle():
 	move_and_slide()
 
 func attack() -> void:
-	var delta : float = get_physics_process_delta_time()
-	var knockback :Vector3 = (player.global_position - global_position).normalized()
-	knockback *= knockbackForce
-	knockback.y = knockbackUpForce
-	player.velocity = knockback
-	player.move_and_slide()
+	applyingKnockback = true
+	knockbackTimer.start()
 	player.takeDamage(damage)
-	attackStart = Time.get_ticks_msec()
 
 func die() -> void:
 	animationPlayback.travel("Die")
@@ -121,19 +126,25 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	var delta : float = get_physics_process_delta_time()
 	var dest : Vector3 = navAgent.get_next_path_position()
 	var dir : Vector3 = (dest - global_position).normalized()
-	var rotacion : float = atan2(dir.x, dir.z)
-	body.rotation.y = lerp_angle(body.rotation.y, rotacion, rotacion_velo * delta)
+	var new_velocity = Vector3.ZERO
 	if not is_on_floor():
 		velocity.y -= delta * fallSpeed
-	elif dir.y > 0 or dir.y < 0 and not floorCast.is_colliding():
+	elif dir.y > 0 or not floorCast.is_colliding():
+		if not animationPlayer.is_playing():
+			animationPlayback.start("Jump")
+		else:
+			animationPlayback.travel("Jump")
 		velocity.y = jumpImpulse
 		speed = jumpSpeed
-		animationPlayer.speed_scale = 2
-		animationPlayback.travel("Jump")
 	else:
 		animationPlayback.travel(stateFrom)
-	velocity.x = dir.x * speed
-	velocity.z = dir.z * speed
+	lookTo(delta, dir)
+	new_velocity.x = dir.x * speed
+	new_velocity.z = dir.z * speed
+	if navAgent.avoidance_enabled:
+		navAgent.velocity = new_velocity
+	else:
+		velocity = new_velocity
 	move_and_slide()
 	
 func takeDamage(push_dir : Vector3, damage : float, knockbackForce : float, knockbackUpForce : float):
@@ -149,30 +160,36 @@ func takeDamage(push_dir : Vector3, damage : float, knockbackForce : float, knoc
 	if health_points <= 0:
 		stateMachine.travel("Die")
 
-func _on_timer_timeout() -> void:
-	var overlaps = detectArea.get_overlapping_bodies()
-	if overlaps.size() > 0:
-		for overlap in overlaps:
-			if overlap.is_in_group("Player"):
-				visionCast.look_at(player.global_transform.origin + Vector3.UP * 0.5)
-				visionCast.force_raycast_update()
-				if visionCast.is_colliding():
-					var collider = visionCast.get_collider()
-					if collider.is_in_group("Player"):
-						if is_on_floor():
-							stateMachine.travel("Run")
-						detectArea.get_node("CollisionShape3D").get_shape().radius = 30
-						visionCast.target_position.z = -30
-
-func _on_detect_area_body_exited(bodyExited: Node3D) -> void:
-	if bodyExited.is_in_group("Player"):
+func detect_player() -> void:
+	if global_position.distance_to(player.global_position) > hunt_distance:
 		lastPatrolCheck = Time.get_ticks_usec()
 		stateMachine.travel("Idle")
-		detectArea.get_node("CollisionShape3D").get_shape().radius = 10
-		visionCast.target_position.z = -10
+	visionCast.look_at(player.global_transform.origin + Vector3.UP * 0.5)
+	visionCast.force_raycast_update()
+	if not visionCast.is_colliding(): return
+	var collider = visionCast.get_collider()
+	if not collider.is_in_group("Player"): return
+	if is_on_floor():
+		stateMachine.travel("Run")
+
+func _on_area_attack_body_entered(bodyEntered: Node3D) -> void:
+	attack()
+
+func applyKnockBack(delta : float):
+	var knockback :Vector3 = (player.global_position - global_position).normalized()
+	knockback *= knockbackForce
+	knockback.y = knockbackUpForce
+	player.velocity = knockback
+	player.move_and_slide()
+
+func lookTo(delta : float, dir : Vector3) -> void:
+	var rotacion : float = atan2(dir.x, dir.z)
+	body.rotation.y = lerp_angle(body.rotation.y, rotacion, rotacion_velo * delta)
+
+func _on_knockback_timeout() -> void:
+	applyingKnockback = false
 
 
-func _on_area_3d_body_entered(bodyEntered: Node3D) -> void:
-	print(bodyEntered)
-	if bodyEntered.is_in_group("Player"):
-		attack()
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity.x = safe_velocity.x
+	velocity.z = safe_velocity.z
