@@ -22,12 +22,12 @@ shader_parameter/water_texture_scale = 25.0
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3crfi"]
 panorama = ExtResource("7_g7rif")
 
-[sub_resource type="Sky" id="Sky_46qi1"]
+[sub_resource type="Sky" id="Sky_qlyi1"]
 sky_material = SubResource("PanoramaSkyMaterial_3crfi")
 
 [sub_resource type="Environment" id="Environment_h4v3d"]
 background_mode = 2
-sky = SubResource("Sky_46qi1")
+sky = SubResource("Sky_qlyi1")
 
 [node name="Node3D" type="Node3D" groups=["World"]]
 

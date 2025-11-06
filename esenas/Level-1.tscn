@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
 [ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="9_6gyh5"]
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="11_2q37d"]
-[ext_resource type="MeshLibrary" uid="uid://pq6g8n1ju2kq" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
+[ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
 [ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_isbpu"]

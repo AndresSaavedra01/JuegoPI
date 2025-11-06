@@ -1,3 +1,272 @@
-[gd_scene format=3 uid="uid://cc7ud8s60vh3o"]
+[gd_scene load_steps=68 format=3 uid="uid://cc7ud8s60vh3o"]
+
+[ext_resource type="PackedScene" uid="uid://bgh1oyc8oqsv7" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/barrels.glb" id="1_kiq1d"]
+[ext_resource type="PackedScene" uid="uid://d0pdgxaxb126w" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor.glb" id="2_uwvln"]
+[ext_resource type="PackedScene" uid="uid://blg7ycvt1l1w8" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_corner.glb" id="3_jyrdk"]
+[ext_resource type="PackedScene" uid="uid://hytl384d7vbh" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_cornerRound.glb" id="4_2c3xb"]
+[ext_resource type="PackedScene" uid="uid://ddr8bl66i8c1v" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_detailed.glb" id="5_q43lh"]
+[ext_resource type="PackedScene" uid="uid://cenjtjcwqqov0" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_end.glb" id="6_mmehc"]
+[ext_resource type="PackedScene" uid="uid://877fqogvnq7m" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_wall.glb" id="7_bwscd"]
+[ext_resource type="PackedScene" uid="uid://djjeksd347qfd" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_wallCorner.glb" id="8_5hira"]
+[ext_resource type="PackedScene" uid="uid://dybcykm0w7bh2" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/corridor_windowClosed.glb" id="9_yln5a"]
+[ext_resource type="PackedScene" uid="uid://b41dhmru63ac4" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/craft_cargoA.glb" id="10_p16pu"]
+[ext_resource type="PackedScene" uid="uid://knjg5ejrp812" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/craft_speederB.glb" id="11_s28jd"]
+[ext_resource type="PackedScene" uid="uid://b5n5jmpgt61gn" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/craft_speederD.glb" id="12_h1gs2"]
+[ext_resource type="PackedScene" uid="uid://ym15gyjitdta" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/crater.glb" id="13_37cnx"]
+[ext_resource type="PackedScene" uid="uid://cbnugu2ulnplh" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/craterLarge.glb" id="14_dew1u"]
+[ext_resource type="PackedScene" uid="uid://jk12lcu8wg71" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_chair.glb" id="15_ar8bf"]
+[ext_resource type="PackedScene" uid="uid://dejxxf5hb2hf1" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_chairArms.glb" id="16_uo1va"]
+[ext_resource type="PackedScene" uid="uid://dcehemjt1jcht" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_chairStool.glb" id="17_77o6s"]
+[ext_resource type="PackedScene" uid="uid://h0qe2s43i73g" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_computer.glb" id="18_6kqeo"]
+[ext_resource type="PackedScene" uid="uid://yfas2bhecofy" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_computerCorner.glb" id="19_jo8sq"]
+[ext_resource type="PackedScene" uid="uid://dd0utbcae2v8v" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/desk_computerScreen.glb" id="20_6vple"]
+[ext_resource type="PackedScene" uid="uid://h336mx7t6j6n" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/gate_complex.glb" id="21_ijmt8"]
+[ext_resource type="PackedScene" uid="uid://bfvwbpstn1f4w" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/hangar_largeB.glb" id="22_whlpv"]
+[ext_resource type="PackedScene" uid="uid://biw8ksf0m2lfk" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/hangar_smallA.glb" id="23_acbjb"]
+[ext_resource type="PackedScene" uid="uid://byenf5gl3sfmy" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/hangar_smallB.glb" id="24_167px"]
+[ext_resource type="PackedScene" uid="uid://c1dmqqaw6lsu5" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_barrel.glb" id="25_xwioq"]
+[ext_resource type="PackedScene" uid="uid://c1be7vil2jy2t" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_barrelLarge.glb" id="26_rsdgl"]
+[ext_resource type="PackedScene" uid="uid://cp64ibs2o2rbr" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_generator.glb" id="27_xj2fi"]
+[ext_resource type="PackedScene" uid="uid://cw4ftlo83is3q" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_generatorLarge.glb" id="28_gufce"]
+[ext_resource type="PackedScene" uid="uid://3ornkb8q7jrk" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_wireless.glb" id="29_bvje6"]
+[ext_resource type="PackedScene" uid="uid://bqr0urj7kimy" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/machine_wirelessCable.glb" id="30_gmaw1"]
+[ext_resource type="PackedScene" uid="uid://dsqupwg0wc80b" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/meteor_detailed.glb" id="31_us4q6"]
+[ext_resource type="PackedScene" uid="uid://1w8ocs18t7vp" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/meteor_half.glb" id="32_plwn3"]
+[ext_resource type="PackedScene" uid="uid://c63ysq6n7jwti" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_center.glb" id="33_hl2t0"]
+[ext_resource type="PackedScene" uid="uid://d1kchnvnjj32h" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_corner.glb" id="34_2svrt"]
+[ext_resource type="PackedScene" uid="uid://cg388nw1ox8lr" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_cornerOpen.glb" id="35_h36no"]
+[ext_resource type="PackedScene" uid="uid://da7qfb2do0hnw" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_cornerRound.glb" id="36_ufoyt"]
+[ext_resource type="PackedScene" uid="uid://42sp4io4a0m5" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_end.glb" id="37_nacx6"]
+[ext_resource type="PackedScene" uid="uid://cci3l53f5p1mj" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_high.glb" id="38_c016c"]
+[ext_resource type="PackedScene" uid="uid://c4jklp8iviqwm" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_large.glb" id="39_a61xh"]
+[ext_resource type="PackedScene" uid="uid://ckw3ih3qkry17" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_long.glb" id="40_nr02h"]
+[ext_resource type="PackedScene" uid="uid://qq0omgcq8lwy" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_low.glb" id="41_t0e6x"]
+[ext_resource type="PackedScene" uid="uid://c3sfhhgm4fnnj" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_side.glb" id="42_3h7vf"]
+[ext_resource type="PackedScene" uid="uid://bssa5qk6ihyy8" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_small.glb" id="43_oe8o3"]
+[ext_resource type="PackedScene" uid="uid://bqeuatonsnju6" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_smallDiagonal.glb" id="44_e7aw7"]
+[ext_resource type="PackedScene" uid="uid://ctumtxw6el4xs" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/platform_straight.glb" id="45_q4ygb"]
+[ext_resource type="PackedScene" uid="uid://dxh835iojt02a" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock.glb" id="46_wmcv7"]
+[ext_resource type="PackedScene" uid="uid://b511s583ppgav" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rocks_smallA.glb" id="47_j8bnw"]
+[ext_resource type="PackedScene" uid="uid://b557yajjbfqvn" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rocks_smallB.glb" id="48_1m4id"]
+[ext_resource type="PackedScene" uid="uid://y2j4uc8406ud" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock_crystals.glb" id="49_pwc5n"]
+[ext_resource type="PackedScene" uid="uid://nded3rjfbk2b" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock_crystalsLargeA.glb" id="50_l5sp0"]
+[ext_resource type="PackedScene" uid="uid://cp80hry7s2rhf" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock_crystalsLargeB.glb" id="51_rsakq"]
+[ext_resource type="PackedScene" uid="uid://dqtbkps3c8sku" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock_largeA.glb" id="52_vjwj1"]
+[ext_resource type="PackedScene" uid="uid://doa75trria7xu" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rock_largeB.glb" id="53_okbvt"]
+[ext_resource type="PackedScene" uid="uid://db72ikmx0kmce" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/rover.glb" id="54_wh1jg"]
+[ext_resource type="PackedScene" uid="uid://dddyq1avph2jc" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/satelliteDish_detailed.glb" id="55_pa3xc"]
+[ext_resource type="PackedScene" uid="uid://8vk4rme4m555" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/structure_closed.glb" id="56_cqwmo"]
+[ext_resource type="PackedScene" uid="uid://cii603knr467t" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain.glb" id="57_xfcgh"]
+[ext_resource type="PackedScene" uid="uid://depqqijy8wajr" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_ramp.glb" id="58_jmawf"]
+[ext_resource type="PackedScene" uid="uid://cjlgilcgd30x7" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_rampLarge.glb" id="59_k18v2"]
+[ext_resource type="PackedScene" uid="uid://bsfg5wmsp347l" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_rampLarge_detailed.glb" id="60_h4qvo"]
+[ext_resource type="PackedScene" uid="uid://bop73tbv1lo26" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_roadCross.glb" id="61_weq3o"]
+[ext_resource type="PackedScene" uid="uid://da3oy34s0r0yg" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_roadEnd.glb" id="62_yf8ct"]
+[ext_resource type="PackedScene" uid="uid://dur4da825lhai" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_roadSplit.glb" id="63_xbfdx"]
+[ext_resource type="PackedScene" uid="uid://da7turjnbf0dh" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_roadStraight.glb" id="64_n0qnh"]
+[ext_resource type="PackedScene" uid="uid://brmr3rrk0yr0l" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/terrain_side.glb" id="65_hcpc3"]
+[ext_resource type="PackedScene" uid="uid://48a42h7m5v03" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/turret_double.glb" id="66_f6ruh"]
+[ext_resource type="PackedScene" uid="uid://ms8sdoy0qfa1" path="res://assets/Assets_Nave_Tierra/Models/GLTF format/turret_single.glb" id="67_qbuqe"]
 
 [node name="Tiles_Nave_Tierra" type="Node3D"]
+
+[node name="barrels2" parent="." instance=ExtResource("1_kiq1d")]
+visible = false
+
+[node name="corridor2" parent="." instance=ExtResource("2_uwvln")]
+visible = false
+
+[node name="corridor_corner2" parent="." instance=ExtResource("3_jyrdk")]
+visible = false
+
+[node name="corridor_cornerRound2" parent="." instance=ExtResource("4_2c3xb")]
+visible = false
+
+[node name="corridor_detailed2" parent="." instance=ExtResource("5_q43lh")]
+visible = false
+
+[node name="corridor_end2" parent="." instance=ExtResource("6_mmehc")]
+visible = false
+
+[node name="corridor_wall2" parent="." instance=ExtResource("7_bwscd")]
+visible = false
+
+[node name="corridor_wallCorner2" parent="." instance=ExtResource("8_5hira")]
+visible = false
+
+[node name="corridor_windowClosed2" parent="." instance=ExtResource("9_yln5a")]
+visible = false
+
+[node name="craft_cargoA2" parent="." instance=ExtResource("10_p16pu")]
+visible = false
+
+[node name="craft_speederB2" parent="." instance=ExtResource("11_s28jd")]
+visible = false
+
+[node name="craft_speederD2" parent="." instance=ExtResource("12_h1gs2")]
+visible = false
+
+[node name="crater2" parent="." instance=ExtResource("13_37cnx")]
+visible = false
+
+[node name="craterLarge2" parent="." instance=ExtResource("14_dew1u")]
+visible = false
+
+[node name="desk_chair2" parent="." instance=ExtResource("15_ar8bf")]
+visible = false
+
+[node name="desk_chairArms2" parent="." instance=ExtResource("16_uo1va")]
+visible = false
+
+[node name="desk_chairStool2" parent="." instance=ExtResource("17_77o6s")]
+visible = false
+
+[node name="desk_computer2" parent="." instance=ExtResource("18_6kqeo")]
+visible = false
+
+[node name="desk_computerCorner2" parent="." instance=ExtResource("19_jo8sq")]
+visible = false
+
+[node name="desk_computerScreen2" parent="." instance=ExtResource("20_6vple")]
+visible = false
+
+[node name="gate_complex2" parent="." instance=ExtResource("21_ijmt8")]
+visible = false
+
+[node name="hangar_largeB2" parent="." instance=ExtResource("22_whlpv")]
+visible = false
+
+[node name="hangar_smallA2" parent="." instance=ExtResource("23_acbjb")]
+visible = false
+
+[node name="hangar_smallB2" parent="." instance=ExtResource("24_167px")]
+visible = false
+
+[node name="machine_barrel2" parent="." instance=ExtResource("25_xwioq")]
+visible = false
+
+[node name="machine_barrelLarge2" parent="." instance=ExtResource("26_rsdgl")]
+visible = false
+
+[node name="machine_generator2" parent="." instance=ExtResource("27_xj2fi")]
+visible = false
+
+[node name="machine_generatorLarge2" parent="." instance=ExtResource("28_gufce")]
+visible = false
+
+[node name="machine_wireless2" parent="." instance=ExtResource("29_bvje6")]
+visible = false
+
+[node name="machine_wirelessCable2" parent="." instance=ExtResource("30_gmaw1")]
+visible = false
+
+[node name="meteor_detailed2" parent="." instance=ExtResource("31_us4q6")]
+visible = false
+
+[node name="meteor_half2" parent="." instance=ExtResource("32_plwn3")]
+visible = false
+
+[node name="platform_center2" parent="." instance=ExtResource("33_hl2t0")]
+visible = false
+
+[node name="platform_corner2" parent="." instance=ExtResource("34_2svrt")]
+visible = false
+
+[node name="platform_cornerOpen2" parent="." instance=ExtResource("35_h36no")]
+visible = false
+
+[node name="platform_cornerRound2" parent="." instance=ExtResource("36_ufoyt")]
+visible = false
+
+[node name="platform_end2" parent="." instance=ExtResource("37_nacx6")]
+visible = false
+
+[node name="platform_high2" parent="." instance=ExtResource("38_c016c")]
+visible = false
+
+[node name="platform_large2" parent="." instance=ExtResource("39_a61xh")]
+visible = false
+
+[node name="platform_long2" parent="." instance=ExtResource("40_nr02h")]
+visible = false
+
+[node name="platform_low2" parent="." instance=ExtResource("41_t0e6x")]
+visible = false
+
+[node name="platform_side2" parent="." instance=ExtResource("42_3h7vf")]
+visible = false
+
+[node name="platform_small2" parent="." instance=ExtResource("43_oe8o3")]
+visible = false
+
+[node name="platform_smallDiagonal2" parent="." instance=ExtResource("44_e7aw7")]
+visible = false
+
+[node name="platform_straight2" parent="." instance=ExtResource("45_q4ygb")]
+visible = false
+
+[node name="rock2" parent="." instance=ExtResource("46_wmcv7")]
+visible = false
+
+[node name="rocks_smallA2" parent="." instance=ExtResource("47_j8bnw")]
+visible = false
+
+[node name="rocks_smallB2" parent="." instance=ExtResource("48_1m4id")]
+visible = false
+
+[node name="rock_crystals2" parent="." instance=ExtResource("49_pwc5n")]
+visible = false
+
+[node name="rock_crystalsLargeA2" parent="." instance=ExtResource("50_l5sp0")]
+visible = false
+
+[node name="rock_crystalsLargeB2" parent="." instance=ExtResource("51_rsakq")]
+visible = false
+
+[node name="rock_largeA2" parent="." instance=ExtResource("52_vjwj1")]
+visible = false
+
+[node name="rock_largeB2" parent="." instance=ExtResource("53_okbvt")]
+visible = false
+
+[node name="rover2" parent="." instance=ExtResource("54_wh1jg")]
+visible = false
+
+[node name="satelliteDish_detailed2" parent="." instance=ExtResource("55_pa3xc")]
+visible = false
+
+[node name="structure_closed2" parent="." instance=ExtResource("56_cqwmo")]
+visible = false
+
+[node name="terrain2" parent="." instance=ExtResource("57_xfcgh")]
+visible = false
+
+[node name="terrain_ramp2" parent="." instance=ExtResource("58_jmawf")]
+visible = false
+
+[node name="terrain_rampLarge2" parent="." instance=ExtResource("59_k18v2")]
+visible = false
+
+[node name="terrain_rampLarge_detailed2" parent="." instance=ExtResource("60_h4qvo")]
+visible = false
+
+[node name="terrain_roadCross2" parent="." instance=ExtResource("61_weq3o")]
+visible = false
+
+[node name="terrain_roadEnd2" parent="." instance=ExtResource("62_yf8ct")]
+visible = false
+
+[node name="terrain_roadSplit2" parent="." instance=ExtResource("63_xbfdx")]
+visible = false
+
+[node name="terrain_roadStraight2" parent="." instance=ExtResource("64_n0qnh")]
+visible = false
+
+[node name="terrain_side2" parent="." instance=ExtResource("65_hcpc3")]
+visible = false
+
+[node name="turret_double2" parent="." instance=ExtResource("66_f6ruh")]
+visible = false
+
+[node name="turret_single2" parent="." instance=ExtResource("67_qbuqe")]
+visible = false
