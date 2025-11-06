@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ucywev6u3e"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ucywev6u3e"]
 
 [ext_resource type="PackedScene" uid="uid://cmflfnq53sa5d" path="res://assets/pegote_enemy.glb" id="1_0ivhm"]
 [ext_resource type="ArrayMesh" uid="uid://bqi2u01nigh23" path="res://blender/pegote_enemy.obj" id="2_3q1ox"]
@@ -23,8 +23,12 @@ radius = 0.862736
 height = 4.92586
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3q1ox"]
-radius = 0.893335
-height = 4.73153
+radius = 1.48235
+height = 5.90445
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dda8x"]
+radius = 2.58499
+height = 5.38168
 
 [node name="Pegote_skin" type="Node3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -84,9 +88,22 @@ bone_name = "Bone.004.R"
 bone_idx = 8
 
 [node name="Area3D" type="Area3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3DRarm" type="CollisionShape3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm/Area3D"]
 transform = Transform3D(0.997932, 0.0442232, -0.0466826, -0.0439843, 0.999014, 0.00613153, 0.0469078, -0.00406548, 0.998892, -0.159003, 0.65115, -0.133659)
 shape = SubResource("CapsuleShape3D_3q1ox")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="pegote_enemy/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 3.15167, 0)
+bone_name = "Bone.001"
+bone_idx = 4
+
+[node name="Area3D" type="Area3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pegote_enemy/Armature/Skeleton3D/BoneAttachment3D2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67667, 1.02465)
+shape = SubResource("CapsuleShape3D_dda8x")
 
 [editable path="pegote_enemy"]

@@ -6,10 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4th44"]
 radius = 0.394529
-height = 1.74241
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_g0m3o"]
-radius = 10.0
+height = 1.9
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g0m3o"]
 animation = &"Acttack"
@@ -42,43 +39,56 @@ switch_mode = 1
 switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g0m3o"]
-states/Acttack/node = SubResource("AnimationNodeAnimation_g0m3o")
-states/Acttack/position = Vector2(453, -1)
+states/attack/node = SubResource("AnimationNodeAnimation_g0m3o")
+states/attack/position = Vector2(453, -1)
 states/idle/node = SubResource("AnimationNodeAnimation_6mslp")
 states/idle/position = Vector2(432, 188)
 states/walk/node = SubResource("AnimationNodeAnimation_q4sxg")
 states/walk/position = Vector2(619, 78)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bar6s"), "Acttack", "idle", SubResource("AnimationNodeStateMachineTransition_5t5pb"), "Acttack", "walk", SubResource("AnimationNodeStateMachineTransition_lgevb"), "idle", "Acttack", SubResource("AnimationNodeStateMachineTransition_mewsa"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_8y4u7"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_icrde"), "walk", "Acttack", SubResource("AnimationNodeStateMachineTransition_dymk4")]
-graph_offset = Vector2(-109, -206)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bar6s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5t5pb"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_lgevb"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_mewsa"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_8y4u7"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_icrde"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_dymk4")]
+graph_offset = Vector2(-88, -51)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g0m3o"]
+radius = 10.0
 
 [node name="pegote_enemy" type="CharacterBody3D"]
 script = ExtResource("1_4th44")
+knockbackForce = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476574, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530143, 0)
 shape = SubResource("CapsuleShape3D_4th44")
 
 [node name="Pegote_skin" parent="." instance=ExtResource("1_2dgii")]
 
 [node name="Skeleton3D" parent="Pegote_skin/pegote_enemy/Armature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/position = Vector3(0, -0.0713484, 0)
-bones/4/rotation = Quaternion(0.0220211, -2.84292e-15, 1.04021e-08, 0.999758)
+bones/3/position = Vector3(0, -0.0800405, 0)
+bones/4/rotation = Quaternion(0.0239499, 0, 0, 0.999713)
 bones/5/position = Vector3(1.24438, 2.69988, -0.0286613)
-bones/5/rotation = Quaternion(0.0536531, -0.0699818, -0.790513, 0.606064)
+bones/5/rotation = Quaternion(0.0533825, -0.0701884, -0.792847, 0.603007)
 bones/6/rotation = Quaternion(0.0601471, -0.0408897, -0.168765, 0.982969)
 bones/7/position = Vector3(-1.24438, 2.69988, -0.0286619)
-bones/7/rotation = Quaternion(0.0536529, 0.0699817, 0.790513, 0.606064)
+bones/7/rotation = Quaternion(0.0533823, 0.0701883, 0.792847, 0.603007)
 bones/8/rotation = Quaternion(0.0601471, 0.0408897, 0.168765, 0.982969)
 
 [node name="BoneAttachment3D" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.0713484, 0)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.0800405, 0)
 
 [node name="BoneAttachment3DLarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.574252, 0.782399, -0.241013, -0.818678, -0.548804, 0.169056, 9.68575e-08, 0.294392, 0.955685, 2.71181, 2.23404, 0.242502)
+transform = Transform3D(-0.580556, 0.778138, -0.2397, -0.81422, -0.554829, 0.170911, 2.6077e-08, 0.294392, 0.955685, 2.70872, 2.21403, 0.242502)
 
 [node name="BoneAttachment3DRarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.574252, -0.782398, 0.241013, 0.818678, -0.548804, 0.169056, -1.04308e-07, 0.294392, 0.955685, -2.71181, 2.23404, 0.242502)
+transform = Transform3D(-0.580556, -0.778138, 0.2397, 0.81422, -0.554829, 0.170911, -1.00583e-07, 0.294392, 0.955685, -2.70872, 2.21403, 0.242502)
+
+[node name="CollisionShape3DRarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm/Area3D" index="0"]
+transform = Transform3D(0.999227, -0.0313431, -0.0237961, 0.0314347, 0.9995, 0.00347003, 0.0236755, -0.0042153, 0.999712, -0.686463, 0.872373, -0.201805)
+
+[node name="BoneAttachment3D2" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 1.14169e-08, 2.38145e-07, 0, 0.998853, -0.0478861, -2.38419e-07, 0.0478861, 0.998853, 0, 3.24035, 0)
+
+[node name="CollisionShape3D" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3D2/Area3D" index="0"]
+transform = Transform3D(1, 1.75125e-08, -1.19911e-10, -1.74729e-08, 0.998154, 0.0607389, 1.18338e-09, -0.0607389, 0.998154, -3.75342e-07, -0.271071, 2.5835)
 
 [node name="FloorCast" type="RayCast3D" parent="Pegote_skin/pegote_enemy" index="2"]
 
@@ -87,14 +97,6 @@ path_desired_distance = 0.3
 path_height_offset = 0.1
 radius = 0.78
 debug_enabled = true
-
-[node name="DetectArea" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-angular_damp = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
-shape = SubResource("SphereShape3D_g0m3o")
 
 [node name="DetectTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -115,8 +117,23 @@ root_node = NodePath("../Pegote_skin/pegote_enemy")
 tree_root = SubResource("AnimationNodeStateMachine_g0m3o")
 anim_player = NodePath("../Pegote_skin/pegote_enemy/AnimationPlayer")
 
-[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[node name="knockback" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="DetectArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+angular_damp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
+shape = SubResource("SphereShape3D_g0m3o")
+
+[connection signal="body_entered" from="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm/Area3D" to="." method="_on_area_attack_body_entered"]
+[connection signal="body_entered" from="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3D2/Area3D" to="." method="_on_area_attack_body_entered"]
 [connection signal="timeout" from="DetectTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="knockback" to="." method="_on_knockback_timeout"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 
 [editable path="Pegote_skin"]
 [editable path="Pegote_skin/pegote_enemy"]
