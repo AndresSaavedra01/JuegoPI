@@ -53,7 +53,7 @@ var health : int
 # REFERENCIAS A NODOS
 # ==========================================================
 @onready var camera_pivot := $camaraPivot
-@onready var robot : = $robotV3
+@onready var robot : skin = $robotV3
 @onready var particles := $GPUParticles3D
 @onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/Hitbox
 @onready var cooldown_timer := $Timer
@@ -80,6 +80,7 @@ func _physics_process(delta: float):
 	move_and_slide()
 	$Control/Label.text = str(Engine.get_frames_per_second())
 
+#CAMBIO DE ATAQUES
 
 func _process(_delta: float) -> void:
 	handle_attack_mode_change()
@@ -94,6 +95,7 @@ func _process(_delta: float) -> void:
 			handle_water_attack()
 			robot.cañonMelee.visible = false
 		"melee":
+			robot.water_attack(0,0,0,false)
 			handle_melee_attack(_delta)
 			robot.cañonMelee.visible = true
 
@@ -196,7 +198,9 @@ func handle_jump(delta: float):
 		particles.emitting = false
 
 
-
+# ==========================================================
+# ATAQUES
+# ==========================================================
 
 func handle_attack_mode_change():
 	if Input.is_action_just_pressed("change-attack"):

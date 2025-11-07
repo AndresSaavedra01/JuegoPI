@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name skin
 @onready var animation_tree = $AnimationTree2
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @onready var cañon = $"Cañon"
@@ -44,7 +44,10 @@ func soap_attack():
 
 func water_attack(damage : float, knockbackForce : float, knockbackUpForce : float, active: bool = false) -> void:
 	var tween = get_tree().create_tween()
-	if active : waterGun.shoot(damage, knockbackForce, knockbackUpForce)
+	if active : 
+		cañon.ataquar(damage,knockbackForce,knockbackUpForce)
+		cañon.proyectil = bubble
+		##waterGun.shoot(damage, knockbackForce, knockbackUpForce)
 	tween.tween_property(animation_tree,"parameters/hold_shoot/blend_amount",int (active), 0.2)
 
 
