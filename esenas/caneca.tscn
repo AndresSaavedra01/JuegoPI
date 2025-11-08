@@ -5,10 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahcdr"]
 resource_name = "Material.001"
-diffuse_mode = 3
-specular_mode = 1
 albedo_texture = ExtResource("1_umdeh")
-roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2lr4"]
 resource_name = "Material.002"
