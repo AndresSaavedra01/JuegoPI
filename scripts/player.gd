@@ -10,7 +10,7 @@ class_name player
 @export var gravity_force := 20.0
 @export var COYOTE_TIME := 0.2
 @export var totalHearts : int = 5
-@export var heartScene : PackedScene
+@export var heartScene : = preload("res://esenas/heart.tscn")
 @export var bubbleKnockbackForce : float = 40.0
 @export var bubbleKnockbackUpForce : float = 5.0
 @export var waterKnockbackForce : float = 10.0
@@ -38,8 +38,8 @@ var camera_pitch := 0.0
 var has_double_jumped := false
 var can_attack := true
 var is_attacking := false
-var current_attack_mode := "bubble"
-var attack_modes := ["bubble", "soap", "water", "melee"]
+var current_attack_mode := "Bubble"
+var attack_modes := ["Bubble", "Soap", "Water", "Melee"]
 var attack_mode_index := 0
 var dead:= false
 var combo_step := 0
@@ -76,7 +76,9 @@ func _ready():
 
 
 func _physics_process(delta: float):
-	handle_movement(delta)
+	handle_movenment(delta, camera_pivot.apuntando)
+	mira_sprite.visible = camera_pivot.apuntando
+	handle_jump(delta)
 	move_and_slide()
 	$Control/Label.text = str(Engine.get_frames_per_second())
 
@@ -103,50 +105,16 @@ func _process(_delta: float) -> void:
 # ==========================================================
 # MOVIMIENTO Y SALTO
 # ==========================================================
-func handle_movement(delta: float):
+
+
+func handle_movenment(delta:float, apuntando: bool):
 	if is_attacking:
 		velocity.x = move_toward(velocity.x, 0, move_speed * delta)
 		velocity.z = move_toward(velocity.z, 0, move_speed * delta)
 		if not is_on_floor():
 			velocity.y -= gravity_force * delta
 		return
-	if camera_pivot.apuntando:
-		handle_movenment_aim(delta)
-		mira_sprite.visible = true
-	else :
-		mira_sprite.visible = false
-		handle_movenment_free(delta)
 	
-	handle_jump(delta)
-
-func handle_movenment_aim(delta:float):
-	
-	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
-
-	var forward = -camera_pivot.global_transform.basis.z
-	forward.y = 0
-	forward = forward.normalized()
-
-	var right = camera_pivot.global_transform.basis.x
-	right.y = 0
-	right = right.normalized()
-
-	var move_dir = (forward * input_dir.y) + (right * input_dir.x)
-	move_dir = move_dir.normalized()
-
-	if move_dir.length() > 0 and !is_attacking:
-		velocity.x = move_dir.x * move_speed
-		velocity.z = move_dir.z * move_speed
-		robot.run()
-		particles.emitting = true
-	else:
-		robot.idle()
-		particles.emitting = false
-		velocity.x = move_toward(velocity.x, 0, move_speed)
-		velocity.z = move_toward(velocity.z, 0, move_speed)
-
-
-func handle_movenment_free(delta:float):
 	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 	var forward = -camera_pivot.global_transform.basis.z
 	forward.y = 0
@@ -160,8 +128,9 @@ func handle_movenment_free(delta:float):
 	move_dir = move_dir.normalized()
 
 	if move_dir.length() > 0 and !is_attacking:
-		var target_rot = atan2(move_dir.x, move_dir.z)
-		robot.rotation.y = lerp_angle(robot.rotation.y, target_rot, rotation_speed * delta)
+		if !apuntando:
+			var target_rot = atan2(move_dir.x, move_dir.z)
+			robot.rotation.y = lerp_angle(robot.rotation.y, target_rot, rotation_speed * delta)
 		velocity.x = move_dir.x * move_speed
 		velocity.z = move_dir.z * move_speed
 		robot.run()

@@ -7,6 +7,7 @@ class_name skin
 @onready var waterGun := $WaterGun
 @onready var bubble := preload("res://esenas/burbuja.tscn")
 @onready var soap := preload("res://esenas/soap.tscn")
+signal animation_finished
 
 
 func idle():
@@ -44,16 +45,17 @@ func soap_attack():
 
 func water_attack(damage : float, knockbackForce : float, knockbackUpForce : float, active: bool = false) -> void:
 	var tween = get_tree().create_tween()
+	cañon.proyectil = bubble
 	if active : 
 		cañon.ataquar(damage,knockbackForce,knockbackUpForce)
-		cañon.proyectil = bubble
-		##waterGun.shoot(damage, knockbackForce, knockbackUpForce)
+		#waterGun.shoot(damage, knockbackForce, knockbackUpForce)
 	tween.tween_property(animation_tree,"parameters/hold_shoot/blend_amount",int (active), 0.2)
 
 
 func attackMelee():
 	#state_machine.travel("attack")
-	animation_tree.set("parameters/attack-melee/request", 1 )
+	cañonMelee.visible = true
+	animation_tree.set("parameters/attack-melee/request", true )
 	
 
 func attackMelee_2():
@@ -63,3 +65,10 @@ func attackMelee_2():
 
 func attackMelee_3():
 	animation_tree.set("parameters/attack-melee-3/request",true )
+
+
+
+func _on_animation_tree_2_animation_finished(anim_name: StringName) -> void:
+	if anim_name.begins_with("meele"):
+		print(anim_name)
+		emit_signal("animation_finished")
