@@ -13,17 +13,18 @@ func _ready() -> void:
 	particles.emitting = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	mira_sprite.visible = false
-	
-	robot.animation_finished.connect(_on_attack_animation_finished)
-	
+	cooldown_timer.connect("timeout", Callable(self, "_on_cooldown_end"))
+	robot.connect("animation_finished", Callable(self, "on_animation_finished"))
+
+
+
 	movementSM.addState(State.new("Idle", Callable(self, "idle")))
 	movementSM.addState(State.new("Run", Callable(self, "run")))
 	var dieState : State = State.new("Die", Callable(self, "die"))
-	dieState.setOneShot(true)
 	movementSM.addState(dieState)
+	
 	movementSM.addRelations("Idle", ["Run", "Die"])
 	movementSM.addRelations("Run", ["Idle", "Die"])
-	movementSM.addRelations("Die", ["Run", "Idle"])
 	movementSM.setActiveState("Idle")
 
 
@@ -51,17 +52,18 @@ func _input(event: InputEvent) -> void:
 		attack_mode_index = (attack_mode_index + 1) % attack_modes.size()
 		current_attack_mode = attack_modes[attack_mode_index]
 		attackSM.travel(current_attack_mode)
-	
+
+
+func _process(delta: float) -> void:
+	$Control/Label.text = str(Engine.get_frames_per_second())
 
 
 func _physics_process(delta: float) -> void:
 	var apuntando = camera_pivot.apuntando
 	mira_sprite.visible = apuntando
 	
-	if in_combo:
-		combo_timer += delta
-		if combo_timer > combo_window:
-			reset_combo()
+	if current_attack_mode != "Water":
+		robot.water_attack(0,0,0,false)
 	
 	if !apuntando:
 		var target_rot = atan2(move_dir.x, move_dir.z)
@@ -86,22 +88,27 @@ func run():
 	handle_jump(get_physics_process_delta_time())
 
 func die():
-	pass
+	print("Muelto")
+	velocity = Vector3.ZERO
+	velocity.y -= gravity_force
+	robot.idle()
 
 #ATAQUES
 
 
 func bubble():
-	print("Mode Bubble")
+	#print("Mode Bubble")
 	robot.cañonMelee.visible = false
-	if Input.is_action_just_pressed("atacar"):
+	robot.cañon.proyectil = preload("res://esenas/burbuja.tscn")
+	if Input.is_action_just_pressed("atacar") :
 		cooldown_timer.start(bubble_rate)
 		robot.bubble_attack()
 
 func water():
-	print("Mode water")
+	#print("Mode water")
 	robot.cañonMelee.visible = false
 	var active
+	robot.cañon.proyectil = preload("res://esenas/burbuja.tscn")
 	if Input.is_action_pressed("atacar"):
 		active = true
 	else:
@@ -109,92 +116,39 @@ func water():
 	robot.water_attack(0,0,0,active)
 
 func soap():
-	print("Mode Soap")
+	#print("Mode Soap")
 	robot.cañonMelee.visible = false
+	robot.cañon.proyectil = preload("res://esenas/soap.tscn")
 	if Input.is_action_just_pressed("atacar"):
-		
 		robot.soap_attack()
 
 
-var input_buffer := false  
-
-
+var count = 0
+@onready var tempo = $Timer2
 func melee():
-	hitbox.disable_mode = is_attacking
-
-	if Input.is_action_just_pressed("atacar"):
-		# Si está atacando, guardar la entrada
-		if is_attacking:
-			input_buffer = true
-			return
-		
-		# Si puede atacar normalmente
-		if can_attack:
-			if not in_combo:
-				start_combo(1)
-			elif combo_step < 3:
-				continue_combo()
-
-
-
-func continue_combo():
-	combo_step += 1
-	execute_melee_attack(combo_step)
-
-func start_combo(step: int):
-	in_combo = true
-	combo_step = step
-	execute_melee_attack(combo_step)
-
-
-func execute_melee_attack(step: int):
-	can_attack = false
-	is_attacking = true
-	input_buffer = false
-
-	if velocity.length() > 0.1:
-		velocity *= 0.4
-
-	var forward = robot.transform.basis.z.normalized()
-	velocity.x += forward.x * melee_push
-	velocity.z += forward.z * melee_push
-
-	match step:
-		1: robot.attackMelee()
-		2: robot.attackMelee_2()
-		3: robot.attackMelee_3()
-
-	# Espera a que termine la animación (controlado por el signal del skin)
-	await get_tree().create_timer(0.05).timeout  # da un pequeño margen
-	await get_tree().create_timer(combo_window).timeout
-	if not input_buffer:
-		reset_combo()
+	#print("Mode melee")
+	robot.cañonMelee.visible = true
+	if Input.is_action_just_pressed("atacar")  and can_attack:
+		cooldown_timer.start(melee_rate)
+		print("pepe")
+		is_attacking = true
+		match count:
+			0: 
+				robot.attackMelee()
+				tempo.start(2)
+			1:  
+				robot.attackMelee_2()
+			2:
+				robot.attackMelee_3()
+		count +=1
+		if count > 2:
+			count = 0
+		can_attack = false
 
 
 
-func _on_attack_animation_finished():
-	is_attacking = false
+func _on_cooldown_end():
 	can_attack = true
-
-	if input_buffer and combo_step < 3:
-		continue_combo()
-	else:
-		await get_tree().create_timer(combo_window).timeout
-		if not input_buffer:
-			reset_combo()
-
-
-
-func reset_combo():
-	in_combo = false
-	is_attacking = false
-	can_attack = true
-	input_buffer = false
-	combo_step = 0
-
-
-func _process(delta: float) -> void:
-	pass
 
 
 func handle_jump(delta: float):
@@ -230,3 +184,41 @@ func camera_input(input):
 	right = right.normalized()
 	move_dir = (forward * input.y) + (right * input.x)
 	move_dir = move_dir.normalized()
+
+func on_animation_finished():
+	is_attacking = false
+
+
+func takeDamage(damage : int):
+	if currentHeartIndex >= 0:
+		for i in range(damage):
+			var heart : Heart = heartsContiner.get_child(currentHeartIndex)
+			if heart.isFull():
+				heart.mediumHeart()
+			else:
+				heart.emptyHeart()
+				currentHeartIndex -= 1
+			health -= 1
+	if health <= 0:
+		movementSM.travel("Die")
+			
+			
+
+
+func _on_timer_2_timeout() -> void:
+	count = 0
+
+func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		await get_tree().create_timer(0.3).timeout
+		robot.cañon.ataquar(bubbleDamage, bubbleKnockbackForce, bubbleKnockbackUpForce)
+
+
+func _on_hitbox_body_entered(target: Node3D) -> void:
+	if target is RigidBody3D and is_attacking:
+		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
+		target.apply_impulse(push_dir * 5)
+	if target is CharacterBody3D and is_attacking:
+		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
+		if target.has_method("hit"):
+			target.hit(push_dir)

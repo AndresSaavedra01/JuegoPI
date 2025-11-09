@@ -6,8 +6,4 @@ res://tornado.tres
 res://esenas/Level-1.tscn
 res://esenas/Level-2.tscn
 res://esenas/player.tscn
-res://esenas/trash_enemy.tscn
-res://esenas/heart.tscn
-res://scripts/player_with_state_machine.gd
-res://scripts/skin.gd
 res://esenas/modelo_robot.tscn

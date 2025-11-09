@@ -32,14 +32,12 @@ func jump2():
 	
 
 func bubble_attack():
-	cañon.proyectil = bubble
 	cañon.speed = 18.0
 	animation_tree.set("parameters/one_shoot/request",true )
 
 
 func soap_attack():
 	cañon.speed = 30.0
-	cañon.proyectil = soap
 	animation_tree.set("parameters/one_shoot/request",true )
 
 

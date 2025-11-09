@@ -26,9 +26,11 @@ func _process(delta: float) -> void:
 # ENTRADA DE RATÓN Y CAMBIOS DE MODO
 # ===============================================================
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("apuntar") and not player.current_attack_mode == "melee":
+	if Input.is_action_just_pressed("apuntar") and not player.current_attack_mode == "Melee":
 		apuntando = not apuntando
 	
+	if player.current_attack_mode == "Melee":
+		apuntando = false 
 	
 	if !apuntando:
 		camera_free(event)
