@@ -17,6 +17,9 @@ class_name player
 @export var waterKnockbackUpForce : float = 1.0
 @export var bubbleDamage : float = 5.0
 @export var waterDamage : float = 0.5
+@export var knockbackForce : float = 4
+@export var knockbackUpForce : float = 3
+@export var damage : float = 10
 
 # Sensibilidad de cámara
 @export var mouse_sens_x := 0.5

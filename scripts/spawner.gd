@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var detectAreaRadio : float = 10.0
 @export var maxEntityCount : int = 10
 @export var fallSpeed : float = 3.0
-@export var throwing_time : float = 1.5
+@export var throwing_time : float = 1.2
 @export var throwing_force : float = 2.0
 @export var min_wait_time : float = 1.5
 @export var max_wait_time : float = 3.0
