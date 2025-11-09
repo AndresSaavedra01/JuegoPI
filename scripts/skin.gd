@@ -7,6 +7,7 @@ class_name skin
 @onready var waterGun := $WaterGun
 @onready var bubble := preload("res://esenas/burbuja.tscn")
 @onready var soap := preload("res://esenas/soap.tscn")
+@onready var water := preload("res://esenas/water_proyectil.tscn")
 signal animation_finished
 
 
@@ -43,10 +44,12 @@ func soap_attack():
 
 func water_attack(damage : float, knockbackForce : float, knockbackUpForce : float, active: bool = false) -> void:
 	var tween = get_tree().create_tween()
-	cañon.proyectil = bubble
+	cañon.speed = 20.0
+	cañon.proyectil = water
+	waterGun.proyectil = water
 	if active : 
-		cañon.ataquar(damage,knockbackForce,knockbackUpForce)
-		#waterGun.shoot(damage, knockbackForce, knockbackUpForce)
+		#cañon.ataquar(damage,knockbackForce,knockbackUpForce)
+		waterGun.ataquar(damage, knockbackForce, knockbackUpForce)
 	tween.tween_property(animation_tree,"parameters/hold_shoot/blend_amount",int (active), 0.2)
 
 

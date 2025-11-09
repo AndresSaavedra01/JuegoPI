@@ -1,11 +1,13 @@
-extends RigidBody3D
-class_name Proyectil
+extends Proyectil
 
-@export var vida: float = 3.0
-@export var gravedad = 0
-var knockbackForce : float
-var knockbackUpForce : float
-var damage : float
+var scale_water := 1.0
+
+
+
+func _physics_process(delta: float) -> void:
+	var vector_scale = Vector3(scale_water,scale_water,scale_water)
+	$CollisionShape3D.scale = vector_scale
+	$MeshInstance3D.scale = vector_scale
 
 func _ready():
 	# Activar colisiones
@@ -19,7 +21,13 @@ func _ready():
 	if is_instance_valid(self):
 		queue_free()
 
-func _on_body_entered(body: Node) -> void:
+
+
+func _on_body_entered(body) -> void:
+	var tween = get_tree().create_tween()
+	pass
+	tween.tween_property(self, "scale_water", 0.3, 1)
+	
 	if body is CharacterBody3D:
 		var dir = body.global_position - global_position
 		dir.y = 0
