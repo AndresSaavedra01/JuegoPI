@@ -60,9 +60,9 @@ var health : int
 @onready var mira_sprite := $camaraPivot/EdgeSpringArm3D/RearSpringArm3D/Camera3D/Sprite3D
 
 
-@onready var movementSM: StateMachine = $StateMachine
-@onready var attackSM: StateMachine = $StateMachine2
-@onready var aimSM: StateMachine = $StateMachine3
+@onready var movementSM: StateMachine = $MaquinasdeEstados/StateMachine
+@onready var attackSM: StateMachine = $MaquinasdeEstados/StateMachine2
+@onready var aimSM: StateMachine = $MaquinasdeEstados/StateMachine3
 var move_dir : Vector3
 
 func _ready() -> void:

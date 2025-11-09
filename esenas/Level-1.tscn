@@ -495,7 +495,6 @@ start_position = Vector3(-2.63799, -4.11103, -55.4994)
 end_position = Vector3(-2.6195, -2.90003, -54.0195)
 
 [node name="Player" parent="." instance=ExtResource("1_k4u5q")]
-collision_layer = 3
 
 [node name="objetcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)

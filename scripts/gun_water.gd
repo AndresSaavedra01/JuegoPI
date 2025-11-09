@@ -4,7 +4,7 @@ extends Node3D
 @export var proyectil: PackedScene
 @export var ray: RayCast3D
 @export var speed := 20.0
-@export var turbulence := 0.1 # ← controla cuánta desviación aleatoria habrá
+@export var turbulence := 0.1
 var apuntando := false
 
 func ataquar(damage: float, knockbackForce: float, knockbackUpForce: float):
