@@ -1,9 +1,8 @@
+res://esenas/Nave.tscn
 res://assets/GeneralLevelTiles.tres
 res://shaders/trash_enemy_skin.tres
-res://tornado.tres
-res://esenas/Nave.tscn
 res://assets/Tiles_Nave_Tierra.tres
+res://tornado.tres
 res://esenas/Level-1.tscn
 res://esenas/Level-2.tscn
 res://esenas/tiles_nave_tierra.tscn
-res://scripts/grid_map.gd
