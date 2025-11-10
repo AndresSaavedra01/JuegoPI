@@ -27,7 +27,7 @@ var last_time: float = 0.0
 var lastPatrolCheck: int = Time.get_ticks_usec()
 @export var patrolWaitTime: float = 2.0 
 #Variables para attract
-@export var attract_strength : float = 8.0 #intensidad del campo de atraccion
+@export var attract_strength : float = 10.0 #intensidad del campo de atraccion
 @export var attract_distance : float = 10.0 #rango maximo de atrracion
 @export var min_attract_distance : float = 1.0 #exita que el jugador se peque al enemigo
 @export var max_attract_force : float = 20.0 #limite de fuerza 
