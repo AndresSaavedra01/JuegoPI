@@ -161,7 +161,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-300.223, -55.9217)
+graph_offset = Vector2(-305.168, 18.1018)
 modes/cull = 2
 nodes/fragment/0/position = Vector2(1360, 160)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_qot1i")
@@ -198,4 +198,4 @@ nodes/fragment/18/node = SubResource("VisualShaderNodeFloatParameter_pngsp")
 nodes/fragment/18/position = Vector2(100, 1420)
 nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_t4te5")
 nodes/fragment/19/position = Vector2(900, 820)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 7, 0, 8, 2, 2, 0, 9, 0, 9, 3, 10, 0, 5, 0, 10, 1, 11, 0, 5, 1, 12, 0, 7, 1, 13, 0, 14, 2, 8, 0, 14, 0, 14, 0, 4, 0, 15, 0, 16, 0, 16, 0, 17, 0, 18, 0, 17, 1, 17, 0, 19, 1, 10, 0, 19, 0, 19, 0, 0, 1)
+nodes/fragment/connections = PackedInt32Array(4, 0, 5, 0, 6, 0, 7, 0, 7, 0, 8, 2, 2, 0, 9, 0, 9, 3, 10, 0, 5, 0, 10, 1, 11, 0, 5, 1, 12, 0, 7, 1, 13, 0, 14, 2, 8, 0, 14, 0, 14, 0, 4, 0, 15, 0, 16, 0, 16, 0, 17, 0, 18, 0, 17, 1, 17, 0, 19, 1, 10, 0, 19, 0, 19, 0, 0, 1, 2, 0, 0, 0)
