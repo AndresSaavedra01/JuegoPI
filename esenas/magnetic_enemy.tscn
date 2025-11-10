@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2dd8jai8p783"]
+[gd_scene load_steps=5 format=3 uid="uid://b2dd8jai8p783"]
 
 [ext_resource type="Script" uid="uid://prsdjvokgo7s" path="res://scripts/magnetic_enemy.gd" id="1_020kr"]
 [ext_resource type="PackedScene" uid="uid://c86qb5ehwy8u" path="res://esenas/caneca.tscn" id="3_020kr"]
@@ -6,10 +6,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jiii6"]
 height = 2.2124023
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_020kr"]
-radius = 0.22265625
-height = 1.4291992
 
 [node name="MagneticEnemy" type="CharacterBody3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -21,28 +17,19 @@ shape = SubResource("CapsuleShape3D_jiii6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="StateMachine" parent="." instance=ExtResource("3_ggvms")]
-
 [node name="caneca" parent="." instance=ExtResource("3_020kr")]
 
-[node name="rig" parent="caneca" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021198869, 0)
-
 [node name="Iman" parent="caneca/rig/Skeleton3D/BoneAttachment3D" index="0"]
-transform = Transform3D(-0.041356266, 0.52310413, 0.016629782, 0.00013643317, 0.016692435, -0.5247345, -0.52336854, -0.04133104, -0.0014507324, 0.06442249, 0.11207187, -0.34964412)
+transform = Transform3D(-0.12056293, 0.50441474, -0.084589995, 0.035973594, -0.078330114, -0.5183589, -0.5101924, -0.12472089, -0.01655984, 0.05214864, 0.09468506, -0.3521123)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="caneca/rig/Skeleton3D/BoneAttachment3D" index="1"]
-transform = Transform3D(0.9999999, -1.9418076e-07, -1.4156103e-07, -3.259629e-09, 0.9999904, 3.7252903e-09, -7.450581e-09, 2.0116568e-07, 1, 0, -0.28540027, 0)
-shape = SubResource("CapsuleShape3D_020kr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="caneca/rig/Skeleton3D/BoneAttachment3D/CollisionShape3D"]
-transform = Transform3D(0.99999994, -1.937151e-07, -1.4901161e-07, -4.656613e-09, 0.99999046, 0, 0, 1.9744039e-07, 1, 0.060554504, -2.516786, 0.12251183)
-shape = SubResource("CapsuleShape3D_020kr")
-
-[node name="Vision_ray" type="RayCast3D" parent="caneca"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59131, -0.17744729)
-target_position = Vector3(0, 0, -10)
+[node name="vision_ray" type="RayCast3D" parent="caneca"]
+transform = Transform3D(0.99999994, 6.652304e-10, -5.3218434e-09, 3.326152e-10, 0.99999994, 1.596553e-08, 0, -5.3218434e-09, 1, 1.7029899e-07, 1.6134305, 0)
+target_position = Vector3(0, 0, -12)
 collision_mask = 3
 debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="StateMachine" parent="." instance=ExtResource("3_ggvms")]
+
+[node name="floorCast" type="RayCast3D" parent="."]
 
 [editable path="caneca"]

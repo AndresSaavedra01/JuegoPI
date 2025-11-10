@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://c86qb5ehwy8u"]
+[gd_scene load_steps=54 format=4 uid="uid://c86qb5ehwy8u"]
 
 [ext_resource type="Texture2D" uid="uid://bhlqw4f16e1v7" path="res://assets/caneca_Caneca.png" id="1_umdeh"]
 [ext_resource type="PackedScene" uid="uid://5ih4ieyrhbab" path="res://esenas/Iman.glb" id="2_opy3w"]
@@ -716,6 +716,10 @@ bind/220/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.27445993, 0.40592897, 
 bind/221/name = &"thigh_ik_target.R"
 bind/221/bone = -1
 bind/221/pose = Transform3D(0.996849, 0.00043768948, -0.07932067, -0.07932067, 0.01101823, -0.99678814, 0.0004376896, 0.99993914, 0.01101823, 0.3056824, 0.38005418, -0.25852135)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_opy3w"]
+radius = 0.20410156
+height = 1.4846191
 
 [sub_resource type="Animation" id="Animation_kgkfu"]
 resource_name = "Attack_loop"
@@ -9156,6 +9160,9 @@ switch_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ske51"]
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_020kr"]
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q6th8"]
 states/Attack/node = SubResource("AnimationNodeBlendTree_l5iyi")
 states/Attack/position = Vector2(831, 307)
@@ -9170,8 +9177,8 @@ states/Surprise/node = SubResource("AnimationNodeBlendTree_nfx36")
 states/Surprise/position = Vector2(667, 100)
 states/Walk/node = SubResource("AnimationNodeBlendTree_t6tem")
 states/Walk/position = Vector2(565, -42)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pq1c1"), "Attract", "Run", SubResource("AnimationNodeStateMachineTransition_5b8nu"), "Run", "Attract", SubResource("AnimationNodeStateMachineTransition_dtwu8"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_1qemw"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_af20r"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_sn7h5"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_0x2ne"), "Attract", "Idle", SubResource("AnimationNodeStateMachineTransition_5f4iq"), "Idle", "Surprise", SubResource("AnimationNodeStateMachineTransition_xwkqd"), "Surprise", "Idle", SubResource("AnimationNodeStateMachineTransition_pll5j"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_hncqm"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_eknce"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_7wabk"), "Attract", "Walk", SubResource("AnimationNodeStateMachineTransition_7yon1"), "Surprise", "Walk", SubResource("AnimationNodeStateMachineTransition_5xdpp"), "Walk", "Surprise", SubResource("AnimationNodeStateMachineTransition_r05ij"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_bjvus"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_4ugfb"), "Attract", "Attack", SubResource("AnimationNodeStateMachineTransition_p21og"), "Attack", "Attract", SubResource("AnimationNodeStateMachineTransition_sta7c"), "Surprise", "Attract", SubResource("AnimationNodeStateMachineTransition_8gjuu"), "Attract", "Surprise", SubResource("AnimationNodeStateMachineTransition_kc23j"), "Run", "Surprise", SubResource("AnimationNodeStateMachineTransition_t0gi2"), "Surprise", "Run", SubResource("AnimationNodeStateMachineTransition_ske51")]
-graph_offset = Vector2(95, -74.47254)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pq1c1"), "Attract", "Run", SubResource("AnimationNodeStateMachineTransition_5b8nu"), "Run", "Attract", SubResource("AnimationNodeStateMachineTransition_dtwu8"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_1qemw"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_af20r"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_sn7h5"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_0x2ne"), "Attract", "Idle", SubResource("AnimationNodeStateMachineTransition_5f4iq"), "Idle", "Surprise", SubResource("AnimationNodeStateMachineTransition_xwkqd"), "Surprise", "Idle", SubResource("AnimationNodeStateMachineTransition_pll5j"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_hncqm"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_eknce"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_7wabk"), "Attract", "Walk", SubResource("AnimationNodeStateMachineTransition_7yon1"), "Surprise", "Walk", SubResource("AnimationNodeStateMachineTransition_5xdpp"), "Walk", "Surprise", SubResource("AnimationNodeStateMachineTransition_r05ij"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_bjvus"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_4ugfb"), "Attract", "Attack", SubResource("AnimationNodeStateMachineTransition_p21og"), "Attack", "Attract", SubResource("AnimationNodeStateMachineTransition_sta7c"), "Surprise", "Attract", SubResource("AnimationNodeStateMachineTransition_8gjuu"), "Attract", "Surprise", SubResource("AnimationNodeStateMachineTransition_kc23j"), "Run", "Surprise", SubResource("AnimationNodeStateMachineTransition_t0gi2"), "Surprise", "Run", SubResource("AnimationNodeStateMachineTransition_ske51"), "Surprise", "Attack", SubResource("AnimationNodeStateMachineTransition_020kr")]
+graph_offset = Vector2(175, -35.472534)
 
 [node name="caneca" type="Node3D"]
 
@@ -10743,7 +10750,14 @@ bone_name = "ORG-hand.L"
 bone_idx = 118
 
 [node name="Iman" parent="rig/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_opy3w")]
-transform = Transform3D(-0.059955195, 0.51656145, -0.07207469, 0.06382619, -0.0647375, -0.5170689, -0.5176451, -0.067811884, -0.05540715, 0.09079766, 0.13606954, -0.34681827)
+transform = Transform3D(-0.06832453, 0.5186531, -0.04421601, 0.011715993, -0.043051705, -0.52310073, -0.5204033, -0.06906408, -0.0059714057, 0.060432434, 0.111842334, -0.35885173)
+
+[node name="Area3D" type="Area3D" parent="rig/Skeleton3D/BoneAttachment3D/Iman"]
+transform = Transform3D(-0.24788979, 0.042506546, -1.8880837, 1.8817391, -0.15619692, -0.25057286, -0.160421, -1.8978703, -0.021665402, -0.66731566, -0.18616724, 0.21418238)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig/Skeleton3D/BoneAttachment3D/Iman/Area3D"]
+transform = Transform3D(1.0000049, 2.4214387e-08, 6.03497e-07, 1.7043203e-07, 1.0000058, 2.9429793e-07, -1.2516975e-06, -3.501773e-07, 1.0000057, 0.026132822, -0.25710666, -0.0022840425)
+shape = SubResource("CapsuleShape3D_opy3w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
