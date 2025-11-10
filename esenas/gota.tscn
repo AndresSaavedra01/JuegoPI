@@ -11,4 +11,5 @@ radial_segments = 8
 rings = 4
 
 [node name="gota" type="MeshInstance3D"]
+visible = false
 mesh = SubResource("SphereMesh_weomm")

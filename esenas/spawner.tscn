@@ -1,24 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://n7n5cwbpbamw"]
+[gd_scene load_steps=7 format=3 uid="uid://n7n5cwbpbamw"]
 
-[ext_resource type="Script" uid="uid://cg3t2ne8gb4bp" path="res://spawner.gd" id="1_2m83p"]
+[ext_resource type="Script" uid="uid://cg3t2ne8gb4bp" path="res://scripts/spawner.gd" id="1_2m83p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yaqy6"]
+size = Vector3(1, 1.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0otef"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2m83p"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0otef"]
+albedo_color = Color(0.105882, 1, 0, 0.419608)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fouu3"]
+material = SubResource("StandardMaterial3D_0otef")
+height = 0.01
 
 [node name="Spawner" type="StaticBody3D"]
-collision_layer = 15
-collision_mask = 15
+collision_mask = 4
 script = ExtResource("1_2m83p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_yaqy6")
 
 [node name="DetectArea" type="Area3D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea"]
 shape = SubResource("SphereShape3D_0otef")
@@ -31,5 +38,8 @@ one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_2m83p")
+
+[node name="RadioDebug" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_fouu3")
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_spawn_timeout_timeout"]
