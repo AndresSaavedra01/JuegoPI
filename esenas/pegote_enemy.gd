@@ -2,10 +2,10 @@ extends CharacterBody3D
 
 @export var health_points : float = 100.0
 @export var damage : float = 1.0
-@export var runSpeed : float = 4.5
-@export var walkSpeed : float = 1.5
-@export var jumpImpulse : float = 9.0
-@export var jumpSpeed : float = 5.0
+@export var runSpeed : float = 2.5
+@export var walkSpeed : float = 0.5
+@export var jumpImpulse : float = 0.0 #no salta
+@export var jumpSpeed : float = 0.0
 @export var fallSpeed : float = 20.0
 @export var rotacion_velo : float = 20.0
 @export var patrolPoints : Array[Marker3D]

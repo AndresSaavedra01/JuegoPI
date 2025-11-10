@@ -1,4 +1,14 @@
-res://esenas/MrSteven.tscn
-res://assets/GeneralLevelTiles.tres
+res://esenas/pegote_enemy.tscn
 res://assets/tiles.tres
-res://tornado.tres
+res://esenas/world.tscn
+res://esenas/soap.tscn
+res://scripts/cañon.gd
+res://scripts/espuma.gd
+res://scripts/gun_water.gd
+res://scripts/player.gd
+res://scripts/proyectil.gd
+res://scripts/skin.gd
+res://scripts/trash_dummy.gd
+res://scripts/trash_enemy.gd
+res://esenas/burbuja.tscn
+res://esenas/pegote_enemy.gd

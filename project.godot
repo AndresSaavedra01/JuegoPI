@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JuegoPI"
-run/main_scene="uid://fv3jfe3br3bv"
+run/main_scene="uid://c8t8urx8mt7vo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
@@ -29,6 +29,10 @@ enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+Pathable=""
 
 [input]
 

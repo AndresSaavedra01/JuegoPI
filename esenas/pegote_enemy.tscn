@@ -63,29 +63,29 @@ shape = SubResource("CapsuleShape3D_4th44")
 
 [node name="Skeleton3D" parent="Pegote_skin/pegote_enemy/Armature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/position = Vector3(0, -0.0800405, 0)
-bones/4/rotation = Quaternion(0.0239499, 0, 0, 0.999713)
+bones/3/position = Vector3(0, -0.0945463, 0)
+bones/4/rotation = Quaternion(0.0271687, 0, 0, 0.999631)
 bones/5/position = Vector3(1.24438, 2.69988, -0.0286613)
-bones/5/rotation = Quaternion(0.0533825, -0.0701884, -0.792847, 0.603007)
+bones/5/rotation = Quaternion(0.0529292, -0.0705309, -0.796715, 0.597887)
 bones/6/rotation = Quaternion(0.0601471, -0.0408897, -0.168765, 0.982969)
 bones/7/position = Vector3(-1.24438, 2.69988, -0.0286619)
-bones/7/rotation = Quaternion(0.0533823, 0.0701883, 0.792847, 0.603007)
+bones/7/rotation = Quaternion(0.052929, 0.0705307, 0.796715, 0.597887)
 bones/8/rotation = Quaternion(0.0601471, 0.0408897, 0.168765, 0.982969)
 
 [node name="BoneAttachment3D" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.0800405, 0)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.0945463, 0)
 
 [node name="BoneAttachment3DLarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.580556, 0.778138, -0.2397, -0.81422, -0.554829, 0.170911, 2.6077e-08, 0.294392, 0.955685, 2.70872, 2.21403, 0.242502)
+transform = Transform3D(-0.590999, 0.770925, -0.237478, -0.806673, -0.564808, 0.173986, 4.84288e-08, 0.294392, 0.955685, 2.70337, 2.18069, 0.242502)
 
 [node name="BoneAttachment3DRarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.580556, -0.778138, 0.2397, 0.81422, -0.554829, 0.170911, -1.00583e-07, 0.294392, 0.955685, -2.70872, 2.21403, 0.242502)
+transform = Transform3D(-0.590999, -0.770924, 0.237478, 0.806673, -0.564808, 0.173986, -1.08033e-07, 0.294392, 0.955685, -2.70337, 2.18069, 0.242502)
 
 [node name="CollisionShape3DRarm" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3DRarm/Area3D" index="0"]
 transform = Transform3D(0.999227, -0.0313431, -0.0237961, 0.0314347, 0.9995, 0.00347003, 0.0236755, -0.0042153, 0.999712, -0.686463, 0.872373, -0.201805)
 
 [node name="BoneAttachment3D2" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, 1.14169e-08, 2.38145e-07, 0, 0.998853, -0.0478861, -2.38419e-07, 0.0478861, 0.998853, 0, 3.24035, 0)
+transform = Transform3D(1, 1.29503e-08, 2.38067e-07, 0, 0.998524, -0.0543173, -2.38419e-07, 0.0543173, 0.998524, 0, 3.22585, 0)
 
 [node name="CollisionShape3D" parent="Pegote_skin/pegote_enemy/Armature/Skeleton3D/BoneAttachment3D2/Area3D" index="0"]
 transform = Transform3D(1, 1.75125e-08, -1.19911e-10, -1.74729e-08, 0.998154, 0.0607389, 1.18338e-09, -0.0607389, 0.998154, -3.75342e-07, -0.271071, 2.5835)
