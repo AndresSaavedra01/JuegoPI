@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 
 @export var knockbackForce : float = 3
 @export var knockbackUpForce : float = 5
@@ -15,3 +15,4 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("takeDamage"):
 		var push_dir: Vector3 = (body.global_position - global_position).normalized()
 		body.takeDamage(push_dir, damage, knockbackForce, knockbackUpForce)
+		

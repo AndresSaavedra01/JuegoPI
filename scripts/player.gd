@@ -42,6 +42,8 @@ var can_attack := true
 var is_attacking := false
 var current_attack_mode := "Bubble"
 var attack_modes := ["Bubble", "Soap", "Water", "Melee"]
+var current_move_mode := "Idle"
+var move_mode := ["Idle", "Run", "Die"]
 var attack_mode_index := 0
 var dead:= false
 var combo_step := 0
@@ -134,6 +136,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	$Control/Label.text = str(Engine.get_frames_per_second())
 
+var step_timer = 0.0
+const STEP_INTERVAL = 0.8  # cada 0.4 s un paso
 
 func _physics_process(delta: float) -> void:
 	var apuntando = camera_pivot.apuntando
@@ -147,6 +151,16 @@ func _physics_process(delta: float) -> void:
 		robot.rotation.y = lerp_angle(robot.rotation.y, target_rot, rotation_speed *delta)
 		
 	move_and_slide()
+	
+	if is_on_floor() and current_move_mode == "Run":
+		step_timer -= delta
+		if step_timer <= 0:
+			$Sonidos/Steps.play()
+			step_timer = STEP_INTERVAL	
+		
+	else:
+		step_timer = 0
+		$Sonidos/Steps.stop()
 
 
 #MOVIMIENTO
@@ -155,6 +169,7 @@ func idle():
 	particles.emitting = false
 	velocity.x = move_toward(velocity.x, 0, move_speed)
 	velocity.z = move_toward(velocity.z, 0, move_speed)
+	current_move_mode = move_mode[0]
 	handle_jump(get_physics_process_delta_time())
 
 func run():
@@ -162,6 +177,7 @@ func run():
 	particles.emitting = true
 	velocity.x = move_dir.x * move_speed
 	velocity.z = move_dir.z * move_speed
+	current_move_mode = move_mode[1]
 	handle_jump(get_physics_process_delta_time())
 
 func die():
@@ -169,6 +185,7 @@ func die():
 	velocity = Vector3.ZERO
 	velocity.y -= gravity_force
 	robot.idle()
+	current_move_mode = move_mode[2]
 
 #ATAQUES
 
@@ -179,6 +196,7 @@ func bubble():
 	if Input.is_action_just_pressed("atacar") and can_attack:
 		cooldown_timer.start(bubble_rate)
 		can_attack = false
+		$Sonidos/Burbuja.play()
 		robot.bubble_attack()
 
 func water():
@@ -234,10 +252,12 @@ func handle_jump(delta: float):
 	if Input.is_action_just_pressed("saltar"):
 		if is_on_floor() or coyote_timer > 0.0:
 			velocity.y = jump_force
+			$Sonidos/jump.play()
 			particles.emitting = false
 			coyote_timer = 0.0  
 		elif not has_double_jumped:
 			robot.jump2()
+			$Sonidos/jump.play()
 			velocity.y = double_jump_force
 			has_double_jumped = true
 			particles.emitting = false

@@ -38,6 +38,7 @@ var receivingKnockbackForce : float
 var receivingKnockbackDir : Vector3
 
 func _ready() -> void:
+	$SubViewport/TextureProgressBar.max_value = 100
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
 	stateMachine.addState(State.new("Run", Callable(self, "run")))
 	stateMachine.addState(State.new("Walk", Callable(self, "walk")))
@@ -51,6 +52,8 @@ func _ready() -> void:
 	stateMachine.setActiveState("Idle")
 	
 func _physics_process(delta: float) -> void:
+	$Sprite3D.look_at(get_tree().get_first_node_in_group("Camera").global_position, Vector3.UP, true)
+	$SubViewport/TextureProgressBar.value = health_points
 	if applyingKnockback:
 		var dir : Vector3 = (player.global_position - global_position).normalized()
 		applyKnockBack(delta, player, dir, knockbackForce)
@@ -163,6 +166,7 @@ func takeDamage(push_dir : Vector3, _damage : float, _knockbackForce : float, _k
 		if not animationTree.get("parameters/OneShot/active"):
 			animationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	if health_points <= 0:
+		$Sprite3D.visible = false
 		stateMachine.travel("Die")
 
 func detect_player() -> void:

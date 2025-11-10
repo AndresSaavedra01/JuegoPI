@@ -1,8 +1,9 @@
 Node3D
+AudioStreamPlayer3D
+Timer
 MeshInstance3D
 CollisionShape3D
 RigidBody3D
-Timer
 StateMachine
 Area3D
 RayCast3D
@@ -11,5 +12,3 @@ camera
 GPUParticles3D
 Marker3D
 BoneAttachment3D
-GridMap
-Sprite3D
