@@ -5,7 +5,7 @@ extends Node3D
 @onready var cañon = $"Cañon"
 @onready var cañonMelee := $"robotV3/rig/Skeleton3D/cañon-melee"
 @onready var waterGun := $WaterGun
-@onready var bubble := preload("res://esenas/proyectil.tscn")
+@onready var bubble := preload("res://esenas/burbuja.tscn")
 @onready var soap := preload("res://esenas/soap.tscn")
 
 
@@ -32,23 +32,25 @@ func jump2():
 
 func bubble_attack():
 	cañon.proyectil = bubble
-	animation_tree.set("parameters/attackpochito/request",true )
+	cañon.speed = 18.0
+	animation_tree.set("parameters/one_shoot/request",true )
 
 
 func soap_attack():
+	cañon.speed = 30.0
 	cañon.proyectil = soap
-	animation_tree.set("parameters/attackpochito/request",true )
+	animation_tree.set("parameters/one_shoot/request",true )
 
 
-func water_attack(active: bool = false) -> void:
+func water_attack(damage : float, knockbackForce : float, knockbackUpForce : float, active: bool = false) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(animation_tree,"parameters/Blend2/blend_amount",int (active), 0.2)
-	if active : waterGun.shoot()
+	if active : waterGun.shoot(damage, knockbackForce, knockbackUpForce)
+	tween.tween_property(animation_tree,"parameters/hold_shoot/blend_amount",int (active), 0.2)
 
 
 func attackMelee():
 	#state_machine.travel("attack")
-	animation_tree.set("parameters/attack-melee/request",true )
+	animation_tree.set("parameters/attack-melee/request", 1 )
 	
 
 func attackMelee_2():
@@ -58,14 +60,3 @@ func attackMelee_2():
 
 func attackMelee_3():
 	animation_tree.set("parameters/attack-melee-3/request",true )
-
-
-
-
-
-
-func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
-	print(anim_name)
-	if anim_name == "attack":
-		await get_tree().create_timer(0.3).timeout
-		cañon.ataquar()

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chugsgo0usnr2"]
+
+[ext_resource type="PackedScene" uid="uid://iwqvcgearlg7" path="res://esenas/MrStevenSkin.tscn" id="1_fyn0q"]
+
+[node name="MrSteven" type="Node3D"]
+
+[node name="bossFinal" parent="." instance=ExtResource("1_fyn0q")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

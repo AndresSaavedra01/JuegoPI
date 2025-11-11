@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name player
 # ==========================================================
 # CONFIGURACIÓN GENERAL
 # ==========================================================
@@ -9,6 +9,17 @@ extends CharacterBody3D
 @export var double_jump_force := 12.0
 @export var gravity_force := 20.0
 @export var COYOTE_TIME := 0.2
+@export var totalHearts : int = 5
+@export var heartScene : PackedScene
+@export var bubbleKnockbackForce : float = 40.0
+@export var bubbleKnockbackUpForce : float = 5.0
+@export var waterKnockbackForce : float = 10.0
+@export var waterKnockbackUpForce : float = 1.0
+@export var bubbleDamage : float = 5.0
+@export var waterDamage : float = 0.5
+@export var knockbackForce : float = 4
+@export var knockbackUpForce : float = 3
+@export var damage : float = 10
 
 # Sensibilidad de cámara
 @export var mouse_sens_x := 0.5
@@ -33,34 +44,38 @@ var is_attacking := false
 var current_attack_mode := "bubble"
 var attack_modes := ["bubble", "soap", "water", "melee"]
 var attack_mode_index := 0
-
+var dead:= false
 var combo_step := 0
 var combo_window := 1
 var combo_timer := 0.0
 var in_combo := false
 var coyote_timer := 0.0
+var currentHeartIndex : int
+var health : int
 # ==========================================================
 # REFERENCIAS A NODOS
 # ==========================================================
-@onready var camera_pivot := $SpringArm3D
+@onready var camera_pivot := $camaraPivot
 @onready var robot : = $robotV3
 @onready var particles := $GPUParticles3D
-@onready var hitbox := $robotV3/hitbox
+@onready var hitbox := $robotV3/robotV3/rig/Skeleton3D/BoneAttachment3D/Hitbox
 @onready var cooldown_timer := $Timer
-
+@onready var heartsContiner : HBoxContainer = $Control/hearts
+@onready var mira_sprite := $camaraPivot/EdgeSpringArm3D/RearSpringArm3D/Camera3D/Sprite3D
 
 # ==========================================================
 # CICLOS DE VIDA
 # ==========================================================
 func _ready():
+	for i in range(totalHearts):
+		heartsContiner.add_child(heartScene.instantiate())
+	currentHeartIndex = totalHearts - 1
+	health = totalHearts * 2
 	particles.emitting = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	cooldown_timer.one_shot = true
 	cooldown_timer.connect("timeout", Callable(self, "_on_cooldown_end"))
 
-
-func _input(event: InputEvent):
-	handle_camera_input(event)
 
 
 func _physics_process(delta: float):
@@ -96,9 +111,44 @@ func handle_movement(delta: float):
 		if not is_on_floor():
 			velocity.y -= gravity_force * delta
 		return
+	if camera_pivot.apuntando:
+		handle_movenment_aim(delta)
+		mira_sprite.visible = true
+	else :
+		mira_sprite.visible = false
+		handle_movenment_free(delta)
+	
+	handle_jump(delta)
+
+func handle_movenment_aim(delta:float):
 	
 	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 
+	var forward = -camera_pivot.global_transform.basis.z
+	forward.y = 0
+	forward = forward.normalized()
+
+	var right = camera_pivot.global_transform.basis.x
+	right.y = 0
+	right = right.normalized()
+
+	var move_dir = (forward * input_dir.y) + (right * input_dir.x)
+	move_dir = move_dir.normalized()
+
+	if move_dir.length() > 0 and !is_attacking:
+		velocity.x = move_dir.x * move_speed
+		velocity.z = move_dir.z * move_speed
+		robot.run()
+		particles.emitting = true
+	else:
+		robot.idle()
+		particles.emitting = false
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
+
+
+func handle_movenment_free(delta:float):
+	var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
 	var forward = -camera_pivot.global_transform.basis.z
 	forward.y = 0
 	forward = forward.normalized()
@@ -122,8 +172,6 @@ func handle_movement(delta: float):
 		particles.emitting = false
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 		velocity.z = move_toward(velocity.z, 0, move_speed)
-
-	handle_jump(delta)
 
 
 func handle_jump(delta: float):
@@ -151,22 +199,8 @@ func handle_jump(delta: float):
 		particles.emitting = false
 
 
-# ==========================================================
-# CÁMARA
-# ==========================================================
-func handle_camera_input(event: InputEvent):
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		camera_pivot.rotate_y(deg_to_rad(-event.relative.x * mouse_sens_x))
-		camera_pitch = clamp(camera_pitch - event.relative.y * mouse_sens_y, camera_pitch_min, camera_pitch_max)
-		camera_pivot.rotation_degrees.x = camera_pitch
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
-# ==========================================================
-# ATAQUES
-# ==========================================================
 func handle_attack_mode_change():
 	if Input.is_action_just_pressed("change-attack"):
 		attack_mode_index = (attack_mode_index + 1) % attack_modes.size()
@@ -188,6 +222,7 @@ func handle_soap_attack():
 
 
 func handle_melee_attack(delta):
+	hitbox.disable_mode = is_attacking
 	if not can_attack and Input.is_action_just_pressed("atacar"):
 		return  # evita que se inicie otro ataque si está en cooldown
 
@@ -257,7 +292,7 @@ func reset_combo():
 
 
 func handle_water_attack():
-	robot.water_attack(Input.is_action_pressed("atacar"))
+	robot.water_attack(waterDamage, waterKnockbackForce, waterKnockbackUpForce,Input.is_action_pressed("atacar"))
 
 
 # ==========================================================
@@ -275,3 +310,28 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		if target.has_method("hit"):
 			target.hit(push_dir)
+	if target.has_method("takeDamage") and is_attacking:
+		var push_dir: Vector3 = (target.global_position - global_position).normalized()
+		target.takeDamage(push_dir, damage, knockbackForce, knockbackUpForce)
+	
+
+func takeDamage(damage : int):
+	if currentHeartIndex >= 0:
+		for i in range(damage):
+			var heart : Heart = heartsContiner.get_child(currentHeartIndex)
+			if heart.isFull():
+				heart.mediumHeart()
+			else:
+				heart.emptyHeart()
+				currentHeartIndex -= 1
+			health -= 1
+	if health <= 0:
+		print("muerto")
+			
+			
+
+
+func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		await get_tree().create_timer(0.3).timeout
+		robot.cañon.ataquar(bubbleDamage, bubbleKnockbackForce, bubbleKnockbackUpForce)
