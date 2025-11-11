@@ -34,7 +34,7 @@ var lastPatrolCheck: int = Time.get_ticks_usec()
 @export var hunt_distance : float = 20
 var surprise_timer: float = 0.0
 var is_surprise : bool = false
-@export var surprise_duration: float = 1.0  # segundos que se queda sorprendido
+@export var surprise_duration: float = 0.6 # segundos que se queda sorprendido
 
 #Deteccion de obstáculos
 @onready var vision_ray: RayCast3D = $caneca/vision_ray
@@ -108,7 +108,6 @@ func walk() -> void:
 		stateMachine.travel("Idle")
 
 func attract() -> void:
-	print("Ahora estoy en attract")
 	var delta : float = get_physics_process_delta_time()
 	# vector del jugador hacia el enemigo
 	var to_enemy = global_position - player.global_position
@@ -119,7 +118,8 @@ func attract() -> void:
 		stateMachine.travel("Idle")
 		return
 	if distance < min_attract_distance + 0.1:
-		print("Atacar")
+		can_attack = true
+		stateMachine.travel("Attack")
 		return
 	var look_dir = -to_enemy.normalized()
 	look_dir.y = 0
@@ -157,7 +157,6 @@ func detect_player() -> void:
 	# decidir cuándo entrar a attract
 	if is_surprise: return
 	if distance < attract_distance + 0.2 and distance > min_attract_distance:
-		print("Dentro del area")
 		stateMachine.travel("Surprise")
 
 func surprise() -> void:
@@ -213,3 +212,10 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 	move_and_slide()
+
+
+func _on_area_attack_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
+
+func _on_area_attack_area_exited(area: Area3D) -> void:
+	pass # Replace with function body.

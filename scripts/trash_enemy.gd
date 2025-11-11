@@ -38,7 +38,7 @@ func _ready() -> void:
 	stateMachine.addRelations("Run", ["Idle", "Walk", "Attack"])
 	stateMachine.addRelations("Walk", ["Run", "Idle", "Attack"])
 	stateMachine.addRelations("Attack", ["Run", "Idle", "Walk"])
-	stateMachine.setActiveState("Idle")
+	#stateMachine.setActiveState("Idle")
 	
 func run() -> void:
 	var toPlayeVector = player.global_position - global_position
@@ -124,7 +124,7 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	velocity.z = dir.z * speed
 	move_and_slide()
 
-func _on_timer_timeout() -> void:
+#func _on_timer_timeout() -> void:
 	var overlaps = detectArea.get_overlapping_bodies()
 	if overlaps.size() > 0:
 		for overlap in overlaps:
