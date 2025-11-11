@@ -8,7 +8,8 @@ extends CharacterBody3D
 @onready var animationPlayer : AnimationPlayer = $caneca/AnimationPlayer
 @onready var animationPlayback : AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 @onready var stateMachine : StateMachine = $StateMachine
-
+@export var knockbackForce : float = 3.0
+@export var knockbackUpForce : float = 2.0
 #Variables estados-habilidades
 @export var health_points : float = 100.0
 @export var damage : float = 5.0
@@ -32,8 +33,6 @@ var lastPatrolCheck: int = Time.get_ticks_usec()
 @export var min_attract_distance : float = 1.0 #exita que el jugador se peque al enemigo
 @export var max_attract_force : float = 20.0 #limite de fuerza 
 @export var hunt_distance : float = 20
-var surprise_timer: float = 0.0
-var is_surprise : bool = false
 @export var surprise_duration: float = 0.6 # segundos que se queda sorprendido
 
 #Deteccion de obstáculos
@@ -41,8 +40,14 @@ var is_surprise : bool = false
 
 #Variables de control
 var has_been_surprised: bool = false
-var is_attacking: bool = false
-var can_attack: bool = true
+var can_attract: bool = false
+var surprise_timer: float = 0.0
+var is_surprise : bool = false
+
+var receivingKnockbackForce : float
+var receivingKnockbackDir : Vector3
+@onready var applyingKnockback : bool = false
+@onready var receivingKnockback : bool = false
 
 func _ready() -> void:
 	#Agregar los estados a la state machine
@@ -62,6 +67,11 @@ func _ready() -> void:
 	stateMachine.setActiveState("Idle")
 
 func _physics_process(delta: float) -> void:
+	if applyingKnockback:
+		var dir : Vector3 = (player.global_position - global_position).normalized()
+		applyKnockBack(delta, player, dir, knockbackForce)
+	if(receivingKnockback):
+		applyKnockBack(delta, self, receivingKnockbackDir, receivingKnockbackForce)
 	detect_player()
 	
 func idle() -> void:
@@ -108,41 +118,43 @@ func walk() -> void:
 		stateMachine.travel("Idle")
 
 func attract() -> void:
-	var delta : float = get_physics_process_delta_time()
-	# vector del jugador hacia el enemigo
-	var to_enemy = global_position - player.global_position
-	var distance = to_enemy.length()
-	# Salirse si está fuera del rango de atracción global
-	if distance > attract_distance:
-		is_surprise = false
-		stateMachine.travel("Idle")
-		return
-	if distance < min_attract_distance + 0.1:
-		can_attack = true
-		stateMachine.travel("Attack")
-		return
-	var look_dir = -to_enemy.normalized()
-	look_dir.y = 0
-	lookTo(delta, look_dir)
-	# Calcular fuerza de atracción con suavisado e inversamente proporcional a la distanica
-	var force_magnitude  = attract_strength * (1.0 - (distance / attract_distance))
-	force_magnitude = clamp(force_magnitude, 0.0, max_attract_force)
-	var pull_force = to_enemy.normalized() * force_magnitude
-	player.velocity += pull_force
-	player.move_and_slide()
-	if animationPlayback.get_current_node() != "Attract":
-		animationPlayback.travel("Attract")
-	# Mantener al enemigo estable (no se mueve horizontalmente aquí)
-	if is_on_floor():
-		velocity.x = 0
-		velocity.z = 0
+	if can_attract:
+		var delta : float = get_physics_process_delta_time()
+		# vector del jugador hacia el enemigo
+		var to_enemy = global_position - player.global_position
+		var distance = to_enemy.length()
+		# Salirse si está fuera del rango de atracción global
+		if distance > attract_distance:
+			is_surprise = false
+			stateMachine.travel("Idle")
+			return
+		if distance <= min_attract_distance + 0.3:
+			can_attract = false
+			stateMachine.travel("Attack")
+			return
+		var look_dir = -to_enemy.normalized()
+		look_dir.y = 0
+		lookTo(delta, look_dir)
+		# Calcular fuerza de atracción con suavisado e inversamente proporcional a la distanica
+		var force_magnitude  = attract_strength * (1.0 - (distance / attract_distance))
+		force_magnitude = clamp(force_magnitude, 0.0, max_attract_force)
+		var pull_force = to_enemy.normalized() * force_magnitude
+		player.velocity += pull_force
+		player.move_and_slide()
+		if animationPlayback.get_current_node() != "Attract":
+			animationPlayback.travel("Attract")
+		# Mantener al enemigo estable (no se mueve horizontalmente aquí)
+		if is_on_floor():
+			velocity.x = 0
+			velocity.z = 0
+		else:
+			velocity.y -= delta * fall_speed
+		move_and_slide()
 	else:
-		velocity.y -= delta * fall_speed
-	move_and_slide()
+		return
 
 func detect_player() -> void:
 	var distance = global_position.distance_to(player.global_position)
-	print(distance)
 	if distance > hunt_distance:
 		lastPatrolCheck = Time.get_ticks_usec()
 		stateMachine.travel("Idle")
@@ -184,6 +196,7 @@ func surprise() -> void:
 		surprise_timer = 0.0  
 		if distance < attract_distance and distance > min_attract_distance:
 			surprise_timer = 0
+			can_attract = true
 			stateMachine.travel("Attract")
 			return
 		else:
@@ -193,7 +206,37 @@ func surprise() -> void:
 			return
 		
 func attack() -> void:
-	pass
+	applyingKnockback = true
+	player.velocity.y = knockbackUpForce
+	print("Pum pum")
+	#player.takeDamage(damage)
+
+func applyKnockBack(delta : float, body : CharacterBody3D, dir : Vector3, _knockbackForce : float) -> void:
+	var knockback :Vector3 = dir
+	knockback *= _knockbackForce
+	body.velocity.x = knockback.x
+	body.velocity.z = knockback.z
+	if not is_on_floor():
+		velocity.y -= delta * fall_speed
+	body.move_and_slide()
+	if body.is_on_floor():
+		if body.is_in_group("Player"):
+			applyingKnockback = false
+		else:
+			receivingKnockback = false
+
+func takeDamage(push_dir : Vector3, _damage : float, _knockbackForce : float, _knockbackUpForce : float):
+	if health_points > 0:
+		health_points -= _damage
+		receivingKnockbackForce = _knockbackForce
+		receivingKnockbackDir = push_dir
+		receivingKnockback = true
+		velocity.y = _knockbackUpForce
+		if not animationTree.get("parameters/OneShot/active"):
+			animationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	if health_points <= 0:
+		print("Muerte")
+		#stateMachine.travel("Die")
 
 func lookTo(delta : float, dir : Vector3) -> void:
 	var rotacion : float = atan2(dir.x, dir.z)
@@ -213,9 +256,10 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	velocity.z = dir.z * speed
 	move_and_slide()
 
-
 func _on_area_attack_area_entered(area: Area3D) -> void:
-	pass # Replace with function body.
+	can_attract = false
+	attack() # Replace with function body.
 
 func _on_area_attack_area_exited(area: Area3D) -> void:
-	pass # Replace with function body.
+	is_surprise = false
+	can_attract = false

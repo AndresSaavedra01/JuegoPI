@@ -211,6 +211,13 @@ bones/220/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
 [node name="BoneAttachment3D" parent="caneca/rig/Skeleton3D" index="1"]
 transform = Transform3D(-0.027087249, 0.99812925, -0.05480154, -0.99595565, -0.022248972, 0.08704811, 0.08566615, 0.05693781, 0.9946954, 1.6060603, 1.2362121, -0.049200293)
 
+[node name="vision_ray" type="RayCast3D" parent="caneca"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4252158, 0)
+target_position = Vector3(0, 0, -12)
+collision_mask = 3
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
 [connection signal="area_entered" from="caneca/AreaAttack" to="." method="_on_area_attack_area_entered"]
 [connection signal="area_exited" from="caneca/AreaAttack" to="." method="_on_area_attack_area_exited"]
 
