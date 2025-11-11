@@ -304,6 +304,14 @@ transform = Transform3D(0.399995, 0, 0, 0, 0.4, 0, 0, 0, 0.399994, 4.85263, 1.69
 [node name="trash_enemy_skin" parent="TrashEnemy" index="5"]
 transform = Transform3D(1.00001, -1.07777e-07, -1.23401e-06, 1.07776e-07, 1.00001, -1.06588e-06, 1.23403e-06, 1.0659e-06, 0.999993, -2.38419e-07, 0, 0)
 
+[node name="Skeleton3D" parent="TrashEnemy/trash_enemy_skin/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.654774, 0.247734, 0.252688, 0.667868)
+bones/3/position = Vector3(-7.73007e-08, 0.565416, 1.63472e-08)
+bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
+bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37589e-10)
+bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
+bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
+
 [node name="Sprite3D" parent="TrashEnemy" index="7"]
 texture = SubResource("ViewportTexture_ldnjs")
 

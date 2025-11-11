@@ -33,7 +33,6 @@ func jump2():
 	
 
 func bubble_attack():
-	cañon.speed = 18.0
 	animation_tree.set("parameters/one_shoot/request",true )
 
 

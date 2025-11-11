@@ -84,11 +84,11 @@ func _ready() -> void:
 
 	movementSM.addState(State.new("Idle", Callable(self, "idle")))
 	movementSM.addState(State.new("Run", Callable(self, "run")))
-	var dieState : State = State.new("Die", Callable(self, "die"))
-	movementSM.addState(dieState)
+	movementSM.addState(State.new("Die", Callable(self, "die")))
 	
 	movementSM.addRelations("Idle", ["Run", "Die"])
 	movementSM.addRelations("Run", ["Idle", "Die"])
+	
 	movementSM.setActiveState("Idle")
 
 
@@ -193,6 +193,7 @@ func bubble():
 	#print("Mode Bubble")
 	robot.cañonMelee.visible = false
 	robot.cañon.proyectil = preload("res://esenas/burbuja.tscn")
+	robot.cañon.speed = 30.0
 	if Input.is_action_just_pressed("atacar") and can_attack:
 		cooldown_timer.start(bubble_rate)
 		can_attack = false
