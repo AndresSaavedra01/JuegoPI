@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqrpb0codbeve"]
+
+[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_psx2g"]
+[ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="2_xy1rf"]
+[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="3_07nd7"]
+[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="4_lman7"]
+[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="5_wtqcb"]
+[ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="6_kh2e1"]
+[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="7_f8tl3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b1jq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_07nd7")
+shader_parameter/caustic_sampler = ExtResource("4_lman7")
+shader_parameter/water_color = Color(0.0196078, 0.764706, 0.866667, 1)
+shader_parameter/water_depth_color = Color(1, 1, 1, 1)
+shader_parameter/water_edge_distance = 0.1
+shader_parameter/water_depth_distance = 0.3
+shader_parameter/water_texture_scale = 25.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3crfi"]
+panorama = ExtResource("5_wtqcb")
+
+[sub_resource type="Sky" id="Sky_qlyi1"]
+sky_material = SubResource("PanoramaSkyMaterial_3crfi")
+
+[sub_resource type="Environment" id="Environment_h4v3d"]
+background_mode = 2
+sky = SubResource("Sky_qlyi1")
+
+[node name="Node3D" type="Node3D" groups=["World"]]
+
+[node name="Player" parent="." instance=ExtResource("1_psx2g")]
+collision_layer = 3
+
+[node name="objetcs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
+
+[node name="water" parent="." instance=ExtResource("2_xy1rf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_0b1jq")
+
+[node name="ambiente" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambiente"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0.417106, -4.76837e-07, 5.75158)
+shadow_enabled = true
+shadow_caster_mask = 4294967294
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente"]
+environment = SubResource("Environment_h4v3d")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("6_kh2e1")
+cell_size = Vector3(0.1, 0.1, 0.1)
+script = ExtResource("7_f8tl3")
