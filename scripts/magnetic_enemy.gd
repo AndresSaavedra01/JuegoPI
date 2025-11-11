@@ -8,14 +8,15 @@ extends CharacterBody3D
 @onready var animationPlayer : AnimationPlayer = $caneca/AnimationPlayer
 @onready var animationPlayback : AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 @onready var stateMachine : StateMachine = $StateMachine
-@export var knockbackForce : float = 3.0
-@export var knockbackUpForce : float = 2.0
+@export var knockbackForce : float = 5.0
+@export var knockbackUpForce : float = 3.0
 #Variables estados-habilidades
 @export var health_points : float = 100.0
-@export var damage : float = 5.0
+@export var damage : float = 1.0
 
 #Movimientos
 @export var walk_speed: float = 2.0
+@export var run_speed: float = 3.0
 @export var rotation_speed: float = 6.0
 @export var fall_speed: float = 20.0
 @export var patrol_radius: float = 10.0
@@ -48,6 +49,7 @@ var receivingKnockbackForce : float
 var receivingKnockbackDir : Vector3
 @onready var applyingKnockback : bool = false
 @onready var receivingKnockback : bool = false
+@onready var couldown : Timer = $Couldown
 
 func _ready() -> void:
 	#Agregar los estados a la state machine
@@ -78,6 +80,13 @@ func idle() -> void:
 	velocity.x = 0
 	velocity.z = 0
 	var currentPatrolCheck : int = Time.get_ticks_usec()
+	var delta : float = get_physics_process_delta_time()
+	var to_enemy = global_position - player.global_position
+	var distance = to_enemy.length()
+	if distance < attract_distance:
+		can_attract = true
+		stateMachine.travel("Attract")
+		return
 	if currentPatrolCheck - lastPatrolCheck >= 2_000_000:
 		lastPatrolCheck = Time.get_ticks_usec()
 		rng.set_seed(Time.get_ticks_msec())
@@ -118,7 +127,11 @@ func walk() -> void:
 		stateMachine.travel("Idle")
 
 func attract() -> void:
-	if can_attract:
+	var collider = vision_ray.get_collider()
+	if collider and not collider.is_in_group("Player"):
+		navAgent.target_position = player.global_position
+		move("Run", player.global_position, run_speed)
+	elif can_attract:
 		var delta : float = get_physics_process_delta_time()
 		# vector del jugador hacia el enemigo
 		var to_enemy = global_position - player.global_position
@@ -128,21 +141,23 @@ func attract() -> void:
 			is_surprise = false
 			stateMachine.travel("Idle")
 			return
-		if distance <= min_attract_distance + 0.3:
+		if distance <= min_attract_distance:
 			can_attract = false
-			stateMachine.travel("Attack")
+			animationPlayback.travel("Attack")
 			return
-		var look_dir = -to_enemy.normalized()
-		look_dir.y = 0
-		lookTo(delta, look_dir)
-		# Calcular fuerza de atracción con suavisado e inversamente proporcional a la distanica
-		var force_magnitude  = attract_strength * (1.0 - (distance / attract_distance))
-		force_magnitude = clamp(force_magnitude, 0.0, max_attract_force)
-		var pull_force = to_enemy.normalized() * force_magnitude
-		player.velocity += pull_force
-		player.move_and_slide()
-		if animationPlayback.get_current_node() != "Attract":
-			animationPlayback.travel("Attract")
+		else:
+			var look_dir = -to_enemy.normalized()
+			look_dir.y = 0
+			lookTo(delta, look_dir)
+			# Calcular fuerza de atracción con suavisado e inversamente proporcional a la distanica
+			var force_magnitude  = attract_strength * (1.0 - (distance / attract_distance))
+			force_magnitude = clamp(force_magnitude, 0.0, max_attract_force)
+			var pull_force = to_enemy.normalized() * force_magnitude
+			player.velocity.x += pull_force.x
+			player.velocity.z += pull_force.z
+			player.move_and_slide()
+			if animationPlayback.get_current_node() != "Attract":
+				animationPlayback.travel("Attract")
 		# Mantener al enemigo estable (no se mueve horizontalmente aquí)
 		if is_on_floor():
 			velocity.x = 0
@@ -150,8 +165,6 @@ func attract() -> void:
 		else:
 			velocity.y -= delta * fall_speed
 		move_and_slide()
-	else:
-		return
 
 func detect_player() -> void:
 	var distance = global_position.distance_to(player.global_position)
@@ -165,6 +178,7 @@ func detect_player() -> void:
 		return
 	var collider = vision_ray.get_collider()
 	if not collider.is_in_group("Player"):
+		stateMachine.travel("Idle")
 		return
 	# decidir cuándo entrar a attract
 	if is_surprise: return
@@ -208,8 +222,7 @@ func surprise() -> void:
 func attack() -> void:
 	applyingKnockback = true
 	player.velocity.y = knockbackUpForce
-	print("Pum pum")
-	#player.takeDamage(damage)
+	player.takeDamage(damage)
 
 func applyKnockBack(delta : float, body : CharacterBody3D, dir : Vector3, _knockbackForce : float) -> void:
 	var knockback :Vector3 = dir
@@ -224,6 +237,7 @@ func applyKnockBack(delta : float, body : CharacterBody3D, dir : Vector3, _knock
 			applyingKnockback = false
 		else:
 			receivingKnockback = false
+		couldown.start()
 
 func takeDamage(push_dir : Vector3, _damage : float, _knockbackForce : float, _knockbackUpForce : float):
 	if health_points > 0:
@@ -250,16 +264,14 @@ func move(stateFrom : String, target : Vector3, speed : float):
 	body.rotation.y = lerp_angle(body.rotation.y, rotacion, rotation_speed * delta)
 	if not is_on_floor():
 		velocity.y -= delta * fall_speed
-	 
 	animationPlayback.travel(stateFrom)
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 	move_and_slide()
 
-func _on_area_attack_area_entered(area: Area3D) -> void:
-	can_attract = false
-	attack() # Replace with function body.
+func _on_area_attack_body_entered(body: Node3D) -> void:
+	attack()
 
-func _on_area_attack_area_exited(area: Area3D) -> void:
-	is_surprise = false
-	can_attract = false
+
+func _on_couldown_timeout() -> void:
+	stateMachine.travel("Idle")
