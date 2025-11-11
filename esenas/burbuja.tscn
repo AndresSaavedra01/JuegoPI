@@ -48,7 +48,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vveip"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqqbu"]
 render_priority = 0
 shader = SubResource("Shader_budpa")
 shader_parameter/bubble_color = Color(0.34902, 0.513726, 0.929412, 0.321569)
@@ -62,18 +62,17 @@ shader_parameter/wobble_speed = 2.419
 shader_parameter/wobble_amp = 0.07
 
 [sub_resource type="SphereMesh" id="SphereMesh_cqfky"]
-material = SubResource("ShaderMaterial_vveip")
+material = SubResource("ShaderMaterial_aqqbu")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rfikj"]
 radius = 0.535494
 
 [node name="Burbuja" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 29
+collision_mask = 25
 mass = 0.022
 gravity_scale = -1.889
 script = ExtResource("1_vveip")
-velocidad = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2

@@ -1,15 +1,16 @@
-[gd_scene load_steps=49 format=4 uid="uid://fv3jfe3br3bv"]
+[gd_scene load_steps=50 format=4 uid="uid://fv3jfe3br3bv"]
 
-[ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="1_qsggc"]
-[ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="2_o1v0m"]
-[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="3_gdt04"]
-[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_f1g51"]
-[ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="5_mprq8"]
-[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="6_so7nf"]
-[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="7_i8ud7"]
-[ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="8_ukm6w"]
-[ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="9_6d4og"]
-[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="10_eluxh"]
+[ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="1_2q37d"]
+[ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
+[ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
+[ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
+[ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="5_isbpu"]
+[ext_resource type="Texture2D" uid="uid://ssrlnj65d4bs" path="res://shaders/water/textures/caustic_texture.png" id="6_0bmip"]
+[ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="9_6gyh5"]
+[ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="11_2q37d"]
+[ext_resource type="PackedScene" uid="uid://chugsgo0usnr2" path="res://esenas/MrSteven.tscn" id="11_isbpu"]
+[ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
+[ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_isbpu"]
 vertices = PackedVector3Array(-0.125098, -0.820711, -9.68668, -0.205099, -0.820711, -9.60668, -0.165099, -0.820711, -9.56668, 1.9949, -0.820711, -9.56668, -0.365098, -0.820711, -10.5267, -0.485098, -0.820711, -10.5267, -0.485098, -0.820711, -10.4467, -0.245098, -0.820711, -10.4467, -0.965099, -0.820711, -12.8467, -1.0851, -0.820711, -12.6867, -0.285099, -0.820711, -10.8867, 2.1149, -0.820711, -9.64668, 2.1549, -0.820711, -12.6867, 2.0749, -0.820711, -12.8467, -0.285099, -0.820711, -10.6467, -0.125098, -0.820711, -10.3667, -1.0851, -0.820711, -10.7267, -0.725098, -0.820711, -10.6467, -0.685099, -0.820711, -10.9667, -0.365098, -0.820711, -10.9667, -0.565099, -0.580711, -10.8067, -0.565099, -0.580711, -10.6867, -0.485098, -0.580711, -10.6867, -0.485098, -0.580711, -10.8067, -0.645099, -0.820711, -10.5267, -0.805098, -0.820711, -10.4467, -1.0451, -0.820711, -9.60668, -0.845098, -0.820711, -9.60668, -0.925098, -0.820711, -9.68668, -0.925098, -0.820711, -10.3667, -0.765099, -0.180711, -10.2467, -0.725098, -0.180711, -9.76668, -0.285099, -0.180711, -9.80668, -0.285099, -0.180711, -10.2467, -0.725098, -0.740711, -10.2067, -0.685099, -0.740711, -9.80668, -0.325099, -0.740711, -9.84668, -0.325099, -0.740711, -10.2067, 0.194901, -0.0607109, -9.80668, 0.194901, -0.0607109, -9.60668, 0.914901, -0.0607109, -9.64668, 0.914901, -0.0607109, -9.80668, 1.3549, 0.299289, -9.80668, 1.3549, 0.299289, -9.60668, 1.6349, 0.299289, -9.60668, 1.6349, 0.299289, -9.80668, 1.6749, 0.819289, -9.44668, 0.754902, 0.819289, -9.44668, 0.834901, 0.819289, -9.32668, 2.1149, 0.819289, -9.32668, 0.794901, 0.819289, -7.60668, 1.9949, 0.819289, -7.60668, 2.1549, 0.819289, -7.76668, -1.1651, 1.05929, -9.24668, -1.1651, 1.05929, -7.76668, -1.0851, 1.05929, -7.64668, 0.514902, 1.05929, -7.60668, 0.634901, 1.05929, -7.72668, 0.594901, 1.05929, -9.36668, -1.0051, 1.05929, -9.40668, -0.485098, 1.05929, -5.80668, -0.485098, 1.05929, -5.24668, 0.0749015, 1.05929, -5.24668, 0.0749015, 1.05929, -5.80668, -0.845098, 0.659289, -4.08668, -0.925098, 0.659289, -4.04668, -0.965099, 0.659289, -3.20668, 0.954902, 0.659289, -3.96668, 0.754902, 0.659289, -4.12668, -0.965099, 0.659289, -1.08668, 0.954902, 0.659289, -1.08668, -0.965099, 1.05929, -0.0466814, -0.965099, 1.05929, 0.793319, -0.845098, 1.05929, 0.913319, -0.605098, 1.05929, -0.966681, -0.925098, 1.05929, -0.886682, 0.954902, 1.05929, -0.806682, 0.754902, 1.05929, -0.966681, 0.754902, 1.05929, 0.953319, 0.954902, 1.05929, 0.713319, -0.485098, 1.05929, 2.43332, -0.485098, 1.05929, 2.99332, 0.0749015, 1.05929, 2.99332, 0.0749015, 1.05929, 2.43332, -0.485098, 1.05929, 5.19332, 0.0749015, 1.05929, 5.23332, 0.0349015, 1.05929, 4.63332, -0.485098, 1.05929, 4.67332, 1.2749, 1.05929, 5.67332, 1.3149, 1.05929, 6.19332, 1.8749, 1.05929, 6.15332, 1.8349, 1.05929, 5.59332, -1.3651, 0.819289, 7.23332, -1.3651, 0.819289, 8.71332, -1.2851, 0.819289, 8.79332, -1.2051, 0.819289, 7.07332, -1.3651, 0.819289, 8.99332, -1.3251, 0.819289, 10.5133, 2.1549, 0.819289, 10.5533, 2.1149, 0.819289, 7.11332, -1.4051, 1.89929, 10.9133, -1.4051, 1.89929, 12.2733, -1.2451, 1.89929, 12.4733, 2.1549, 1.89929, 12.4333, 2.1149, 1.89929, 10.7133, -1.2051, 1.89929, 10.6733)
@@ -23,7 +24,7 @@ agent_max_climb = 0.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l72q"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_o1v0m")
+albedo_texture = ExtResource("3_0bmip")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hidwm"]
@@ -66,7 +67,7 @@ points = PackedVector3Array(-0.75369, 1.8749, -1.04106, -0.689082, 1.68226, -1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhb2u"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_o1v0m")
+albedo_texture = ExtResource("3_0bmip")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f4qj7"]
@@ -109,7 +110,7 @@ points = PackedVector3Array(0.530831, 0.887899, 0.265324, 0.496547, 0.986527, 0.
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhbfb"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_o1v0m")
+albedo_texture = ExtResource("3_0bmip")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_txij5"]
@@ -213,20 +214,20 @@ points = PackedVector3Array(-0.829483, 0.00111364, -0.957234, 0.92753, -5.55112e
 points = PackedVector3Array(-0.829483, 0.00111364, -0.957234, 0.92753, -5.55112e-17, -0.89547, -0.89547, 0, 0.92753, 0.92303, 0.989119, -0.92303, -0.922881, 0.989146, 0.92308, 0.92753, 0, 0.89547, 0.988146, 0.989872, 0.765074, -0.988166, 0.989882, -0.765089, -0.991449, 5.55112e-17, -0.735572, -1.02565, 0.896373, 0.76924, 0.735786, 0.927593, -1.02381, 1.02565, 0.896374, -0.769241, 0.735786, 0.927593, 1.02381, 0.991449, 5.55112e-17, 0.735572, -0.735371, -5.55112e-17, 0.991449, -0.769086, 0.896397, 1.02572, 0.735572, 5.55112e-17, -0.991449, -0.769083, 0.896396, -1.02571, -0.991449, 5.55112e-17, 0.735572, 0.735572, 5.55112e-17, 0.991449, 0.991449, 5.55112e-17, -0.735572, -1.02244, 0.863123, -0.798656, 1.02244, 0.863123, 0.798655, -0.764932, 0.989909, -0.98822, -0.735371, -5.55112e-17, -0.991449, 0.92303, 0.989119, 0.92303, -0.960059, 0.895815, -0.928178, -0.764934, 0.989911, 0.988223, 0.928179, 0.895815, -0.960061, 0.928178, 0.895815, 0.960059, -0.960059, 0.895815, 0.928178, -0.927329, 0, -0.89547)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_11qt0"]
-panorama = ExtResource("4_f1g51")
+panorama = ExtResource("4_45ie8")
 
-[sub_resource type="Sky" id="Sky_2q37d"]
+[sub_resource type="Sky" id="Sky_f0us6"]
 sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 
 [sub_resource type="Environment" id="Environment_6gyh5"]
 background_mode = 2
-sky = SubResource("Sky_2q37d")
+sky = SubResource("Sky_f0us6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0us6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q37d"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("6_so7nf")
-shader_parameter/caustic_sampler = ExtResource("7_i8ud7")
+shader = ExtResource("5_isbpu")
+shader_parameter/caustic_sampler = ExtResource("6_0bmip")
 shader_parameter/water_color = Color(0.0196078, 0.764706, 0.866667, 1)
 shader_parameter/water_depth_color = Color(1, 1, 1, 1)
 shader_parameter/water_edge_distance = 0.1
@@ -235,13 +236,13 @@ shader_parameter/water_texture_scale = 25.0
 
 [node name="Level-1" type="Node3D" groups=["World"]]
 
-[node name="Checkpoint" parent="." instance=ExtResource("1_qsggc")]
+[node name="Checkpoint" parent="." instance=ExtResource("1_2q37d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.919, -0.312798, 0.018)
 
-[node name="Checkpoint2" parent="." instance=ExtResource("1_qsggc")]
+[node name="Checkpoint2" parent="." instance=ExtResource("1_2q37d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21359, 15.917, 36.2568)
 
-[node name="Checkpoint3" parent="." instance=ExtResource("1_qsggc")]
+[node name="Checkpoint3" parent="." instance=ExtResource("1_2q37d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39166, 15.917, 110.432)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -493,8 +494,9 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 start_position = Vector3(-2.63799, -4.11103, -55.4994)
 end_position = Vector3(-2.6195, -2.90003, -54.0195)
 
-[node name="Player" parent="." instance=ExtResource("3_gdt04")]
+[node name="Player" parent="." instance=ExtResource("1_k4u5q")]
 collision_layer = 3
+waterDamage = 1.0
 
 [node name="objetcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
@@ -509,21 +511,24 @@ shadow_caster_mask = 4294967294
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente"]
 environment = SubResource("Environment_6gyh5")
 
-[node name="water" parent="." instance=ExtResource("5_mprq8")]
+[node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135, -2.384, -3.435)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_f0us6")
+surface_material_override/0 = SubResource("ShaderMaterial_2q37d")
 
-[node name="TrashEnemy" parent="." instance=ExtResource("8_ukm6w")]
+[node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.75075)
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("9_6d4og")
+mesh_library = ExtResource("13_cd8j8")
 data = {
 "cells": PackedInt32Array(-1, 1, 131213)
 }
-script = ExtResource("10_eluxh")
+script = ExtResource("11_2q37d")
 metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="MrSteven" parent="." instance=ExtResource("11_isbpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102757, 0.294218, 7.7791)
 
 [editable path="Checkpoint"]
 [editable path="Checkpoint2"]

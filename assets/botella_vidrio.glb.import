@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d4gujdg7nm4t2"
-valid=false
+path="res://.godot/imported/botella_vidrio.glb-f952778bf3f689b2e91030b901026c00.scn"
 
 [deps]
 
 source_file="res://assets/botella_vidrio.glb"
+dest_files=["res://.godot/imported/botella_vidrio.glb-f952778bf3f689b2e91030b901026c00.scn"]
 
 [params]
 

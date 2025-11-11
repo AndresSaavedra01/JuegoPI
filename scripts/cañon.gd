@@ -5,8 +5,11 @@ extends Node3D
 @export var speed := 10.0
 var apuntando := false
 
-func ataquar():
-	var p = proyectil.instantiate()
+func ataquar(damage : float, knockbackForce : float, knockbackUpForce : float):
+	var p : Proyectil = proyectil.instantiate()
+	p.damage = damage
+	p.knockbackForce = knockbackForce
+	p.knockbackUpForce = knockbackUpForce
 	get_tree().get_first_node_in_group("World").add_child(p)
 	var spawn_pos = global_transform.origin
 	p.global_transform.origin = spawn_pos
