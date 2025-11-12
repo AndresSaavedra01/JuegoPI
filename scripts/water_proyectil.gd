@@ -37,7 +37,7 @@ func _on_body_entered(body) -> void:
 			body.hit(dir)
 			queue_free()
 	
-	if body is CharacterBody3D and body is TrashEnemy:
+	if body is CharacterBody3D and body is not player and body.has_method("takeDamage"):
 		var push_dir: Vector3 = linear_velocity.normalized()
 		body.takeDamage(Vector3.ZERO, 1, knockbackForce, knockbackUpForce)
 		if is_instance_valid(self):

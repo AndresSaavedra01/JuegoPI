@@ -52,6 +52,7 @@ var receivingKnockbackDir : Vector3
 @onready var couldown : Timer = $Couldown
 
 func _ready() -> void:
+	$SubViewport/TextureProgressBar.max_value = 100
 	#Agregar los estados a la state machine
 	stateMachine.addState(State.new("Idle", Callable(self, "idle")))
 	stateMachine.addState(State.new("Walk", Callable(self, "walk")))
@@ -69,6 +70,8 @@ func _ready() -> void:
 	stateMachine.setActiveState("Idle")
 
 func _physics_process(delta: float) -> void:
+	$Sprite3D.look_at(get_tree().get_first_node_in_group("Camera").global_position, Vector3.UP, true)
+	$SubViewport/TextureProgressBar.value = health_points
 	if applyingKnockback:
 		var dir : Vector3 = (player.global_position - global_position).normalized()
 		applyKnockBack(delta, player, dir, knockbackForce)

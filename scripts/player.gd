@@ -355,7 +355,7 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		if target.has_method("hit"):
 			target.hit(push_dir)
-		if target is TrashEnemy:
+		if target.has_method("takeDamage"):
 			target.takeDamage(push_dir, 10.0, 1, 5)
 
 
