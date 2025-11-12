@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7k1pe6jd4g56"]
 
 [ext_resource type="Script" uid="uid://cmg8ustnuw6sx" path="res://scripts/espuma.gd" id="1_wrm61"]
-[ext_resource type="AudioStream" uid="uid://lucv1uo2a08a" path="res://audio/Espuma.wav" id="2_vtpbu"]
+[ext_resource type="AudioStream" uid="uid://bk6d7hq1qigoh" path="res://audio/Espuma.wav" id="2_vtpbu"]
 
 [sub_resource type="Curve" id="Curve_1kgcc"]
 _data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]

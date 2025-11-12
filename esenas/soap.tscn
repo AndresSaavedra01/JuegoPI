@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ctvokln5edjb5" path="res://scripts/soap.gd" id="1_3mh4l"]
 [ext_resource type="PackedScene" uid="uid://cq86dreh8yqly" path="res://assets/soat.glb" id="1_so5gj"]
 [ext_resource type="PackedScene" uid="uid://c7k1pe6jd4g56" path="res://esenas/espuma.tscn" id="3_o8407"]
-[ext_resource type="AudioStream" uid="uid://c744rqry1qgw0" path="res://audio/Jabon.wav" id="4_iuxr1"]
+[ext_resource type="AudioStream" uid="uid://dn2kqhhp8g3bl" path="res://audio/Jabon.wav" id="4_iuxr1"]
 
 [sub_resource type="Curve" id="Curve_3mh4l"]
 _data = [Vector2(0.0289017, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.508671, 0.775281), 0.0, 0.0, 0, 0, Vector2(0.976879, 0.247191), 0.0, 0.0, 0, 0]

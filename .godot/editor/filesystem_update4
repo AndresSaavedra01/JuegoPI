@@ -13,5 +13,6 @@ res://esenas/espuma.tscn
 res://esenas/burbuja.tscn
 res://esenas/trash_dummy.tscn
 res://esenas/soap.tscn
-res://scripts/skin.gd
+res://esenas/water_proyectil.tscn
 res://scripts/player.gd
+res://scripts/water_proyectil.gd

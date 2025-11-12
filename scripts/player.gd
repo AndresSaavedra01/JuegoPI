@@ -138,6 +138,8 @@ func _process(delta: float) -> void:
 
 var step_timer = 0.0
 const STEP_INTERVAL = 0.8  # cada 0.4 s un paso
+var water_timer = 0.0
+const WATER_INTERVAL = .41
 
 func _physics_process(delta: float) -> void:
 	var apuntando = camera_pivot.apuntando
@@ -161,6 +163,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_timer = 0
 		$Sonidos/Steps.stop()
+	
+	if current_attack_mode == "Water" and active:
+		water_timer -= delta
+		if water_timer <= 0:
+			$Sonidos/Water.play()
+			water_timer = WATER_INTERVAL	
+		
+	else:
+		water_timer = 0
+		$Sonidos/Water.stop()
 
 
 #MOVIMIENTO
@@ -200,11 +212,13 @@ func bubble():
 		$Sonidos/Burbuja.play()
 		robot.bubble_attack()
 
+var active := false
 func water():
 	#print("Mode water")
 	robot.cañonMelee.visible = false
-	var active
+	
 	if Input.is_action_pressed("atacar"):
+		
 		active = true
 	else:
 		active = false
@@ -232,11 +246,14 @@ func melee():
 		match count:
 			0: 
 				robot.attackMelee()
+				$Sonidos/Melee1.play()
 				tempo.start(2)
 			1:  
 				robot.attackMelee_2()
+				$Sonidos/Melee2.play()
 			2:
 				robot.attackMelee_3()
+				$Sonidos/Melee3.play()
 		count +=1
 		if count > 2:
 			count = 0
@@ -293,6 +310,7 @@ func takeDamage(damage : int):
 			else:
 				heart.emptyHeart()
 				currentHeartIndex -= 1
+			
 			health -= 1
 	if health <= 0:
 		movementSM.travel("Die")
@@ -317,6 +335,8 @@ func _on_hitbox_body_entered(target: Node3D) -> void:
 		var push_dir: Vector3 = (target.global_transform.origin - global_transform.origin).normalized()
 		if target.has_method("hit"):
 			target.hit(push_dir)
+		if target is TrashEnemy:
+			target.takeDamage(push_dir, 10.0, 1, 5)
 
 
 func _on_timer_timeout() -> void:
