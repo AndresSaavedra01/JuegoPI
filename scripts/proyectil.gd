@@ -2,12 +2,10 @@ extends RigidBody3D
 class_name Proyectil
 
 @export var vida: float = 3.0
-@export var velocidad: float = 20.0
-@export var radio_collider: float = 0.1             
 @export var gravedad = 0
-var knockbackForce : float
-var knockbackUpForce : float
-var damage : float
+@export var knockbackForce : float = 0
+@export var knockbackUpForce : float = 0
+var damage : float = 25.0
 
 func _ready():
 	# Activar colisiones
@@ -22,8 +20,8 @@ func _ready():
 		queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	if body.has_method("takeDamage"):
+	if body is CharacterBody3D and body is not player and body.has_method("takeDamage"):
 		var push_dir: Vector3 = linear_velocity.normalized()
-		body.takeDamage(push_dir, damage, knockbackForce, knockbackUpForce)
+		body.takeDamage(Vector3.ZERO, damage, knockbackForce, knockbackUpForce)
 		if is_instance_valid(self):
 			queue_free()

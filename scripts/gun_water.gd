@@ -1,52 +1,49 @@
 extends Node3D
 
-@export var shoot_speed: float = 15.0
-@export var spread: float = 0.05
-@export var lifetime: float = 2.0
-@export var gravity: float = -9.8
-@export var bullet_scene: PackedScene   # aquí arrastras tu "Gota.tscn"
-var player
 
-var particles = []  # cada partícula = {node, vel, time}
+@export var proyectil: PackedScene
+@export var ray: RayCast3D
+@export var speed := 20.0
+@export var turbulence := 0.1
+var apuntando := false
+
+func ataquar(damage: float, knockbackForce: float, knockbackUpForce: float):
+	var p: Proyectil = proyectil.instantiate()
+	p.damage = damage
+	p.knockbackForce = knockbackForce
+	p.knockbackUpForce = knockbackUpForce
+	p.scale_water = randf_range(0.8, 1.4)
+	get_tree().get_first_node_in_group("World").add_child(p)
+	var spawn_pos = global_transform.origin
+	p.global_transform.origin = spawn_pos
+
+	var camera = get_tree().get_first_node_in_group("Camera")
+	var center = get_viewport().get_visible_rect().size / 2
+	var from = camera.project_ray_origin(center)
+	var to = from + camera.project_ray_normal(center) * 1000
+	var direction: Vector3
+
+	if apuntando:
+		if ray.is_colliding():
+			var hit_point = ray.get_collision_point()
+			direction = (hit_point - spawn_pos).normalized()
+		else:
+			direction = (to - from).normalized()
+	else:
+		direction = global_transform.basis.z
+
+	# 🌀 Añadir turbulencia (pequeña desviación aleatoria)
+	var random_offset = Vector3(
+		randf_range(-turbulence, turbulence),
+		randf_range(-turbulence, turbulence),
+		randf_range(-turbulence, turbulence)
+	)
+	direction = (direction + random_offset).normalized()
+
+	# Apunta el proyectil y aplica la fuerza
+	p.look_at(p.global_transform.origin + direction, Vector3.UP)
+	p.apply_central_impulse(direction * speed)
 
 
-
-func _process(delta: float) -> void:
-	for p in particles:
-		if is_instance_valid(p["node"]):
-			# actualizar física
-			p.vel.y += gravity * delta
-			p.node.global_transform.origin += p.vel * delta
-			p.time -= delta
-
-	# limpiar las que ya murieron
-	for p in particles.duplicate():
-		if is_instance_valid(p["node"]) and p.time <= 0:
-			p.node.queue_free()
-			particles.erase(p)
-	
-
-func shoot(damage : float, knockbackForce : float, knockbackUpForce : float):
-	var origin = $Marker.global_transform
-	var dir = -$Marker.global_transform.basis.z
-	
-	# Monte Carlo: agregamos dispersión aleatoria
-	dir.x += randf_range(-spread, spread)
-	dir.y += randf_range(-spread, spread)
-	dir = dir.normalized()
-	
-	var vel = dir * (shoot_speed + randf_range(-2, 2))
-	
-	# instanciar la gota
-	var bullet = bullet_scene.instantiate()
-	bullet.damage = damage
-	bullet.knockbackForce = knockbackForce
-	bullet.knockbackUpForce = knockbackUpForce
-	get_tree().get_first_node_in_group("Player").add_child(bullet)  # la ponemos en la escena principal
-	bullet.global_transform = origin
-	
-	particles.append({
-		"node": bullet,
-		"vel": vel,
-		"time": lifetime
-	})
+func _on_camara_pivot_apuntado(apun) -> void:
+	apuntando = apun
