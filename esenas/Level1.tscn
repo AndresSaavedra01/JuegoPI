@@ -223,7 +223,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_f0us6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q37d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1v0m"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -514,7 +514,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135, -2.384, -3.435)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_2q37d")
+surface_material_override/0 = SubResource("ShaderMaterial_o1v0m")
 
 [node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.75075)
