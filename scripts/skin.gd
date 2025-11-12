@@ -26,6 +26,8 @@ func jump():
 	tween.tween_property(self, "scale", Vector3(0.9, 1.1, 0.9), 0.1)
 	tween.tween_property(self, "scale", Vector3(1,1,1), 0.1)
 
+func die():
+	state_machine.travel("Die")
 
 func jump2():
 	var tween = get_tree().create_tween()
@@ -70,5 +72,8 @@ func attackMelee_3():
 
 func _on_animation_tree_2_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("meele"):
-		print(anim_name)
 		emit_signal("animation_finished")
+	
+	if anim_name == "Die":
+		emit_signal("animation_finished")
+	

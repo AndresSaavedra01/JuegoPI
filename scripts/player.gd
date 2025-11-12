@@ -45,7 +45,7 @@ var attack_modes := ["Bubble", "Soap", "Water", "Melee"]
 var current_move_mode := "Idle"
 var move_mode := ["Idle", "Run", "Die"]
 var attack_mode_index := 0
-var dead:= false
+signal dead
 var combo_step := 0
 var combo_window := 1
 var combo_timer := 0.0
@@ -88,6 +88,7 @@ func _ready() -> void:
 	
 	movementSM.addRelations("Idle", ["Run", "Die"])
 	movementSM.addRelations("Run", ["Idle", "Die"])
+	movementSM.addRelations("Die", ["Idle"])
 	
 	movementSM.setActiveState("Idle")
 
@@ -105,12 +106,13 @@ func _ready() -> void:
 	attackSM.setActiveState("Bubble")
 
 func _input(event: InputEvent) -> void:
-	if Input.get_vector("izquierda", "derecha", "atras", "adelante"):
-		var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
-		movementSM.travel("Run")
-		camera_input(input_dir)
-	else :
-		movementSM.travel("Idle")
+	if current_move_mode != "Die":
+		if Input.get_vector("izquierda", "derecha", "atras", "adelante"):
+			var input_dir = Input.get_vector("izquierda", "derecha", "atras", "adelante")
+			movementSM.travel("Run")
+			camera_input(input_dir)
+		else :
+			movementSM.travel("Idle")
 	
 	if Input.is_action_just_pressed("change-attack"):
 		attack_mode_index = (attack_mode_index + 1) % attack_modes.size()
@@ -192,12 +194,31 @@ func run():
 	current_move_mode = move_mode[1]
 	handle_jump(get_physics_process_delta_time())
 
+var morido := false
 func die():
 	print("Muelto")
 	velocity = Vector3.ZERO
 	velocity.y -= gravity_force
-	robot.idle()
+	robot.die()
 	current_move_mode = move_mode[2]
+	particles.emitting =false
+	if !morido: 
+		dead.emit() 
+		morido = true
+
+func reset():
+	movementSM.travel("Idle")
+	morido = false
+	health = totalHearts * 2
+	currentHeartIndex = totalHearts - 1
+	
+	for child in heartsContiner.get_children():
+		child.queue_free()
+
+	for i in range(totalHearts):
+		var new_heart = heartScene.instantiate()
+		heartsContiner.add_child(new_heart)
+
 
 #ATAQUES
 
@@ -314,8 +335,7 @@ func takeDamage(damage : int):
 			health -= 1
 	if health <= 0:
 		movementSM.travel("Die")
-			
-			
+		
 
 
 func _on_timer_2_timeout() -> void:

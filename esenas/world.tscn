@@ -298,6 +298,10 @@ bones/220/position = Vector3(-0.564771, 0.367644, 0.490368)
 [node name="BoneAttachment3D" parent="Player/robotV3/robotV3/rig/Skeleton3D" index="4"]
 transform = Transform3D(-0.832451, -0.365192, -0.417776, 0.0511177, -0.800498, 0.597885, -0.552529, 0.476146, 0.684743, -0.541009, 0.856531, -0.0432428)
 
+[node name="Control" parent="Player" index="3"]
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="TrashEnemy" parent="." instance=ExtResource("6_8e32u")]
 transform = Transform3D(0.399995, 0, 0, 0, 0.4, 0, 0, 0, 0.399994, 4.85263, 1.69217, 4.08274)
 
