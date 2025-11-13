@@ -55,7 +55,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		player_3d.get_node("AnimationPlayer").play("Jump")
 		await get_tree().create_timer(0.4).timeout
-		get_tree().change_scene_to_file("res://esenas/" + curr_level.name + ".tscn")
+		LoadingController.next_scene = "res://esenas/" + curr_level.name + ".tscn"
+		get_tree().change_scene_to_packed(LoadingController.loading_screen)
 
 	if target_level and target_level.name in data.level_dic and data.level_dic[target_level.name]["unlocked"] and completed_movement:
 		start_movement(target_level)

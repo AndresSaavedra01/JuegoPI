@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://jvqhnmu8nh8k"]
+[gd_scene load_steps=13 format=3 uid="uid://jvqhnmu8nh8k"]
 
+[ext_resource type="Script" uid="uid://xhgy26temdk5" path="res://scripts/Core/level_3.gd" id="1_l0ond"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_yticf"]
 [ext_resource type="PackedScene" uid="uid://cc1q7dr5m4et1" path="res://esenas/water.tscn" id="2_l0ond"]
 [ext_resource type="Shader" uid="uid://de7i18wivu5gd" path="res://shaders/water/water_shader.gdshader" id="3_7aerw"]
@@ -8,7 +9,7 @@
 [ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="6_s77ws"]
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="7_s3r2t"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ps8va"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ond"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_7aerw")
@@ -30,6 +31,7 @@ background_mode = 2
 sky = SubResource("Sky_qlyi1")
 
 [node name="Node3D" type="Node3D" groups=["World"]]
+script = ExtResource("1_l0ond")
 
 [node name="Player" parent="." instance=ExtResource("1_yticf")]
 collision_layer = 3
@@ -40,7 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
 [node name="water" parent="." instance=ExtResource("2_l0ond")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_ps8va")
+surface_material_override/0 = SubResource("ShaderMaterial_l0ond")
 
 [node name="ambiente" type="Node3D" parent="."]
 
