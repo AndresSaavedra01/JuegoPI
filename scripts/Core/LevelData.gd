@@ -1,5 +1,5 @@
 extends Node
-
+class_name LevelData
 var level_dic = {
 	"Level1" : {
 		"unlocked" : true,

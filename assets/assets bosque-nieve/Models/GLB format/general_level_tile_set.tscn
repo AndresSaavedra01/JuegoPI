@@ -1,0 +1,245 @@
+[gd_scene load_steps=61 format=3 uid="uid://dueax1oem2sbu"]
+
+[ext_resource type="PackedScene" uid="uid://dds7kdmbxkjuc" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-low.glb" id="1_ld31p"]
+[ext_resource type="PackedScene" uid="uid://7mkqkcmyo81q" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-overhang-low.glb" id="2_3ejev"]
+[ext_resource type="PackedScene" uid="uid://dr5g8qshytwpl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner-overhang.glb" id="3_taytr"]
+[ext_resource type="PackedScene" uid="uid://cc4of1ni45h4t" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-corner.glb" id="4_nabhi"]
+[ext_resource type="PackedScene" uid="uid://dlx3s6gfhrvmq" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve-half.glb" id="5_6o3l7"]
+[ext_resource type="PackedScene" uid="uid://bvmev5s13jlhu" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve-low.glb" id="6_m67vs"]
+[ext_resource type="PackedScene" uid="uid://cfk4l6vhbybpu" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-curve.glb" id="7_phw1w"]
+[ext_resource type="PackedScene" uid="uid://c8whyktyucgen" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-edge.glb" id="8_vc3wa"]
+[ext_resource type="PackedScene" uid="uid://drr3co37ygtwv" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-hexagon.glb" id="9_2ovcb"]
+[ext_resource type="PackedScene" uid="uid://c4elidme817sk" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-narrow.glb" id="10_1hkks"]
+[ext_resource type="PackedScene" uid="uid://bbgmmvpktyvot" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-steep-narrow.glb" id="11_ks8dg"]
+[ext_resource type="PackedScene" uid="uid://dijrnjqrgshur" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope-steep.glb" id="12_bsfpq"]
+[ext_resource type="PackedScene" uid="uid://cbw6oosx2bta5" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-slope.glb" id="13_j67lc"]
+[ext_resource type="PackedScene" uid="uid://cgu0njt65xf8k" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large-tall.glb" id="14_ronux"]
+[ext_resource type="PackedScene" uid="uid://ue2vqt077d8a" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-large.glb" id="15_k6nt4"]
+[ext_resource type="PackedScene" uid="uid://bp0nyj703fv7o" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-long.glb" id="16_rj555"]
+[ext_resource type="PackedScene" uid="uid://ln420hu65p6x" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-hexagon.glb" id="17_wtdo3"]
+[ext_resource type="PackedScene" uid="uid://vf70m2fq7wj1" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-large.glb" id="18_4kap7"]
+[ext_resource type="PackedScene" uid="uid://bj7of355pqluq" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-long.glb" id="19_l01am"]
+[ext_resource type="PackedScene" uid="uid://beg03jpmr48ql" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low-narrow.glb" id="20_xiwf5"]
+[ext_resource type="PackedScene" uid="uid://bvv3x1n3d1wb7" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-low.glb" id="21_l8ju2"]
+[ext_resource type="PackedScene" uid="uid://cvkay1k2fjl4n" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-narrow.glb" id="22_mspgx"]
+[ext_resource type="PackedScene" uid="uid://c1n56dyp6gtg4" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-corner.glb" id="23_1ud8b"]
+[ext_resource type="PackedScene" uid="uid://dt7d2ob0f4wac" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-edge.glb" id="24_ytru0"]
+[ext_resource type="PackedScene" uid="uid://cqbm406xocuwr" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-hexagon.glb" id="25_c2k6g"]
+[ext_resource type="PackedScene" uid="uid://bslh2kfmsj5yv" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-narrow.glb" id="26_uork3"]
+[ext_resource type="PackedScene" uid="uid://b7n8xf4ilv5ew" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-steep-narrow.glb" id="27_gi7y0"]
+[ext_resource type="PackedScene" uid="uid://cya6tat2avper" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope-steep.glb" id="28_5jpad"]
+[ext_resource type="PackedScene" uid="uid://pfbao5b1m6j3" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-slope.glb" id="29_fg2mm"]
+[ext_resource type="PackedScene" uid="uid://dhfs17uwigtkl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large-tall.glb" id="30_7mrw3"]
+[ext_resource type="PackedScene" uid="uid://da583mq8mtoyg" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-large.glb" id="31_2d2je"]
+[ext_resource type="PackedScene" uid="uid://jm1wv2cy1q4" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-long.glb" id="32_ujxo2"]
+[ext_resource type="PackedScene" uid="uid://o133sbdhihf6" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-hexagon.glb" id="33_ik4gj"]
+[ext_resource type="PackedScene" uid="uid://dejn78cgk4gei" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-large.glb" id="34_2w4ch"]
+[ext_resource type="PackedScene" uid="uid://57cllk27p15v" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-long.glb" id="35_u5f75"]
+[ext_resource type="PackedScene" uid="uid://bi7n8dud3vjtj" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low-narrow.glb" id="36_0cmgs"]
+[ext_resource type="PackedScene" uid="uid://buea7xnctv1kl" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-low.glb" id="37_crd0t"]
+[ext_resource type="PackedScene" uid="uid://611o7smbtwai" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass-overhang-narrow.glb" id="38_7176g"]
+[ext_resource type="PackedScene" uid="uid://cjqrojh0ufxc0" path="res://assets/assets bosque-nieve/Models/GLB format/block-grass.glb" id="39_oyvyf"]
+[ext_resource type="PackedScene" uid="uid://bwut5x56kyvw" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving-blue.glb" id="40_xvrv3"]
+[ext_resource type="PackedScene" uid="uid://bd5uwjekfw0ku" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving-large.glb" id="41_y4yeg"]
+[ext_resource type="PackedScene" uid="uid://dqn45p473cwrl" path="res://assets/assets bosque-nieve/Models/GLB format/block-moving.glb" id="42_1fy0u"]
+[ext_resource type="PackedScene" uid="uid://bp7gmcqa3h2r5" path="res://assets/assets bosque-nieve/Models/GLB format/door-large-open.glb" id="43_g6qwp"]
+[ext_resource type="PackedScene" uid="uid://126k6lloba52" path="res://assets/assets bosque-nieve/Models/GLB format/door-open.glb" id="44_v8bu7"]
+[ext_resource type="PackedScene" uid="uid://d2ua7c1ftwvg8" path="res://assets/assets bosque-nieve/Models/GLB format/door-rotate-large.glb" id="45_rs6a1"]
+[ext_resource type="PackedScene" uid="uid://b8mitg1tbffr" path="res://assets/assets bosque-nieve/Models/GLB format/door-rotate.glb" id="46_m2xyi"]
+[ext_resource type="PackedScene" uid="uid://cyll2wexdcadc" path="res://assets/assets bosque-nieve/Models/GLB format/fence-broken.glb" id="47_cjo5e"]
+[ext_resource type="PackedScene" uid="uid://d2r6fonfdpj7l" path="res://assets/assets bosque-nieve/Models/GLB format/flag.glb" id="48_t45us"]
+[ext_resource type="PackedScene" uid="uid://b5iihuckyubt8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers-tall.glb" id="49_nwwqj"]
+[ext_resource type="PackedScene" uid="uid://clavfbhyemki8" path="res://assets/assets bosque-nieve/Models/GLB format/flowers.glb" id="50_vyf7w"]
+[ext_resource type="PackedScene" uid="uid://bc2mpyj5mywb" path="res://assets/assets bosque-nieve/Models/GLB format/mushrooms.glb" id="51_p3wca"]
+[ext_resource type="PackedScene" uid="uid://k4c1b7nxt0yw" path="res://assets/assets bosque-nieve/Models/GLB format/plant.glb" id="52_louxe"]
+[ext_resource type="PackedScene" uid="uid://e8734nkxss5f" path="res://assets/assets bosque-nieve/Models/GLB format/poles.glb" id="53_jlsbb"]
+[ext_resource type="PackedScene" uid="uid://ds0qsprs6f3rp" path="res://assets/assets bosque-nieve/Models/GLB format/rocks.glb" id="54_1yuho"]
+[ext_resource type="PackedScene" uid="uid://dd4igkbqdita1" path="res://assets/assets bosque-nieve/Models/GLB format/stones.glb" id="55_mms4w"]
+[ext_resource type="PackedScene" uid="uid://ckws5rx7mu8iu" path="res://assets/assets bosque-nieve/Models/GLB format/trap-spikes-large.glb" id="56_ksa43"]
+[ext_resource type="PackedScene" uid="uid://c0tfhufvopc8y" path="res://assets/assets bosque-nieve/Models/GLB format/trap-spikes.glb" id="57_7hdu8"]
+[ext_resource type="PackedScene" uid="uid://bms8p6f08oboo" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine-small.glb" id="58_hmrww"]
+[ext_resource type="PackedScene" uid="uid://bxyq0jowxa11f" path="res://assets/assets bosque-nieve/Models/GLB format/tree-pine.glb" id="59_p6rq1"]
+[ext_resource type="PackedScene" uid="uid://dpobaihsaoxcm" path="res://assets/assets bosque-nieve/Models/GLB format/tree.glb" id="60_1eobr"]
+
+[node name="GeneralLevelTileSet" type="Node3D"]
+
+[node name="block-grass-corner-low" parent="." instance=ExtResource("1_ld31p")]
+visible = false
+
+[node name="block-grass-corner-overhang-low" parent="." instance=ExtResource("2_3ejev")]
+visible = false
+
+[node name="block-grass-corner-overhang" parent="." instance=ExtResource("3_taytr")]
+visible = false
+
+[node name="block-grass-corner" parent="." instance=ExtResource("4_nabhi")]
+visible = false
+
+[node name="block-grass-curve-half" parent="." instance=ExtResource("5_6o3l7")]
+visible = false
+
+[node name="block-grass-curve-low" parent="." instance=ExtResource("6_m67vs")]
+visible = false
+
+[node name="block-grass-curve" parent="." instance=ExtResource("7_phw1w")]
+visible = false
+
+[node name="block-grass-edge" parent="." instance=ExtResource("8_vc3wa")]
+visible = false
+
+[node name="block-grass-hexagon" parent="." instance=ExtResource("9_2ovcb")]
+visible = false
+
+[node name="block-grass-large-slope-narrow" parent="." instance=ExtResource("10_1hkks")]
+visible = false
+
+[node name="block-grass-large-slope-steep-narrow" parent="." instance=ExtResource("11_ks8dg")]
+visible = false
+
+[node name="block-grass-large-slope-steep" parent="." instance=ExtResource("12_bsfpq")]
+visible = false
+
+[node name="block-grass-large-slope" parent="." instance=ExtResource("13_j67lc")]
+visible = false
+
+[node name="block-grass-large-tall" parent="." instance=ExtResource("14_ronux")]
+visible = false
+
+[node name="block-grass-large" parent="." instance=ExtResource("15_k6nt4")]
+visible = false
+
+[node name="block-grass-long" parent="." instance=ExtResource("16_rj555")]
+visible = false
+
+[node name="block-grass-low-hexagon" parent="." instance=ExtResource("17_wtdo3")]
+visible = false
+
+[node name="block-grass-low-large" parent="." instance=ExtResource("18_4kap7")]
+visible = false
+
+[node name="block-grass-low-long" parent="." instance=ExtResource("19_l01am")]
+visible = false
+
+[node name="block-grass-low-narrow" parent="." instance=ExtResource("20_xiwf5")]
+visible = false
+
+[node name="block-grass-low" parent="." instance=ExtResource("21_l8ju2")]
+visible = false
+
+[node name="block-grass-narrow" parent="." instance=ExtResource("22_mspgx")]
+visible = false
+
+[node name="block-grass-overhang-corner" parent="." instance=ExtResource("23_1ud8b")]
+visible = false
+
+[node name="block-grass-overhang-edge" parent="." instance=ExtResource("24_ytru0")]
+visible = false
+
+[node name="block-grass-overhang-hexagon" parent="." instance=ExtResource("25_c2k6g")]
+visible = false
+
+[node name="block-grass-overhang-large-slope-narrow" parent="." instance=ExtResource("26_uork3")]
+visible = false
+
+[node name="block-grass-overhang-large-slope-steep-narrow" parent="." instance=ExtResource("27_gi7y0")]
+visible = false
+
+[node name="block-grass-overhang-large-slope-steep" parent="." instance=ExtResource("28_5jpad")]
+visible = false
+
+[node name="block-grass-overhang-large-slope" parent="." instance=ExtResource("29_fg2mm")]
+visible = false
+
+[node name="block-grass-overhang-large-tall" parent="." instance=ExtResource("30_7mrw3")]
+visible = false
+
+[node name="block-grass-overhang-large" parent="." instance=ExtResource("31_2d2je")]
+visible = false
+
+[node name="block-grass-overhang-long" parent="." instance=ExtResource("32_ujxo2")]
+visible = false
+
+[node name="block-grass-overhang-low-hexagon" parent="." instance=ExtResource("33_ik4gj")]
+visible = false
+
+[node name="block-grass-overhang-low-large" parent="." instance=ExtResource("34_2w4ch")]
+visible = false
+
+[node name="block-grass-overhang-low-long" parent="." instance=ExtResource("35_u5f75")]
+visible = false
+
+[node name="block-grass-overhang-low-narrow" parent="." instance=ExtResource("36_0cmgs")]
+visible = false
+
+[node name="block-grass-overhang-low" parent="." instance=ExtResource("37_crd0t")]
+visible = false
+
+[node name="block-grass-overhang-narrow" parent="." instance=ExtResource("38_7176g")]
+visible = false
+
+[node name="block-grass" parent="." instance=ExtResource("39_oyvyf")]
+visible = false
+
+[node name="block-moving-blue" parent="." instance=ExtResource("40_xvrv3")]
+visible = false
+
+[node name="block-moving-large" parent="." instance=ExtResource("41_y4yeg")]
+visible = false
+
+[node name="block-moving" parent="." instance=ExtResource("42_1fy0u")]
+visible = false
+
+[node name="door-large-open" parent="." instance=ExtResource("43_g6qwp")]
+visible = false
+
+[node name="door-open" parent="." instance=ExtResource("44_v8bu7")]
+visible = false
+
+[node name="door-rotate-large" parent="." instance=ExtResource("45_rs6a1")]
+visible = false
+
+[node name="door-rotate" parent="." instance=ExtResource("46_m2xyi")]
+visible = false
+
+[node name="fence-broken" parent="." instance=ExtResource("47_cjo5e")]
+visible = false
+
+[node name="flag" parent="." instance=ExtResource("48_t45us")]
+visible = false
+
+[node name="flowers-tall" parent="." instance=ExtResource("49_nwwqj")]
+visible = false
+
+[node name="flowers" parent="." instance=ExtResource("50_vyf7w")]
+visible = false
+
+[node name="mushrooms" parent="." instance=ExtResource("51_p3wca")]
+visible = false
+
+[node name="plant" parent="." instance=ExtResource("52_louxe")]
+visible = false
+
+[node name="poles" parent="." instance=ExtResource("53_jlsbb")]
+visible = false
+
+[node name="rocks" parent="." instance=ExtResource("54_1yuho")]
+visible = false
+
+[node name="stones" parent="." instance=ExtResource("55_mms4w")]
+visible = false
+
+[node name="trap-spikes-large" parent="." instance=ExtResource("56_ksa43")]
+visible = false
+
+[node name="trap-spikes" parent="." instance=ExtResource("57_7hdu8")]
+visible = false
+
+[node name="tree-pine-small" parent="." instance=ExtResource("58_hmrww")]
+visible = false
+
+[node name="tree-pine" parent="." instance=ExtResource("59_p6rq1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+
+[node name="tree" parent="." instance=ExtResource("60_1eobr")]
+visible = false

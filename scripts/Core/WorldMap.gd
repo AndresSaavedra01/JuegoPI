@@ -8,7 +8,7 @@ extends Node2D
 
 var levels = []
 @onready var curr_level = $LevelHolder/Level1
-
+var data = LevelData.new()
 var lerp_speed = 2.0
 var lerp_progress = 0.0
 var completed_movement = true
@@ -24,10 +24,10 @@ func _ready():
 
 func update_levels():
 	for level in levels:
-		if level.name in LevelData.level_dic:
-			if LevelData.level_dic[level.name]["unlocked"]:
+		if level.name in data.level_dic:
+			if data.level_dic[level.name]["unlocked"]:
 				level.get_node("Sprite2D").texture = load("res://assets/Menu/unlocked.png")
-				if LevelData.level_dic[level.name]["beaten"]:
+				if data.level_dic[level.name]["beaten"]:
 					level.get_node("Sprite2D").texture = load("res://assets/Menu/beaten.png")
 			else:
 				level.get_node("Sprite2D").texture = load("res://assets/Menu/locked.png")
@@ -53,7 +53,7 @@ func _process(delta):
 		await get_tree().create_timer(0.4).timeout
 		get_tree().change_scene_to_file("res://esenas/" + curr_level.name + ".tscn")
 
-	if target_level and target_level.name in LevelData.level_dic and LevelData.level_dic[target_level.name]["unlocked"] and completed_movement:
+	if target_level and target_level.name in data.level_dic and data.level_dic[target_level.name]["unlocked"] and completed_movement:
 		start_movement(target_level)
 
 func start_movement(target_level: Node2D):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbpsi0l8nwv73"]
+[gd_scene load_steps=8 format=3 uid="uid://cbpsi0l8nwv73"]
 
 [ext_resource type="Script" uid="uid://cdvpxp4bdhp55" path="res://scripts/Core/menu_principal.gd" id="1_fjsuk"]
 [ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_7tcki"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://clq4tkjbcsrsq" path="res://assets/Menu/buttons/joystick.png" id="4_tivla"]
 [ext_resource type="Texture2D" uid="uid://cluhp2k5t4iv4" path="res://assets/Menu/buttons/gear.png" id="5_7cim4"]
 [ext_resource type="Texture2D" uid="uid://6cvo65kolbv8" path="res://assets/Menu/buttons/exit.png" id="6_8y0mj"]
+[ext_resource type="AudioStream" uid="uid://dcftqa13itt26" path="res://audio/Daredevil.mp3" id="7_7cim4"]
 
 [node name="MenuPrincipal" type="Control" node_paths=PackedStringArray("play_button", "settings_button", "exit_button")]
 layout_mode = 3
@@ -93,3 +94,7 @@ theme_override_font_sizes/font_size = 40
 text = "SALIR"
 icon = ExtResource("6_8y0mj")
 flat = true
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7cim4")
+bus = &"Music"
