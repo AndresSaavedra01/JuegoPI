@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://jvqhnmu8nh8k"]
+[gd_scene load_steps=14 format=3 uid="uid://jvqhnmu8nh8k"]
 
 [ext_resource type="Script" uid="uid://xhgy26temdk5" path="res://scripts/Core/level_3.gd" id="1_l0ond"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_yticf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="5_jissp"]
 [ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="6_s77ws"]
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="7_s3r2t"]
+[ext_resource type="PackedScene" uid="uid://qdtxod7vxt24" path="res://esenas/MenuGUI/MenuPausa.tscn" id="9_7aerw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ond"]
 resource_local_to_scene = true
@@ -62,3 +63,5 @@ data = {
 }
 script = ExtResource("7_s3r2t")
 metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="MenuPausa" parent="." instance=ExtResource("9_7aerw")]

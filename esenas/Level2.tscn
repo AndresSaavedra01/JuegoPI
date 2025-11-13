@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqrpb0codbeve"]
+[gd_scene load_steps=16 format=3 uid="uid://bqrpb0codbeve"]
 
 [ext_resource type="Script" uid="uid://b1vrku08hgtsn" path="res://scripts/Core/level_2.gd" id="1_lman7"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_psx2g"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="7_f8tl3"]
 [ext_resource type="MeshLibrary" uid="uid://cjkw68h8qfqq8" path="res://assets/Tiles_Nave_Tierra.tres" id="8_xy1rf"]
 [ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="9_07nd7"]
+[ext_resource type="PackedScene" uid="uid://qdtxod7vxt24" path="res://esenas/MenuGUI/MenuPausa.tscn" id="11_wtqcb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtqcb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lman7"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_07nd7")
@@ -44,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14015, -3.86849, 2.65133)
 [node name="water" parent="." instance=ExtResource("2_xy1rf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13545, -1.49878, -3.43492)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_wtqcb")
+surface_material_override/0 = SubResource("ShaderMaterial_lman7")
 
 [node name="ambiente" type="Node3D" parent="."]
 
@@ -79,6 +80,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4534, 5.01225, 87.4392)
 
 [node name="flag2" parent="Checkpoint2" index="1"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.2649, -1.39092, 0)
+
+[node name="MenuPausa" parent="." instance=ExtResource("11_wtqcb")]
 
 [editable path="Checkpoint"]
 [editable path="Checkpoint2"]
