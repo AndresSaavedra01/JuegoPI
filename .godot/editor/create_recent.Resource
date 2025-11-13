@@ -1,2 +1,0 @@
-SpriteFrames
-BitMap
