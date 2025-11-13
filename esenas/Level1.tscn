@@ -1,6 +1,7 @@
-[gd_scene load_steps=50 format=4 uid="uid://cv7tr5jdpskty"]
+[gd_scene load_steps=52 format=4 uid="uid://cv7tr5jdpskty"]
 
 [ext_resource type="PackedScene" uid="uid://cdv3xqptqkvbc" path="res://esenas/checkpoint.tscn" id="1_2q37d"]
+[ext_resource type="Script" uid="uid://cx3ebtvpbq7d6" path="res://esenas/level_1.gd" id="1_gdt04"]
 [ext_resource type="PackedScene" uid="uid://pojdaufgxyfr" path="res://esenas/player.tscn" id="1_k4u5q"]
 [ext_resource type="Texture2D" uid="uid://b2m6rpuu6rf3r" path="res://assets/assets bosque-nieve/Models/GLB format/Textures/colormap.png" id="3_0bmip"]
 [ext_resource type="Texture2D" uid="uid://b1ejjuiuasq3n" path="res://assets/Painterly-Sky-BGs-_151_.exr" id="4_45ie8"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b2l0io5sw7cp7" path="res://scripts/grid_map.gd" id="11_2q37d"]
 [ext_resource type="PackedScene" uid="uid://chugsgo0usnr2" path="res://esenas/MrSteven.tscn" id="11_isbpu"]
 [ext_resource type="MeshLibrary" uid="uid://d3uvssux3wj5m" path="res://assets/GeneralLevelTiles.tres" id="13_cd8j8"]
+[ext_resource type="PackedScene" uid="uid://qdtxod7vxt24" path="res://esenas/MenuGUI/MenuPausa.tscn" id="13_f1g51"]
 [ext_resource type="PackedScene" uid="uid://du1bhsj5vdl71" path="res://esenas/trash_enemy.tscn" id="13_pf2iw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_isbpu"]
@@ -223,7 +225,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_f0us6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1v0m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mprq8"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -235,6 +237,7 @@ shader_parameter/water_depth_distance = 0.3
 shader_parameter/water_texture_scale = 25.0
 
 [node name="Level-1" type="Node3D" groups=["World"]]
+script = ExtResource("1_gdt04")
 
 [node name="Checkpoint" parent="." instance=ExtResource("1_2q37d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.919, -0.312798, 0.018)
@@ -514,7 +517,7 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135, -2.384, -3.435)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_o1v0m")
+surface_material_override/0 = SubResource("ShaderMaterial_mprq8")
 
 [node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.3004, 0.266956, 3.75075)
@@ -529,6 +532,8 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="MrSteven" parent="." instance=ExtResource("11_isbpu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102757, 0.294218, 7.7791)
+
+[node name="MenuPausa" parent="." instance=ExtResource("13_f1g51")]
 
 [editable path="Checkpoint"]
 [editable path="Checkpoint2"]

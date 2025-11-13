@@ -4,7 +4,7 @@ extends Node2D
 @onready var player_viewport_container = $PlayerViewportContainer
 @onready var player_viewport = $PlayerViewportContainer/PlayerViewport
 @onready var player_3d = $PlayerViewportContainer/PlayerViewport/robotV3
-
+@export var back_button: Button
 
 var levels = []
 @onready var curr_level = $LevelHolder/Level1
@@ -14,13 +14,17 @@ var lerp_progress = 0.0
 var completed_movement = true
 var lerp_threshold = 5.0  # Aumentado para 2D
 
+
 func _ready():
 	player_3d.get_node("AnimationPlayer").play("idle")
 	levels = level_holder.get_children()
 	update_levels()
 	
 	# Posicionar el viewport container en la posición inicial del playe
-
+	back_button.pressed.connect(_on_back_pressed)
+	
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://esenas/MenuGUI/MenuPrincipal.tscn")
 
 func update_levels():
 	for level in levels:

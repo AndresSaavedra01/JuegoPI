@@ -4,7 +4,6 @@ extends VBoxContainer
 @export var option_fullscreen: CheckBox
 @export var option_borderless: CheckBox
 @export var option_vsync: CheckBox
-@export var back_button: Button
 
 func _ready():
 	#var animator = ButtonAnimator.new()
@@ -14,7 +13,6 @@ func _ready():
 	#await get_tree().process_frame
 	#buttons.sort_custom(animator.buttons_array_sorting)
 	#await animator.animate_buttons(buttons.duplicate(),true,0.16, Vector2(-20,0), Vector2.ZERO, 0.5)
-
 
 	var resolutions = [
 		Vector2i(1920,1080),
@@ -32,7 +30,6 @@ func _ready():
 	option_fullscreen.toggled.connect(_on_fullscreen_toggled)
 	option_borderless.toggled.connect(_on_borderless_toggled)
 	option_vsync.toggled.connect(_on_vsync_toggled)
-	back_button.pressed.connect(_on_back_pressed)
 
 	
 func load_current_settings():
@@ -67,6 +64,3 @@ func _on_borderless_toggled(enabled: bool):
 func _on_vsync_toggled(enabled: bool):
 	var mode = DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(mode)
-
-func _on_back_pressed():
-	get_tree().change_scene_to_file("res://esenas/MenuGUI/MenuPrincipal.tscn")

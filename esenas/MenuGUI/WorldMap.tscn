@@ -1,4 +1,4 @@
-[gd_scene load_steps=270 format=4 uid="uid://bwq5gugcd0go7"]
+[gd_scene load_steps=271 format=4 uid="uid://bwq5gugcd0go7"]
 
 [ext_resource type="Script" uid="uid://bajqur8oofkr3" path="res://scripts/Core/WorldMap.gd" id="1_f3wg3"]
 [ext_resource type="Texture2D" uid="uid://dm87e7qoq8u2v" path="res://assets/Selector/Tiles/tile_0000.png" id="1_qpviu"]
@@ -134,8 +134,9 @@
 [ext_resource type="Texture2D" uid="uid://qli4ptdk8yrq" path="res://assets/Selector/Tiles/tile_0098.png" id="131_8d3ad"]
 [ext_resource type="Texture2D" uid="uid://ciqi4aj2ink64" path="res://assets/Selector/Tiles/tile_0099.png" id="132_nffea"]
 [ext_resource type="Texture2D" uid="uid://d2odgf7crci2q" path="res://assets/Menu/unlocked.png" id="134_ahr2p"]
-[ext_resource type="Script" uid="uid://dfbvc1n7ndk6l" path="res://esenas/MenuGUI/WorldMapLevel.gd" id="134_f3wg3"]
+[ext_resource type="Script" uid="uid://7ihm2vckws10" path="res://scripts/Core/WorldMapLevel.gd" id="134_f3wg3"]
 [ext_resource type="PackedScene" uid="uid://dpmm76b47k5wl" path="res://assets/robotV3.glb" id="136_f3wg3"]
+[ext_resource type="Theme" uid="uid://btvfg16pe5k2g" path="res://assets/Menu/Button.tres" id="137_1v68s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j06cp"]
 texture = ExtResource("1_qpviu")
@@ -799,8 +800,9 @@ sources/129 = SubResource("TileSetAtlasSource_mxscg")
 sources/130 = SubResource("TileSetAtlasSource_8pp44")
 sources/131 = SubResource("TileSetAtlasSource_dga0r")
 
-[node name="WorldMap" type="Node2D"]
+[node name="WorldMap" type="Node2D" node_paths=PackedStringArray("back_button")]
 script = ExtResource("1_f3wg3")
+back_button = NodePath("CanvasLayer/Volver")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1359.0
@@ -859,6 +861,7 @@ offset_right = 581.0
 offset_bottom = 632.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0111, 1.00572)
 pivot_offset = Vector2(125, 125)
 stretch = true
 
@@ -880,3 +883,18 @@ size = 1.618
 process_mode = 3
 position = Vector2(122, 124)
 position_smoothing_speed = 0.005
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Volver" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 60)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -110.0
+offset_right = 250.0
+offset_bottom = -50.0
+grow_vertical = 0
+theme = ExtResource("137_1v68s")
+text = "Volver"

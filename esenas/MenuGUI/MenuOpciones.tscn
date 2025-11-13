@@ -1,16 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://csgl5lgvpe50f"]
+[gd_scene load_steps=11 format=3 uid="uid://csgl5lgvpe50f"]
 
 [ext_resource type="Script" uid="uid://dai3a3vnaf7vq" path="res://scripts/Core/menu_Opciones.gd" id="1_ck5xp"]
 [ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_02ooh"]
+[ext_resource type="Script" uid="uid://de085q2y2rnck" path="res://scripts/Core/video.gd" id="3_d2lut"]
 [ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="3_tkjqu"]
 [ext_resource type="Texture2D" uid="uid://8ade6an6pgol" path="res://assets/Menu/buttons/arrow_basic_s.png" id="4_yp6sb"]
 [ext_resource type="Texture2D" uid="uid://dr0cl3jwdpxqp" path="res://assets/Menu/buttons/check_square_color_checkmark.png" id="5_01quo"]
-[ext_resource type="Script" uid="uid://bjnu4bsl4o55n" path="res://esenas/MenuGUI/video_settings.gd" id="5_ul47w"]
 [ext_resource type="Texture2D" uid="uid://dtheqxlljy8j5" path="res://assets/Menu/buttons/check_square_color.png" id="6_3trw1"]
 [ext_resource type="Theme" uid="uid://c33sdeyhehpgv" path="res://assets/Menu/Labels.tres" id="6_d2lut"]
-[ext_resource type="Script" uid="uid://so8sc53i3km4" path="res://esenas/MenuGUI/audio.gd" id="10_d2lut"]
+[ext_resource type="Script" uid="uid://so8sc53i3km4" path="res://scripts/Core/audio.gd" id="10_d2lut"]
+[ext_resource type="Theme" uid="uid://btvfg16pe5k2g" path="res://assets/Menu/Button.tres" id="10_wefgd"]
 
-[node name="MenuOpciones" type="Control"]
+[node name="MenuOpciones" type="Control" node_paths=PackedStringArray("back_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ck5xp")
+back_button = NodePath("Volver")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -59,16 +61,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 100
 
-[node name="VIDEO" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync", "back_button")]
+[node name="VIDEO" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 80
-script = ExtResource("5_ul47w")
+script = ExtResource("3_d2lut")
 option_resolution = NodePath("HBoxContainer/OptionButton")
 option_fullscreen = NodePath("HBoxContainer2/CheckBox")
 option_borderless = NodePath("HBoxContainer3/CheckBox")
 option_vsync = NodePath("HBoxContainer4/CheckBox")
-back_button = NodePath("../../../../Volver")
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
@@ -222,6 +223,7 @@ offset_top = -110.0
 offset_right = 250.0
 offset_bottom = -50.0
 grow_vertical = 0
+theme = ExtResource("10_wefgd")
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Volver"

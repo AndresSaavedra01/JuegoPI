@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://btvfg16pe5k2g"]
+
+[ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="1_tsjmq"]
+
+[resource]
+default_font = ExtResource("1_tsjmq")
+default_font_size = 25
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_tsjmq")

@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://qdtxod7vxt24"]
+
+[ext_resource type="Script" uid="uid://bbl3pyr4tpwc7" path="res://scripts/Core/menu_pausa.gd" id="1_s5ot3"]
+
+[sub_resource type="Theme" id="Theme_cb1ot"]
+default_font_size = 15
+
+[node name="MenuPausa" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "salir_button", "reanudar_button", "reiniciar_button")]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_s5ot3")
+master_slider = NodePath("Panel/MarginContainer/MenuPausa/MasterControl/HSlider")
+music_slider = NodePath("Panel/MarginContainer/MenuPausa/MusicControl/HSlider")
+sfx_slider = NodePath("Panel/MarginContainer/MenuPausa/SFXControl/HSlider")
+salir_button = NodePath("Panel/MarginContainer/MenuPausa/HBoxContainer/Salir")
+reanudar_button = NodePath("Panel/MarginContainer/MenuPausa/HBoxContainer/Reanudar")
+reiniciar_button = NodePath("Panel/MarginContainer/MenuPausa/HBoxContainer/Reiniciar")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MenuPausa" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MenuPausa"]
+layout_mode = 2
+text = "PAUSA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterControl" type="HBoxContainer" parent="Panel/MarginContainer/MenuPausa"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MenuPausa/MasterControl"]
+layout_mode = 2
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/MenuPausa/MasterControl"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="MusicControl" type="HBoxContainer" parent="Panel/MarginContainer/MenuPausa"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MenuPausa/MusicControl"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/MenuPausa/MusicControl"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="SFXControl" type="HBoxContainer" parent="Panel/MarginContainer/MenuPausa"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MenuPausa/SFXControl"]
+layout_mode = 2
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/MenuPausa/SFXControl"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/MenuPausa"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Salir" type="Button" parent="Panel/MarginContainer/MenuPausa/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_cb1ot")
+text = "Salir
+"
+
+[node name="Reanudar" type="Button" parent="Panel/MarginContainer/MenuPausa/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+theme = SubResource("Theme_cb1ot")
+text = "Reanudar"
+
+[node name="Reiniciar" type="Button" parent="Panel/MarginContainer/MenuPausa/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_cb1ot")
+text = "Reiniciar"

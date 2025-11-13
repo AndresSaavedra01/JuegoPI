@@ -2,3 +2,15 @@ res://esenas/MenuGUI/MenuPrincipal.tscn
 res://esenas/MenuGUI/MenuOpciones.tscn
 res://scripts/Core/menu_Opciones.gd
 res://esenas/MenuGUI/video_settings.gd
+res://esenas/MenuGUI/WorldMap.tscn
+res://assets/Menu/Button.tres
+res://esenas/MenuGUI/video.gd
+res://scripts/Core/WorldMap.gd
+res://esenas/MenuGUI/MenuPausa.tscn
+res://esenas/MenuGUI/menu_pausa.gd
+res://esenas/Level1.tscn
+res://shaders/post_process_outline.tres
+res://shaders/MrStevenSkinLaser.tres
+res://assets/GeneralLevelTiles.tres
+res://esenas/level_1.gd
+res://scripts/Core/menu_pausa.gd
