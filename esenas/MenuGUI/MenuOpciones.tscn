@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://csgl5lgvpe50f"]
+[gd_scene load_steps=10 format=3 uid="uid://csgl5lgvpe50f"]
 
 [ext_resource type="Script" uid="uid://dai3a3vnaf7vq" path="res://scripts/Core/menu_Opciones.gd" id="1_ck5xp"]
 [ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_02ooh"]
 [ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="3_tkjqu"]
-[ext_resource type="Texture2D" uid="uid://clq4tkjbcsrsq" path="res://assets/Menu/buttons/joystick.png" id="4_01quo"]
 [ext_resource type="Texture2D" uid="uid://8ade6an6pgol" path="res://assets/Menu/buttons/arrow_basic_s.png" id="4_yp6sb"]
 [ext_resource type="Texture2D" uid="uid://dr0cl3jwdpxqp" path="res://assets/Menu/buttons/check_square_color_checkmark.png" id="5_01quo"]
 [ext_resource type="Script" uid="uid://bjnu4bsl4o55n" path="res://esenas/MenuGUI/video_settings.gd" id="5_ul47w"]
@@ -41,7 +40,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.627451)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,116 +51,26 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="Selector" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Video" type="Control" parent="MarginContainer/Selector"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_horizontal = 3
+theme_override_constants/separation = 100
 
-[node name="Play" type="Button" parent="MarginContainer/Selector/Video"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -39.0
-offset_right = 116.5
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/outline_size = 5
-theme_override_constants/icon_max_width = 70
-theme_override_fonts/font = ExtResource("3_tkjqu")
-theme_override_font_sizes/font_size = 40
-text = "VIDEO"
-icon = ExtResource("4_01quo")
-flat = true
-
-[node name="Audio" type="Control" parent="MarginContainer/Selector"]
+[node name="VIDEO" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync", "back_button")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Play" type="Button" parent="MarginContainer/Selector/Audio"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -39.0
-offset_right = 116.5
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/outline_size = 5
-theme_override_constants/icon_max_width = 70
-theme_override_fonts/font = ExtResource("3_tkjqu")
-theme_override_font_sizes/font_size = 40
-text = "AUDIO"
-icon = ExtResource("4_01quo")
-flat = true
-
-[node name="Idioma" type="Control" parent="MarginContainer/Selector"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Play" type="Button" parent="MarginContainer/Selector/Idioma"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -39.0
-offset_right = 116.5
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/outline_size = 5
-theme_override_constants/icon_max_width = 70
-theme_override_fonts/font = ExtResource("3_tkjqu")
-theme_override_font_sizes/font_size = 40
-text = "IDIOMA"
-icon = ExtResource("4_01quo")
-flat = true
-
-[node name="VIDEO" type="VBoxContainer" parent="." node_paths=PackedStringArray("option_resolution", "option_fullscreen", "option_borderless", "option_vsync", "back_button")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -260.5
-offset_right = 300.0
-offset_bottom = 260.5
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 80
 script = ExtResource("5_ul47w")
 option_resolution = NodePath("HBoxContainer/OptionButton")
 option_fullscreen = NodePath("HBoxContainer2/CheckBox")
 option_borderless = NodePath("HBoxContainer3/CheckBox")
 option_vsync = NodePath("HBoxContainer4/CheckBox")
-back_button = NodePath("../Volver")
+back_button = NodePath("../../../../Volver")
 
-[node name="Label" type="Label" parent="VIDEO"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
 theme = ExtResource("6_d2lut")
 theme_override_font_sizes/font_size = 40
@@ -170,45 +78,45 @@ text = "VIDEO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VIDEO"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VIDEO/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Resolución"
 
-[node name="OptionButton" type="OptionButton" parent="VIDEO/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/icon_max_width = 0
 theme_override_icons/arrow = ExtResource("4_yp6sb")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VIDEO"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="VIDEO/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("6_d2lut")
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Pantalla Completa"
 
-[node name="CheckBox" type="CheckBox" parent="VIDEO/HBoxContainer2"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/icon_max_width = 30
 theme_override_icons/checked = ExtResource("5_01quo")
 theme_override_icons/unchecked = ExtResource("6_3trw1")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VIDEO"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VIDEO/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("3_tkjqu")
@@ -217,50 +125,40 @@ text = "Sin Bordes"
 vertical_alignment = 1
 justification_flags = 160
 
-[node name="CheckBox" type="CheckBox" parent="VIDEO/HBoxContainer3"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer3"]
 layout_mode = 2
 theme_override_constants/icon_max_width = 30
 theme_override_font_sizes/font_size = 1
 theme_override_icons/checked = ExtResource("5_01quo")
 theme_override_icons/unchecked = ExtResource("6_3trw1")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VIDEO"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VIDEO/HBoxContainer4"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Vsync"
 
-[node name="CheckBox" type="CheckBox" parent="VIDEO/HBoxContainer4"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/VIDEO/HBoxContainer4"]
 layout_mode = 2
 theme_override_constants/icon_max_width = 30
 theme_override_icons/checked = ExtResource("5_01quo")
 theme_override_icons/unchecked = ExtResource("6_3trw1")
 
-[node name="AUDIO" type="VBoxContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -260.0
-offset_right = 300.0
-offset_bottom = 260.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="AUDIO" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 80
 script = ExtResource("10_d2lut")
 master_slider = NodePath("HBoxContainer/Master")
 music_slider = NodePath("HBoxContainer2/Music")
 sfx_slider = NodePath("HBoxContainer3/SFX")
 
-[node name="Label" type="Label" parent="AUDIO"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("6_d2lut")
@@ -269,46 +167,46 @@ text = "AUDIO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AUDIO"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="AUDIO/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Master"
 
-[node name="Master" type="HSlider" parent="AUDIO/HBoxContainer"]
+[node name="Master" type="HSlider" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer"]
 custom_minimum_size = Vector2(300, 31)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="AUDIO"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="AUDIO/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "Musica"
 
-[node name="Music" type="HSlider" parent="AUDIO/HBoxContainer2"]
+[node name="Music" type="HSlider" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 31)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="AUDIO"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="AUDIO/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkjqu")
 theme_override_font_sizes/font_size = 25
 text = "SFX"
 
-[node name="SFX" type="HSlider" parent="AUDIO/HBoxContainer3"]
+[node name="SFX" type="HSlider" parent="MarginContainer/ScrollContainer/VBoxContainer/AUDIO/HBoxContainer3"]
 custom_minimum_size = Vector2(300, 31)
 layout_mode = 2
 size_flags_horizontal = 10

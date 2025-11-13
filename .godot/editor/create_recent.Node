@@ -1,3 +1,7 @@
+MarginContainer
+VBoxContainer
+ScrollContainer
+VScrollBar
 GridMap
 Node3D
 AudioStreamPlayer3D
@@ -9,7 +13,3 @@ StateMachine
 Area3D
 RayCast3D
 Camera3D
-camera
-GPUParticles3D
-Marker3D
-BoneAttachment3D

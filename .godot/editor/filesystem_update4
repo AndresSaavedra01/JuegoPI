@@ -1,7 +1,4 @@
-res://shaders/post_process_outline.tres
-res://shaders/MrStevenSkinLaser.tres
-res://assets/GeneralLevelTiles.tres
-res://assets/Tiles_Nave_Tierra.tres
-res://esenas/Level3.tscn
-res://esenas/Level1.tscn
-res://esenas/Level2.tscn
+res://esenas/MenuGUI/MenuPrincipal.tscn
+res://esenas/MenuGUI/MenuOpciones.tscn
+res://scripts/Core/menu_Opciones.gd
+res://esenas/MenuGUI/video_settings.gd
