@@ -64,12 +64,9 @@ func run() -> void:
 	var delta : float = get_physics_process_delta_time()
 	var toPlayeVector = player.global_position - global_position
 	lookTo(delta, toPlayeVector.normalized())
-	if toPlayeVector.length() <= 0.9 and abs(toPlayeVector.y) < 0.5:
+	if toPlayeVector.length() <= 1 and abs(toPlayeVector.y) < 0.5:
 		velocity = Vector3.ZERO
-		if not animationPlayer.is_playing():
-			animationPlayback.start("Attack")
-		else:
-			animationPlayback.travel("Attack")
+		animationPlayback.travel("Attack")
 		if not is_on_floor():
 			velocity.y -= delta * fallSpeed
 		move_and_slide()
@@ -211,6 +208,10 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			rng.randomize()
 			var x : float = rng.randf()
 			var z : float = rng.randf()
+			if(rng.randf() > 0.5):
+				x *= -1
+			if(rng.randf() > 0.5):
+				z *= -1
 			var item_velocity : Vector3 = Vector3(x, 0, z).normalized()
 			item_velocity.y = 2
 			var item : Item = itemScene.instantiate()
@@ -220,6 +221,8 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			item.global_position = body.get_node("Armature").global_position + Vector3.UP
 			item.move_and_slide()
 		gpuParticles.emitting = true
+	elif anim_name == "Attack":
+		animationPlayback.travel("Idle")
 
 func _on_gpu_particles_3d_finished() -> void:
 	if is_instance_valid(self):

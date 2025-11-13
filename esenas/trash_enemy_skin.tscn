@@ -541,10 +541,10 @@ tracks/19/path = NodePath("AreaAttack:monitoring")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0.46, 0.5, 1.08, 1.13333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.46, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false, true, false]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_5jj87"]
@@ -2097,7 +2097,7 @@ bones/21/rotation = Quaternion(-0.00965966, -0.000664878, -0.0333011, 0.999398)
 bones/21/scale = Vector3(1, 1, 1)
 
 [node name="knot" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.23877, 1.3147e-14, 7.03437e-13, 4.25112e-16, 0.23877, 1.2097e-07, -7.0699e-13, -1.2097e-07, 0.23877, -0.00945394, 2.01049, -0.0232372)
+transform = Transform3D(0.23877, 4.02921e-14, 6.32383e-13, -4.02926e-14, 0.23877, 3.09541e-07, -6.32383e-13, -3.13099e-07, 0.23877, -0.00945394, 2.01049, -0.0232389)
 bone_name = "knot"
 bone_idx = 16
 
@@ -2138,12 +2138,12 @@ mesh = SubResource("ArrayMesh_hx8he")
 skin = SubResource("Skin_1n6ip")
 
 [node name="leftArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.89307, 0.449918, 5.88596e-07, -0.449918, -0.89307, 9.18284e-07, 9.38773e-07, 5.56e-07, 1, 1.48294, 0.220992, 0.152422)
+transform = Transform3D(-0.89307, 0.449918, 5.96046e-07, -0.449918, -0.89307, 1.69873e-06, 1.30362e-06, 1.26194e-06, 1, 1.48294, 0.220992, 0.152421)
 bone_name = "Bone.022.L"
 bone_idx = 9
 
 [node name="rightArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 9.14559e-07, -9.59262e-07, 5.41098e-07, 1, -1.47954, 0.229224, 0.152422)
+transform = Transform3D(-0.89425, -0.447569, -6.15604e-07, 0.447569, -0.89425, 1.70711e-06, -1.32108e-06, 1.26474e-06, 1, -1.47954, 0.229224, 0.152421)
 bone_name = "Bone.022.R"
 bone_idx = 18
 
@@ -2160,7 +2160,7 @@ metadata/_custom_type_script = "uid://v5ybfp1c4afc"
 
 [node name="AreaAttack" type="Area3D" parent="."]
 transform = Transform3D(1, 1.06756e-07, 1.12234e-06, -1.06757e-07, 1, 1.2271e-06, -1.12234e-06, -1.2271e-06, 1, 1.67913e-06, -0.181317, 1.33631)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 monitoring = false
 

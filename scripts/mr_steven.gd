@@ -91,38 +91,40 @@ func walk() -> void:
 		stateMachine.travel("Idle")
 
 func idle():
-	var distance_to_player : float = player.global_position.distance_to(global_position)
+	var toPlayerVector = player.global_position - global_position
+	var yToPlayer = toPlayerVector.y
+	toPlayerVector.y = 0
+	var distance_to_player : float = toPlayerVector.length()
 	if not is_attacking and not is_steveando:
 		if distance_to_player <= 3:
 			var ramdon_value = rng.randi_range(0,1_000_000)
-			if ramdon_value <= 700_000:
+			if ramdon_value <= 700_000 and abs(yToPlayer) < 1:
 				animationPlayback.travel("Meele")
 			else:
 				animationPlayback.travel("Explosion")
 			is_attacking = true
-		elif distance_to_player <= 5:
+		elif distance_to_player <= 7:
 			var ramdon_value = rng.randi_range(0,1_000_000)
-			if ramdon_value <= 700_000:
-				animationPlayback.travel("Explosion")
-			elif ramdon_value <= 900_000:
+			if ramdon_value <= 150_000 and abs(yToPlayer) < 7:
 				animationPlayback.travel("Bean")
-			else:
+			elif ramdon_value <= 600_000:
+				animationPlayback.travel("Explosion")
+			elif ramdon_value:
 				animationPlayback.travel("Invocacion")
 			is_attacking = true
 		else:
 			var ramdon_value = rng.randi_range(0,1_000_000)
-			print(ramdon_value)
-			if ramdon_value <= 400_000:
+			if ramdon_value <= 300_000:
 				canWalk = true
 				var tiempo = rng.randf_range(2.0,3.0)
 				timer.wait_time = tiempo
 				if timer.is_stopped():
 					timer.start()
 				stateMachine.travel("Walk")
-			elif ramdon_value <= 600_000:
+			elif ramdon_value <= 700_000 and abs(yToPlayer) < 7:
 				animationPlayback.travel("Bean")
 				is_attacking = true
-			elif ramdon_value <= 750_000:
+			elif ramdon_value <= 850_000:
 				animationPlayback.travel("Invocacion")
 				is_attacking = true
 			else:
@@ -271,7 +273,6 @@ func _on_boss_final_invocar() -> void:
 		var pos : Vector3 = global_position.direction_to(player.global_position)
 		var map : RID = navAgent.get_navigation_map()
 		final_pos = NavigationServer3D.map_get_closest_point(map, pos)
-		print(final_pos)
 		current_entity.global_position = trashSpawnPoint.global_position
 		current_entity.scale *= 0.4
 		var dir : Vector3 = (final_pos - global_position).normalized()
