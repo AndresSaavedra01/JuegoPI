@@ -13,6 +13,7 @@ class_name TrashEnemy
 @export var knockbackForce : float = 3.0
 @export var knockbackUpForce : float = 2.0
 @export var hunt_distance : float = 20
+@export var vision_distance : float = 10
 @export var cant_items_drop : int = 6
 @export var radio_items_drop : float = 3
 @export var itemScene : PackedScene
@@ -49,6 +50,7 @@ func _ready() -> void:
 	stateMachine.addRelations("Walk", ["Run", "Idle", "Die"])
 	stateMachine.addRelations("Die", ["Run", "Idle", "Walk"])
 	stateMachine.setActiveState("Idle")
+	visionCast.target_position.z = -vision_distance
 	
 func _physics_process(delta: float) -> void:
 	if applyingKnockback:
@@ -185,14 +187,14 @@ func applyKnockBack(delta : float, body : CharacterBody3D, dir : Vector3, _knock
 	knockback *= _knockbackForce
 	body.velocity.x = knockback.x
 	body.velocity.z = knockback.z
-	if not is_on_floor():
+	if not body.is_on_floor():
 		velocity.y -= delta * fallSpeed
-	body.move_and_slide()
-	if body.is_on_floor():
+	else:
 		if body.is_in_group("Player"):
 			applyingKnockback = false
 		else:
 			receivingKnockback = false
+	body.move_and_slide()
 
 func lookTo(delta : float, dir : Vector3) -> void:
 	var rotacion : float = atan2(dir.x, dir.z)
