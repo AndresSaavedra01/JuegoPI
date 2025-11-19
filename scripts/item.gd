@@ -34,3 +34,10 @@ func _physics_process(delta: float) -> void:
 	if(ray.is_colliding() or is_on_floor()):
 		velocity = Vector3(0, 1.5, 0)
 	move_and_slide()
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is player:
+		queue_free()
+		body.sumarItem()

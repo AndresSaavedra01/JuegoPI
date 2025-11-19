@@ -80,8 +80,6 @@ func _ready() -> void:
 	mira_sprite.visible = false
 	robot.connect("animation_finished", Callable(self, "on_animation_finished"))
 
-
-
 	movementSM.addState(State.new("Idle", Callable(self, "idle")))
 	movementSM.addState(State.new("Run", Callable(self, "run")))
 	movementSM.addState(State.new("Die", Callable(self, "die")))
@@ -137,6 +135,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	$Control/Label.text = str(Engine.get_frames_per_second())
+	$Control/Label2.text = str(itemsTotales)
 
 var step_timer = 0.0
 const STEP_INTERVAL = 0.8  # cada 0.4 s un paso
@@ -337,9 +336,45 @@ func takeDamage(damage : int):
 		movementSM.travel("Die")
 		
 
+var items := 0
+var itemsTotales := 0
+func sumarItem():
+	items += 1
+	itemsTotales += 1
+	if items >= 3:
+		heal_half_heart()
+		items = 0
 
 func _on_timer_2_timeout() -> void:
 	count = 0
+
+func heal_half_heart():
+	# Si ya está al máximo, no curar
+	if currentHeartIndex >= totalHearts - 1 and heartsContiner.get_child(currentHeartIndex).isFull():
+		return
+
+	var heart: Heart = heartsContiner.get_child(currentHeartIndex)
+
+	# Si el corazón está vacío → llenar medio
+	if heart.isEmpty():
+		heart.mediumHeart()
+		health += 1
+		return
+
+	# Si el corazón está a la mitad → llenarlo completo
+	if heart.isMedium():
+		heart.fullHeart()
+		health += 1
+		return
+
+	# Si el corazón actual ya está lleno, pasar al siguiente
+	if heart.isFull():
+		currentHeartIndex += 1
+		if currentHeartIndex < totalHearts:
+			var next_heart: Heart = heartsContiner.get_child(currentHeartIndex)
+			next_heart.mediumHeart()
+			health += 1
+
 
 func _on_animation_tree_2_animation_started(anim_name: StringName) -> void:
 	if anim_name == "attack":

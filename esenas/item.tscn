@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqfriogfkd720"]
+[gd_scene load_steps=10 format=3 uid="uid://cqfriogfkd720"]
 
 [ext_resource type="Script" uid="uid://h8n32ybmbjn6" path="res://scripts/item.gd" id="1_wmji2"]
 [ext_resource type="PackedScene" uid="uid://g47yianlngf7" path="res://esenas/Items/botella_vidrio.tscn" id="2_oq3rd"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oq3rd"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_olfrm"]
+size = Vector3(1.2439, 1.15778, 1.25006)
+
 [node name="Item" type="CharacterBody3D"]
 collision_layer = 512
 script = ExtResource("1_wmji2")
@@ -19,3 +22,11 @@ models = Array[Array]([[], [ExtResource("7_6fl6g")], [ExtResource("6_73inv")], [
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_oq3rd")
 debug_color = Color(2.91191e-06, 0.649066, 0.158565, 0.42)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140381, 0.0237732, -0.0116272)
+shape = SubResource("BoxShape3D_olfrm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

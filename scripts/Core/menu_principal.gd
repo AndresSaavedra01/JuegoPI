@@ -12,7 +12,7 @@ func _ready():
 	var animator = ButtonAnimator.new()
 	add_child(animator)
 	
-	AudioController.play_music("res://audio/Daredevil.mp3")
+	AudioController.play_music("res://audio/Menu.mp3")
 	
 	play_button.pressed.connect(_on_play_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
