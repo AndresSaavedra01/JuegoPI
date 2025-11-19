@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2dd8jai8p783"]
+[gd_scene load_steps=19 format=3 uid="uid://b2dd8jai8p783"]
 
 [ext_resource type="Script" uid="uid://c6ee7cjt4dfda" path="res://scripts/magnetic_enemy.gd" id="1_020kr"]
+[ext_resource type="PackedScene" uid="uid://cqfriogfkd720" path="res://esenas/item.tscn" id="2_4p42l"]
 [ext_resource type="PackedScene" uid="uid://c86qb5ehwy8u" path="res://esenas/caneca.tscn" id="3_020kr"]
 [ext_resource type="PackedScene" uid="uid://7ob6fw34etcx" path="res://esenas/state_machine.tscn" id="3_ggvms"]
 [ext_resource type="Texture2D" uid="uid://bgl4cwbc83dlu" path="res://boton_amarillo.png" id="4_ggvms"]
@@ -50,6 +51,47 @@ material = SubResource("StandardMaterial3D_pcyod")
 radial_segments = 16
 rings = 8
 
+[sub_resource type="Curve" id="Curve_7win5"]
+_data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bben6"]
+curve = SubResource("Curve_7win5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87s54"]
+emission_shape_offset = Vector3(0, 0, 1)
+emission_shape_scale = Vector3(2, 2, 2)
+direction = Vector3(0, 3, 0)
+spread = 180.0
+initial_velocity_max = 10.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+radial_velocity_min = 0.999978
+radial_velocity_max = 2.99998
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bben6")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(0, 1.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v18k"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0.854902, 0.396078, 0.858824)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 0.854902, 0.396078, 1)
+emission_energy_multiplier = 0.3
+backlight_enabled = true
+backlight = Color(0.00784314, 0.313726, 0.14902, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l8lss"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_7v18k")
+radial_segments = 16
+rings = 8
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_7win5"]
 viewport_path = NodePath("SubViewport")
 
@@ -57,6 +99,7 @@ viewport_path = NodePath("SubViewport")
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 collision_layer = 8
 script = ExtResource("1_020kr")
+itemScene = ExtResource("2_4p42l")
 max_attract_force = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -80,6 +123,17 @@ explosiveness = 1.0
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_p3b87")
 draw_pass_1 = SubResource("SphereMesh_ggvms")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="caneca/rig" index="1"]
+emitting = false
+amount = 200
+amount_ratio = 0.3
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_87s54")
+draw_pass_1 = SubResource("SphereMesh_l8lss")
 
 [node name="vision_ray" type="RayCast3D" parent="caneca"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42522, 0)
@@ -110,6 +164,8 @@ texture_progress = ExtResource("5_4p42l")
 transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, 0.050121, 2.70271, 0)
 texture = SubResource("ViewportTexture_7win5")
 
+[connection signal="finished" from="caneca/rig/GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]
+[connection signal="animation_finished" from="caneca/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="caneca/AreaAttack" to="." method="_on_area_attack_body_entered"]
 [connection signal="body_exited" from="caneca/AreaAttack" to="." method="_on_area_attack_body_exited"]
 [connection signal="timeout" from="Couldown" to="." method="_on_couldown_timeout"]

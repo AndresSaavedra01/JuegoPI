@@ -127,7 +127,7 @@ node_connections = [&"OneShot", 0, &"StateMachine", &"OneShot", 1, &"Animation",
 _data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_bben6"]
+[sub_resource type="CurveTexture" id="CurveTexture_6airs"]
 curve = SubResource("Curve_hyi7t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bben6"]
@@ -141,12 +141,12 @@ angular_velocity_max = 50.0
 radial_velocity_min = 0.999978
 radial_velocity_max = 2.99998
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_bben6")
+scale_curve = SubResource("CurveTexture_6airs")
 turbulence_enabled = true
 turbulence_noise_scale = 5.0
 turbulence_noise_speed = Vector3(0, 1.5, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcyod"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d2tf"]
 transparency = 1
 diffuse_mode = 3
 specular_mode = 1
@@ -160,7 +160,7 @@ backlight = Color(0.00784314, 0.313726, 0.14902, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_6airs"]
 lightmap_size_hint = Vector2i(17, 9)
-material = SubResource("StandardMaterial3D_pcyod")
+material = SubResource("StandardMaterial3D_6d2tf")
 radial_segments = 16
 rings = 8
 
@@ -205,6 +205,7 @@ debug_shape_thickness = 5
 transform = Transform3D(0.966647, 0, 0, 0, 1.03805, 0, 0, 0, 1.04135, 0, 0, 0)
 
 [node name="Skeleton3D" parent="trash_enemy_skin/Armature" index="0"]
+bones/0/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, 3.43186e-07)
 bones/1/rotation = Quaternion(-0.0980767, 0.084194, 0.702077, 0.700272)
 bones/2/rotation = Quaternion(-0.654774, 0.247734, 0.252688, 0.667868)
 bones/3/position = Vector3(-7.73007e-08, 0.565416, 1.63472e-08)
@@ -212,13 +213,22 @@ bones/3/rotation = Quaternion(6.49211e-08, 1.28947e-07, 0.911577, -0.41113)
 bones/4/rotation = Quaternion(-0.0980773, -0.0841934, -0.702077, 0.700272)
 bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
 bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37589e-10)
+bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
+bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
 bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
 bones/9/rotation = Quaternion(-0.00599941, -4.10214e-06, -8.66887e-05, 0.999982)
+bones/10/rotation = Quaternion(0.497439, -0.0221607, 0.0124891, 0.867126)
+bones/11/rotation = Quaternion(0.26014, 0.0266117, -0.0974881, 0.960268)
+bones/12/rotation = Quaternion(-0.0100849, 0.000664795, 0.0347669, 0.999344)
 bones/13/rotation = Quaternion(-7.4506e-09, 6.9633e-13, 2.84216e-14, 1)
 bones/14/rotation = Quaternion(1.55854e-19, 1.1921e-07, 2.72109e-20, 1)
 bones/15/rotation = Quaternion(-0.188101, 2.07994e-14, -4.48467e-08, 0.98215)
+bones/16/rotation = Quaternion(-2.45868e-07, -1.19209e-07, -6.53697e-13, 1)
 bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
 bones/18/rotation = Quaternion(-0.00633918, 4.18313e-06, 9.15989e-05, 0.99998)
+bones/19/rotation = Quaternion(0.504286, 0.0220593, -0.0126611, 0.863162)
+bones/20/rotation = Quaternion(0.252533, -0.0258402, 0.0976923, 0.962297)
+bones/21/rotation = Quaternion(-0.00965966, -0.000664878, -0.0333011, 0.999398)
 
 [node name="knot" parent="trash_enemy_skin/Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.23877, -2.75702e-14, 2.91323e-13, -1.31474e-14, 0.23877, 1.06738e-07, -3.01981e-13, -1.35202e-07, 0.23877, -0.00945394, 2.01049, -0.0232374)

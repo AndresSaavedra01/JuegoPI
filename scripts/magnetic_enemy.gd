@@ -13,6 +13,11 @@ extends CharacterBody3D
 #Variables estados-habilidades
 @export var health_points : float = 100.0
 @export var damage : float = 1.0
+@onready var gpuParticles := $caneca/rig/GPUParticles3D
+
+@export var cant_items_drop : int = 6
+@export var radio_items_drop : float = 3
+@export var itemScene : PackedScene
 
 #Movimientos
 @export var walk_speed: float = 2.0
@@ -59,12 +64,13 @@ func _ready() -> void:
 	stateMachine.addState(State.new("Attract", Callable(self, "attract")))
 	stateMachine.addState(State.new("Attack", Callable(self, "attack")))
 	stateMachine.addState(State.new("Surprise", Callable(self, "surprise")))
+	stateMachine.addState(State.new("Die", Callable(self, "die")))
 	#Relaciones de lso estados
-	stateMachine.addRelations("Idle", ["Walk", "Attract", "Surprise"])
-	stateMachine.addRelations("Walk", ["Idle", "Walk", "Surprise"])
-	stateMachine.addRelations("Surprise", ["Idle", "Walk", "Attract", "Attack"])
-	stateMachine.addRelations("Attract", ["Idle", "Walk", "Attack", "Surprise"])
-	stateMachine.addRelations("Attack", ["Idle", "Walk", "Attract"])
+	stateMachine.addRelations("Idle", ["Walk", "Attract", "Surprise", "Die"])
+	stateMachine.addRelations("Walk", ["Idle", "Walk", "Surprise", "Die"])
+	stateMachine.addRelations("Surprise", ["Idle", "Walk", "Attract", "Attack", "Die"])
+	stateMachine.addRelations("Attract", ["Idle", "Walk", "Attack", "Surprise", "Die"])
+	stateMachine.addRelations("Attack", ["Idle", "Walk", "Attract", "Die"])
 	#Estado inicial
 	
 	stateMachine.setActiveState("Idle")
@@ -78,7 +84,12 @@ func _physics_process(delta: float) -> void:
 	if(receivingKnockback):
 		applyKnockBack(delta, self, receivingKnockbackDir, receivingKnockbackForce)
 	detect_player()
-	
+
+
+func die():
+	animationPlayback.travel("Die")
+
+
 func idle() -> void:
 	velocity.x = 0
 	velocity.z = 0
@@ -253,7 +264,8 @@ func takeDamage(push_dir : Vector3, _damage : float, _knockbackForce : float, _k
 			animationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	if health_points <= 0:
 		print("Muerte")
-		#stateMachine.travel("Die")
+		$Sprite3D.visible = false
+		stateMachine.travel("Die")
 
 func lookTo(delta : float, dir : Vector3) -> void:
 	var rotacion : float = atan2(dir.x, dir.z)
@@ -278,3 +290,29 @@ func _on_area_attack_body_entered(body: Node3D) -> void:
 
 func _on_couldown_timeout() -> void:
 	stateMachine.travel("Idle")
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "DIe":
+		for i in range(cant_items_drop):
+			rng.randomize()
+			var x : float = rng.randf()
+			var z : float = rng.randf()
+			if(rng.randf() > 0.5):
+				x *= -1
+			if(rng.randf() > 0.5):
+				z *= -1
+			var item_velocity : Vector3 = Vector3(x, 0, z).normalized()
+			item_velocity.y = 2
+			var item : Item = itemScene.instantiate()
+			item.type = rng.randi_range(1,4)
+			get_tree().get_first_node_in_group("World").add_child(item)
+			item.velocity = item_velocity
+			item.global_position = global_position + Vector3.UP
+			item.move_and_slide()
+			$CollisionShape3D.disabled = true
+		gpuParticles.emitting = true
+
+
+func _on_gpu_particles_3d_finished() -> void:
+	if is_instance_valid(self):
+		queue_free()

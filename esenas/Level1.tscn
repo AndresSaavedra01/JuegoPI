@@ -225,7 +225,7 @@ sky_material = SubResource("PanoramaSkyMaterial_11qt0")
 background_mode = 2
 sky = SubResource("Sky_f0us6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mprq8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1g51"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_isbpu")
@@ -523,10 +523,16 @@ environment = SubResource("Environment_6gyh5")
 [node name="water" parent="." instance=ExtResource("9_6gyh5")]
 transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -2.135, -2.384, -3.435)
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_mprq8")
+surface_material_override/0 = SubResource("ShaderMaterial_f1g51")
 
 [node name="TrashEnemy" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 13.1485, 0.266956, 14.6502)
+
+[node name="TrashEnemy3" parent="." instance=ExtResource("13_pf2iw")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 13.1485, 15.1631, 40.1093)
+
+[node name="TrashEnemy4" parent="." instance=ExtResource("13_pf2iw")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.07696, 15.1631, 84.0361)
 
 [node name="TrashEnemy2" parent="." instance=ExtResource("13_pf2iw")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 17.5247, 0.266956, 8.90406)
@@ -553,6 +559,9 @@ shape = SubResource("BoxShape3D_mprq8")
 
 [node name="MagneticEnemy" parent="." instance=ExtResource("13_f1g51")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 18.3307, 0, 20.6704)
+
+[node name="MagneticEnemy2" parent="." instance=ExtResource("13_f1g51")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 18.3307, 14.5434, 37.005)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
