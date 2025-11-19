@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbpsi0l8nwv73"]
+
+[ext_resource type="Script" uid="uid://cdvpxp4bdhp55" path="res://scripts/Core/menu_principal.gd" id="1_fjsuk"]
+[ext_resource type="Texture2D" uid="uid://bu4cy838cd1c5" path="res://assets/Menu/bg/bg.png" id="2_7tcki"]
+[ext_resource type="FontFile" uid="uid://tgjaoi7uh1ku" path="res://assets/Menu/fonts/Renogare-Regular.otf" id="3_2p0t7"]
+[ext_resource type="Texture2D" uid="uid://clq4tkjbcsrsq" path="res://assets/Menu/buttons/joystick.png" id="4_tivla"]
+[ext_resource type="Texture2D" uid="uid://cluhp2k5t4iv4" path="res://assets/Menu/buttons/gear.png" id="5_7cim4"]
+[ext_resource type="Texture2D" uid="uid://6cvo65kolbv8" path="res://assets/Menu/buttons/exit.png" id="6_8y0mj"]
+[ext_resource type="AudioStream" uid="uid://dcftqa13itt26" path="res://audio/Daredevil.mp3" id="7_7cim4"]
+
+[node name="MenuPrincipal" type="Control" node_paths=PackedStringArray("play_button", "settings_button", "exit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fjsuk")
+play_button = NodePath("MarginContainer/VBoxContainer/Play")
+settings_button = NodePath("MarginContainer/VBoxContainer/Settings")
+exit_button = NodePath("MarginContainer/VBoxContainer/Exit")
+tween_intensity = 1.2
+tween_duration = 0.3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7tcki")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 51
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/icon_max_width = 70
+theme_override_fonts/font = ExtResource("3_2p0t7")
+theme_override_font_sizes/font_size = 40
+text = "JUGAR"
+icon = ExtResource("4_tivla")
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/icon_max_width = 70
+theme_override_fonts/font = ExtResource("3_2p0t7")
+theme_override_font_sizes/font_size = 40
+theme_override_icons/icon = ExtResource("5_7cim4")
+text = "OPCIONES"
+flat = true
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/icon_max_width = 70
+theme_override_fonts/font = ExtResource("3_2p0t7")
+theme_override_font_sizes/font_size = 40
+text = "SALIR"
+icon = ExtResource("6_8y0mj")
+flat = true
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7cim4")
+bus = &"Music"

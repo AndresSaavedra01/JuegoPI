@@ -57,8 +57,10 @@ func _ready() -> void:
 	stateMachine.addRelations("Idle", ["Walk", "Die"])
 	stateMachine.addRelations("Walk", ["Idle", "Die"])
 	stateMachine.addRelations("Die", ["Idle", "Walk"])
-	#stateMachine.setActiveState("Idle")
-	
+
+func start_mrSteven():
+	stateMachine.setActiveState("Idle")
+
 func _physics_process(delta: float) -> void:
 	if applyingKnockback:
 		var dir : Vector3 = (player.global_position - global_position).normalized()

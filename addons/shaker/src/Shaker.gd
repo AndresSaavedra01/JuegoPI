@@ -1,6 +1,5 @@
 extends Node
 
-
 func shake_by_preset(preset:ShakerPresetBase, node:Node, duration:float, speed:float=1.0, intensity:float=1.0, fade_in:float=0.25, fade_out:float=2.0):
 	if (preset is ShakerPreset2D && not node is Node2D): assert(false, "ShakerPreset2D only works for Node2D type")
 	if (preset is ShakerPreset3D && not node is Node3D): assert(false, "ShakerPreset3D only works for Node3D type")

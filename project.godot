@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="JuegoPI"
-run/main_scene="uid://fv3jfe3br3bv"
+run/main_scene="uid://cbpsi0l8nwv73"
 config/features=PackedStringArray("4.4", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout="uid://bilyoe134v30a"
 
 [autoload]
 
 Shaker="*res://addons/shaker/src/Shaker.gd"
+AudioController="*res://scripts/Core/AudioController.gd"
 
 [dotnet]
 

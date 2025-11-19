@@ -1,11 +1,11 @@
+CollisionShape3D
+Area3D
 Timer
 AudioStreamPlayer3D
 Node3D
 MeshInstance3D
-CollisionShape3D
 RigidBody3D
 StateMachine
-Area3D
 RayCast3D
 Camera3D
 camera
