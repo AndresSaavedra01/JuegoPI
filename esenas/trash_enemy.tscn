@@ -127,7 +127,7 @@ node_connections = [&"OneShot", 0, &"StateMachine", &"OneShot", 1, &"Animation",
 _data = [Vector2(0.0220588, 1), 0.0, 0.0, 0, 0, Vector2(0.382353, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.955882, 0.011236), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_yue24"]
+[sub_resource type="CurveTexture" id="CurveTexture_bben6"]
 curve = SubResource("Curve_hyi7t")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bben6"]
@@ -141,7 +141,7 @@ angular_velocity_max = 50.0
 radial_velocity_min = 0.999978
 radial_velocity_max = 2.99998
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_yue24")
+scale_curve = SubResource("CurveTexture_bben6")
 turbulence_enabled = true
 turbulence_noise_scale = 5.0
 turbulence_noise_speed = Vector3(0, 1.5, 0)
@@ -206,18 +206,15 @@ transform = Transform3D(0.966647, 0, 0, 0, 1.03805, 0, 0, 0, 1.04135, 0, 0, 0)
 
 [node name="Skeleton3D" parent="trash_enemy_skin/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.0980767, 0.084194, 0.702077, 0.700272)
-bones/2/rotation = Quaternion(-0.654774, 0.247734, 0.252688, 0.667868)
-bones/3/position = Vector3(-7.73007e-08, 0.565416, 1.63472e-08)
 bones/3/rotation = Quaternion(6.49211e-08, 1.28947e-07, 0.911577, -0.41113)
 bones/4/rotation = Quaternion(-0.0980773, -0.0841934, -0.702077, 0.700272)
-bones/5/rotation = Quaternion(-0.654774, -0.247734, -0.252688, 0.667868)
-bones/6/position = Vector3(4.73983e-08, 0.565416, 8.37589e-10)
-bones/8/rotation = Quaternion(0.00231893, -0.00553333, -0.922463, 0.386038)
+bones/6/rotation = Quaternion(-8.15018e-08, 1.21631e-07, 0.911577, 0.41113)
+bones/7/rotation = Quaternion(2.64237e-07, 0.792348, 0.610069, -3.43187e-07)
 bones/9/rotation = Quaternion(-0.00599941, -4.10214e-06, -8.66887e-05, 0.999982)
 bones/13/rotation = Quaternion(-7.4506e-09, 6.9633e-13, 2.84216e-14, 1)
 bones/14/rotation = Quaternion(1.55854e-19, 1.1921e-07, 2.72109e-20, 1)
 bones/15/rotation = Quaternion(-0.188101, 2.07994e-14, -4.48467e-08, 0.98215)
-bones/17/rotation = Quaternion(0.00235441, 0.00588597, 0.928636, 0.370937)
+bones/16/rotation = Quaternion(-2.45868e-07, -1.19209e-07, -6.53697e-13, 1)
 bones/18/rotation = Quaternion(-0.00633918, 4.18313e-06, 9.15989e-05, 0.99998)
 
 [node name="knot" parent="trash_enemy_skin/Armature/Skeleton3D" index="0"]
@@ -239,9 +236,6 @@ explosiveness = 1.0
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_bben6")
 draw_pass_1 = SubResource("SphereMesh_6airs")
-
-[node name="AreaAttack" parent="trash_enemy_skin" index="3"]
-collision_layer = 8
 
 [node name="FloorCast" type="RayCast3D" parent="trash_enemy_skin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.206e-06, 1.69951e-06, 1.59448)
