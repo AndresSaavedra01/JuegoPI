@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 		
 
 func reset():
+	if jugador == null :  return
 	await  get_tree().create_timer(2).timeout
 	jugador.global_position = global_position
 	jugador.reset()
@@ -32,5 +33,6 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is player:
 		print("checkpoint")
 		for i in checkpoints:
-			i.desCheckPoint()
+			if self != i:
+				i.desCheckPoint()
 		jugador = body

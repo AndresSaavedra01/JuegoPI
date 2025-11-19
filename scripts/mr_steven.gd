@@ -57,7 +57,7 @@ func _ready() -> void:
 	stateMachine.addRelations("Idle", ["Walk", "Die"])
 	stateMachine.addRelations("Walk", ["Idle", "Die"])
 	stateMachine.addRelations("Die", ["Idle", "Walk"])
-	stateMachine.setActiveState("Idle")
+	#stateMachine.setActiveState("Idle")
 	
 func _physics_process(delta: float) -> void:
 	if applyingKnockback:
